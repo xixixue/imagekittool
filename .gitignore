@@ -21,6 +21,8 @@ yarn-error.log*
 # env files (never commit secrets)
 .env
 .env*.local
+.env.vercel
+.env.production
 
 # local sqlite dev database
 *.db
