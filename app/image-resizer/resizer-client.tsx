@@ -22,6 +22,7 @@ export function ResizerClient() {
   return (
     <ImageToolWorkspace<ResizerOptions>
       processFn={process}
+      operation="resize"
       defaultOptions={{ mode: "pixels", lockAspect: true, targetWidth: 1280, targetHeight: 720 }}
       processLabel={tTool("image-resizer.action")}
       zipName="resized-images.zip"

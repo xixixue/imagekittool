@@ -287,7 +287,14 @@
     "cleanupDone": "تم استرداد {tasks} مهمة منتهية و {objects} كائن يتيم.",
     "cleaning": "جارٍ التنظيف…",
     "original": "الأصل",
-    "processed": "معالج"
+    "processed": "معالج",
+    "opCompress": "ضغط",
+    "opResize": "تغيير الحجم",
+    "opConvert": "تحويل",
+    "opRotate": "تدوير",
+    "opWatermark": "علامة مائية",
+    "opMeme": "ميم",
+    "opOther": "أخرى"
   },
   "ToolSeo": {
     "howToUse": "طريقة الاستخدام",

@@ -10,7 +10,7 @@ import {
 } from "@/lib/config/quota";
 import { confirmReserved, releaseReserved, reserveQuota } from "@/features/quota/quota";
 import { generateIdempotencyKey, generateObjectKey, getStorageAdapter } from "@/lib/storage";
-import type { UploadHandle } from "./types";
+import { OPERATION_TYPES, type OperationType, type UploadHandle } from "./types";
 
 /** MIME → extension fallback when the filename has no usable extension. */
 const MIME_EXT: Record<string, string> = {
@@ -24,10 +24,11 @@ export interface CreateUploadInput {
   mimeType: string;
   sizeBytes: number;
   category: string;
+  operationType?: OperationType;
 }
 
 export type ValidationResult =
-  | { ok: true; extension: string; category: FileCategory }
+  | { ok: true; extension: string; category: FileCategory; operationType: OperationType | null }
   | { ok: false; error: string };
 
 /**
@@ -54,6 +55,16 @@ export function validateUploadInput(input: CreateUploadInput): ValidationResult 
     return { ok: false, error: "Invalid file category." };
   }
 
+  // operationType is optional (originals have none); when present it must be a
+  // known tool so the files list can badge the file by origin.
+  let operationType: OperationType | null = null;
+  if (input.operationType) {
+    if (!OPERATION_TYPES.includes(input.operationType)) {
+      return { ok: false, error: "Invalid operation type." };
+    }
+    operationType = input.operationType;
+  }
+
   const lower = fileName.toLowerCase();
   const dot = lower.lastIndexOf(".");
   const fromName = dot > 0 ? lower.slice(dot + 1) : "";
@@ -63,7 +74,7 @@ export function validateUploadInput(input: CreateUploadInput): ValidationResult 
     return { ok: false, error: "Could not determine file extension." };
   }
 
-  return { ok: true, extension: ext, category: category as FileCategory };
+  return { ok: true, extension: ext, category: category as FileCategory, operationType };
 }
 
 /**
@@ -79,7 +90,7 @@ export async function createUploadTask(
   if (!validation.ok) {
     throw new ValidationError(validation.error);
   }
-  const { extension, category } = validation;
+  const { extension, category, operationType } = validation;
   const adapter = getStorageAdapter();
   if (!adapter) {
     throw new ValidationError("Cloud storage is not available.");
@@ -99,6 +110,7 @@ export async function createUploadTask(
         extension,
         sizeBytes: input.sizeBytes,
         category,
+        operationType,
         status: "PENDING_UPLOAD",
       },
     });

@@ -287,7 +287,14 @@
     "cleanupDone": "已回收 {tasks} 个过期任务和 {objects} 个孤立对象。",
     "cleaning": "清理中…",
     "original": "原图",
-    "processed": "已处理"
+    "processed": "已处理",
+    "opCompress": "压缩",
+    "opResize": "调整尺寸",
+    "opConvert": "格式转换",
+    "opRotate": "旋转",
+    "opWatermark": "水印",
+    "opMeme": "表情包",
+    "opOther": "其他"
   },
   "ToolSeo": {
     "howToUse": "使用方法",

@@ -10,6 +10,7 @@ export function CompressorClient() {
   return (
     <ImageToolWorkspace<CompressOptions>
       processFn={compressImage}
+      operation="compress"
       defaultOptions={{ quality: 0.8 }}
       processLabel={tTool("image-compressor.action")}
       zipName="compressed-images.zip"

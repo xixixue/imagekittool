@@ -15,6 +15,7 @@ export function ConverterClient() {
   return (
     <ImageToolWorkspace<ConvertOptions>
       processFn={convertImage}
+      operation="convert"
       defaultOptions={{ format: "webp", background: "#ffffff" }}
       processLabel={tTool("image-converter.action")}
       zipName="converted-images.zip"
