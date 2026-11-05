@@ -3,12 +3,15 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { uploadToCloud } from "@/lib/cloud/client";
+import type { OperationType } from "@/features/cloud-storage/types";
 
 interface SaveToCloudButtonProps {
   blob: Blob;
   fileName: string;
   mimeType?: string;
   category: "ORIGINAL" | "PROCESSED";
+  /** For PROCESSED results: the tool that produced this file. */
+  operationType?: OperationType;
   onSaved?: () => void;
 }
 
@@ -24,6 +27,7 @@ export function SaveToCloudButton({
   fileName,
   mimeType,
   category,
+  operationType,
   onSaved,
 }: SaveToCloudButtonProps) {
   const t = useTranslations("Cloud");
@@ -38,6 +42,7 @@ export function SaveToCloudButton({
         fileName,
         mimeType: mimeType || blob.type || "application/octet-stream",
         category,
+        operationType,
       });
       setState("saved");
       onSaved?.();

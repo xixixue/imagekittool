@@ -287,7 +287,14 @@
     "cleanupDone": "Возвращено {tasks} истёкших задач и {objects} объектов-сирот.",
     "cleaning": "Очистка…",
     "original": "Оригинал",
-    "processed": "Обработано"
+    "processed": "Обработано",
+    "opCompress": "Сжатие",
+    "opResize": "Изменить размер",
+    "opConvert": "Конвертировать",
+    "opRotate": "Поворот",
+    "opWatermark": "Водяной знак",
+    "opMeme": "Мем",
+    "opOther": "Другое"
   },
   "ToolSeo": {
     "howToUse": "Как использовать",

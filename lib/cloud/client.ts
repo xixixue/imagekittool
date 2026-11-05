@@ -3,11 +3,14 @@
  * (SPEC §7.3): create task → PUT body to the presigned URL → confirm.
  * No image bytes ever touch the app API — they go straight to (mock/S3) storage.
  */
+import type { OperationType } from "@/features/cloud-storage/types";
 
 export interface UploadToCloudInput {
   fileName: string;
   mimeType: string;
   category: "ORIGINAL" | "PROCESSED" | "OTHER";
+  /** Tag a PROCESSED file with the tool that produced it (shown in the files list). */
+  operationType?: OperationType;
 }
 
 export async function uploadToCloud(
@@ -22,6 +25,7 @@ export async function uploadToCloud(
       mimeType: input.mimeType,
       sizeBytes: blob.size,
       category: input.category,
+      operationType: input.operationType,
     }),
   });
   if (!create.ok) {

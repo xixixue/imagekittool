@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useCloudStatus } from "@/hooks/use-cloud-status";
 import { formatBytes } from "@/features/image-processing";
+import type { OperationType } from "@/features/cloud-storage/types";
 import { AccountSubNav } from "./account-subnav";
 
 interface CloudFile {
@@ -13,8 +14,10 @@ interface CloudFile {
   extension: string;
   sizeBytes: number;
   category: string;
+  operationType: OperationType | null;
   status: string;
   createdAt: string;
+  thumbnailUrl?: string;
 }
 
 export function CloudFilesClient() {
@@ -81,6 +84,22 @@ export function CloudFilesClient() {
   const categoryLabel = (c: string) =>
     c === "ORIGINAL" ? t("original") : c === "PROCESSED" ? t("processed") : c;
 
+  // Operation-type label (which tool produced a PROCESSED file). Falls back to
+  // null for originals / legacy rows, in which case the category label is shown.
+  const operationLabel = (op: OperationType | null): string | null => {
+    if (!op) return null;
+    const labels: Record<OperationType, string> = {
+      compress: t("opCompress"),
+      resize: t("opResize"),
+      convert: t("opConvert"),
+      rotate: t("opRotate"),
+      watermark: t("opWatermark"),
+      meme: t("opMeme"),
+      other: t("opOther"),
+    };
+    return labels[op];
+  };
+
   return (
     <div className="mx-auto max-w-3xl space-y-6 px-4 py-12">
       <AccountSubNav />
@@ -104,11 +123,28 @@ export function CloudFilesClient() {
         <ul className="divide-y divide-border overflow-hidden rounded-xl border border-border bg-card shadow-sm">
           {files.map((f) => (
             <li key={f.id} className="flex items-center gap-3 p-3.5">
+              {f.thumbnailUrl ? (
+                // eslint-disable-next-line @next/next/no-img-element -- presigned object-storage URL; no Next/Image optimizer for private bucket objects
+                <img
+                  src={f.thumbnailUrl}
+                  alt={f.originalName}
+                  loading="lazy"
+                  className="h-11 w-11 shrink-0 rounded-lg border border-border object-cover"
+                />
+              ) : (
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border bg-muted text-[10px] font-semibold uppercase text-muted-foreground">
+                  {f.extension || "file"}
+                </div>
+              )}
               <div className="min-w-0 flex-1">
-                <p className="truncate text-sm font-medium">{f.originalName}</p>
+                <div className="flex items-center gap-2">
+                  <p className="truncate text-sm font-medium">{f.originalName}</p>
+                  <span className="shrink-0 rounded-full border border-border px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
+                    {operationLabel(f.operationType) ?? categoryLabel(f.category)}
+                  </span>
+                </div>
                 <p className="mt-0.5 text-xs text-muted-foreground">
-                  {formatBytes(f.sizeBytes)} · {categoryLabel(f.category)} ·{" "}
-                  {new Date(f.createdAt).toLocaleDateString()}
+                  {formatBytes(f.sizeBytes)} · {new Date(f.createdAt).toLocaleDateString()}
                 </p>
               </div>
               <div className="flex shrink-0 items-center gap-2">

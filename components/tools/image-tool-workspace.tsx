@@ -7,6 +7,7 @@ import { DownloadButtons } from "@/components/upload/download-buttons";
 import { DropZone } from "@/components/upload/drop-zone";
 import { FileList } from "@/components/upload/file-list";
 import type { DecodedImage, ImageFormat, ProcessResult } from "@/features/image-processing";
+import type { OperationType } from "@/features/cloud-storage/types";
 import { useImageToolWorkspace } from "@/hooks/use-image-tool-workspace";
 
 /** Draws the processed result into a sized canvas — shared by export and preview. */
@@ -31,6 +32,8 @@ interface ImageToolWorkspaceProps<O> {
   previewSize?: (srcW: number, srcH: number, options: O) => { width: number; height: number };
   /** Scale size-dependent option fields (fontSize, margin, …) with the preview canvas. */
   scalePreviewOptions?: (options: O, scale: number) => O;
+  /** The tool identity — tags saved results with their origin (shown in cloud files). */
+  operation: OperationType;
 }
 
 /**
@@ -95,6 +98,7 @@ export function ImageToolWorkspace<O>(props: ImageToolWorkspaceProps<O>) {
         items={workspace.items}
         onDownload={workspace.downloadOne}
         onRemove={workspace.removeFile}
+        operation={props.operation}
       />
 
       {workspace.hasResults && (

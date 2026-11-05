@@ -287,7 +287,14 @@
     "cleanupDone": "Reclaimed {tasks} expired task(s) and {objects} orphan object(s).",
     "cleaning": "Cleaning up…",
     "original": "Original",
-    "processed": "Processed"
+    "processed": "Processed",
+    "opCompress": "Compress",
+    "opResize": "Resize",
+    "opConvert": "Convert",
+    "opRotate": "Rotate",
+    "opWatermark": "Watermark",
+    "opMeme": "Meme",
+    "opOther": "Other"
   },
   "ToolSeo": {
     "howToUse": "How to use",

@@ -13,6 +13,7 @@ export function RotateClient() {
   return (
     <ImageToolWorkspace<RotateOptions>
       processFn={rotateImage}
+      operation="rotate"
       defaultOptions={{ angle: 0, flipH: false, flipV: false }}
       processLabel={tTool("rotate-image.action")}
       zipName="rotated-images.zip"

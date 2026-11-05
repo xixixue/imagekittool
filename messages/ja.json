@@ -287,7 +287,14 @@
     "cleanupDone": "期限切れタスク {tasks} 件と孤立オブジェクト {objects} 件を回収しました。",
     "cleaning": "クリーンアップ中…",
     "original": "元画像",
-    "processed": "処理済み"
+    "processed": "処理済み",
+    "opCompress": "圧縮",
+    "opResize": "リサイズ",
+    "opConvert": "変換",
+    "opRotate": "回転",
+    "opWatermark": "透かし",
+    "opMeme": "ミーム",
+    "opOther": "その他"
   },
   "ToolSeo": {
     "howToUse": "使い方",

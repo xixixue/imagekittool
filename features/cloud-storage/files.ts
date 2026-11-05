@@ -2,7 +2,7 @@ import { prisma } from "@/lib/db/prisma";
 import { PRESIGN_TTL_SECONDS } from "@/lib/config/quota";
 import { releaseUsed } from "@/features/quota/quota";
 import { generateObjectKey, getStorageAdapter } from "@/lib/storage";
-import type { CloudFileMeta } from "./types";
+import type { CloudFileMeta, OperationType } from "./types";
 
 function toMeta(row: {
   id: string;
@@ -11,6 +11,7 @@ function toMeta(row: {
   extension: string;
   sizeBytes: number;
   category: string;
+  operationType: string | null;
   status: string;
   createdAt: Date;
 }): CloudFileMeta {
@@ -21,6 +22,7 @@ function toMeta(row: {
     extension: row.extension,
     sizeBytes: row.sizeBytes,
     category: row.category,
+    operationType: row.operationType as OperationType | null,
     status: row.status,
     createdAt: row.createdAt.toISOString(),
   };
@@ -32,7 +34,25 @@ export async function listFiles(userId: string): Promise<CloudFileMeta[]> {
     where: { userId, status: "READY", deletedAt: null },
     orderBy: { createdAt: "desc" },
   });
-  return rows.map(toMeta);
+  const metas: CloudFileMeta[] = rows.map(toMeta);
+  // Mint short-lived presigned GET URLs so the list can render image thumbnails.
+  // Non-image files get none (the UI shows a file-type glyph instead). Presigning
+  // is local signing (no network round-trip), so this is cheap per row.
+  const adapter = getStorageAdapter();
+  if (adapter) {
+    await Promise.all(
+      rows.map(async (row, i) => {
+        if (!row.mimeType.startsWith("image/")) return;
+        try {
+          const get = await adapter.presignGet(row.objectKey, PRESIGN_TTL_SECONDS);
+          metas[i].thumbnailUrl = get.url;
+        } catch {
+          // Leave without a thumbnail; the list still renders a file-type glyph.
+        }
+      }),
+    );
+  }
+  return metas;
 }
 
 /** Fetch one file, enforcing ownership. Returns null when not owned/not found. */

@@ -108,7 +108,7 @@ try {
   r = await fetch(`${BASE}/api/cloud/uploads`, {
     method: "POST",
     headers: { "Content-Type": "application/json", ...jar() },
-    body: JSON.stringify({ fileName: "e2e-test.png", mimeType: "image/png", sizeBytes: PNG.length, category: "PROCESSED" }),
+    body: JSON.stringify({ fileName: "e2e-test.png", mimeType: "image/png", sizeBytes: PNG.length, category: "PROCESSED", operationType: "compress" }),
   });
   if (!r.ok) throw new Error(`uploads ${r.status} ${await r.text()}`);
   const handle = await j(r);
@@ -126,11 +126,23 @@ try {
   const fileId = compl.fileId;
   pass(`complete -> fileId ${String(fileId).slice(0, 8)}… (R2 object verified by server)`);
 
-  // 9. List files (ownership-scoped)
+  // 9. List files (ownership-scoped) — assert operationType tag + thumbnail URL
   r = await fetch(`${BASE}/api/cloud/files`, { headers: jar() });
   const { files } = await j(r);
-  if (files.some((f) => f.id === fileId)) pass(`files list -> contains new file (${files.length} total)`);
+  const listed = files.find((f) => f.id === fileId);
+  if (listed) pass(`files list -> contains new file (${files.length} total)`);
   else fail("files list -> new file missing");
+  if (listed?.operationType === "compress") pass("files list -> operationType=compress tagged");
+  else fail(`files list -> operationType=${listed?.operationType} (expected compress)`);
+  if (listed?.thumbnailUrl) {
+    pass(`files list -> thumbnailUrl present (${listed.thumbnailUrl.slice(0, 40)}…)`);
+    const thumb = await fetch(listed.thumbnailUrl);
+    if (thumb.ok && (thumb.headers.get("content-type") || "").startsWith("image/"))
+      pass(`thumbnail fetch -> ${thumb.status} ${thumb.headers.get("content-type")}`);
+    else fail(`thumbnail fetch -> ${thumb.status} ${thumb.headers.get("content-type")}`);
+  } else {
+    fail("files list -> thumbnailUrl missing for image file");
+  }
 
   // 10. Quota after upload
   r = await fetch(`${BASE}/api/cloud/storage/usage`, { headers: jar() });

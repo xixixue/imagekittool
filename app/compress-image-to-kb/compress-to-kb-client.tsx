@@ -19,6 +19,7 @@ export function CompressToKbClient() {
   return (
     <ImageToolWorkspace<CompressToKbOptions>
       processFn={compressImageToKb}
+      operation="compress"
       defaultOptions={{ targetBytes: 100 * 1024, allowFormatChange: true }}
       processLabel={tTool("compress-image-to-kb.action")}
       zipName="compressed-to-kb.zip"

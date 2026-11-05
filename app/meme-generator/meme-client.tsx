@@ -10,6 +10,7 @@ export function MemeClient() {
   return (
     <ImageToolWorkspace<MemeOptions>
       processFn={memeImage}
+      operation="meme"
       defaultOptions={{
         topText: "",
         bottomText: "",

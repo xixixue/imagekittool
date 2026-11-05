@@ -18,6 +18,7 @@ export function WatermarkClient() {
   return (
     <ImageToolWorkspace<WatermarkOptions>
       processFn={watermarkImage}
+      operation="watermark"
       defaultOptions={{
         text: "© Your Name",
         fontSize: 36,

@@ -49,6 +49,25 @@ describe("validateUploadInput", () => {
     expect(r.ok).toBe(false);
   });
 
+  it("accepts a valid operationType (tags a PROCESSED file with its tool)", () => {
+    const r = validateUploadInput({ ...ok, operationType: "compress" });
+    expect(r.ok).toBe(true);
+    if (r.ok) expect(r.operationType).toBe("compress");
+  });
+
+  it("defaults operationType to null when omitted (originals have none)", () => {
+    const r = validateUploadInput(ok);
+    expect(r.ok).toBe(true);
+    if (r.ok) expect(r.operationType).toBe(null);
+  });
+
+  it("rejects an unknown operationType", () => {
+    // Cast bypasses the typed input so the runtime guard is exercised (the API
+    // receives untyped JSON, validated first by the zod schema).
+    const r = validateUploadInput({ ...ok, operationType: "quantize" as never });
+    expect(r.ok).toBe(false);
+  });
+
   it("rejects zero/negative size", () => {
     expect(validateUploadInput({ ...ok, sizeBytes: 0 }).ok).toBe(false);
     expect(validateUploadInput({ ...ok, sizeBytes: -5 }).ok).toBe(false);

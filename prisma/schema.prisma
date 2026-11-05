@@ -71,6 +71,7 @@ model StorageFile {
   extension    String
   sizeBytes    Int
   category     String    // ORIGINAL | PROCESSED | OTHER
+  operationType String?  // which tool produced a PROCESSED file: compress|resize|convert|rotate|watermark|meme|other (null for originals)
   status       String    // PENDING_UPLOAD | UPLOADING | VERIFYING | READY | FAILED | DELETING | DELETED | EXPIRED
   checksum     String?
   createdAt    DateTime  @default(now())

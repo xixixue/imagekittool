@@ -287,7 +287,14 @@
     "cleanupDone": "Reclamados {tasks} tarefa(s) expirada(s) e {objects} objeto(s) órfão(s).",
     "cleaning": "Limpando…",
     "original": "Original",
-    "processed": "Processado"
+    "processed": "Processado",
+    "opCompress": "Comprimir",
+    "opResize": "Redimensionar",
+    "opConvert": "Converter",
+    "opRotate": "Girar",
+    "opWatermark": "Marca d'água",
+    "opMeme": "Meme",
+    "opOther": "Outro"
   },
   "ToolSeo": {
     "howToUse": "Como usar",

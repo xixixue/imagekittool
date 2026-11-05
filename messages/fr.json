@@ -287,7 +287,14 @@
     "cleanupDone": "Récupéré {tasks} tâche(s) expirée(s) et {objects} objet(s) orphelin(s).",
     "cleaning": "Nettoyage…",
     "original": "Original",
-    "processed": "Traité"
+    "processed": "Traité",
+    "opCompress": "Compresser",
+    "opResize": "Redimensionner",
+    "opConvert": "Convertir",
+    "opRotate": "Pivoter",
+    "opWatermark": "Filigrane",
+    "opMeme": "Mème",
+    "opOther": "Autre"
   },
   "ToolSeo": {
     "howToUse": "Mode d'emploi",

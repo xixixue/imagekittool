@@ -5,15 +5,18 @@ import { SaveToCloudButton } from "@/components/cloud/save-to-cloud-button";
 import { useCloudStatus } from "@/hooks/use-cloud-status";
 import { formatBytes } from "@/features/image-processing";
 import type { WorkspaceItem } from "@/hooks/use-image-tool-workspace";
+import type { OperationType } from "@/features/cloud-storage/types";
 import { cn } from "@/lib/utils";
 
 interface FileListProps {
   items: WorkspaceItem[];
   onDownload: (id: string) => void;
   onRemove: (id: string) => void;
+  /** The tool owning this list — tags PROCESSED results with their origin. */
+  operation?: OperationType;
 }
 
-export function FileList({ items, onDownload, onRemove }: FileListProps) {
+export function FileList({ items, onDownload, onRemove, operation }: FileListProps) {
   const tFile = useTranslations("FileList");
   const tWork = useTranslations("Workspace");
   const { status } = useCloudStatus();
@@ -86,6 +89,7 @@ export function FileList({ items, onDownload, onRemove }: FileListProps) {
                   fileName={it.result.filename}
                   mimeType={it.result.blob.type}
                   category="PROCESSED"
+                  operationType={operation}
                 />
               )}
               {it.status === "done" && it.result && (
