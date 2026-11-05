@@ -39,7 +39,7 @@ export function HeaderAuth() {
   if (user === undefined) return null;
   if (!user) {
     return (
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 sm:gap-3">
         <Link
           href="/login"
           className="text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -48,7 +48,7 @@ export function HeaderAuth() {
         </Link>
         <Link
           href="/register"
-          className="rounded-md bg-primary px-3 py-1.5 text-sm text-primary-foreground transition-colors hover:bg-primary/90"
+          className="rounded-md bg-primary px-2.5 py-1.5 text-sm text-primary-foreground transition-colors hover:bg-primary/90 sm:px-3"
         >
           {t("register")}
         </Link>
@@ -56,17 +56,17 @@ export function HeaderAuth() {
     );
   }
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-2 sm:gap-3">
       <Link
         href="/account"
-        className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+        className="max-w-[120px] truncate text-sm text-muted-foreground transition-colors hover:text-foreground sm:max-w-[180px]"
       >
         {user.email}
       </Link>
       <button
         type="button"
         onClick={signOut}
-        className="rounded-md border border-border px-3 py-1.5 text-sm transition-colors hover:bg-muted"
+        className="rounded-md border border-border px-2.5 py-1.5 text-sm transition-colors hover:bg-muted sm:px-3"
       >
         {t("signOut")}
       </button>
