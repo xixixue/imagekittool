@@ -67,17 +67,17 @@
 5. 创建后会显示**四样东西**（只显示一次，立刻复制保存）：
    - **Access Key ID**
    - **Secret Access Key**
-   - **Endpoint**（形如 `https://<account_id>.r2.cloudflarestorage.com`）
+   - **Endpoint**（本项目的真实值：`https://<account_id>.r2.cloudflarestorage.com`）
    - （可选）**Jurisdiction** / region
 
 ### 填到 Vercel 环境变量（§6 一起填）
-| 变量名 | 值 |
+| 变量名 | 值（密钥完整值见 `.env.vercel`） |
 |---|---|
-| `S3_ENDPOINT` | 你的 Endpoint，例如 `https://abcd1234.r2.cloudflarestorage.com` |
+| `S3_ENDPOINT` | `https://<account_id>.r2.cloudflarestorage.com` |
 | `S3_REGION` | `auto` |
-| `S3_BUCKET` | `imagekittool-prod`（你的 bucket 名） |
-| `S3_ACCESS_KEY_ID` | 刚拿到的 Access Key ID |
-| `S3_SECRET_ACCESS_KEY` | 刚拿到的 Secret Access Key |
+| `S3_BUCKET` | `imagekittool-prod` |
+| `S3_ACCESS_KEY_ID` | `<owner-provided>`（完整见 `.env.vercel`） |
+| `S3_SECRET_ACCESS_KEY` | `<owner-provided>`（完整见 `.env.vercel`） |
 
 ### 【我做】
 - 实现 `S3StorageAdapter`（用 `@aws-sdk/client-s3` + `@aws-sdk/s3-request-presigner`，指向 R2 endpoint）。**依赖披露**：`@aws-sdk/client-s3` + presigner，Apache-2.0，AWS 官方维护，仅进服务端 bundle（不增加前端体积），用于预签名 PUT/GET、head、delete、list。符合 AGENTS 规则 6。
@@ -151,10 +151,10 @@
 7. （Resend 免费档：每天 100 封 + 每月 3000 封，需验证自有域名；上线初期够用。）
 
 ### 填到 Vercel 环境变量
-| 变量名 | 值 |
+| 变量名 | 值（密钥完整值见 `.env.vercel`） |
 |---|---|
-| `RESEND_API_KEY` | `re_xxxxxxxx`（你的 API Key） |
-| `EMAIL_FROM` | 验证过的发件地址，例如 `ImageKitTools <noreply@imagekittool.com>` |
+| `RESEND_API_KEY` | `<owner-provided>`（完整见 `.env.vercel`） |
+| `EMAIL_FROM` | `ImageKitTools <noreply@imagekittool.com>` |
 
 ### 【我做】
 - 实现 `ResendEmailSender`（HTTP 调 `https://api.resend.com/emails`），替换现在的 `ConsoleEmailSender`（后者只在 dev 把验证码打到控制台）。
@@ -198,21 +198,23 @@
 > **捷径**：该区域有个 **「.env」/「Paste .env」** 按钮，点它可把整段 `KEY=VALUE`（多行）一次性粘进去，比逐条点快得多——把下面这张表整理成一段粘贴即可。
 > **事后补填/改**：部署后进项目 → 顶部 **Settings** → 左侧 **Environment Variables** → 增删改；改完必须 **Redeploy**（Deployments → 最新那条 → ⋯ → Redeploy）才生效。GA4/Sentry 这种后拿到的就走这里补。
 
-| 变量名 | 来自哪 | 示例 |
+| 变量名 | 来自哪 | 真实值（密钥已脱敏，完整值见本地 `.env.vercel`） |
 |---|---|---|
 | `NEXT_PUBLIC_APP_URL` | 你的域名 | `https://imagekittool.com` |
-| `DATABASE_URL` | §3 Neon | `postgresql://...?sslmode=require` |
-| `S3_ENDPOINT` | §2 R2 | `https://<id>.r2.cloudflarestorage.com` |
+| `DATABASE_URL` | §3 Neon | `postgresql://<user>:••••@<host>-pooler…/neondb?sslmode=require` |
+| `S3_ENDPOINT` | §2 R2 | `https://<account_id>.r2.cloudflarestorage.com` |
 | `S3_REGION` | 固定 | `auto` |
 | `S3_BUCKET` | §2 R2 | `imagekittool-prod` |
-| `S3_ACCESS_KEY_ID` | §2 R2 | `xxxx` |
-| `S3_SECRET_ACCESS_KEY` | §2 R2 | `xxxx` |
-| `RESEND_API_KEY` | §4 Resend | `re_xxxxxxxx` |
-| `EMAIL_FROM` | §4 Resend | `noreply@imagekittool.com` |
-| `AUTH_SECRET` | 可留空（预留） | （MVP 用 cookie token，暂不需要） |
-| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | §8（拿到后补填） | `G-XXXXXXXX` |
-| `NEXT_PUBLIC_SENTRY_DSN` | §9（拿到后补填） | `https://xxx@sentry.io/xxx` |
-| `SENTRY_DSN` | §9（可选，服务端用） | 同上 |
+| `S3_ACCESS_KEY_ID` | §2 R2 | `<owner-provided>`（完整见 `.env.vercel`） |
+| `S3_SECRET_ACCESS_KEY` | §2 R2 | `<owner-provided>`（完整见 `.env.vercel`） |
+| `RESEND_API_KEY` | §4 Resend | `<owner-provided>`（完整见 `.env.vercel`） |
+| `EMAIL_FROM` | §4 Resend | `ImageKitTools <noreply@imagekittool.com>` |
+| `AUTH_SECRET` | 预留 | 留空（MVP 用 cookie token，暂不需要） |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | §8 | 待提供（`G-XXXXXXXX`） |
+| `NEXT_PUBLIC_SENTRY_DSN` | §9 | 待提供 |
+| `SENTRY_DSN` | §9 | 待提供（可选，服务端用） |
+
+> **密钥完整值在本地 `.env.vercel`（已 gitignore，不入库）**。Vercel「Paste .env」直接粘 `.env.vercel` 全文，一次灌入全部 13 个变量；或逐条按上表填（密钥粘 `.env.vercel` 里的完整值）。
 
 5. 点 **Deploy**。首次构建几分钟，完成后给一个 `xxx.vercel.app` 的预览域名。
 6. 打开预览域名，确认首页能访问。
@@ -309,14 +311,14 @@
 | 变量 | 来源 | 必填? | 说明 |
 |---|---|---|---|
 | `NEXT_PUBLIC_APP_URL` | 你的域名 | ✅ | `https://imagekittool.com`，驱动 canonical/sitemap/OG |
-| `DATABASE_URL` | Neon | ✅ | PostgreSQL **pooled** 连接串，含 `?sslmode=require` |
+| `DATABASE_URL` | Neon | ✅ | PostgreSQL **pooled** 连接串，含 `?sslmode=require`（完整值见 `.env.vercel`） |
 | `S3_ENDPOINT` | R2 | ✅ | `https://<account_id>.r2.cloudflarestorage.com` |
 | `S3_REGION` | 固定 | ✅ | `auto` |
-| `S3_BUCKET` | R2 | ✅ | 你的 bucket 名 |
-| `S3_ACCESS_KEY_ID` | R2 | ✅ | R2 API Token 的 Access Key ID |
-| `S3_SECRET_ACCESS_KEY` | R2 | ✅ | R2 API Token 的 Secret |
-| `RESEND_API_KEY` | Resend | ✅ | `re_xxxxxxxx` |
-| `EMAIL_FROM` | Resend | ✅ | 验证过的发件地址 |
+| `S3_BUCKET` | R2 | ✅ | `imagekittool-prod` |
+| `S3_ACCESS_KEY_ID` | R2 | ✅ | R2 API Token 的 Access Key ID（完整值见 `.env.vercel`） |
+| `S3_SECRET_ACCESS_KEY` | R2 | ✅ | R2 API Token 的 Secret（完整值见 `.env.vercel`） |
+| `RESEND_API_KEY` | Resend | ✅ | `<owner-provided>`（完整值见 `.env.vercel`） |
+| `EMAIL_FROM` | Resend | ✅ | `ImageKitTools <noreply@imagekittool.com>` |
 | `AUTH_SECRET` | — | ⬜ | 预留，MVP 可留空 |
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | GA4 | ⬜ | `G-XXXXXXXX`，不填则无分析脚本 |
 | `NEXT_PUBLIC_SENTRY_DSN` | Sentry | ⬜ | 不填则无前端监控 |
