@@ -1,0 +1,117 @@
+// Prisma schema for ImageKitTools.
+// PostgreSQL (Neon) is used in both development and production — one provider,
+// one schema, real verification end-to-end. IDs are String/cuid.
+//
+// Object storage adapter is env-driven: Mock (dev, no S3 config) or S3/R2
+// (production). See lib/storage and .env.example.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String   @id @default(cuid())
+  email           String   @unique
+  passwordHash    String
+  emailVerifiedAt DateTime?
+  status          String   @default("active") // active | suspended
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  sessions      Session[]
+  tokens        Token[]
+  storageFiles  StorageFile[]
+  uploadTasks   UploadTask[]
+  storageQuota  UserStorageQuota?
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+// Verification + password-reset tokens (random, short-lived, single-use).
+model Token {
+  id        String    @id @default(cuid())
+  token     String    @unique
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  purpose   String    // email_verification | password_reset
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([userId])
+  @@index([purpose])
+}
+
+// ---- Phase 3: personal cloud storage ----
+
+// A file stored in object storage. The object body lives in the (mock or S3)
+// bucket; this row is metadata only. Files are private to their owner.
+model StorageFile {
+  id           String    @id @default(cuid())
+  userId       String
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  objectKey    String    @unique // server-generated random key; never client-controlled
+  originalName String
+  mimeType     String
+  extension    String
+  sizeBytes    Int
+  category     String    // ORIGINAL | PROCESSED | OTHER
+  status       String    // PENDING_UPLOAD | UPLOADING | VERIFYING | READY | FAILED | DELETING | DELETED | EXPIRED
+  checksum     String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  deletedAt    DateTime?
+
+  uploadTasks UploadTask[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([category])
+}
+
+// Tracks an in-flight browser-direct upload so failures/expiry can be recovered.
+model UploadTask {
+  id               String   @id @default(cuid())
+  userId           String
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fileId           String?
+  file             StorageFile? @relation(fields: [fileId], references: [id], onDelete: SetNull)
+  objectKey        String   @unique
+  expectedSizeBytes Int
+  reservedBytes    Int
+  status           String   // PENDING_UPLOAD | UPLOADING | VERIFYING | READY | FAILED | EXPIRED
+  expiresAt        DateTime
+  idempotencyKey   String   @unique
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([userId])
+  @@index([status])
+  @@index([expiresAt])
+}
+
+// Per-user storage quota. reserved + used are updated atomically to keep
+// concurrent uploads from exceeding the quota (SPEC §7.5).
+model UserStorageQuota {
+  userId        String   @id
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  quotaBytes    Int
+  usedBytes     Int      @default(0)
+  reservedBytes Int      @default(0)
+  updatedAt     DateTime @updatedAt
+}

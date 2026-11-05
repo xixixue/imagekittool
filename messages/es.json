@@ -1,0 +1,812 @@
+{
+  "Meta": {
+    "title": "ImageKitTools — Herramientas de imagen online gratuitas",
+    "description": "Herramientas de imagen online gratuitas y centradas en la privacidad. Comprime, redimensiona, convierte, recorta y comprime imágenes a un tamaño objetivo en KB, directamente en tu navegador. No requiere subida."
+  },
+  "Brand": {
+    "name": "ImageKitTools"
+  },
+  "Nav": {
+    "tools": "Herramientas",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "signIn": "Iniciar sesión",
+    "register": "Registrarse",
+    "signOut": "Cerrar sesión",
+    "language": "Idioma"
+  },
+  "Home": {
+    "badge": "100% local en el navegador · sin subida",
+    "title": "Herramientas de imagen gratuitas que respetan tu privacidad",
+    "subtitle": "Comprime, redimensiona, convierte y recorta imágenes directamente en tu navegador. Los archivos nunca salen de tu dispositivo a menos que elijas guardarlos en tu nube.",
+    "browseTools": "Explorar herramientas",
+    "tryCompressor": "Probar el compresor",
+    "noSignup": "Sin registro",
+    "noUpload": "Sin subida",
+    "optionalCloud": "Nube opcional",
+    "allTools": "Todas las herramientas",
+    "allToolsSub": "Elige una herramienta a continuación. Todo se ejecuta localmente en tu navegador.",
+    "viewAll": "Ver todas",
+    "localFirstTitle": "Local primero",
+    "localFirstDesc": "Las imágenes se procesan en tu navegador. No se suben a un servidor de forma predeterminada.",
+    "noSignupTitle": "No requiere registro",
+    "noSignupDesc": "Usa cada herramienta principal como invitado y descarga tus resultados al instante.",
+    "optionalCloudTitle": "Nube opcional",
+    "optionalCloudDesc": "Los usuarios que han iniciado sesión pueden guardar originales y resultados en un espacio en la nube privado."
+  },
+  "ToolsPage": {
+    "title": "Herramientas de imagen",
+    "subtitle": "Todas las herramientas se ejecutan en tu navegador. Tus imágenes no se suben a menos que las guardes explícitamente en tu nube.",
+    "badge": "100% local en el navegador · sin subida"
+  },
+  "DropZone": {
+    "title": "Suelta imágenes aquí o haz clic para explorar",
+    "hint": "JPG, PNG, WebP · hasta 25 MB cada una · máx. 20 archivos"
+  },
+  "Workspace": {
+    "process": "Procesar imágenes",
+    "processing": "Procesando {done}/{total}…",
+    "ready": "{count} listas",
+    "download": "Descargar",
+    "downloadAll": "Descargar todas ({count}) como ZIP",
+    "clearAll": "Borrar todo",
+    "remove": "Quitar archivo"
+  },
+  "FileList": {
+    "processing": "Procesando…",
+    "error": "Error",
+    "saved": "ahorrado {percent}%"
+  },
+  "Privacy": {
+    "note": "Tus imágenes se procesan completamente en tu navegador. Nunca se suben a un servidor a menos que las guardes explícitamente en tu nube (disponible tras iniciar sesión)."
+  },
+  "Footer": {
+    "rights": "© {year} ImageKitTools. Las imágenes se procesan en tu navegador de forma predeterminada.",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "privacy": "Política de privacidad",
+    "terms": "Términos",
+    "cookies": "Política de cookies"
+  },
+  "Tool": {
+    "image-compressor": {
+      "name": "Compresor de imágenes",
+      "tagline": "Reduce archivos JPG, PNG y WebP",
+      "description": "Comprime imágenes con calidad ajustable. Procesa por lotes y descarga de forma individual o como ZIP, todo en tu navegador.",
+      "headerDescription": "Comprime imágenes JPG, PNG y WebP con calidad ajustable. Procesa por lotes y descarga de forma individual o como ZIP, todo en tu navegador.",
+      "action": "Comprimir"
+    },
+    "image-resizer": {
+      "name": "Redimensionador de imágenes",
+      "tagline": "Redimensiona por píxeles, porcentaje o preajustes",
+      "description": "Cambia las dimensiones con bloqueo de relación de aspecto, escalado por porcentaje y preajustes comunes. Admite procesamiento por lotes.",
+      "headerDescription": "Redimensiona por píxeles, porcentaje o preajustes comunes. Bloquea la relación de aspecto para un ajuste de tipo «contain» y procesa varios archivos por lotes.",
+      "action": "Redimensionar"
+    },
+    "image-converter": {
+      "name": "Conversor de imágenes",
+      "tagline": "Convierte entre JPG, PNG y WebP",
+      "description": "Convierte formatos con relleno de fondo correcto para la transparencia. La extensión de salida siempre coincide con el tipo MIME real.",
+      "headerDescription": "Convierte entre JPG, PNG y WebP con un manejo correcto de la transparencia. Las extensiones de salida siempre coinciden con el tipo MIME real.",
+      "action": "Convertir"
+    },
+    "image-cropper": {
+      "name": "Recortador de imágenes",
+      "tagline": "Recorta con preajustes y rotación",
+      "description": "Recorta con relaciones de aspecto libres o fijas (1:1, 4:3, 3:2, 16:9), rotación de 90° y compatibilidad táctil. Funciona en el móvil.",
+      "headerDescription": "Recorta con relaciones de aspecto libres o fijas (1:1, 4:3, 3:2, 16:9), rotación de 90° y zoom. Funciona con ratón y táctil.",
+      "action": "Recortar"
+    },
+    "compress-image-to-kb": {
+      "name": "Comprimir imagen a KB",
+      "tagline": "Alcanza un tamaño de archivo objetivo exacto",
+      "description": "Comprime a un tamaño objetivo (50 KB, 100 KB, 200 KB, …) mediante una búsqueda de calidad acotada. Te indica con honestidad cuando un objetivo no es alcanzable.",
+      "headerDescription": "Comprime a un tamaño de archivo objetivo exacto (50 KB, 100 KB, …) con una búsqueda de calidad acotada. Informe honesto cuando un objetivo no es alcanzable.",
+      "action": "Comprimir a objetivo"
+    },
+    "rotate-image": {
+      "name": "Rotar imagen",
+      "tagline": "Rotar 90/180/270° y voltear",
+      "description": "Rota imágenes en pasos de 90° y voltea horizontal o verticalmente. Procesa varios archivos por lotes, todo en tu navegador.",
+      "headerDescription": "Rota imágenes JPG, PNG y WebP en pasos de 90° y volta horizontal o verticalmente. Procesamiento por lotes, todo en tu navegador.",
+      "action": "Rotar"
+    },
+    "watermark-image": {
+      "name": "Marca de agua en imagen",
+      "tagline": "Añade marcas de agua de texto con posición y opacidad",
+      "description": "Estampa una marca de agua de texto en tus imágenes. Elige una posición en una cuadrícula de 9, opacidad, ángulo o repítela como un mosaico diagonal en toda la imagen.",
+      "headerDescription": "Añade una marca de agua de texto a imágenes JPG, PNG y WebP. Elige una posición en una cuadrícula de 9, opacidad, ángulo o repítela como un mosaico diagonal.",
+      "action": "Marca de agua"
+    },
+    "meme-generator": {
+      "name": "Generador de memes",
+      "tagline": "Añade el clásico texto superior e inferior",
+      "description": "Convierte cualquier imagen en un meme con el clásico texto superior e inferior. Las letras en negrita con contorno se mantienen legibles sobre cualquier fondo.",
+      "headerDescription": "Convierte cualquier imagen en un meme con el clásico texto superior e inferior. Las letras en negrita con contorno se mantienen legibles sobre cualquier fondo.",
+      "action": "Generar meme"
+    },
+    "photo-editor": {
+      "name": "Editor de fotos",
+      "tagline": "Ajusta, filtra, añade texto y pegatinas",
+      "description": "Ajusta brillo, contraste y saturación, aplica filtros y arrastra texto y pegatinas de emoji sobre tu imagen con una vista previa en vivo.",
+      "headerDescription": "Ajusta brillo, contraste y saturación, aplica filtros y arrastra texto y pegatinas de emoji sobre tu foto con una vista previa en vivo.",
+      "action": "Editar"
+    },
+    "blur-image": {
+      "name": "Desenfoque de imagen",
+      "tagline": "Desenfoca o pixela regiones manualmente",
+      "description": "Dibuja rectángulos sobre caras, matrículas o cualquier zona sensible y desenfócalas o pixela. Todo se ejecuta localmente, no se sube nada.",
+      "headerDescription": "Dibuja rectángulos sobre caras, matrículas o cualquier zona sensible y desenfócalas o pixela. Todo se ejecuta localmente, no se sube nada.",
+      "action": "Desenfocar"
+    }
+  },
+  "Controls": {
+    "quality": "Calidad: {percent}%",
+    "qualityHint": "Menor calidad = archivo más pequeño. Solo se aplica a JPG y WebP.",
+    "outputFormat": "Formato de salida",
+    "keepOriginal": "Mantener original",
+    "pngLossless": "PNG es sin pérdida; el control de calidad no se aplica.",
+    "pngLabel": "PNG (sin pérdida)",
+    "mode": "Modo",
+    "byPixels": "Por píxeles",
+    "byPercent": "Por porcentaje",
+    "preset": "Preajuste",
+    "width": "Ancho",
+    "height": "Alto",
+    "lockAspect": "Bloquear relación de aspecto (ajuste contain)",
+    "scale": "Escala: {percent}%",
+    "background": "Fondo (rellena la transparencia)",
+    "bgHint": "JPG no tiene canal alfa; las áreas transparentes se rellenan con este color.",
+    "targetSize": "Tamaño objetivo",
+    "customTarget": "Objetivo personalizado (KB)",
+    "allowFormatChange": "Permitir PNG → WebP para alcanzar el objetivo (puede perder la transparencia)",
+    "boundedSearchNote": "Utiliza una búsqueda de calidad acotada con un límite de iteraciones y de tiempo. Si no se puede alcanzar el objetivo, se devuelve el resultado más cercano y se indica debajo del archivo.",
+    "aspectRatio": "Relación de aspecto",
+    "zoom": "Zoom: {value}×",
+    "rotation": "Rotación:",
+    "cropPreview": "Recortar y previsualizar",
+    "cropping": "Recortando…",
+    "chooseAnother": "Elegir otra",
+    "result": "Resultado: {w}×{h} · {filename}",
+    "croppedAlt": "Resultado recortado",
+    "unsupportedFile": "Archivo no admitido.",
+    "failedLoad": "No se pudo cargar la imagen.",
+    "cropFailed": "Error al recortar.",
+    "flipH": "Voltear horizontal",
+    "flipV": "Voltear vertical",
+    "watermarkText": "Texto de marca de agua",
+    "fontSize": "Tamaño de fuente",
+    "color": "Color",
+    "opacity": "Opacidad: {percent}%",
+    "position": "Posición",
+    "angle": "Ángulo: {value}°",
+    "repeat": "Repetir (mosaico en toda la imagen)",
+    "topText": "Texto superior",
+    "bottomText": "Texto inferior",
+    "strokeColor": "Color del contorno",
+    "brightness": "Brillo: {value}",
+    "contrast": "Contraste: {value}",
+    "saturation": "Saturación: {value}",
+    "filter": "Filtro",
+    "filterNone": "Ninguno",
+    "filterGrayscale": "Escala de grises",
+    "filterSepia": "Sepia",
+    "filterInvert": "Invertir",
+    "filterVintage": "Vintage",
+    "adjust": "Ajustar",
+    "addText": "Añadir texto",
+    "addSticker": "Añadir pegatina",
+    "layerText": "Capa de texto",
+    "layerSticker": "Pegatina",
+    "deleteLayer": "Eliminar",
+    "layerSize": "Tamaño: {percent}%",
+    "export": "Exportar",
+    "exporting": "Exportando…",
+    "exportFailed": "Error al exportar.",
+    "blurMode": "Modo",
+    "blurGaussian": "Desenfoque gaussiano",
+    "blurMosaic": "Mosaico (pixelar)",
+    "radius": "Radio de desenfoque: {value}px",
+    "mosaicSize": "Tamaño del mosaico: {value}px",
+    "clearRegions": "Borrar regiones",
+    "drawHint": "Arrastra sobre la imagen para dibujar una región de desenfoque.",
+    "regionsLabel": "regiones",
+    "previewLabel": "Vista previa",
+    "previewHint": "Vista previa en vivo de la primera imagen.",
+    "loadingPreview": "Cargando vista previa…"
+  },
+  "Auth": {
+    "loading": "Cargando…",
+    "createAccountTitle": "Crea tu cuenta",
+    "createAccountDesc": "No necesitas una cuenta para usar ninguna herramienta. Solo se requiere una cuenta para guardar imágenes en tu nube privada.",
+    "signInTitle": "Iniciar sesión",
+    "signInDesc": "No necesitas una cuenta para usar ninguna herramienta. Iniciar sesión solo es necesario para guardar imágenes en tu nube privada.",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "passwordHint": "Al menos 8 caracteres.",
+    "createAccountBtn": "Crear cuenta",
+    "creating": "Creando…",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "signInLink": "Iniciar sesión",
+    "signInBtn": "Iniciar sesión",
+    "signingIn": "Iniciando sesión…",
+    "createAccountLink": "Crear cuenta",
+    "forgotPasswordLink": "¿Olvidaste tu contraseña?",
+    "forgotTitle": "Olvidé mi contraseña",
+    "forgotDesc": "Introduce tu correo electrónico para recibir un enlace de restablecimiento de contraseña.",
+    "sendResetBtn": "Enviar enlace de restablecimiento",
+    "sending": "Enviando…",
+    "forgotSent": "Si existe una cuenta para ese correo electrónico, se ha enviado un enlace de restablecimiento. Revisa tu bandeja de entrada (o la consola del servidor en desarrollo).",
+    "backToSignIn": "Volver a iniciar sesión",
+    "resetTitle": "Restablecer contraseña",
+    "resetDesc": "Introduce una nueva contraseña para tu cuenta.",
+    "newPassword": "Nueva contraseña",
+    "resetBtn": "Restablecer contraseña",
+    "resetting": "Restableciendo…",
+    "resetMissingToken": "Falta el token de restablecimiento. Usa el enlace de tu correo de restablecimiento.",
+    "verifyTitle": "Verifica tu correo electrónico",
+    "verifying": "Verificando tu correo electrónico…",
+    "verifySuccess": "Tu correo electrónico ha sido verificado.",
+    "goToAccount": "Ir a la cuenta",
+    "verifyMissingToken": "Falta el token de verificación.",
+    "verifyError": "Error de verificación.",
+    "networkError": "Error de red. Inténtalo de nuevo.",
+    "backToAccount": "Volver a la cuenta",
+    "accountTitle": "Cuenta",
+    "accountEmail": "Correo electrónico",
+    "accountVerified": "Correo verificado",
+    "verifiedYes": "Sí",
+    "verifiedNo": "No",
+    "verifyReminder": "Verifica tu dirección de correo electrónico. Revisa tu bandeja de entrada (o la consola del servidor en desarrollo) para el enlace de verificación.",
+    "signOutBtn": "Cerrar sesión",
+    "signingOut": "Cerrando sesión…"
+  },
+  "Cloud": {
+    "accountNav": "Cuenta",
+    "filesNav": "Archivos en la nube",
+    "storageNav": "Almacenamiento",
+    "filesTitle": "Archivos en la nube",
+    "storageTitle": "Uso de almacenamiento",
+    "loading": "Cargando…",
+    "empty": "Aún no hay archivos en la nube. Guarda una imagen desde cualquier herramienta para verla aquí.",
+    "download": "Descargar",
+    "downloading": "Descargando…",
+    "delete": "Eliminar",
+    "deleting": "Eliminando…",
+    "deleteConfirm": "¿Eliminar este archivo de tu almacenamiento en la nube?",
+    "saveOriginal": "Guardar original",
+    "saveResult": "Guardar resultado",
+    "saving": "Guardando…",
+    "saved": "Guardado ✓",
+    "unavailable": "El almacenamiento en la nube no está disponible en este entorno.",
+    "used": "Usado",
+    "available": "Disponible",
+    "reserved": "Reservado (subidas en curso)",
+    "quota": "Cuota",
+    "cleanup": "Reclamar subidas caducadas",
+    "cleanupDone": "Reclamadas {tasks} tarea(s) caducada(s) y {objects} objeto(s) huérfano(s).",
+    "cleaning": "Limpiando…",
+    "original": "Original",
+    "processed": "Procesado"
+  },
+  "ToolSeo": {
+    "howToUse": "Cómo usarlo",
+    "whenToUse": "Cuándo usarlo",
+    "faq": "Preguntas frecuentes",
+    "relatedTools": "Herramientas relacionadas",
+    "image-compressor": {
+      "steps": [
+        "Arrastra tu imagen JPG, PNG o WebP a la zona de soltado, o haz clic para elegir archivos. Puedes añadir varios a la vez.",
+        "Elige un formato de salida: conserva el original o convierte a JPG, PNG o WebP.",
+        "Mueve el control deslizante de calidad. Una calidad más baja significa un archivo más pequeño; la estimación en vivo se actualiza mientras lo mueves.",
+        "Haz clic en Comprimir. Cada imagen se procesa en tu navegador y aparece en la lista con su nuevo tamaño y el ahorro.",
+        "Descarga las imágenes una por una o descarga todos los resultados como un ZIP. Los usuarios con sesión iniciada también pueden guardar un original o un resultado en su nube privada."
+      ],
+      "useCases": [
+        "Reducir el tamaño de las fotos antes de adjuntarlas a un correo electrónico con un límite de tamaño.",
+        "Reducir el peso de la página en un blog o tienda para que las imágenes carguen más rápido.",
+        "Comprimir por lotes una carpeta de fotos de productos para una tienda online.",
+        "Recortar capturas de pantalla antes de pegarlas en un documento o chat."
+      ],
+      "knowledge": [
+        {
+          "heading": "JPG frente a PNG frente a WebP para compresión",
+          "body": "JPG y WebP son formatos con pérdida, por lo que el control deslizante de calidad controla cuánto detalle se descarta y afecta directamente al tamaño del archivo. PNG es sin pérdida: el control deslizante no tiene efecto en la salida PNG, que es la mejor cuando necesitas conservar todos los píxeles, como en capturas de pantalla con texto nítido."
+        },
+        {
+          "heading": "Por qué la compresión ocurre en tu navegador",
+          "body": "Tu imagen se decodifica y se recodifica localmente usando las APIs Canvas e ImageBitmap del navegador. Los bytes nunca salen de tu dispositivo a menos que elijas explícitamente guardar un archivo en tu almacenamiento en la nube, así que no hay ninguna subida que esperar ni ninguna copia en un servidor."
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Hay un límite de tamaño de archivo?",
+          "a": "Sí: una sola imagen puede ser de hasta 25 MB y aproximadamente 40 megapíxeles, con un máximo de 20 archivos por lote. Estos límites protegen la memoria de tu navegador durante la decodificación."
+        },
+        {
+          "q": "¿La compresión reduce la resolución?",
+          "a": "No. El compresor cambia la calidad de codificación, no las dimensiones. Usa el Redimensionador de imágenes si también necesitas dimensiones de píxeles más pequeñas."
+        },
+        {
+          "q": "¿Se suben mis imágenes?",
+          "a": "No. El procesamiento es local primero. Los archivos solo se suben si has iniciado sesión y haces clic en un botón Guardar en la nube."
+        }
+      ]
+    },
+    "image-resizer": {
+      "steps": [
+        "Añade una o varias imágenes JPG, PNG o WebP a la zona de soltado.",
+        "Elige un modo: redimensionar por píxeles exactos, por porcentaje o usando un ajuste predefinido habitual.",
+        "Introduce el ancho y/o alto objetivo. Con el bloqueo de relación de aspecto activado, la otra dimensión se actualiza automáticamente para un ajuste de contenido.",
+        "Haz clic en Redimensionar. Cada resultado muestra las dimensiones antes y después.",
+        "Descarga individualmente o como un ZIP; los usuarios con sesión iniciada pueden guardar los resultados en su nube privada."
+      ],
+      "useCases": [
+        "Ajustar una foto de portada o un banner a una dimensión exacta de la plataforma.",
+        "Reducir un lote de fotos para una presentación o una cuadrícula de miniaturas.",
+        "Preparar imágenes para que una página web se mantenga dentro de un presupuesto de maquetación.",
+        "Reducir fotos del teléfono antes de compartirlas por una conexión lenta."
+      ],
+      "knowledge": [
+        {
+          "heading": "Ajuste de contenido y relación de aspecto",
+          "body": "Bloquear la relación de aspecto te da un ajuste de contenido: la imagen se escala para que encaje por completo dentro del recuadro objetivo sin estirarse ni recortarse. Si necesitas un recorte exacto a una relación, usa el Recortador de imágenes."
+        },
+        {
+          "heading": "No se recomienda ampliar",
+          "body": "Ampliar una imagen no añade detalle real: solo interpola los píxeles existentes, lo que queda suave. La herramienta lo permite pero marca las salidas inusualmente grandes para que sepas que el resultado puede no ser nítido."
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Puedo redimensionar a un porcentaje en lugar de píxeles?",
+          "a": "Sí. Cambia al modo porcentaje e introduce una escala como 50%. Las nuevas dimensiones de píxeles se calculan a partir del tamaño original."
+        },
+        {
+          "q": "¿Qué ocurre con imágenes muy grandes?",
+          "a": "Las imágenes cercanas a los límites de memoria del navegador se marcan. Puedes procesarlas, pero reducir el tamaño del lote ayuda a evitar una decodificación lenta."
+        },
+        {
+          "q": "¿El redimensionamiento cambia el formato del archivo?",
+          "a": "Solo si eliges un formato de salida distinto. Por defecto se conserva el formato original."
+        }
+      ]
+    },
+    "image-converter": {
+      "steps": [
+        "Suelta imágenes JPG, PNG o WebP.",
+        "Elige el formato objetivo: JPG, PNG o WebP.",
+        "Si conviertes a JPG, elige un color de fondo: JPG no tiene transparencia, así que las áreas transparentes se rellenan con este color.",
+        "Haz clic en Convertir. La lista muestra el formato y tamaño antes y después, y el archivo descargado siempre tiene la extensión correcta para su tipo real.",
+        "Descarga individualmente o como un ZIP; los usuarios con sesión iniciada pueden guardar los resultados en el almacenamiento en la nube."
+      ],
+      "useCases": [
+        "Convertir un PNG transparente a JPG para una plataforma que no acepta PNG.",
+        "Convertir una carpeta de JPG en WebP para recursos web más pequeños.",
+        "Cambiar capturas de pantalla a PNG para mantener el texto nítido y sin pérdida.",
+        "Normalizar tipos de archivo mixtos en un lote antes de subirlos a un sistema que quiere un solo formato."
+      ],
+      "knowledge": [
+        {
+          "heading": "Transparencia y el formato JPG",
+          "body": "JPG no admite un canal alfa. Al convertir un PNG o WebP con píxeles transparentes a JPG, esos píxeles se rellenan con el color de fondo que elijas (blanco por defecto), de modo que los logos y recortes quedan sobre un fondo sólido en lugar de negro."
+        },
+        {
+          "heading": "La extensión siempre coincide con el tipo MIME real",
+          "body": "La extensión del archivo de salida se deriva de los bytes que se producen realmente, no del nombre que escribiste, así que un archivo codificado en JPG nunca se entrega con una extensión .png que confundiría a los navegadores y a los CMS."
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿La conversión reduce la calidad?",
+          "a": "Convertir a JPG o WebP recodifica la imagen y puede introducir artefactos con pérdida. Convertir a PNG es sin pérdida. Usa el Compresor de imágenes si quieres un control de calidad más fino."
+        },
+        {
+          "q": "¿Puedo convertir HEIC o AVIF?",
+          "a": "No en esta versión. La compatibilidad con HEIC y AVIF depende del navegador y está prevista cuando la detección de capacidades sea fiable."
+        },
+        {
+          "q": "¿Se admite la conversión por lotes?",
+          "a": "Sí. Añade varios archivos y conviértelos todos, luego descárgalos como un ZIP."
+        }
+      ]
+    },
+    "image-cropper": {
+      "steps": [
+        "Elige una imagen para cargarla en el recortador.",
+        "Elige un recorte libre o un ajuste predefinido de relación de aspecto fija: 1:1, 4:3, 3:2 o 16:9.",
+        "Arrastra el rectángulo de recorte con el ratón o con el dedo. Usa el control de zoom para una colocación precisa.",
+        "Rota en pasos de 90° si el origen está de lado.",
+        "Haz clic en Recortar y previsualizar para ver el resultado y luego descárgalo. Puedes elegir un formato de salida distinto o empezar de nuevo con otra imagen."
+      ],
+      "useCases": [
+        "Recortar una foto de perfil a un cuadrado 1:1.",
+        "Recortar una foto a 16:9 para una miniatura o portada de YouTube.",
+        "Recortar el espacio desperdiciado alrededor de una captura de pantalla antes de compartirla.",
+        "Arreglar una foto de teléfono torcida con un rápido giro de 90°."
+      ],
+      "knowledge": [
+        {
+          "heading": "Ajustes predefinidos de relación de aspecto",
+          "body": "Un ajuste predefinido bloquea el recorte a una relación fija para que la salida encaje en un espacio conocido: 1:1 para avatares, 4:3 y 3:2 para impresiones de fotos clásicas, y 16:9 para portadas panorámicas. El modo libre te permite recortar a cualquier forma."
+        },
+        {
+          "heading": "Funciona con táctil",
+          "body": "El rectángulo de recorte admite eventos de puntero y táctiles, así que funciona en teléfonos y tabletas además de en escritorio. El pellizcar para ampliar se gestiona con el control de zoom."
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Puedo rotar la imagen?",
+          "a": "Sí, en pasos de 90°. Usa el control de rotación antes de recortar si la foto se tomó de lado."
+        },
+        {
+          "q": "¿El recorte sube mi imagen?",
+          "a": "No. El recorte ocurre completamente en tu navegador."
+        },
+        {
+          "q": "¿Puedo recortar varias imágenes a la vez?",
+          "a": "El recortador funciona con una imagen cada vez para que puedas ajustar cada encuadre. Usa las herramientas por lotes para operaciones masivas."
+        }
+      ]
+    },
+    "compress-image-to-kb": {
+      "steps": [
+        "Añade una imagen JPG, PNG o WebP.",
+        "Elige un tamaño objetivo — 50 KB, 100 KB, 200 KB, 500 KB, 1 MB — o introduce un objetivo personalizado en KB.",
+        "Opcionalmente permite la conversión de PNG a WebP si estás dispuesto a perder la transparencia para alcanzar el objetivo.",
+        "Haz clic en Comprimir al objetivo. La herramienta ejecuta una búsqueda de calidad acotada y te indica el resultado de forma honesta.",
+        "Descarga el resultado. Si no se pudo alcanzar el objetivo, se devuelve el resultado más cercano y se indica debajo del archivo."
+      ],
+      "useCases": [
+        "Cumplir un límite estricto de subida en un formulario, mercado o portal gubernamental.",
+        "Preparar un avatar o insignia que deba estar por debajo de un límite específico de KB.",
+        "Comprimir un adjunto de correo electrónico para cumplir la regla de tamaño del proveedor.",
+        "Generar una miniatura que cumpla un presupuesto de tamaño para un CMS."
+      ],
+      "knowledge": [
+        {
+          "heading": "Una búsqueda acotada, no una suposición",
+          "body": "La herramienta busca valores de calidad en un rango acotado con un límite de iteraciones y de tiempo, nunca un bucle infinito. Mide el tamaño codificado real de cada candidato y se detiene en el mejor ajuste, así que el tamaño indicado es el tamaño real de salida."
+        },
+        {
+          "heading": "No todos los objetivos son alcanzables",
+          "body": "Una foto pequeña y detallada no siempre se puede comprimir a un objetivo agresivo de KB sin una pérdida de calidad inaceptable. Cuando eso ocurre, la herramienta devuelve el resultado más cercano y lo indica claramente, en lugar de degradar la imagen de forma silenciosa."
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Qué pasa si no se puede alcanzar el tamaño objetivo?",
+          "a": "Se devuelve el resultado alcanzable más cercano y una nota debajo del archivo explica que no se cumplió el objetivo, para que puedas decidir si aceptarlo o probar con un objetivo mayor."
+        },
+        {
+          "q": "¿Por qué se puede ofrecer PNG → WebP?",
+          "a": "PNG es sin pérdida y suele ser grande. Si lo permites, convertir a WebP puede alcanzar un objetivo en KB que PNG no puede, a costa de la transparencia y algo de calidad."
+        },
+        {
+          "q": "¿Hay un límite de iteraciones?",
+          "a": "Sí. La búsqueda tiene un número máximo de iteraciones y un presupuesto de tiempo, así que siempre termina."
+        }
+      ]
+    },
+    "rotate-image": {
+      "steps": [
+        "Añade una o varias imágenes a la zona de soltado.",
+        "Elige una rotación: 0°, 90°, 180° o 270°.",
+        "Opcionalmente voltea horizontal o verticalmente (o ambos).",
+        "Haz clic en Rotar. Una vista previa en vivo muestra el efecto en la primera imagen antes de procesar el lote.",
+        "Descarga individualmente o como un ZIP; los usuarios con sesión iniciada pueden guardar los resultados en el almacenamiento en la nube."
+      ],
+      "useCases": [
+        "Arreglar fotos de teléfono que se importaron de lado.",
+        "Reflejar una imagen para un diseño o maquetación de impresión.",
+        "Rotar un lote de páginas escaneadas a la misma orientación.",
+        "Crear una versión volteada de un logo o gráfico."
+      ],
+      "knowledge": [
+        {
+          "heading": "Los pasos de 90° mantienen la calidad intacta",
+          "body": "Rotar 90°, 180° o 270° reordena los píxeles sin volver a muestrear, así que no hay pérdida de calidad por la rotación en sí. La única recodificación ocurre cuando eliges un formato de salida."
+        },
+        {
+          "heading": "Voltear frente a rotar",
+          "body": "Voltear refleja la imagen a lo largo de un eje (como un espejo), mientras que rotar la gira alrededor de su centro. Puedes combinar un volteo con una rotación en una sola pasada."
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Puedo rotar un ángulo arbitrario como 15°?",
+          "a": "Esta herramienta rota en pasos de 90° para evitar artefactos de remuestreo. Para rotación de ángulo libre, usa las opciones de transformación del Editor de fotos."
+        },
+        {
+          "q": "¿La rotación reduce la calidad?",
+          "a": "No. La rotación en pasos de 90° y los volteos conservan todos los píxeles; solo el formato de salida elegido afecta a la calidad."
+        },
+        {
+          "q": "¿Puedo procesar varias imágenes?",
+          "a": "Sí. Añade varios archivos y rótalos todos con los mismos ajustes."
+        }
+      ]
+    },
+    "watermark-image": {
+      "steps": [
+        "Añade una o varias imágenes.",
+        "Escribe el texto de tu marca de agua.",
+        "Elige una posición en la cuadrícula de 9 puntos, o activa Repetir para colocar la marca de agua en mosaico diagonalmente por toda la imagen.",
+        "Ajusta el tamaño de fuente, el color, la opacidad y el ángulo.",
+        "Haz clic en Marca de agua. Una vista previa en vivo muestra el resultado en la primera imagen; luego descarga individualmente o como un ZIP."
+      ],
+      "useCases": [
+        "Estampar un logo o nombre en fotos de portafolio antes de publicarlas.",
+        "Proteger imágenes de previsualización compartidas con clientes.",
+        "Añadir una marca de agua diagonal repetida para disuadir la reutilización de exportaciones a resolución completa.",
+        "Marcar por lotes fotos de productos con el nombre de una tienda."
+      ],
+      "knowledge": [
+        {
+          "heading": "Posición única frente a mosaico repetido",
+          "body": "Una marca de agua de posición única se sitúa en uno de nueve puntos (esquinas, bordes o centro). Repetir dispone el texto en una cuadrícula diagonal desplazada por toda la imagen, lo que es más difícil de recortar pero más intrusivo visualmente."
+        },
+        {
+          "heading": "Opacidad y ángulo",
+          "body": "Una opacidad más baja hace que una marca de agua sea menos llamativa pero más fácil de quitar visualmente. Un ligero ángulo (por ejemplo -20°) en un mosaico repetido se lee como un sello diagonal clásico."
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Puedo usar una imagen o logo como marca de agua?",
+          "a": "Esta herramienta aplica una marca de agua de texto. Para superposiciones basadas en imágenes, usa las capas de pegatinas y texto del Editor de fotos."
+        },
+        {
+          "q": "¿La marca de agua reduce la calidad de la imagen?",
+          "a": "Recodifica la imagen una vez con el formato de salida elegido. La marca de agua en sí se dibuja a resolución completa."
+        },
+        {
+          "q": "¿Puedo marcar muchas imágenes a la vez?",
+          "a": "Sí. Añade un lote y los mismos ajustes de marca de agua se aplican a cada archivo."
+        }
+      ]
+    },
+    "meme-generator": {
+      "steps": [
+        "Añade una imagen a la zona de soltado.",
+        "Escribe el texto superior y/o inferior.",
+        "Ajusta el tamaño de fuente, el color del texto y el color del contorno.",
+        "Haz clic en Generar meme. Una vista previa en vivo muestra el resultado en la primera imagen.",
+        "Descarga el meme; los usuarios con sesión iniciada pueden guardarlo en el almacenamiento en la nube."
+      ],
+      "useCases": [
+        "Convertir una foto de reacción en un meme compartible.",
+        "Añadir un texto con remate a una captura de pantalla para un chat o publicación.",
+        "Hacer textos rápidos superior/inferior para un borrador de redes sociales.",
+        "Poner textos por lotes a un conjunto de imágenes plantilla con el mismo texto."
+      ],
+      "knowledge": [
+        {
+          "heading": "Texto clásico superior e inferior",
+          "body": "El generador usa la composición clásica de meme: texto en mayúsculas fijado arriba y abajo, dibujado en una tipografía pesada estilo Impact con un contorno contrastado para que se mantenga legible sobre cualquier fondo."
+        },
+        {
+          "heading": "El texto se ajusta para encajar",
+          "body": "Los textos largos se ajustan por palabras para encajar en el ancho de la imagen, y el texto inferior se ancla desde el borde inferior hacia arriba para que siempre quede en la base del encuadre."
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Puedo colocar el texto en medio en su lugar?",
+          "a": "Esta herramienta se centra en la composición clásica superior/inferior. Para texto colocado libremente, usa el Editor de fotos y arrastra las capas de texto a cualquier lugar."
+        },
+        {
+          "q": "¿Qué formato tiene la salida?",
+          "a": "Puedes conservar el formato original o exportar como JPG, PNG o WebP."
+        },
+        {
+          "q": "¿Hay vista previa en vivo?",
+          "a": "Sí. Mientras escribes, la primera imagen se vuelve a renderizar para que puedas ver el texto antes de generar el lote."
+        }
+      ]
+    },
+    "photo-editor": {
+      "steps": [
+        "Carga una imagen en el editor.",
+        "Ajusta el brillo, el contraste y la saturación con los controles deslizantes, y elige un filtro como escala de grises, sepia, invertir o vintage.",
+        "Añade capas de texto y pegatinas de emoji, luego arrástralas a su lugar en la vista previa en vivo.",
+        "Selecciona una capa para editar su texto, tamaño o color, o eliminarla.",
+        "Haz clic en Exportar para descargar la imagen editada a resolución completa. Restablecer borra todos los cambios."
+      ],
+      "useCases": [
+        "Aclarar y corregir el color de una foto rápidamente antes de publicarla.",
+        "Aplicar un aspecto vintage o sepia a un conjunto de imágenes.",
+        "Añadir un texto o pegatina de emoji a una imagen para redes sociales.",
+        "Retoque ligero sin abrir un editor pesado."
+      ],
+      "knowledge": [
+        {
+          "heading": "Lo que ves es lo que exportas",
+          "body": "El lienzo de vista previa refleja la exportación: los tamaños de texto y pegatinas se almacenan como una fracción de la altura de la imagen, así que un texto que se ve bien en la vista previa se renderiza en la misma proporción en la salida a resolución completa."
+        },
+        {
+          "heading": "Filtros frente a ajustes",
+          "body": "El brillo, el contraste y la saturación son ajustes continuos aplicados a través de la canalización de filtros del lienzo. Los ajustes predefinidos de filtros (escala de grises, sepia, invertir, vintage) se apilan encima para un aspecto con un solo clic."
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿Puedo añadir mi propia imagen de pegatina?",
+          "a": "Las pegatinas son una paleta de emojis, lo que mantiene la herramienta ligera y sin recursos. Las capas de texto admiten cualquier texto y color."
+        },
+        {
+          "q": "¿La edición sube mi foto?",
+          "a": "No. Todo se ejecuta en tu navegador. Exportar descarga el resultado directamente."
+        },
+        {
+          "q": "¿Puedo editar varias imágenes?",
+          "a": "El editor funciona con una imagen cada vez para que la vista previa en vivo siga siendo receptiva. Usa las herramientas por lotes para operaciones masivas."
+        }
+      ]
+    },
+    "blur-image": {
+      "steps": [
+        "Carga una imagen en la herramienta de desenfoque.",
+        "Elige un modo: mosaico (pixelar) o desenfoque gaussiano.",
+        "Define el radio de desenfoque o el tamaño del mosaico.",
+        "Arrastra sobre la imagen para dibujar un rectángulo sobre el área que quieres ocultar: caras, matrículas, texto o firmas. Añade todas las regiones que necesites.",
+        "Haz clic en Exportar para descargar el resultado. Borrar regiones elimina todas las selecciones."
+      ],
+      "useCases": [
+        "Desenfocar caras en fotos antes de compartirlas públicamente.",
+        "Pixelar matrículas, DNIs o direcciones en capturas de pantalla.",
+        "Ocultar texto sensible o firmas en el escaneo de un documento.",
+        "Censurar partes de una imagen para un tutorial o informe de errores."
+      ],
+      "knowledge": [
+        {
+          "heading": "Mosaico frente a desenfoque gaussiano",
+          "body": "El mosaico pixela una región en bloques, lo que es inequívocamente censurado y difícil de revertir. El desenfoque gaussiano suaviza la zona de forma progresiva, lo que parece más natural pero es más débil para texto sensible. Usa mosaico cuando necesites asegurarte de que el detalle ha desaparecido."
+        },
+        {
+          "heading": "Las regiones las dibujas tú",
+          "body": "No hay detección automática: tú dibujas cada rectángulo, así que mantienes el control total sobre qué se oculta exactamente y nada se desenfoca por accidente."
+        }
+      ],
+      "faq": [
+        {
+          "q": "¿La herramienta detecta caras automáticamente?",
+          "a": "No. Tú dibujas cada región, lo que mantiene la herramienta totalmente local y evita cualquier detección basada en la nube. También significa que tú decides con precisión qué se oculta."
+        },
+        {
+          "q": "¿Puedo desenfocar varias áreas?",
+          "a": "Sí. Dibuja todos los rectángulos que necesites; cada uno se aplica a la exportación. Borrar regiones los elimina todos."
+        },
+        {
+          "q": "¿El desenfoque se aplica al archivo descargado?",
+          "a": "Sí. La exportación vuelve a renderizar la imagen a resolución completa con todas tus regiones desenfocadas o pixeladas."
+        }
+      ]
+    }
+  },
+  "Legal": {
+    "about": {
+      "title": "Acerca de ImageKitTools",
+      "metaDescription": "Acerca de ImageKitTools — un kit de herramientas de imágenes centrado en la privacidad, basado en navegador, que procesa tus imágenes localmente y mantiene el almacenamiento en la nube como opcional.",
+      "paragraphs": [
+        "ImageKitTools es un kit de herramientas de imágenes en línea centrado en la privacidad. Cada herramienta principal — comprimir, redimensionar, convertir, recortar, rotar, marca de agua, meme, editar y difuminar — se ejecuta directamente en tu navegador, por lo que tus imágenes no se suben a un servidor de forma predeterminada. Obtienes resultados rápidos y privados, y el archivo nunca sale de tu dispositivo a menos que elijas guardarlo.",
+        [
+          { "t": "El proyecto se basa en cuatro decisiones que no vamos a comprometer: las imágenes se procesan primero de forma local; las herramientas principales no requieren registro; el almacenamiento en la nube es estrictamente opcional y privado para ti; y la arquitectura sigue siendo un monolito modular simple con subidas directas desde el navegador a almacenamiento de objetos privado. Puedes leer los detalles en nuestra " },
+          { "link": "privacy-policy", "text": "Política de Privacidad" },
+          { "t": "." }
+        ],
+        "Construimos una herramienta a la vez y priorizamos la calidad y la honestidad antes que la amplitud. Eso significa una guía real en cada página de herramienta — cómo usarla, cuándo usarla y qué significan realmente las opciones de formato y tamaño — en lugar de páginas superficiales que solo existen para posicionarse. Las herramientas informan de los resultados con honestidad: si no se puede alcanzar un tamaño de archivo objetivo, lo decimos en lugar de degradar tu imagen de forma silenciosa.",
+        "ImageKitTools admite ocho idiomas de interfaz y funciona en escritorio y móvil, incluido el recorte táctil. Una cuenta opcional te permite guardar originales y resultados procesados en una nube privada para que puedas gestionarlos entre dispositivos — pero las herramientas en sí nunca requieren una.",
+        [
+          { "t": "Este es un proyecto independiente. La hoja de ruta se centra en más herramientas y escenarios de imagen, mejor rendimiento y documentación clara. Si hay una herramienta que te gustaría ver, ponte en contacto a través de la página de " },
+          { "link": "contact", "text": "Contacto" },
+          { "t": "." }
+        ]
+      ]
+    },
+    "contact": {
+      "title": "Contacto",
+      "metaDescription": "Cómo ponerse en contacto con ImageKitTools para soporte, comentarios o solicitudes de funciones.",
+      "intro": "Agradecemos los comentarios, los informes de errores y las ideas para nuevas herramientas de imagen. Se publicará aquí una dirección de correo electrónico de soporte dedicada en el lanzamiento. Hasta entonces, las notas siguientes explican qué incluir para que podamos ayudar rápidamente.",
+      "sections": [
+        {
+          "heading": "Informar de un problema",
+          "body": "Al informar de un problema, incluye:",
+          "items": [
+            "La herramienta y los pasos que seguiste.",
+            "El formato de imagen y el tamaño aproximado, si es relevante.",
+            "Tu navegador y dispositivo (por ejemplo, Safari en iPhone, Chrome en Windows).",
+            "Cualquier mensaje de error que vistes."
+          ],
+          "after": "No envíes imágenes que contengan información personal sensible. Como el procesamiento ocurre en tu navegador, normalmente no podemos inspeccionar tu imagen directamente."
+        },
+        {
+          "heading": "Privacidad y solicitudes de datos",
+          "body": [
+            { "t": "Para preguntas de privacidad o solicitudes de eliminar tu cuenta y tus datos, consulta la " },
+            { "link": "privacy-policy", "text": "Política de Privacidad" },
+            { "t": " para conocer tus derechos y cómo ejercerlos." }
+          ]
+        },
+        {
+          "heading": "Solicitudes de funciones",
+          "body": "Priorizamos las herramientas que siguen siendo locales y privadas. Si tienes una solicitud de una herramienta de imagen que encaje con esa filosofía, nos encantaría saberlo."
+        }
+      ]
+    },
+    "privacy": {
+      "title": "Política de Privacidad",
+      "metaDescription": "Cómo ImageKitTools gestiona tus imágenes y tus datos: las imágenes se procesan en tu navegador de forma predeterminada, y el almacenamiento en la nube es opcional y privado.",
+      "lastUpdated": "Última actualización: 4 de noviembre de 2026",
+      "sections": [
+        { "heading": "Descripción general", "body": "ImageKitTools es un kit de herramientas de imágenes en línea centrado en la privacidad. El principio central es simple: de forma predeterminada, tus imágenes se procesan completamente dentro de tu navegador y nunca se suben a nuestros servidores. Las funciones en la nube existen, pero son estrictamente opcionales y solo actúan cuando eliges explícitamente guardar un archivo." },
+        { "heading": "Procesamiento de imágenes local primero", "body": "Cuando usas cualquier herramienta de imagen, el archivo que seleccionas lo lee tu navegador y se procesa usando las APIs Canvas y ImageBitmap del navegador. Los bytes de la imagen no salen de tu dispositivo. El resultado que descargas se genera directamente desde tu navegador. No hay ninguna copia en el servidor de las imágenes procesadas con las herramientas locales." },
+        { "heading": "Almacenamiento en la nube opcional", "body": "Si creas una cuenta y eliges guardar una imagen original o procesada en tu nube, ese único archivo se sube directamente a almacenamiento de objetos privado usando una URL prefirmada de corta duración. La subida va directamente desde tu navegador al almacenamiento; no se retransmite a través del servidor de la aplicación. Las claves de almacenamiento las genera el servidor y nunca las controla el cliente. Los archivos en la nube son privados y solo accesibles por ti, y puedes verlos, descargarlos o eliminarlos en cualquier momento desde tu cuenta. No se sube nada a menos que realices esa acción explícita." },
+        { "heading": "Cuenta y autenticación", "body": "Para usar el almacenamiento en la nube puedes registrarte con una dirección de correo electrónico y una contraseña. Las contraseñas se cifran con el algoritmo Argon2 antes de su almacenamiento; nunca almacenamos ni vemos tu contraseña en texto plano. Cuando inicias sesión, establecemos una cookie de session esencial que contiene un token aleatorio y opaco; solo el hash SHA-256 de ese token se almacena en el servidor, por lo que una fuga de la base de datos no expondría sesiones válidas. Los tokens de verificación de correo electrónico y de restablecimiento de contraseña son aleatorios, de un solo uso y de corta duración (24 horas para la verificación, 1 hora para los restablecimientos)." },
+        { "heading": "Cookies", "body": "Usamos solo cookies esenciales de forma predeterminada: una cookie de session (para que permanezcas conectado) y una cookie de locale (para recordar tu elección de idioma). Son necesarias para que el servicio funcione y no se usan para seguimiento. Si las analíticas están activadas, también puede establecerse una cookie de medición, como se describe en la Política de Cookies. No establecemos cookies publicitarias." },
+        { "heading": "Analíticas y monitorización", "body": "Este sitio ejecuta analíticas de terceros (Google Analytics 4) y monitorización de errores (Sentry) solo cuando el operador las ha configurado. Cuando están activadas, estos servicios pueden establecer sus propias cookies y recopilar datos de uso como páginas vistas y errores. Nunca se envía contenido personal de imágenes a los proveedores de analíticas o monitorización. No vendemos ni compartimos datos con anunciantes, y ninguna red publicitaria está integrada en la versión actual." },
+        { "heading": "Conservación de datos", "body": "Los archivos en la nube se conservan hasta que los elimines. Las sesiones caducan después de 30 días de inactividad y se eliminan al cerrar sesión. Los tokens de verificación y restablecimiento caducan automáticamente y se eliminan tras su uso. Los registros de diagnóstico, si los hubiera, se conservan solo durante el período necesario para investigar errores." },
+        { "heading": "Tus derechos", "body": "Puedes revisar, descargar y eliminar tus archivos en la nube en cualquier momento desde la sección Archivos en la nube de tu cuenta. Puedes cerrar sesión para finalizar tu sesión inmediatamente. Para eliminar tu cuenta y todos los datos asociados, contáctanos usando los detalles de la página de Contacto." },
+        { "heading": "Seguridad", "body": "El sitio se sirve a través de HTTPS. Los buckets de almacenamiento de objetos son privados sin acceso público de lectura ni escritura, y todas las descargas están autorizadas y se emiten con URLs de corta duración. Los tokens de autenticación se cifran en reposo. Ningún método de transmisión o almacenamiento es totalmente seguro, sin embargo, y no podemos garantizar una seguridad absoluta." },
+        { "heading": "Privacidad infantil", "body": "ImageKitTools no está dirigido a menores de 13 años y no recopilamos deliberadamente información personal de ellos. Si crees que un menor ha registrado una cuenta, contáctanos para que podamos eliminarla." },
+        { "heading": "Cambios en esta política", "body": "Es posible que actualicemos esta política a medida que el servicio evolucione. Los cambios se publicarán en esta página con una fecha actualizada. Los cambios importantes se destacarán en la aplicación cuando sea práctico." },
+        { "heading": "Contacto", "body": "Las preguntas sobre esta política o tus datos pueden enviarse a la dirección indicada en la página de Contacto." }
+      ]
+    },
+    "terms": {
+      "title": "Términos del Servicio",
+      "metaDescription": "Los términos para usar ImageKitTools, incluidas tus responsabilidades de cuenta, el uso aceptable y la base sin garantía de los resultados procesados en el navegador.",
+      "lastUpdated": "Última actualización: 4 de noviembre de 2026",
+      "sections": [
+        { "heading": "Aceptación de los términos", "body": "Al acceder o usar ImageKitTools, aceptas estos Términos del Servicio. Si no estás de acuerdo, no uses el servicio." },
+        { "heading": "El servicio", "body": "ImageKitTools proporciona herramientas de imagen basadas en navegador, incluidas compresión, redimensionamiento, conversión de formato, recorte, rotación, marca de agua, un generador de memes, un editor de fotos y difuminado de regiones. El procesamiento de imágenes ocurre localmente en tu navegador de forma predeterminada. Una cuenta opcional te permite guardar archivos en almacenamiento en la nube privado." },
+        { "heading": "Tu cuenta", "body": "Si te registras, eres responsable de mantener tu contraseña confidencial y de toda la actividad bajo tu cuenta. Debes tener al menos 13 años para crear una cuenta. Aceptas proporcionar información precisa y notificarnos cualquier uso no autorizado de tu cuenta." },
+        { "heading": "Tu contenido", "body": "Conservas todos los derechos sobre las imágenes que procesas o almacenas. El procesamiento ocurre en tu navegador; los archivos que guardas en el almacenamiento en la nube se almacenan en tu nombre y siguen siendo privados para ti. Solo nos concedes el permiso limitado necesario para operar el servicio — procesar y, donde nos instruyas, almacenar y servirte tus propios archivos." },
+        {
+          "heading": "Uso aceptable",
+          "body": "Aceptas no:",
+          "items": [
+            "Usar el servicio para cualquier propósito ilegal o en violación de la ley aplicable.",
+            "Subir o almacenar contenido sobre el que no tienes derecho a gestionar.",
+            "Intentar acceder a los archivos, cuentas o datos de otros usuarios.",
+            "Interferir o interrumpir el servicio, sus servidores o su almacenamiento.",
+            "Usar sistemas automatizados para abusar de los límites de frecuencia o intentar sobrecargar el servicio."
+          ]
+        },
+        { "heading": "Sin garantía", "body": "ImageKitTools se proporciona \"tal cual\" y \"según disponibilidad.\" Los resultados de imagen los genera tu navegador y pueden variar entre navegadores y dispositivos. No garantizamos que se alcance un objetivo específico de tamaño de archivo, nivel de calidad o salida, y no nos hacemos responsables de ninguna pérdida derivada de archivos procesados o almacenados. Guarda siempre tus propias copias de seguridad de las imágenes importantes." },
+        { "heading": "Limitación de responsabilidad", "body": "En la máxima medida permitida por la ley, ImageKitTools y su operador no serán responsables de ningún daño indirecto, incidental, especial o consecuente derivado de tu uso o incapacidad de usar el servicio." },
+        { "heading": "Enlaces y servicios de terceros", "body": "El servicio puede enlazar a sitios de terceros y, cuando esté configurado, usar analíticas o monitorización de terceros. No somos responsables de las prácticas de terceros." },
+        { "heading": "Cambios", "body": "Es posible que actualicemos estos términos de vez en cuando. El uso continuado después de que se publiquen los cambios constituye la aceptación de los términos revisados." },
+        { "heading": "Contacto", "body": "Las preguntas sobre estos términos pueden enviarse a la dirección indicada en la página de Contacto." }
+      ]
+    },
+    "cookie": {
+      "title": "Política de Cookies",
+      "metaDescription": "Las cookies usadas por ImageKitTools: una cookie esencial de session y de locale, con analíticas opcionales solo cuando están activadas. Sin cookies publicitarias.",
+      "lastUpdated": "Última actualización: 4 de noviembre de 2026",
+      "sections": [
+        { "heading": "Descripción general", "body": "ImageKitTools usa las cookies mínimas necesarias para ejecutar el servicio. De forma predeterminada, solo se establecen dos cookies esenciales. No establecemos cookies publicitarias, y las cookies de analíticas se cargan solo si el operador ha activado las analíticas." },
+        { "heading": "Cookies esenciales", "body": "Estas cookies son necesarias para que el sitio funcione y no se pueden desactivar." },
+        { "heading": "Cookies de analíticas", "body": "Si el operador ha configurado Google Analytics 4, GA4 puede establecer sus propias cookies (como _ga y identificadores relacionados) para medir el uso agregado. Solo están presentes cuando las analíticas están activadas, y recopilan información como qué páginas se visitan y aproximadamente de dónde provienen los visitantes. No recopilan contenido de imágenes. Puedes excluirte de las analíticas mediante la configuración de tu navegador o una herramienta de exclusión de terceros." },
+        { "heading": "Sin cookies publicitarias", "body": "Este sitio no integra ninguna red publicitaria y no establece cookies publicitarias ni de seguimiento entre sitios. Si en el futuro se introduce publicidad, se describirá aquí y en la Política de Privacidad primero." },
+        { "heading": "Gestión de cookies", "body": "Puedes ver y eliminar cookies en la configuración de tu navegador. Eliminar la cookie de session cierra tu sesión; eliminar la cookie de locale restablece el idioma de la interfaz al valor predeterminado. La mayoría de los navegadores también te permiten bloquear las cookies de terceros, lo que no afectará a las cookies esenciales usadas por este sitio." }
+      ],
+      "tableHeaders": { "cookie": "Cookie", "purpose": "Propósito", "duration": "Duración" },
+      "essentialCookies": [
+        { "name": "session", "purpose": "Te mantiene conectado entre cargas de página.", "duration": "30 días, o hasta que cierres sesión" },
+        { "name": "locale", "purpose": "Recuerda el idioma de interfaz que seleccionaste.", "duration": "Persistente" }
+      ]
+    }
+  },
+  "Lang": {
+    "en": "English",
+    "zh": "汉语",
+    "es": "Español",
+    "ar": "العربية",
+    "fr": "Français",
+    "pt": "Português",
+    "ru": "Русский",
+    "ja": "日本語"
+  }
+}

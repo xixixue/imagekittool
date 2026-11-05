@@ -1,0 +1,11 @@
+.next
+node_modules
+.pnpm-store
+.pnpm-cache
+pnpm-lock.yaml
+build
+out
+next-env.d.ts
+
+# User-owned spec document — do not reformat
+ImageKitTools_SPEC.md

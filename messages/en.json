@@ -1,0 +1,812 @@
+{
+  "Meta": {
+    "title": "ImageKitTools — Free Online Image Tools",
+    "description": "Free, privacy-first online image tools. Compress, resize, convert, crop, and compress images to a target KB size — right in your browser. No upload required."
+  },
+  "Brand": {
+    "name": "ImageKitTools"
+  },
+  "Nav": {
+    "tools": "Tools",
+    "about": "About",
+    "contact": "Contact",
+    "signIn": "Sign in",
+    "register": "Register",
+    "signOut": "Sign out",
+    "language": "Language"
+  },
+  "Home": {
+    "badge": "100% browser-local · no upload",
+    "title": "Free image tools that respect your privacy",
+    "subtitle": "Compress, resize, convert, and crop images right in your browser. Files never leave your device unless you choose to save them to your cloud.",
+    "browseTools": "Browse tools",
+    "tryCompressor": "Try the compressor",
+    "noSignup": "No sign-up",
+    "noUpload": "No upload",
+    "optionalCloud": "Optional cloud",
+    "allTools": "All tools",
+    "allToolsSub": "Pick a tool below. Everything runs locally in your browser.",
+    "viewAll": "View all",
+    "localFirstTitle": "Local-first",
+    "localFirstDesc": "Images are processed in your browser. They are not uploaded to a server by default.",
+    "noSignupTitle": "No sign-up needed",
+    "noSignupDesc": "Use every core tool as a guest and download your results instantly.",
+    "optionalCloudTitle": "Optional cloud",
+    "optionalCloudDesc": "Signed-in users can save originals and results to a private cloud space."
+  },
+  "ToolsPage": {
+    "title": "Image tools",
+    "subtitle": "All tools run in your browser. Your images are not uploaded unless you explicitly save them to your cloud.",
+    "badge": "100% browser-local · no upload"
+  },
+  "DropZone": {
+    "title": "Drop images here or click to browse",
+    "hint": "JPG, PNG, WebP · up to 25 MB each · max 20 files"
+  },
+  "Workspace": {
+    "process": "Process images",
+    "processing": "Processing {done}/{total}…",
+    "ready": "{count} ready",
+    "download": "Download",
+    "downloadAll": "Download all ({count}) as ZIP",
+    "clearAll": "Clear all",
+    "remove": "Remove file"
+  },
+  "FileList": {
+    "processing": "Processing…",
+    "error": "Error",
+    "saved": "saved {percent}%"
+  },
+  "Privacy": {
+    "note": "Your images are processed entirely in your browser. They are never uploaded to a server unless you explicitly save them to your cloud (available after sign-in)."
+  },
+  "Footer": {
+    "rights": "© {year} ImageKitTools. Images are processed in your browser by default.",
+    "about": "About",
+    "contact": "Contact",
+    "privacy": "Privacy Policy",
+    "terms": "Terms",
+    "cookies": "Cookie Policy"
+  },
+  "Tool": {
+    "image-compressor": {
+      "name": "Image Compressor",
+      "tagline": "Shrink JPG, PNG, and WebP files",
+      "description": "Compress images with adjustable quality. Batch process and download individually or as a ZIP — all in your browser.",
+      "headerDescription": "Compress JPG, PNG, and WebP images with adjustable quality. Batch process and download individually or as a ZIP — all in your browser.",
+      "action": "Compress"
+    },
+    "image-resizer": {
+      "name": "Image Resizer",
+      "tagline": "Resize by pixels, percent, or presets",
+      "description": "Change dimensions with aspect-ratio lock, percentage scaling, and common presets. Batch processing supported.",
+      "headerDescription": "Resize by pixels, percentage, or common presets. Lock the aspect ratio for a contain fit and batch process multiple files.",
+      "action": "Resize"
+    },
+    "image-converter": {
+      "name": "Image Converter",
+      "tagline": "Convert between JPG, PNG, and WebP",
+      "description": "Convert formats with correct background fill for transparency. The output extension always matches the real MIME type.",
+      "headerDescription": "Convert between JPG, PNG, and WebP with correct transparency handling. Output extensions always match the real MIME type.",
+      "action": "Convert"
+    },
+    "image-cropper": {
+      "name": "Image Cropper",
+      "tagline": "Crop with presets and rotation",
+      "description": "Crop with free or fixed aspect ratios (1:1, 4:3, 3:2, 16:9), 90° rotation, and touch support. Works on mobile.",
+      "headerDescription": "Crop with free or fixed aspect ratios (1:1, 4:3, 3:2, 16:9), 90° rotation, and zoom. Works with mouse and touch.",
+      "action": "Crop"
+    },
+    "compress-image-to-kb": {
+      "name": "Compress Image to KB",
+      "tagline": "Hit an exact target file size",
+      "description": "Compress to a target size (50 KB, 100 KB, 200 KB, …) using a bounded quality search. Tells you honestly when a target isn't reachable.",
+      "headerDescription": "Compress to an exact target file size (50 KB, 100 KB, …) with a bounded quality search. Honest reporting when a target isn't reachable.",
+      "action": "Compress to target"
+    },
+    "rotate-image": {
+      "name": "Rotate Image",
+      "tagline": "Rotate 90/180/270° and flip",
+      "description": "Rotate images by 90° steps and mirror horizontally or vertically. Batch process multiple files — all in your browser.",
+      "headerDescription": "Rotate JPG, PNG, and WebP images by 90° steps and flip horizontally or vertically. Batch processing, all in your browser.",
+      "action": "Rotate"
+    },
+    "watermark-image": {
+      "name": "Watermark Image",
+      "tagline": "Add text watermarks with position and opacity",
+      "description": "Stamp a text watermark on your images. Choose a 9-grid position, opacity, angle, or repeat it as a diagonal tile across the whole image.",
+      "headerDescription": "Add a text watermark to JPG, PNG, and WebP images. Choose a 9-grid position, opacity, angle, or repeat as a diagonal tile.",
+      "action": "Watermark"
+    },
+    "meme-generator": {
+      "name": "Meme Generator",
+      "tagline": "Add classic top and bottom text",
+      "description": "Turn any image into a meme with classic top and bottom text. Bold outlined lettering stays readable over any background.",
+      "headerDescription": "Turn any image into a meme with classic top and bottom text. Bold outlined lettering stays readable over any background.",
+      "action": "Generate meme"
+    },
+    "photo-editor": {
+      "name": "Photo Editor",
+      "tagline": "Adjust, filter, add text and stickers",
+      "description": "Adjust brightness, contrast and saturation, apply filters, then drag text and emoji stickers onto your image with a live preview.",
+      "headerDescription": "Adjust brightness, contrast and saturation, apply filters, and drag text and emoji stickers onto your photo with a live preview.",
+      "action": "Edit"
+    },
+    "blur-image": {
+      "name": "Blur Image",
+      "tagline": "Manually blur or mosaic regions",
+      "description": "Draw rectangles over faces, plates or any sensitive area and blur or pixelate them. Everything runs locally — nothing is uploaded.",
+      "headerDescription": "Draw rectangles over faces, plates or any sensitive area and blur or pixelate them. Everything runs locally — nothing is uploaded.",
+      "action": "Blur"
+    }
+  },
+  "Controls": {
+    "quality": "Quality: {percent}%",
+    "qualityHint": "Lower quality = smaller file. Applies to JPG and WebP only.",
+    "outputFormat": "Output format",
+    "keepOriginal": "Keep original",
+    "pngLossless": "PNG is lossless; the quality slider does not apply.",
+    "pngLabel": "PNG (lossless)",
+    "mode": "Mode",
+    "byPixels": "By pixels",
+    "byPercent": "By percentage",
+    "preset": "Preset",
+    "width": "Width",
+    "height": "Height",
+    "lockAspect": "Lock aspect ratio (contain fit)",
+    "scale": "Scale: {percent}%",
+    "background": "Background (fills transparency)",
+    "bgHint": "JPG has no alpha channel; transparent areas are filled with this color.",
+    "targetSize": "Target size",
+    "customTarget": "Custom target (KB)",
+    "allowFormatChange": "Allow PNG → WebP to reach the target (may lose transparency)",
+    "boundedSearchNote": "Uses a bounded quality search with an iteration and time limit. If the target cannot be reached, the closest result is returned and noted below the file.",
+    "aspectRatio": "Aspect ratio",
+    "zoom": "Zoom: {value}×",
+    "rotation": "Rotation:",
+    "cropPreview": "Crop & preview",
+    "cropping": "Cropping…",
+    "chooseAnother": "Choose another",
+    "result": "Result: {w}×{h} · {filename}",
+    "croppedAlt": "Cropped result",
+    "unsupportedFile": "Unsupported file.",
+    "failedLoad": "Failed to load image.",
+    "cropFailed": "Crop failed.",
+    "flipH": "Flip horizontal",
+    "flipV": "Flip vertical",
+    "watermarkText": "Watermark text",
+    "fontSize": "Font size",
+    "color": "Color",
+    "opacity": "Opacity: {percent}%",
+    "position": "Position",
+    "angle": "Angle: {value}°",
+    "repeat": "Repeat (tile across image)",
+    "topText": "Top text",
+    "bottomText": "Bottom text",
+    "strokeColor": "Outline color",
+    "brightness": "Brightness: {value}",
+    "contrast": "Contrast: {value}",
+    "saturation": "Saturation: {value}",
+    "filter": "Filter",
+    "filterNone": "None",
+    "filterGrayscale": "Grayscale",
+    "filterSepia": "Sepia",
+    "filterInvert": "Invert",
+    "filterVintage": "Vintage",
+    "adjust": "Adjust",
+    "addText": "Add text",
+    "addSticker": "Add sticker",
+    "layerText": "Text layer",
+    "layerSticker": "Sticker",
+    "deleteLayer": "Delete",
+    "layerSize": "Size: {percent}%",
+    "export": "Export",
+    "exporting": "Exporting…",
+    "exportFailed": "Export failed.",
+    "blurMode": "Mode",
+    "blurGaussian": "Gaussian blur",
+    "blurMosaic": "Mosaic (pixelate)",
+    "radius": "Blur radius: {value}px",
+    "mosaicSize": "Tile size: {value}px",
+    "clearRegions": "Clear regions",
+    "drawHint": "Drag on the image to draw a blur region.",
+    "regionsLabel": "regions",
+    "previewLabel": "Preview",
+    "previewHint": "Live preview of the first image.",
+    "loadingPreview": "Loading preview…"
+  },
+  "Auth": {
+    "loading": "Loading…",
+    "createAccountTitle": "Create your account",
+    "createAccountDesc": "You don't need an account to use any tool. An account is only required to save images to your private cloud.",
+    "signInTitle": "Sign in",
+    "signInDesc": "You don't need an account to use any tool. Sign-in is only required to save images to your private cloud.",
+    "email": "Email",
+    "password": "Password",
+    "passwordHint": "At least 8 characters.",
+    "createAccountBtn": "Create account",
+    "creating": "Creating…",
+    "alreadyHaveAccount": "Already have an account?",
+    "signInLink": "Sign in",
+    "signInBtn": "Sign in",
+    "signingIn": "Signing in…",
+    "createAccountLink": "Create account",
+    "forgotPasswordLink": "Forgot password?",
+    "forgotTitle": "Forgot password",
+    "forgotDesc": "Enter your email to receive a password reset link.",
+    "sendResetBtn": "Send reset link",
+    "sending": "Sending…",
+    "forgotSent": "If an account exists for that email, a reset link has been sent. Check your inbox (or the server console in development).",
+    "backToSignIn": "Back to sign in",
+    "resetTitle": "Reset password",
+    "resetDesc": "Enter a new password for your account.",
+    "newPassword": "New password",
+    "resetBtn": "Reset password",
+    "resetting": "Resetting…",
+    "resetMissingToken": "Missing reset token. Please use the link from your reset email.",
+    "verifyTitle": "Verify your email",
+    "verifying": "Verifying your email…",
+    "verifySuccess": "Your email has been verified.",
+    "goToAccount": "Go to account",
+    "verifyMissingToken": "Missing verification token.",
+    "verifyError": "Verification failed.",
+    "networkError": "Network error. Please try again.",
+    "backToAccount": "Back to account",
+    "accountTitle": "Account",
+    "accountEmail": "Email",
+    "accountVerified": "Email verified",
+    "verifiedYes": "Yes",
+    "verifiedNo": "No",
+    "verifyReminder": "Please verify your email address. Check your inbox (or the server console in development) for the verification link.",
+    "signOutBtn": "Sign out",
+    "signingOut": "Signing out…"
+  },
+  "Cloud": {
+    "accountNav": "Account",
+    "filesNav": "Cloud files",
+    "storageNav": "Storage",
+    "filesTitle": "Cloud files",
+    "storageTitle": "Storage usage",
+    "loading": "Loading…",
+    "empty": "No cloud files yet. Save an image from any tool to see it here.",
+    "download": "Download",
+    "downloading": "Downloading…",
+    "delete": "Delete",
+    "deleting": "Deleting…",
+    "deleteConfirm": "Delete this file from your cloud storage?",
+    "saveOriginal": "Save original",
+    "saveResult": "Save result",
+    "saving": "Saving…",
+    "saved": "Saved ✓",
+    "unavailable": "Cloud storage is unavailable in this environment.",
+    "used": "Used",
+    "available": "Available",
+    "reserved": "Reserved (in-flight uploads)",
+    "quota": "Quota",
+    "cleanup": "Reclaim expired uploads",
+    "cleanupDone": "Reclaimed {tasks} expired task(s) and {objects} orphan object(s).",
+    "cleaning": "Cleaning up…",
+    "original": "Original",
+    "processed": "Processed"
+  },
+  "ToolSeo": {
+    "howToUse": "How to use",
+    "whenToUse": "When to use it",
+    "faq": "FAQ",
+    "relatedTools": "Related tools",
+    "image-compressor": {
+      "steps": [
+        "Drag your JPG, PNG, or WebP image into the drop zone, or click to pick files. You can add several at once.",
+        "Choose an output format — keep the original, or convert to JPG, PNG, or WebP.",
+        "Drag the quality slider. Lower quality means a smaller file; the live estimate updates as you move it.",
+        "Click Compress. Each image is processed in your browser and appears in the list with its new size and savings.",
+        "Download images one by one, or download all results as a ZIP. Sign-in users can also save an original or result to their private cloud."
+      ],
+      "useCases": [
+        "Shrinking photos before attaching them to an email that has a size limit.",
+        "Reducing page weight on a blog or storefront so images load faster.",
+        "Batch-compressing a folder of product photos for an online store.",
+        "Trimming screenshots before pasting them into a document or chat."
+      ],
+      "knowledge": [
+        {
+          "heading": "JPG vs PNG vs WebP for compression",
+          "body": "JPG and WebP are lossy formats, so the quality slider controls how much detail is discarded and directly affects file size. PNG is lossless — the slider has no effect on PNG output, which is best when you need every pixel preserved, such as screenshots with sharp text."
+        },
+        {
+          "heading": "Why compression happens in your browser",
+          "body": "Your image is decoded and re-encoded locally using the browser's Canvas and ImageBitmap APIs. The bytes never leave your device unless you explicitly choose to save a file to your cloud storage, so there is no upload to wait for and no copy on a server."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Is there a file size limit?",
+          "a": "Yes — a single image can be up to 25 MB and roughly 40 megapixels, with up to 20 files per batch. These limits protect your browser's memory during decoding."
+        },
+        {
+          "q": "Will compression reduce the resolution?",
+          "a": "No. The compressor changes encoding quality, not dimensions. Use the Image Resizer if you also need smaller pixel dimensions."
+        },
+        {
+          "q": "Are my images uploaded?",
+          "a": "No. Processing is local-first. Files are only uploaded if you are signed in and click a Save to cloud button."
+        }
+      ]
+    },
+    "image-resizer": {
+      "steps": [
+        "Add one or more JPG, PNG, or WebP images to the drop zone.",
+        "Pick a mode: resize by exact pixels, by percentage, or using a common preset.",
+        "Enter the target width and/or height. With the aspect-ratio lock on, the other dimension updates automatically for a contain fit.",
+        "Click Resize. Each result shows the before-and-after dimensions.",
+        "Download individually or as a ZIP; signed-in users can save results to their private cloud."
+      ],
+      "useCases": [
+        "Fitting a cover photo or banner to an exact platform dimension.",
+        "Scaling a batch of photos down for a slideshow or thumbnail grid.",
+        "Preparing images so a web page stays under a layout budget.",
+        "Shrinking phone photos before sharing over a slow connection."
+      ],
+      "knowledge": [
+        {
+          "heading": "Contain fit and aspect ratio",
+          "body": "Locking the aspect ratio gives you a contain fit: the image is scaled so it fits entirely within the target box without stretching or cropping. If you need an exact crop to a ratio instead, use the Image Cropper."
+        },
+        {
+          "heading": "Upscaling is discouraged",
+          "body": "Scaling an image up does not add real detail — it just interpolates existing pixels, which looks soft. The tool allows it but flags unusually large outputs so you know the result may not be sharp."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Can I resize to a percentage instead of pixels?",
+          "a": "Yes. Switch to percentage mode and enter a scale like 50%. The new pixel dimensions are computed from the original size."
+        },
+        {
+          "q": "What happens to very large images?",
+          "a": "Images near the browser's memory limits are flagged. You can still process them, but reducing the batch size helps avoid slow decoding."
+        },
+        {
+          "q": "Does resizing change the file format?",
+          "a": "Only if you choose a different output format. By default the original format is kept."
+        }
+      ]
+    },
+    "image-converter": {
+      "steps": [
+        "Drop in JPG, PNG, or WebP images.",
+        "Choose the target format: JPG, PNG, or WebP.",
+        "If you are converting to JPG, pick a background color — JPG has no transparency, so transparent areas are filled with this color.",
+        "Click Convert. The list shows the before-and-after format and size, and the downloaded file always has the correct extension for its real type.",
+        "Download individually or as a ZIP; signed-in users can save results to cloud storage."
+      ],
+      "useCases": [
+        "Converting a transparent PNG to JPG for a platform that does not accept PNG.",
+        "Turning a folder of JPGs into WebP for smaller web assets.",
+        "Changing screenshots to PNG to keep text crisp and lossless.",
+        "Normalizing mixed file types in a batch before uploading to a system that wants one format."
+      ],
+      "knowledge": [
+        {
+          "heading": "Transparency and the JPG format",
+          "body": "JPG does not support an alpha channel. When you convert a PNG or WebP with transparent pixels to JPG, those pixels are filled with the background color you choose — white by default — so logos and cut-outs land on a solid backdrop instead of black."
+        },
+        {
+          "heading": "The extension always matches the real MIME type",
+          "body": "The output file extension is derived from the bytes that are actually produced, not the name you typed, so a JPG-encoded file never ships with a .png extension that would confuse browsers and CMSes."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Does conversion reduce quality?",
+          "a": "Converting to JPG or WebP re-encodes the image and can introduce lossy artifacts. Converting to PNG is lossless. Use the Image Compressor if you want finer quality control."
+        },
+        {
+          "q": "Can I convert HEIC or AVIF?",
+          "a": "Not in this version. HEIC and AVIF support depends on the browser and is planned once capability detection is reliable."
+        },
+        {
+          "q": "Is batch conversion supported?",
+          "a": "Yes. Add multiple files and convert them all, then download as a ZIP."
+        }
+      ]
+    },
+    "image-cropper": {
+      "steps": [
+        "Choose an image to load into the cropper.",
+        "Pick a free crop or a fixed aspect ratio preset: 1:1, 4:3, 3:2, or 16:9.",
+        "Drag the crop rectangle with the mouse or your finger. Use the zoom control for precise placement.",
+        "Rotate in 90° steps if the source is sideways.",
+        "Click Crop & preview to see the result, then download. You can choose a different output format or start over with another image."
+      ],
+      "useCases": [
+        "Cutting a profile picture to a 1:1 square.",
+        "Cropping a photo to 16:9 for a YouTube thumbnail or cover.",
+        "Trimming wasted space around a screenshot before sharing.",
+        "Fixing a sideways phone photo with a quick 90° rotation."
+      ],
+      "knowledge": [
+        {
+          "heading": "Aspect ratio presets",
+          "body": "A preset locks the crop to a fixed ratio so the output fits a known slot — 1:1 for avatars, 4:3 and 3:2 for classic photo prints, and 16:9 for widescreen covers. Free mode lets you crop to any shape."
+        },
+        {
+          "heading": "Works with touch",
+          "body": "The crop rectangle supports pointer and touch events, so it works on phones and tablets as well as desktops. Pinch-to-zoom is handled by the zoom control."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Can I rotate the image?",
+          "a": "Yes, in 90° steps. Use the rotation control before cropping if the photo was taken sideways."
+        },
+        {
+          "q": "Does cropping upload my image?",
+          "a": "No. Cropping happens entirely in your browser."
+        },
+        {
+          "q": "Can I crop multiple images at once?",
+          "a": "The cropper works on one image at a time so you can fine-tune each frame. Use the batch tools for bulk operations."
+        }
+      ]
+    },
+    "compress-image-to-kb": {
+      "steps": [
+        "Add a JPG, PNG, or WebP image.",
+        "Pick a target size — 50 KB, 100 KB, 200 KB, 500 KB, 1 MB — or enter a custom target in KB.",
+        "Optionally allow PNG to WebP conversion if you are willing to lose transparency to reach the target.",
+        "Click Compress to target. The tool runs a bounded quality search and tells you the result honestly.",
+        "Download the result. If the target could not be reached, the closest result is returned and noted under the file."
+      ],
+      "useCases": [
+        "Hitting a strict upload limit on a form, marketplace, or government portal.",
+        "Preparing an avatar or badge that must be under a specific KB cap.",
+        "Compressing an email attachment to fit a provider's size rule.",
+        "Producing a thumbnail that meets a size budget for a CMS."
+      ],
+      "knowledge": [
+        {
+          "heading": "A bounded search, not a guess",
+          "body": "The tool searches quality values in a bounded range with an iteration and time limit — never an infinite loop. It measures each candidate's real encoded size and stops at the best fit, so the reported size is the actual output size."
+        },
+        {
+          "heading": "Not every target is reachable",
+          "body": "A tiny, detailed photo cannot always be compressed to an aggressive KB target without unacceptable quality loss. When that happens the tool returns the closest result and says so plainly, instead of silently degrading the image."
+        }
+      ],
+      "faq": [
+        {
+          "q": "What if the target size cannot be reached?",
+          "a": "The closest achievable result is returned and a note under the file explains that the target was not met, so you can decide whether to accept it or try a larger target."
+        },
+        {
+          "q": "Why might PNG → WebP be offered?",
+          "a": "PNG is lossless and often large. If you allow it, converting to WebP can reach a KB target that PNG cannot, at the cost of transparency and some quality."
+        },
+        {
+          "q": "Is there an iteration limit?",
+          "a": "Yes. The search has a maximum number of iterations and a time budget, so it always terminates."
+        }
+      ]
+    },
+    "rotate-image": {
+      "steps": [
+        "Add one or more images to the drop zone.",
+        "Pick a rotation: 0°, 90°, 180°, or 270°.",
+        "Optionally flip horizontally or vertically (or both).",
+        "Click Rotate. A live preview shows the effect on the first image before you process the batch.",
+        "Download individually or as a ZIP; signed-in users can save results to cloud storage."
+      ],
+      "useCases": [
+        "Fixing phone photos that imported sideways.",
+        "Mirroring an image for a design or print layout.",
+        "Rotating a batch of scanned pages to the same orientation.",
+        "Creating a flipped version of a logo or graphic."
+      ],
+      "knowledge": [
+        {
+          "heading": "90° steps keep quality intact",
+          "body": "Rotating by 90°, 180°, or 270° rearranges pixels without re-sampling, so there is no quality loss from the rotation itself. The only re-encoding happens when you choose an output format."
+        },
+        {
+          "heading": "Flip vs rotate",
+          "body": "Flipping mirrors the image along an axis — like a reflection — while rotating turns it around its center. You can combine a flip with a rotation in a single pass."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Can I rotate by an arbitrary angle like 15°?",
+          "a": "This tool rotates in 90° steps to avoid re-sampling artifacts. For free-angle rotation, use the Photo Editor's transform options."
+        },
+        {
+          "q": "Does rotating reduce quality?",
+          "a": "No. 90°-step rotation and flips preserve all pixels; only the chosen output format affects quality."
+        },
+        {
+          "q": "Can I process multiple images?",
+          "a": "Yes. Add several files and rotate them all with the same settings."
+        }
+      ]
+    },
+    "watermark-image": {
+      "steps": [
+        "Add one or more images.",
+        "Type your watermark text.",
+        "Choose a position on the 9-point grid, or enable Repeat to tile the watermark diagonally across the whole image.",
+        "Adjust font size, color, opacity, and angle.",
+        "Click Watermark. A live preview shows the result on the first image; then download individually or as a ZIP."
+      ],
+      "useCases": [
+        "Stamping a logo or name on portfolio photos before publishing.",
+        "Protecting preview images shared with clients.",
+        "Adding a repeating diagonal watermark to deter reuse of full-resolution exports.",
+        "Batch-watermarking product photos with a store name."
+      ],
+      "knowledge": [
+        {
+          "heading": "Single position vs repeat tile",
+          "body": "A single-position watermark sits in one of nine spots (corners, edges, or center). Repeat lays the text in an offset diagonal grid across the entire image, which is harder to crop out but more visually intrusive."
+        },
+        {
+          "heading": "Opacity and angle",
+          "body": "Lower opacity makes a watermark less obtrusive but easier to remove visually. A slight angle (for example -20°) on a repeated tile reads as a classic diagonal stamp."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Can I use an image or logo as the watermark?",
+          "a": "This tool applies a text watermark. For image-based overlays, use the Photo Editor's sticker and text layers."
+        },
+        {
+          "q": "Does watermarking reduce image quality?",
+          "a": "It re-encodes the image once with your chosen output format. The watermark itself is drawn at full resolution."
+        },
+        {
+          "q": "Can I watermark many images at once?",
+          "a": "Yes. Add a batch and the same watermark settings are applied to every file."
+        }
+      ]
+    },
+    "meme-generator": {
+      "steps": [
+        "Add an image to the drop zone.",
+        "Type the top text and/or bottom text.",
+        "Adjust the font size, text color, and outline color.",
+        "Click Generate meme. A live preview shows the result on the first image.",
+        "Download the meme; signed-in users can save it to cloud storage."
+      ],
+      "useCases": [
+        "Turning a reaction photo into a shareable meme.",
+        "Adding a punchline caption to a screenshot for a chat or post.",
+        "Making quick top/bottom captions for a social draft.",
+        "Batch-captioning a set of template images with the same text."
+      ],
+      "knowledge": [
+        {
+          "heading": "Classic top and bottom text",
+          "body": "The generator uses the classic meme layout: uppercase text pinned to the top and bottom, drawn in a heavy Impact-style face with a contrasting outline so it stays readable over any background."
+        },
+        {
+          "heading": "Text wraps to fit",
+          "body": "Long captions are word-wrapped to fit the image width, and bottom text is anchored from the bottom edge upward so it always sits at the base of the frame."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Can I place text in the middle instead?",
+          "a": "This tool is focused on the classic top/bottom layout. For freely positioned text, use the Photo Editor and drag text layers anywhere."
+        },
+        {
+          "q": "What format is the output?",
+          "a": "You can keep the original format or export as JPG, PNG, or WebP."
+        },
+        {
+          "q": "Is there a live preview?",
+          "a": "Yes. As you type, the first image is re-rendered so you can see the caption before generating the batch."
+        }
+      ]
+    },
+    "photo-editor": {
+      "steps": [
+        "Load an image into the editor.",
+        "Adjust brightness, contrast, and saturation with the sliders, and pick a filter such as grayscale, sepia, invert, or vintage.",
+        "Add text layers and emoji stickers, then drag them into place on the live preview.",
+        "Select a layer to edit its text, size, or color, or delete it.",
+        "Click Export to download the edited image at full resolution. Reset clears all changes."
+      ],
+      "useCases": [
+        "Quickly brightening and color-correcting a photo before posting.",
+        "Applying a vintage or sepia look to a set of images.",
+        "Adding a caption or emoji sticker to a picture for social media.",
+        "Light retouching without opening a heavy editor."
+      ],
+      "knowledge": [
+        {
+          "heading": "What you see is what you export",
+          "body": "The preview canvas mirrors the export: text and sticker sizes are stored as a fraction of the image height, so a caption that looks right in the preview renders at the same proportion in the full-resolution output."
+        },
+        {
+          "heading": "Filters vs adjustments",
+          "body": "Brightness, contrast, and saturation are continuous adjustments applied through the canvas filter pipeline. Filter presets (grayscale, sepia, invert, vintage) stack on top for a one-click look."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Can I add my own sticker image?",
+          "a": "Stickers are an emoji palette, which keeps the tool lightweight and asset-free. Text layers support any text and color."
+        },
+        {
+          "q": "Does editing upload my photo?",
+          "a": "No. Everything runs in your browser. Export downloads the result directly."
+        },
+        {
+          "q": "Can I edit multiple images?",
+          "a": "The editor works on one image at a time so the live preview stays responsive. Use the batch tools for bulk operations."
+        }
+      ]
+    },
+    "blur-image": {
+      "steps": [
+        "Load an image into the blur tool.",
+        "Choose a mode: mosaic (pixelate) or gaussian blur.",
+        "Set the blur radius or mosaic tile size.",
+        "Drag on the image to draw a rectangle over the area you want to hide — faces, plates, text, or signatures. Add as many regions as you need.",
+        "Click Export to download the result. Clear regions removes all selections."
+      ],
+      "useCases": [
+        "Blurring faces in photos before sharing them publicly.",
+        "Pixelating license plates, IDs, or addresses in screenshots.",
+        "Hiding sensitive text or signatures in a document scan.",
+        "Redacting parts of an image for a tutorial or bug report."
+      ],
+      "knowledge": [
+        {
+          "heading": "Mosaic vs gaussian blur",
+          "body": "Mosaic pixelates a region into blocky tiles, which is unmistakably redacted and hard to reverse. Gaussian blur softens the area smoothly, which looks more natural but is weaker for sensitive text. Use mosaic when you need to be sure the detail is gone."
+        },
+        {
+          "heading": "Regions are drawn by you",
+          "body": "There is no automatic detection: you draw each rectangle, so you keep full control over exactly what is hidden and nothing is blurred by accident."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Does the tool detect faces automatically?",
+          "a": "No. You draw each region yourself, which keeps the tool fully local and avoids any cloud-based detection. It also means you decide precisely what is obscured."
+        },
+        {
+          "q": "Can I blur several areas?",
+          "a": "Yes. Draw as many rectangles as you need; each is applied to the export. Clear regions removes them all."
+        },
+        {
+          "q": "Is the blur applied to the downloaded file?",
+          "a": "Yes. The export re-renders the image at full resolution with all your regions blurred or pixelated."
+        }
+      ]
+    }
+  },
+  "Legal": {
+    "about": {
+      "title": "About ImageKitTools",
+      "metaDescription": "About ImageKitTools — a privacy-first, browser-based image toolkit that processes your images locally and keeps cloud storage optional.",
+      "paragraphs": [
+        "ImageKitTools is a privacy-first online image toolkit. Every core tool — compress, resize, convert, crop, rotate, watermark, meme, edit, and blur — runs directly in your browser, so your images are not uploaded to a server by default. You get fast, private results and the file never leaves your device unless you choose to save it.",
+        [
+          { "t": "The project is built around four decisions that we will not compromise on: images are processed locally first; core tools require no sign-up; cloud storage is strictly optional and private to you; and the architecture stays a simple modular monolith with browser direct-uploads to private object storage. You can read the details in our " },
+          { "link": "privacy-policy", "text": "Privacy Policy" },
+          { "t": "." }
+        ],
+        "We build one tool at a time and prioritize quality and honesty over breadth. That means real guidance on every tool page — how to use it, when to use it, and what the format and size choices actually mean — instead of thin pages that only exist to rank. Tools report results honestly: if a target file size cannot be reached, we say so rather than silently degrading your image.",
+        "ImageKitTools supports eight interface languages and works on desktop and mobile, including touch-based cropping. An optional account lets you save originals and processed results to a private cloud so you can manage them across devices — but the tools themselves never require one.",
+        [
+          { "t": "This is an independent project. The roadmap focuses on more image tools and scenarios, better performance, and clear documentation. If you have a tool you would like to see, please reach out via the " },
+          { "link": "contact", "text": "Contact" },
+          { "t": " page." }
+        ]
+      ]
+    },
+    "contact": {
+      "title": "Contact",
+      "metaDescription": "How to get in touch with ImageKitTools for support, feedback, or feature requests.",
+      "intro": "We welcome feedback, bug reports, and ideas for new image tools. A dedicated support email address will be published here at launch. Until then, the notes below explain what to include so we can help quickly.",
+      "sections": [
+        {
+          "heading": "Reporting an issue",
+          "body": "When reporting a problem, please include:",
+          "items": [
+            "The tool and the steps you took.",
+            "The image format and approximate size, if relevant.",
+            "Your browser and device (for example, Safari on iPhone, Chrome on Windows).",
+            "Any error message you saw."
+          ],
+          "after": "Please do not send images containing sensitive personal information. Because processing happens in your browser, we usually cannot inspect your image directly."
+        },
+        {
+          "heading": "Privacy and data requests",
+          "body": [
+            { "t": "For privacy questions or requests to delete your account and data, see the " },
+            { "link": "privacy-policy", "text": "Privacy Policy" },
+            { "t": " for your rights and how to exercise them." }
+          ]
+        },
+        {
+          "heading": "Feature requests",
+          "body": "We prioritize tools that stay local and private. If you have a request for an image tool that fits that philosophy, we would love to hear about it."
+        }
+      ]
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "metaDescription": "How ImageKitTools handles your images and data: images are processed in your browser by default, and cloud storage is opt-in and private.",
+      "lastUpdated": "Last updated: November 4, 2026",
+      "sections": [
+        { "heading": "Overview", "body": "ImageKitTools is a privacy-first online image toolkit. The core principle is simple: by default, your images are processed entirely inside your browser and are never uploaded to our servers. Cloud features exist, but they are strictly opt-in and only ever act when you explicitly choose to save a file." },
+        { "heading": "Local-first image processing", "body": "When you use any image tool, the file you select is read by your browser and processed using the browser's Canvas and ImageBitmap APIs. The image bytes do not leave your device. The result you download is generated directly from your browser. There is no server-side copy of images processed with the local tools." },
+        { "heading": "Optional cloud storage", "body": "If you create an account and choose to save an original or processed image to your cloud, that single file is uploaded directly to private object storage using a short-lived presigned URL. The upload goes straight from your browser to storage; it is not relayed through the application server. Storage keys are generated by the server and never client-controlled. Cloud files are private and accessible only by you, and you can view, download, or delete them at any time from your account. Nothing is uploaded unless you take that explicit action." },
+        { "heading": "Account and authentication", "body": "To use cloud storage you can register with an email address and password. Passwords are hashed with the Argon2 algorithm before storage; we never store or see your plain password. When you sign in, we set an essential session cookie containing an opaque, random token; only the SHA-256 hash of that token is stored server-side, so a database leak would not expose valid sessions. Email-verification and password-reset tokens are random, single-use, and short-lived (24 hours for verification, 1 hour for resets)." },
+        { "heading": "Cookies", "body": "We use only essential cookies by default: a session cookie (so you stay signed in) and a locale cookie (to remember your language choice). These are necessary for the service to function and are not used for tracking. If analytics are enabled, a measurement cookie may also be set, as described in the Cookie Policy. We do not set advertising cookies." },
+        { "heading": "Analytics and monitoring", "body": "This site runs third-party analytics (Google Analytics 4) and error monitoring (Sentry) only when the operator has configured them. When enabled, these services may set their own cookies and collect usage data such as page views and errors. No personal image content is ever sent to analytics or monitoring providers. We do not sell or share data with advertisers, and no advertising network is integrated in the current version." },
+        { "heading": "Data retention", "body": "Cloud files are kept until you delete them. Sessions expire after 30 days of inactivity and are removed when you sign out. Verification and reset tokens expire automatically and are deleted after use. Diagnostic logs, if any, are retained only for the period needed to investigate errors." },
+        { "heading": "Your rights", "body": "You can review, download, and delete your cloud files at any time from the Cloud files section of your account. You can sign out to end your session immediately. To delete your account and all associated data, contact us using the details on the Contact page." },
+        { "heading": "Security", "body": "The site is served over HTTPS. Object storage buckets are private with no public read or write access, and all downloads are authorized and issued short-lived URLs. Authentication tokens are hashed at rest. No method of transmission or storage is fully secure, however, and we cannot guarantee absolute security." },
+        { "heading": "Children's privacy", "body": "ImageKitTools is not directed at children under 13 and we do not knowingly collect personal information from them. If you believe a child has registered an account, please contact us so we can remove it." },
+        { "heading": "Changes to this policy", "body": "We may update this policy as the service evolves. Changes will be posted on this page with an updated date. Material changes will be highlighted in the app where practical." },
+        { "heading": "Contact", "body": "Questions about this policy or your data can be sent to the address listed on the Contact page." }
+      ]
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "metaDescription": "The terms for using ImageKitTools, including your account responsibilities, acceptable use, and the no-warranty basis of browser-processed results.",
+      "lastUpdated": "Last updated: November 4, 2026",
+      "sections": [
+        { "heading": "Acceptance of terms", "body": "By accessing or using ImageKitTools, you agree to these Terms of Service. If you do not agree, please do not use the service." },
+        { "heading": "The service", "body": "ImageKitTools provides browser-based image tools, including compression, resizing, format conversion, cropping, rotation, watermarking, a meme generator, a photo editor, and region blur. Image processing happens locally in your browser by default. An optional account lets you save files to private cloud storage." },
+        { "heading": "Your account", "body": "If you register, you are responsible for keeping your password confidential and for all activity under your account. You must be at least 13 years old to create an account. You agree to provide accurate information and to notify us of any unauthorized use of your account." },
+        { "heading": "Your content", "body": "You retain all rights to the images you process or store. Processing happens in your browser; files you save to cloud storage are stored on your behalf and remain private to you. You grant us only the limited permission needed to operate the service — to process and, where you instruct, to store and serve your own files back to you." },
+        {
+          "heading": "Acceptable use",
+          "body": "You agree not to:",
+          "items": [
+            "Use the service for any unlawful purpose or in violation of applicable law.",
+            "Upload or store content you do not have the right to handle.",
+            "Attempt to access other users' files, accounts, or data.",
+            "Interfere with or disrupt the service, its servers, or its storage.",
+            "Use automated systems to abuse rate limits or attempt to overload the service."
+          ]
+        },
+        { "heading": "No warranty", "body": "ImageKitTools is provided \"as is\" and \"as available.\" Image results are generated by your browser and may vary across browsers and devices. We do not guarantee that a specific file-size target, quality level, or output will be achieved, and we are not liable for any loss arising from processed or stored files. Always keep your own backups of important images." },
+        { "heading": "Limitation of liability", "body": "To the maximum extent permitted by law, ImageKitTools and its operator shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of, or inability to use, the service." },
+        { "heading": "Third-party links and services", "body": "The service may link to third-party sites and, when configured, use third-party analytics or monitoring. We are not responsible for the practices of third parties." },
+        { "heading": "Changes", "body": "We may update these terms from time to time. Continued use after changes are posted constitutes acceptance of the revised terms." },
+        { "heading": "Contact", "body": "Questions about these terms can be sent to the address listed on the Contact page." }
+      ]
+    },
+    "cookie": {
+      "title": "Cookie Policy",
+      "metaDescription": "The cookies used by ImageKitTools: an essential session and locale cookie, with optional analytics only when enabled. No advertising cookies.",
+      "lastUpdated": "Last updated: November 4, 2026",
+      "sections": [
+        { "heading": "Overview", "body": "ImageKitTools uses the minimum cookies needed to run the service. By default, only two essential cookies are set. We do not set advertising cookies, and analytics cookies are loaded only if the operator has enabled analytics." },
+        { "heading": "Essential cookies", "body": "These cookies are required for the site to function and cannot be disabled." },
+        { "heading": "Analytics cookies", "body": "If Google Analytics 4 is configured by the operator, GA4 may set its own cookies (such as _ga and related identifiers) to measure aggregate usage. These are only present when analytics is enabled, and they collect information like which pages are visited and approximately where visitors come from. They do not collect image content. You can opt out of analytics via your browser settings or a third-party opt-out tool." },
+        { "heading": "No advertising cookies", "body": "This site does not integrate any advertising network and does not set advertising or cross-site tracking cookies. If advertising is introduced in the future, it will be described here and in the Privacy Policy first." },
+        { "heading": "Managing cookies", "body": "You can view and delete cookies in your browser settings. Removing the session cookie signs you out; removing the locale cookie resets the interface language to the default. Most browsers also let you block third-party cookies, which will not affect the essential cookies used by this site." }
+      ],
+      "tableHeaders": { "cookie": "Cookie", "purpose": "Purpose", "duration": "Duration" },
+      "essentialCookies": [
+        { "name": "session", "purpose": "Keeps you signed in between page loads.", "duration": "30 days, or until you sign out" },
+        { "name": "locale", "purpose": "Remembers your selected interface language.", "duration": "Persistent" }
+      ]
+    }
+  },
+  "Lang": {
+    "en": "English",
+    "zh": "汉语",
+    "es": "Español",
+    "ar": "العربية",
+    "fr": "Français",
+    "pt": "Português",
+    "ru": "Русский",
+    "ja": "日本語"
+  }
+}

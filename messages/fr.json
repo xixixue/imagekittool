@@ -1,0 +1,923 @@
+{
+  "Meta": {
+    "title": "ImageKitTools — Outils d'image en ligne gratuits",
+    "description": "Outils d'image en ligne gratuits, axés sur la confidentialité. Compressez, redimensionnez, convertissez, recadrez et compressez des images à une taille cible en KB — directement dans votre navigateur. Aucun téléversement requis."
+  },
+  "Brand": {
+    "name": "ImageKitTools"
+  },
+  "Nav": {
+    "tools": "Outils",
+    "about": "À propos",
+    "contact": "Contact",
+    "signIn": "Se connecter",
+    "register": "S'inscrire",
+    "signOut": "Se déconnecter",
+    "language": "Langue"
+  },
+  "Home": {
+    "badge": "100% local au navigateur · aucun téléversement",
+    "title": "Des outils d'image gratuits qui respectent votre confidentialité",
+    "subtitle": "Compressez, redimensionnez, convertissez et recadrez des images directement dans votre navigateur. Vos fichiers ne quittent jamais votre appareil, sauf si vous choisissez de les enregistrer dans votre cloud.",
+    "browseTools": "Parcourir les outils",
+    "tryCompressor": "Essayer le compresseur",
+    "noSignup": "Sans inscription",
+    "noUpload": "Aucun téléversement",
+    "optionalCloud": "Cloud optionnel",
+    "allTools": "Tous les outils",
+    "allToolsSub": "Choisissez un outil ci-dessous. Tout s'exécute localement dans votre navigateur.",
+    "viewAll": "Tout voir",
+    "localFirstTitle": "Local d'abord",
+    "localFirstDesc": "Les images sont traitées dans votre navigateur. Elles ne sont pas téléversées vers un serveur par défaut.",
+    "noSignupTitle": "Aucune inscription requise",
+    "noSignupDesc": "Utilisez tous les outils de base en tant qu'invité et téléchargez vos résultats instantanément.",
+    "optionalCloudTitle": "Cloud optionnel",
+    "optionalCloudDesc": "Les utilisateurs connectés peuvent enregistrer les originaux et les résultats dans un espace cloud privé."
+  },
+  "ToolsPage": {
+    "title": "Outils d'image",
+    "subtitle": "Tous les outils s'exécutent dans votre navigateur. Vos images ne sont pas téléversées, sauf si vous les enregistrez explicitement dans votre cloud.",
+    "badge": "100% local au navigateur · aucun téléversement"
+  },
+  "DropZone": {
+    "title": "Déposez vos images ici ou cliquez pour parcourir",
+    "hint": "JPG, PNG, WebP · jusqu'à 25 MB chacun · 20 fichiers max"
+  },
+  "Workspace": {
+    "process": "Traiter les images",
+    "processing": "Traitement {done}/{total}…",
+    "ready": "{count} prêts",
+    "download": "Télécharger",
+    "downloadAll": "Tout télécharger ({count}) en ZIP",
+    "clearAll": "Tout effacer",
+    "remove": "Supprimer le fichier"
+  },
+  "FileList": {
+    "processing": "Traitement…",
+    "error": "Erreur",
+    "saved": "{percent}% économisé"
+  },
+  "Privacy": {
+    "note": "Vos images sont entièrement traitées dans votre navigateur. Elles ne sont jamais téléversées vers un serveur, sauf si vous les enregistrez explicitement dans votre cloud (disponible après connexion)."
+  },
+  "Footer": {
+    "rights": "© {year} ImageKitTools. Les images sont traitées dans votre navigateur par défaut.",
+    "about": "À propos",
+    "contact": "Contact",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions",
+    "cookies": "Politique relative aux cookies"
+  },
+  "Tool": {
+    "image-compressor": {
+      "name": "Compresseur d'images",
+      "tagline": "Réduisez la taille des fichiers JPG, PNG et WebP",
+      "description": "Compressez des images avec une qualité réglable. Traitez par lot et téléchargez individuellement ou en ZIP — le tout dans votre navigateur.",
+      "headerDescription": "Compressez des images JPG, PNG et WebP avec une qualité réglable. Traitez par lot et téléchargez individuellement ou en ZIP — le tout dans votre navigateur.",
+      "action": "Compresser"
+    },
+    "image-resizer": {
+      "name": "Redimensionnement d'images",
+      "tagline": "Redimensionnez par pixels, pourcentage ou préréglages",
+      "description": "Modifiez les dimensions avec verrouillage du ratio d'aspect, mise à l'échelle par pourcentage et préréglages courants. Traitement par lot pris en charge.",
+      "headerDescription": "Redimensionnez par pixels, par pourcentage ou via des préréglages courants. Verrouillez le ratio d'aspect pour un ajustement contain et traitez plusieurs fichiers par lot.",
+      "action": "Redimensionner"
+    },
+    "image-converter": {
+      "name": "Convertisseur d'images",
+      "tagline": "Convertissez entre JPG, PNG et WebP",
+      "description": "Convertissez les formats avec un remplissage d'arrière-plan correct pour la transparence. L'extension de sortie correspond toujours au véritable type MIME.",
+      "headerDescription": "Convertissez entre JPG, PNG et WebP avec une gestion correcte de la transparence. Les extensions de sortie correspondent toujours au véritable type MIME.",
+      "action": "Convertir"
+    },
+    "image-cropper": {
+      "name": "Recadrage d'images",
+      "tagline": "Recadrez avec préréglages et rotation",
+      "description": "Recadrez avec des ratios d'aspect libres ou fixes (1:1, 4:3, 3:2, 16:9), une rotation de 90° et la prise en charge tactile. Fonctionne sur mobile.",
+      "headerDescription": "Recadrez avec des ratios d'aspect libres ou fixes (1:1, 4:3, 3:2, 16:9), une rotation de 90° et le zoom. Fonctionne à la souris et au tactile.",
+      "action": "Recadrer"
+    },
+    "compress-image-to-kb": {
+      "name": "Compresser une image en KB",
+      "tagline": "Atteignez une taille de fichier cible exacte",
+      "description": "Compressez à une taille cible (50 KB, 100 KB, 200 KB, …) à l'aide d'une recherche de qualité bornée. Indique honnêtement quand une cible n'est pas atteignable.",
+      "headerDescription": "Compressez à une taille de fichier cible exacte (50 KB, 100 KB, …) avec une recherche de qualité bornée. Rapport honnête quand une cible n'est pas atteignable.",
+      "action": "Compresser à la taille cible"
+    },
+    "rotate-image": {
+      "name": "Rotation d'images",
+      "tagline": "Pivoter de 90/180/270° et retourner",
+      "description": "Faites pivoter les images par étapes de 90° et retournez-les horizontalement ou verticalement. Traitez plusieurs fichiers par lot — le tout dans votre navigateur.",
+      "headerDescription": "Faites pivoter les images JPG, PNG et WebP par étapes de 90° et retournez-les horizontalement ou verticalement. Traitement par lot, le tout dans votre navigateur.",
+      "action": "Pivoter"
+    },
+    "watermark-image": {
+      "name": "Filigrane d'images",
+      "tagline": "Ajoutez des filigranes de texte avec position et opacité",
+      "description": "Apposez un filigrane de texte sur vos images. Choisissez une position sur une grille de 9, l'opacité, l'angle, ou répétez-le en mosaïque diagonale sur toute l'image.",
+      "headerDescription": "Ajoutez un filigrane de texte aux images JPG, PNG et WebP. Choisissez une position sur une grille de 9, l'opacité, l'angle, ou répétez-le en mosaïque diagonale.",
+      "action": "Filigraner"
+    },
+    "meme-generator": {
+      "name": "Générateur de mèmes",
+      "tagline": "Ajoutez du texte classique en haut et en bas",
+      "description": "Transformez n'importe quelle image en mème avec du texte classique en haut et en bas. Le texte en gras avec contour reste lisible sur n'importe quel fond.",
+      "headerDescription": "Transformez n'importe quelle image en mème avec du texte classique en haut et en bas. Le texte en gras avec contour reste lisible sur n'importe quel fond.",
+      "action": "Générer un mème"
+    },
+    "photo-editor": {
+      "name": "Éditeur de photos",
+      "tagline": "Ajustez, filtrez, ajoutez du texte et des autocollants",
+      "description": "Ajustez la luminosité, le contraste et la saturation, appliquez des filtres, puis glissez du texte et des autocollants emoji sur votre image avec un aperçu en direct.",
+      "headerDescription": "Ajustez la luminosité, le contraste et la saturation, appliquez des filtres et glissez du texte et des autocollants emoji sur votre photo avec un aperçu en direct.",
+      "action": "Éditer"
+    },
+    "blur-image": {
+      "name": "Floutage d'images",
+      "tagline": "Floutez ou pixelisez des régions manuellement",
+      "description": "Dessinez des rectangles sur les visages, les plaques ou toute zone sensible et floutez-les ou pixelisez-les. Tout s'exécute localement — rien n'est téléversé.",
+      "headerDescription": "Dessinez des rectangles sur les visages, les plaques ou toute zone sensible et floutez-les ou pixelisez-les. Tout s'exécute localement — rien n'est téléversé.",
+      "action": "Flouter"
+    }
+  },
+  "Controls": {
+    "quality": "Qualité : {percent}%",
+    "qualityHint": "Une qualité inférieure = un fichier plus petit. S'applique uniquement à JPG et WebP.",
+    "outputFormat": "Format de sortie",
+    "keepOriginal": "Conserver l'original",
+    "pngLossless": "Le PNG est sans perte ; le curseur de qualité ne s'applique pas.",
+    "pngLabel": "PNG (sans perte)",
+    "mode": "Mode",
+    "byPixels": "Par pixels",
+    "byPercent": "Par pourcentage",
+    "preset": "Préréglage",
+    "width": "Largeur",
+    "height": "Hauteur",
+    "lockAspect": "Verrouiller le ratio d'aspect (ajustement contain)",
+    "scale": "Échelle : {percent}%",
+    "background": "Arrière-plan (remplit la transparence)",
+    "bgHint": "Le JPG n'a pas de canal alpha ; les zones transparentes sont remplies avec cette couleur.",
+    "targetSize": "Taille cible",
+    "customTarget": "Cible personnalisée (KB)",
+    "allowFormatChange": "Autoriser PNG → WebP pour atteindre la cible (peut perdre la transparence)",
+    "boundedSearchNote": "Utilise une recherche de qualité bornée avec une limite d'itérations et de temps. Si la cible ne peut être atteinte, le résultat le plus proche est renvoyé et indiqué sous le fichier.",
+    "aspectRatio": "Ratio d'aspect",
+    "zoom": "Zoom : {value}×",
+    "rotation": "Rotation :",
+    "cropPreview": "Recadrer et aperçu",
+    "cropping": "Recadrage…",
+    "chooseAnother": "Choisir une autre",
+    "result": "Résultat : {w}×{h} · {filename}",
+    "croppedAlt": "Résultat recadré",
+    "unsupportedFile": "Fichier non pris en charge.",
+    "failedLoad": "Échec du chargement de l'image.",
+    "cropFailed": "Échec du recadrage.",
+    "flipH": "Retourner horizontalement",
+    "flipV": "Retourner verticalement",
+    "watermarkText": "Texte du filigrane",
+    "fontSize": "Taille de police",
+    "color": "Couleur",
+    "opacity": "Opacité : {percent}%",
+    "position": "Position",
+    "angle": "Angle : {value}°",
+    "repeat": "Répéter (mosaïque sur l'image)",
+    "topText": "Texte du haut",
+    "bottomText": "Texte du bas",
+    "strokeColor": "Couleur du contour",
+    "brightness": "Luminosité : {value}",
+    "contrast": "Contraste : {value}",
+    "saturation": "Saturation : {value}",
+    "filter": "Filtre",
+    "filterNone": "Aucun",
+    "filterGrayscale": "Niveaux de gris",
+    "filterSepia": "Sépia",
+    "filterInvert": "Inverser",
+    "filterVintage": "Vintage",
+    "adjust": "Ajuster",
+    "addText": "Ajouter du texte",
+    "addSticker": "Ajouter un autocollant",
+    "layerText": "Calque de texte",
+    "layerSticker": "Autocollant",
+    "deleteLayer": "Supprimer",
+    "layerSize": "Taille : {percent}%",
+    "export": "Exporter",
+    "exporting": "Exportation…",
+    "exportFailed": "Échec de l'exportation.",
+    "blurMode": "Mode",
+    "blurGaussian": "Flou gaussien",
+    "blurMosaic": "Mosaïque (pixelisation)",
+    "radius": "Rayon du flou : {value}px",
+    "mosaicSize": "Taille des carreaux : {value}px",
+    "clearRegions": "Effacer les régions",
+    "drawHint": "Glissez sur l'image pour dessiner une région de flou.",
+    "regionsLabel": "régions",
+    "previewLabel": "Aperçu",
+    "previewHint": "Aperçu en direct de la première image.",
+    "loadingPreview": "Chargement de l'aperçu…"
+  },
+  "Auth": {
+    "loading": "Chargement…",
+    "createAccountTitle": "Créez votre compte",
+    "createAccountDesc": "Vous n'avez pas besoin de compte pour utiliser les outils. Un compte est uniquement requis pour enregistrer des images dans votre cloud privé.",
+    "signInTitle": "Se connecter",
+    "signInDesc": "Vous n'avez pas besoin de compte pour utiliser les outils. La connexion est uniquement requise pour enregistrer des images dans votre cloud privé.",
+    "email": "Adresse e-mail",
+    "password": "Mot de passe",
+    "passwordHint": "Au moins 8 caractères.",
+    "createAccountBtn": "Créer un compte",
+    "creating": "Création…",
+    "alreadyHaveAccount": "Vous avez déjà un compte ?",
+    "signInLink": "Se connecter",
+    "signInBtn": "Se connecter",
+    "signingIn": "Connexion…",
+    "createAccountLink": "Créer un compte",
+    "forgotPasswordLink": "Mot de passe oublié ?",
+    "forgotTitle": "Mot de passe oublié",
+    "forgotDesc": "Saisissez votre adresse e-mail pour recevoir un lien de réinitialisation du mot de passe.",
+    "sendResetBtn": "Envoyer le lien de réinitialisation",
+    "sending": "Envoi…",
+    "forgotSent": "Si un compte existe pour cette adresse e-mail, un lien de réinitialisation a été envoyé. Vérifiez votre boîte de réception (ou la console du serveur en développement).",
+    "backToSignIn": "Retour à la connexion",
+    "resetTitle": "Réinitialiser le mot de passe",
+    "resetDesc": "Saisissez un nouveau mot de passe pour votre compte.",
+    "newPassword": "Nouveau mot de passe",
+    "resetBtn": "Réinitialiser le mot de passe",
+    "resetting": "Réinitialisation…",
+    "resetMissingToken": "Jeton de réinitialisation manquant. Veuillez utiliser le lien provenant de votre e-mail de réinitialisation.",
+    "verifyTitle": "Vérifiez votre adresse e-mail",
+    "verifying": "Vérification de votre adresse e-mail…",
+    "verifySuccess": "Votre adresse e-mail a été vérifiée.",
+    "goToAccount": "Accéder au compte",
+    "verifyMissingToken": "Jeton de vérification manquant.",
+    "verifyError": "Échec de la vérification.",
+    "networkError": "Erreur réseau. Veuillez réessayer.",
+    "backToAccount": "Retour au compte",
+    "accountTitle": "Compte",
+    "accountEmail": "Adresse e-mail",
+    "accountVerified": "Adresse e-mail vérifiée",
+    "verifiedYes": "Oui",
+    "verifiedNo": "Non",
+    "verifyReminder": "Veuillez vérifier votre adresse e-mail. Consultez votre boîte de réception (ou la console du serveur en développement) pour le lien de vérification.",
+    "signOutBtn": "Se déconnecter",
+    "signingOut": "Déconnexion…"
+  },
+  "Cloud": {
+    "accountNav": "Compte",
+    "filesNav": "Fichiers cloud",
+    "storageNav": "Stockage",
+    "filesTitle": "Fichiers cloud",
+    "storageTitle": "Utilisation du stockage",
+    "loading": "Chargement…",
+    "empty": "Aucun fichier cloud pour le moment. Enregistrez une image depuis n'importe quel outil pour la voir ici.",
+    "download": "Télécharger",
+    "downloading": "Téléchargement…",
+    "delete": "Supprimer",
+    "deleting": "Suppression…",
+    "deleteConfirm": "Supprimer ce fichier de votre stockage cloud ?",
+    "saveOriginal": "Enregistrer l'original",
+    "saveResult": "Enregistrer le résultat",
+    "saving": "Enregistrement…",
+    "saved": "Enregistré ✓",
+    "unavailable": "Le stockage cloud n'est pas disponible dans cet environnement.",
+    "used": "Utilisé",
+    "available": "Disponible",
+    "reserved": "Réservé (téléversements en cours)",
+    "quota": "Quota",
+    "cleanup": "Récupérer les téléversements expirés",
+    "cleanupDone": "Récupéré {tasks} tâche(s) expirée(s) et {objects} objet(s) orphelin(s).",
+    "cleaning": "Nettoyage…",
+    "original": "Original",
+    "processed": "Traité"
+  },
+  "ToolSeo": {
+    "howToUse": "Mode d'emploi",
+    "whenToUse": "Quand l'utiliser",
+    "faq": "FAQ",
+    "relatedTools": "Outils associés",
+    "image-compressor": {
+      "steps": [
+        "Glissez votre image JPG, PNG ou WebP dans la zone de dépôt, ou cliquez pour choisir des fichiers. Vous pouvez en ajouter plusieurs à la fois.",
+        "Choisissez un format de sortie — conservez l'original, ou convertissez en JPG, PNG ou WebP.",
+        "Déplacez le curseur de qualité. Une qualité inférieure signifie un fichier plus petit ; l'estimation en direct se met à jour pendant le déplacement.",
+        "Cliquez sur Compresser. Chaque image est traitée dans votre navigateur et apparaît dans la liste avec sa nouvelle taille et le gain obtenu.",
+        "Téléchargez les images une par une, ou téléchargez tous les résultats dans une archive ZIP. Les utilisateurs connectés peuvent aussi enregistrer un original ou un résultat dans leur cloud privé."
+      ],
+      "useCases": [
+        "Réduire des photos avant de les joindre à un e-mail soumis à une limite de taille.",
+        "Alléger le poids d'une page de blog ou d'une boutique pour que les images se chargent plus vite.",
+        "Compresser par lots un dossier de photos produits pour une boutique en ligne.",
+        "Réduire des captures d'écran avant de les coller dans un document ou une conversation."
+      ],
+      "knowledge": [
+        {
+          "heading": "JPG, PNG ou WebP pour la compression",
+          "body": "Le JPG et le WebP sont des formats avec perte : le curseur de qualité contrôle la quantité de détails abandonnés et influe directement sur la taille du fichier. Le PNG est sans perte — le curseur n'a aucun effet sur la sortie PNG, idéale quand vous devez conserver chaque pixel, par exemple des captures d'écran au texte net."
+        },
+        {
+          "heading": "Pourquoi la compression se fait dans votre navigateur",
+          "body": "Votre image est décodée et réencodée localement via les API Canvas et ImageBitmap du navigateur. Les octets ne quittent jamais votre appareil, sauf si vous choisissez explicitement d'enregistrer un fichier dans votre stockage cloud : aucun téléversement à attendre et aucune copie sur un serveur."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Y a-t-il une limite de taille de fichier ?",
+          "a": "Oui — une image peut peser jusqu'à 25 MB et environ 40 mégapixels, avec jusqu'à 20 fichiers par lot. Ces limites protègent la mémoire de votre navigateur pendant le décodage."
+        },
+        {
+          "q": "La compression réduit-elle la résolution ?",
+          "a": "Non. Le compresseur modifie la qualité d'encodage, pas les dimensions. Utilisez le Redimensionnement d'images si vous avez aussi besoin de réduire les dimensions en pixels."
+        },
+        {
+          "q": "Mes images sont-elles téléversées ?",
+          "a": "Non. Le traitement est local d'abord. Les fichiers ne sont téléversés que si vous êtes connecté et que vous cliquez sur un bouton Enregistrer dans le cloud."
+        }
+      ]
+    },
+    "image-resizer": {
+      "steps": [
+        "Ajoutez une ou plusieurs images JPG, PNG ou WebP dans la zone de dépôt.",
+        "Choisissez un mode : redimensionner en pixels exacts, en pourcentage, ou via un préréglage courant.",
+        "Saisissez la largeur et/ou la hauteur cibles. Avec le verrouillage du ratio d'aspect activé, l'autre dimension se met à jour automatiquement pour un ajustement contain.",
+        "Cliquez sur Redimensionner. Chaque résultat affiche les dimensions avant et après.",
+        "Téléchargez individuellement ou dans une archive ZIP ; les utilisateurs connectés peuvent enregistrer les résultats dans leur cloud privé."
+      ],
+      "useCases": [
+        "Adapter une photo de couverture ou une bannière à une dimension exacte de plateforme.",
+        "Réduire un lot de photos pour un diaporama ou une grille de vignettes.",
+        "Préparer des images pour qu'une page web reste sous un budget de mise en page.",
+        "Réduire des photos de téléphone avant de les partager sur une connexion lente."
+      ],
+      "knowledge": [
+        {
+          "heading": "Ajustement contain et ratio d'aspect",
+          "body": "Verrouiller le ratio d'aspect donne un ajustement contain : l'image est mise à l'échelle pour tenir entièrement dans le cadre cible, sans étirement ni recadrage. Si vous souhaitez plutôt un recadrage exact à un ratio, utilisez le Recadrage d'images."
+        },
+        {
+          "heading": "L'agrandissement est déconseillé",
+          "body": "Agrandir une image n'ajoute pas de détails réels — cela se contente d'interpoler les pixels existants, ce qui donne un rendu flou. L'outil l'autorise mais signale les sorties anormalement grandes afin que vous sachiez que le résultat risque de manquer de netteté."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Puis-je redimensionner en pourcentage plutôt qu'en pixels ?",
+          "a": "Oui. Passez en mode pourcentage et saisissez une échelle comme 50%. Les nouvelles dimensions en pixels sont calculées à partir de la taille d'origine."
+        },
+        {
+          "q": "Que se passe-t-il pour les très grandes images ?",
+          "a": "Les images proches des limites de mémoire du navigateur sont signalées. Vous pouvez quand même les traiter, mais réduire la taille du lot aide à éviter un décodage lent."
+        },
+        {
+          "q": "Le redimensionnement modifie-t-il le format du fichier ?",
+          "a": "Uniquement si vous choisissez un format de sortie différent. Par défaut, le format d'origine est conservé."
+        }
+      ]
+    },
+    "image-converter": {
+      "steps": [
+        "Déposez des images JPG, PNG ou WebP.",
+        "Choisissez le format cible : JPG, PNG ou WebP.",
+        "Si vous convertissez en JPG, choisissez une couleur de fond — le JPG ne gère pas la transparence, les zones transparentes sont donc remplies avec cette couleur.",
+        "Cliquez sur Convertir. La liste affiche le format et la taille avant et après, et le fichier téléchargé porte toujours l'extension correcte pour son type réel.",
+        "Téléchargez individuellement ou dans une archive ZIP ; les utilisateurs connectés peuvent enregistrer les résultats dans le stockage cloud."
+      ],
+      "useCases": [
+        "Convertir un PNG transparent en JPG pour une plateforme qui n'accepte pas le PNG.",
+        "Transformer un dossier de JPG en WebP pour des ressources web plus légères.",
+        "Convertir des captures d'écran en PNG pour garder un texte net et sans perte.",
+        "Uniformiser des types de fichiers mélangés dans un lot avant de les téléverser vers un système qui n'en attend qu'un seul."
+      ],
+      "knowledge": [
+        {
+          "heading": "Transparence et format JPG",
+          "body": "Le JPG ne gère pas de canal alpha. Lorsque vous convertissez un PNG ou un WebP à pixels transparents en JPG, ces pixels sont remplis avec la couleur de fond que vous choisissez — blanc par défaut — de sorte que les logos et les détourages reposent sur un fond uni plutôt que sur du noir."
+        },
+        {
+          "heading": "L'extension correspond toujours au type MIME réel",
+          "body": "L'extension du fichier de sortie est déduite des octets réellement produits, et non du nom que vous avez saisi : un fichier encodé en JPG n'est donc jamais livré avec une extension .png qui troublerait les navigateurs et les CMS."
+        }
+      ],
+      "faq": [
+        {
+          "q": "La conversion réduit-elle la qualité ?",
+          "a": "Convertir en JPG ou en WebP réencode l'image et peut introduire des artefacts de compression. Convertir en PNG est sans perte. Utilisez le Compresseur d'images si vous souhaitez un contrôle plus fin de la qualité."
+        },
+        {
+          "q": "Puis-je convertir du HEIC ou de l'AVIF ?",
+          "a": "Pas dans cette version. La prise en charge du HEIC et de l'AVIF dépend du navigateur et est prévue dès que la détection des capacités sera fiable."
+        },
+        {
+          "q": "La conversion par lots est-elle prise en charge ?",
+          "a": "Oui. Ajoutez plusieurs fichiers et convertissez-les tous, puis téléchargez-les dans une archive ZIP."
+        }
+      ]
+    },
+    "image-cropper": {
+      "steps": [
+        "Choisissez une image à charger dans le recadreur.",
+        "Choisissez un recadrage libre ou un préréglage de ratio d'aspect fixe : 1:1, 4:3, 3:2 ou 16:9.",
+        "Déplacez le rectangle de recadrage avec la souris ou votre doigt. Utilisez la commande de zoom pour un placement précis.",
+        "Faites pivoter par incréments de 90° si la source est de travers.",
+        "Cliquez sur Recadrer et aperçu pour voir le résultat, puis téléchargez. Vous pouvez choisir un autre format de sortie ou recommencer avec une autre image."
+      ],
+      "useCases": [
+        "Découper une photo de profil en carré 1:1.",
+        "Recadrer une photo en 16:9 pour une miniature ou une couverture YouTube.",
+        "Éliminer l'espace superflu autour d'une capture d'écran avant de la partager.",
+        "Corriger une photo de téléphone de travers par une rapide rotation de 90°."
+      ],
+      "knowledge": [
+        {
+          "heading": "Préréglages de ratio d'aspect",
+          "body": "Un préréglage verrouille le recadrage sur un ratio fixe afin que la sortie corresponde à un emplacement connu — 1:1 pour les avatars, 4:3 et 3:2 pour les tirages photo classiques, et 16:9 pour les couvertures grand écran. Le mode libre permet de recadrer dans n'importe quelle forme."
+        },
+        {
+          "heading": "Fonctionne au toucher",
+          "body": "Le rectangle de recadrage gère les événements de pointage et tactiles, il fonctionne donc sur téléphones et tablettes comme sur ordinateurs. Le zoom par pincement est pris en charge par la commande de zoom."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Puis-je faire pivoter l'image ?",
+          "a": "Oui, par incréments de 90°. Utilisez la commande de rotation avant le recadrage si la photo a été prise de travers."
+        },
+        {
+          "q": "Le recadrage téléverse-t-il mon image ?",
+          "a": "Non. Le recadrage s'effectue entièrement dans votre navigateur."
+        },
+        {
+          "q": "Puis-je recadrer plusieurs images à la fois ?",
+          "a": "Le recadreur traite une image à la fois afin que vous puissiez affiner chaque cadre. Utilisez les outils par lots pour les opérations en masse."
+        }
+      ]
+    },
+    "compress-image-to-kb": {
+      "steps": [
+        "Ajoutez une image JPG, PNG ou WebP.",
+        "Choisissez une taille cible — 50 KB, 100 KB, 200 KB, 500 KB, 1 MB — ou saisissez une cible personnalisée en KB.",
+        "Autorisez, si vous le souhaitez, la conversion PNG vers WebP si vous acceptez de perdre la transparence pour atteindre la cible.",
+        "Cliquez sur Compresser à la taille cible. L'outil effectue une recherche de qualité bornée et vous indique le résultat honnêtement.",
+        "Téléchargez le résultat. Si la cible n'a pas pu être atteinte, le résultat le plus proche est renvoyé et signalé sous le fichier."
+      ],
+      "useCases": [
+        "Respecter une limite stricte de téléversement sur un formulaire, une marketplace ou un portail gouvernemental.",
+        "Préparer un avatar ou un badge qui doit rester sous un plafond de KB précis.",
+        "Compresser une pièce jointe d'e-mail pour respecter la règle de taille d'un fournisseur.",
+        "Produire une vignette qui respecte un budget de taille pour un CMS."
+      ],
+      "knowledge": [
+        {
+          "heading": "Une recherche bornée, pas une estimation",
+          "body": "L'outil explore les valeurs de qualité dans une plage bornée, avec une limite d'itérations et de durée — jamais de boucle infinie. Il mesure la taille réellement encodée de chaque candidat et s'arrête au meilleur ajustement : la taille annoncée est donc la taille réelle de sortie."
+        },
+        {
+          "heading": "Toute cible n'est pas atteignable",
+          "body": "Une petite photo très détaillée ne peut pas toujours être compressée jusqu'à une cible en KB agressive sans une perte de qualité inacceptable. Dans ce cas, l'outil renvoie le résultat le plus proche et le dit clairement, au lieu de dégrader l'image en silence."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Que faire si la taille cible ne peut pas être atteinte ?",
+          "a": "Le résultat le plus proche atteignable est renvoyé et une note sous le fichier explique que la cible n'a pas été atteinte, afin que vous puissiez décider de l'accepter ou d'essayer une cible plus large."
+        },
+        {
+          "q": "Pourquoi la conversion PNG → WebP est-elle proposée ?",
+          "a": "Le PNG est sans perte et souvent volumineux. Si vous l'autorisez, la conversion en WebP peut atteindre une cible en KB que le PNG ne peut pas, au prix de la transparence et d'une certaine qualité."
+        },
+        {
+          "q": "Y a-t-il une limite d'itérations ?",
+          "a": "Oui. La recherche possède un nombre maximal d'itérations et un budget de durée, elle se termine donc toujours."
+        }
+      ]
+    },
+    "rotate-image": {
+      "steps": [
+        "Ajoutez une ou plusieurs images dans la zone de dépôt.",
+        "Choisissez une rotation : 0°, 90°, 180° ou 270°.",
+        "Retournez, si vous le souhaitez, horizontalement ou verticalement (ou les deux).",
+        "Cliquez sur Pivoter. Un aperçu en direct montre l'effet sur la première image avant que vous ne traitiez le lot.",
+        "Téléchargez individuellement ou dans une archive ZIP ; les utilisateurs connectés peuvent enregistrer les résultats dans le stockage cloud."
+      ],
+      "useCases": [
+        "Corriger des photos de téléphone importées de travers.",
+        "Retourner une image en miroir pour une maquette ou une mise en page imprimée.",
+        "Pivoter un lot de pages numérisées vers une même orientation.",
+        "Créer une version retournée d'un logo ou d'un graphique."
+      ],
+      "knowledge": [
+        {
+          "heading": "Les incréments de 90° préservent la qualité",
+          "body": "Pivoter de 90°, 180° ou 270° réorganise les pixels sans rééchantillonnage : il n'y a donc aucune perte de qualité due à la rotation elle-même. Le seul réencodage se produit lorsque vous choisissez un format de sortie."
+        },
+        {
+          "heading": "Retourner vs pivoter",
+          "body": "Retourner met l'image en miroir le long d'un axe — comme un reflet — tandis que pivoter la fait tourner autour de son centre. Vous pouvez combiner un retournement et une rotation en une seule passe."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Puis-je pivoter selon un angle arbitraire comme 15° ?",
+          "a": "Cet outil pivote par incréments de 90° pour éviter les artefacts de rééchantillonnage. Pour une rotation à angle libre, utilisez les options de transformation de l'Éditeur de photos."
+        },
+        {
+          "q": "La rotation réduit-elle la qualité ?",
+          "a": "Non. La rotation par incréments de 90° et les retournements préservent tous les pixels ; seul le format de sortie choisi affecte la qualité."
+        },
+        {
+          "q": "Puis-je traiter plusieurs images ?",
+          "a": "Oui. Ajoutez plusieurs fichiers et faites-les tous pivoter avec les mêmes réglages."
+        }
+      ]
+    },
+    "watermark-image": {
+      "steps": [
+        "Ajoutez une ou plusieurs images.",
+        "Saisissez votre texte de filigrane.",
+        "Choisissez une position sur la grille à 9 points, ou activez Répéter pour répartir le filigrane en diagonale sur toute l'image.",
+        "Ajustez la taille de police, la couleur, l'opacité et l'angle.",
+        "Cliquez sur Filigraner. Un aperçu en direct montre le résultat sur la première image ; puis téléchargez individuellement ou dans une archive ZIP."
+      ],
+      "useCases": [
+        "Apposer un logo ou un nom sur des photos de portfolio avant de les publier.",
+        "Protéger des images d'aperçu partagées avec des clients.",
+        "Ajouter un filigrane diagonal répété pour décourager la réutilisation d'exports en pleine résolution.",
+        "Filigraner par lots des photos produits avec le nom d'une boutique."
+      ],
+      "knowledge": [
+        {
+          "heading": "Position unique vs répétition en mosaïque",
+          "body": "Un filigrane à position unique se place sur l'un des neuf emplacements (coins, bords ou centre). Répéter dispose le texte en une grille diagonale décalée sur toute l'image, ce qui est plus difficile à recadrer mais plus visible."
+        },
+        {
+          "heading": "Opacité et angle",
+          "body": "Une opacité plus faible rend le filigrane moins voyant mais plus facile à effacer visuellement. Un léger angle (par exemple -20°) sur une mosaïque répétée donne l'allure d'un tampon diagonal classique."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Puis-je utiliser une image ou un logo comme filigrane ?",
+          "a": "Cet outil applique un filigrane texte. Pour des superpositions d'image, utilisez les calques d'autocollants et de texte de l'Éditeur de photos."
+        },
+        {
+          "q": "Le filigrane réduit-il la qualité de l'image ?",
+          "a": "Il réencode l'image une fois avec le format de sortie que vous avez choisi. Le filigrane lui-même est tracé en pleine résolution."
+        },
+        {
+          "q": "Puis-je filigraner plusieurs images à la fois ?",
+          "a": "Oui. Ajoutez un lot et les mêmes réglages de filigrane sont appliqués à chaque fichier."
+        }
+      ]
+    },
+    "meme-generator": {
+      "steps": [
+        "Ajoutez une image dans la zone de dépôt.",
+        "Saisissez le texte du haut et/ou du bas.",
+        "Ajustez la taille de police, la couleur du texte et la couleur du contour.",
+        "Cliquez sur Générer un mème. Un aperçu en direct montre le résultat sur la première image.",
+        "Téléchargez le mème ; les utilisateurs connectés peuvent l'enregistrer dans le stockage cloud."
+      ],
+      "useCases": [
+        "Transformer une photo de réaction en un mème partageable.",
+        "Ajouter une légende percutante à une capture d'écran pour une conversation ou une publication.",
+        "Créer rapidement des légendes haut/bas pour un brouillon de réseau social.",
+        "Légender par lots un ensemble d'images modèles avec le même texte."
+      ],
+      "knowledge": [
+        {
+          "heading": "Texte classique en haut et en bas",
+          "body": "Le générateur utilise la disposition classique du mème : un texte en majuscules épinglé en haut et en bas, tracé dans une police de style Impact bien épaisse avec un contour contrasté pour rester lisible sur n'importe quel fond."
+        },
+        {
+          "heading": "Le texte se renvoie à la ligne pour s'ajuster",
+          "body": "Les longues légendes sont renvoyées à la ligne pour s'ajuster à la largeur de l'image, et le texte du bas est ancré depuis le bord inférieur vers le haut afin de toujours se trouver à la base du cadre."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Puis-je plutôt placer le texte au milieu ?",
+          "a": "Cet outil se concentre sur la disposition classique haut/bas. Pour du texte positionné librement, utilisez l'Éditeur de photos et déplacez les calques de texte où vous voulez."
+        },
+        {
+          "q": "Quel est le format de sortie ?",
+          "a": "Vous pouvez conserver le format d'origine ou exporter en JPG, PNG ou WebP."
+        },
+        {
+          "q": "Y a-t-il un aperçu en direct ?",
+          "a": "Oui. Pendant la saisie, la première image est régénérée afin que vous puissiez voir la légende avant de produire le lot."
+        }
+      ]
+    },
+    "photo-editor": {
+      "steps": [
+        "Chargez une image dans l'éditeur.",
+        "Ajustez la luminosité, le contraste et la saturation avec les curseurs, et choisissez un filtre tel que niveaux de gris, sépia, inverser ou vintage.",
+        "Ajoutez des calques de texte et des autocollants emoji, puis déplacez-les à leur place sur l'aperçu en direct.",
+        "Sélectionnez un calque pour en modifier le texte, la taille ou la couleur, ou supprimez-le.",
+        "Cliquez sur Exporter pour télécharger l'image modifiée en pleine résolution. Réinitialiser efface tous les changements."
+      ],
+      "useCases": [
+        "Éclaircir et corriger les couleurs d'une photo rapidement avant de la publier.",
+        "Appliquer un rendu vintage ou sépia à un ensemble d'images.",
+        "Ajouter une légende ou un autocollant emoji à une photo pour les réseaux sociaux.",
+        "Faire une retouche légère sans ouvrir un éditeur lourd."
+      ],
+      "knowledge": [
+        {
+          "heading": "Ce que vous voyez est ce que vous exportez",
+          "body": "Le Canvas d'aperçu reflète l'export : les tailles du texte et des autocollants sont stockées comme une fraction de la hauteur de l'image, de sorte qu'une légende qui paraît correcte dans l'aperçu est rendue à la même proportion dans la sortie en pleine résolution."
+        },
+        {
+          "heading": "Filtres vs réglages",
+          "body": "La luminosité, le contraste et la saturation sont des réglages continus appliqués via le pipeline de filtres du Canvas. Les préréglages de filtre (niveaux de gris, sépia, inverser, vintage) se superposent pour un rendu en un clic."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Puis-je ajouter ma propre image d'autocollant ?",
+          "a": "Les autocollants sont une palette d'emojis, ce qui garde l'outil léger et sans ressources externes. Les calques de texte prennent en charge n'importe quel texte et couleur."
+        },
+        {
+          "q": "La modification téléverse-t-elle ma photo ?",
+          "a": "Non. Tout se déroule dans votre navigateur. L'export télécharge le résultat directement."
+        },
+        {
+          "q": "Puis-je modifier plusieurs images ?",
+          "a": "L'éditeur traite une image à la fois afin que l'aperçu en direct reste fluide. Utilisez les outils par lots pour les opérations en masse."
+        }
+      ]
+    },
+    "blur-image": {
+      "steps": [
+        "Chargez une image dans l'outil de flou.",
+        "Choisissez un mode : mosaïque (pixelisation) ou flou gaussien.",
+        "Réglez le rayon du flou ou la taille des pavés de mosaïque.",
+        "Tracez sur l'image un rectangle sur la zone que vous souhaitez masquer — visages, plaques d'immatriculation, texte ou signatures. Ajoutez autant de régions que nécessaire.",
+        "Cliquez sur Exporter pour télécharger le résultat. Effacer les régions supprime toutes les sélections."
+      ],
+      "useCases": [
+        "Flouter les visages sur des photos avant de les partager publiquement.",
+        "Pixéliser des plaques d'immatriculation, des pièces d'identité ou des adresses sur des captures d'écran.",
+        "Masquer du texte sensible ou des signatures sur la numérisation d'un document.",
+        "Caviarder certaines parties d'une image pour un tutoriel ou un rapport de bug."
+      ],
+      "knowledge": [
+        {
+          "heading": "Mosaïque vs flou gaussien",
+          "body": "La mosaïque pixélise une région en pavés grossiers, ce qui est indéniablement caviardé et difficile à inverser. Le flou gaussien adoucit la zone en douceur, ce qui paraît plus naturel mais est moins efficace pour du texte sensible. Utilisez la mosaïque quand vous devez être certain que le détail a disparu."
+        },
+        {
+          "heading": "Les régions sont tracées par vous",
+          "body": "Il n'y a aucune détection automatique : vous tracez chaque rectangle, vous gardez donc le contrôle total sur ce qui est masqué et rien n'est flouté par accident."
+        }
+      ],
+      "faq": [
+        {
+          "q": "L'outil détecte-t-il les visages automatiquement ?",
+          "a": "Non. Vous tracez vous-même chaque région, ce qui garde l'outil entièrement local et évite toute détection basée dans le cloud. Cela signifie aussi que vous décidez précisément ce qui est masqué."
+        },
+        {
+          "q": "Puis-je flouter plusieurs zones ?",
+          "a": "Oui. Tracez autant de rectangles que nécessaire ; chacun est appliqué à l'export. Effacer les régions les supprime tous."
+        },
+        {
+          "q": "Le flou est-il appliqué au fichier téléchargé ?",
+          "a": "Oui. L'export régénère l'image en pleine résolution avec toutes vos régions floutées ou pixélisées."
+        }
+      ]
+    }
+  },
+  "Legal": {
+    "about": {
+      "title": "À propos d'ImageKitTools",
+      "metaDescription": "À propos d'ImageKitTools — une boîte à outils d'images en ligne axée sur la confidentialité et basée sur le navigateur, qui traite vos images localement et garde le stockage cloud en option.",
+      "paragraphs": [
+        "ImageKitTools est une boîte à outils d'images en ligne axée sur la confidentialité. Chaque outil principal — compresser, redimensionner, convertir, recadrer, pivoter, ajouter un filigrane, créer un mème, éditer et flouter — s'exécute directement dans votre navigateur, vos images ne sont donc pas téléversées vers un serveur par défaut. Vous obtenez des résultats rapides et privés, et le fichier ne quitte jamais votre appareil sauf si vous choisissez de l'enregistrer.",
+        [
+          {
+            "t": "Le projet repose sur quatre décisions que nous ne compromettrons pas : les images sont traitées localement d'abord ; les outils principaux ne nécessitent aucune inscription ; le stockage cloud est strictement optionnel et privé pour vous ; et l'architecture reste un monolithe modulaire simple avec téléversements directs du navigateur vers un stockage d'objets privé. Vous pouvez lire les détails dans notre "
+          },
+          {
+            "link": "privacy-policy",
+            "text": "Politique de confidentialité"
+          },
+          {
+            "t": "."
+          }
+        ],
+        "Nous construisons un outil à la fois et privilégions la qualité et l'honnêteté à l'étendue. Cela signifie des conseils concrets sur chaque page d'outil — comment l'utiliser, quand l'utiliser et ce que signifient réellement les choix de format et de taille — au lieu de pages creuses qui n'existent que pour être bien classées. Les outils rapportent les résultats honnêtement : si une taille de fichier cible ne peut être atteinte, nous le disons plutôt que de dégrader silencieusement votre image.",
+        "ImageKitTools prend en charge huit langues d'interface et fonctionne sur ordinateur et mobile, y compris le recadrage tactile. Un compte en option vous permet d'enregistrer les originaux et les résultats traités dans un cloud privé afin de les gérer entre vos appareils — mais les outils eux-mêmes n'en exigent jamais un.",
+        [
+          {
+            "t": "Il s'agit d'un projet indépendant. La feuille de route se concentre sur davantage d'outils et de scénarios d'images, de meilleures performances et une documentation claire. Si vous souhaitez voir un outil, contactez-nous via la page "
+          },
+          {
+            "link": "contact",
+            "text": "Contact"
+          },
+          {
+            "t": "."
+          }
+        ]
+      ]
+    },
+    "contact": {
+      "title": "Contact",
+      "metaDescription": "Comment contacter ImageKitTools pour du support, des retours ou des demandes de fonctionnalités.",
+      "intro": "Nous accueillons favorablement les retours, les rapports de bugs et les idées de nouveaux outils d'images. Une adresse e-mail de support dédiée sera publiée ici lors du lancement. En attendant, les notes ci-dessous expliquent ce qu'il faut inclure pour que nous puissions vous aider rapidement.",
+      "sections": [
+        {
+          "heading": "Signaler un problème",
+          "body": "Lorsque vous signalez un problème, veuillez inclure :",
+          "items": [
+            "L'outil et les étapes que vous avez suivies.",
+            "Le format d'image et la taille approximative, si pertinent.",
+            "Votre navigateur et votre appareil (par exemple, Safari sur iPhone, Chrome sur Windows).",
+            "Tout message d'erreur que vous avez vu."
+          ],
+          "after": "Veuillez ne pas envoyer d'images contenant des informations personnelles sensibles. Le traitement ayant lieu dans votre navigateur, nous ne pouvons généralement pas inspecter votre image directement."
+        },
+        {
+          "heading": "Confidentialité et demandes de données",
+          "body": [
+            {
+              "t": "Pour les questions de confidentialité ou les demandes de suppression de votre compte et de vos données, consultez la "
+            },
+            {
+              "link": "privacy-policy",
+              "text": "Politique de confidentialité"
+            },
+            {
+              "t": " pour vos droits et la façon de les exercer."
+            }
+          ]
+        },
+        {
+          "heading": "Demandes de fonctionnalités",
+          "body": "Nous privilégions les outils qui restent locaux et privés. Si vous avez une demande d'outil d'image qui correspond à cette philosophie, nous serions ravis d'en entendre parler."
+        }
+      ]
+    },
+    "privacy": {
+      "title": "Politique de confidentialité",
+      "metaDescription": "La façon dont ImageKitTools gère vos images et vos données : les images sont traitées dans votre navigateur par défaut, et le stockage cloud est optionnel et privé.",
+      "lastUpdated": "Dernière mise à jour : 4 novembre 2026",
+      "sections": [
+        {
+          "heading": "Aperçu",
+          "body": "ImageKitTools est une boîte à outils d'images en ligne axée sur la confidentialité. Le principe fondamental est simple : par défaut, vos images sont traitées entièrement dans votre navigateur et ne sont jamais téléversées vers nos serveurs. Les fonctionnalités cloud existent, mais elles sont strictement optionnelles et n'agissent que lorsque vous choisissez explicitement d'enregistrer un fichier."
+        },
+        {
+          "heading": "Traitement d'images local d'abord",
+          "body": "Lorsque vous utilisez un outil d'image, le fichier que vous sélectionnez est lu par votre navigateur et traité à l'aide des API Canvas et ImageBitmap du navigateur. Les octets de l'image ne quittent pas votre appareil. Le résultat que vous téléchargez est généré directement par votre navigateur. Il n'existe aucune copie côté serveur des images traitées avec les outils locaux."
+        },
+        {
+          "heading": "Stockage cloud optionnel",
+          "body": "Si vous créez un compte et choisissez d'enregistrer une image originale ou traitée dans votre cloud, ce fichier unique est téléversé directement vers un stockage d'objets privé à l'aide d'une URL présignée de courte durée. Le téléversement va directement de votre navigateur vers le stockage ; il n'est pas relayé par le serveur applicatif. Les clés de stockage sont générées par le serveur et ne sont jamais contrôlées par le client. Les fichiers cloud sont privés et accessibles uniquement par vous, et vous pouvez les consulter, les télécharger ou les supprimer à tout moment depuis votre compte. Rien n'est téléversé sauf si vous effectuez cette action explicite."
+        },
+        {
+          "heading": "Compte et authentification",
+          "body": "Pour utiliser le stockage cloud, vous pouvez vous inscrire avec une adresse e-mail et un mot de passe. Les mots de passe sont hachés avec l'algorithme Argon2 avant le stockage ; nous ne stockons ni ne voyons jamais votre mot de passe en clair. Lorsque vous vous connectez, nous définissons un cookie de session essentiel contenant un jeton opaque et aléatoire ; seul le hachage SHA-256 de ce jeton est stocké côté serveur, de sorte qu'une fuite de base de données n'exposerait pas de sessions valides. Les jetons de vérification d'e-mail et de réinitialisation de mot de passe sont aléatoires, à usage unique et de courte durée (24 hours pour la vérification, 1 hour pour les réinitialisations)."
+        },
+        {
+          "heading": "Cookies",
+          "body": "Nous utilisons uniquement des cookies essentiels par défaut : un cookie session (afin que vous restiez connecté) et un cookie locale (pour mémoriser votre choix de langue). Ils sont nécessaires au fonctionnement du service et ne sont pas utilisés pour le suivi. Si les analyses sont activées, un cookie de mesure peut également être défini, comme décrit dans la Politique relative aux cookies. Nous ne définissons pas de cookies publicitaires."
+        },
+        {
+          "heading": "Analyses et surveillance",
+          "body": "Ce site utilise des analyses tierces (Google Analytics 4) et une surveillance des erreurs (Sentry) uniquement lorsque l'opérateur les a configurées. Lorsqu'elles sont activées, ces services peuvent définir leurs propres cookies et collecter des données d'utilisation telles que les pages vues et les erreurs. Aucun contenu d'image personnel n'est jamais envoyé aux fournisseurs d'analyses ou de surveillance. Nous ne vendons ni ne partageons de données avec des annonceurs, et aucun réseau publicitaire n'est intégré dans la version actuelle."
+        },
+        {
+          "heading": "Conservation des données",
+          "body": "Les fichiers cloud sont conservés jusqu'à ce que vous les supprimiez. Les sessions expirent après 30 days d'inactivité et sont supprimées lorsque vous vous déconnectez. Les jetons de vérification et de réinitialisation expirent automatiquement et sont supprimés après usage. Les journaux de diagnostic, le cas échéant, ne sont conservés que pendant la durée nécessaire à l'investigation des erreurs."
+        },
+        {
+          "heading": "Vos droits",
+          "body": "Vous pouvez consulter, télécharger et supprimer vos fichiers cloud à tout moment depuis la section Fichiers cloud de votre compte. Vous pouvez vous déconnecter pour mettre fin à votre session immédiatement. Pour supprimer votre compte et toutes les données associées, contactez-nous en utilisant les coordonnées de la page Contact."
+        },
+        {
+          "heading": "Sécurité",
+          "body": "Le site est servi via HTTPS. Les buckets de stockage d'objets sont privés sans aucun accès public en lecture ou en écriture, et tous les téléchargements sont autorisés et émettent des URL de courte durée. Les jetons d'authentification sont hachés au repos. Aucune méthode de transmission ou de stockage n'est totalement sécurisée, cependant, et nous ne pouvons garantir une sécurité absolue."
+        },
+        {
+          "heading": "Confidentialité des enfants",
+          "body": "ImageKitTools ne s'adresse pas aux enfants de moins de 13 et nous ne collectons sciemment aucune information personnelle les concernant. Si vous pensez qu'un enfant a créé un compte, veuillez nous contacter afin que nous puissions le supprimer."
+        },
+        {
+          "heading": "Modifications de cette politique",
+          "body": "Nous pouvons mettre à jour cette politique à mesure que le service évolue. Les modifications seront publiées sur cette page avec une date mise à jour. Les modifications importantes seront mises en évidence dans l'application lorsque c'est possible."
+        },
+        {
+          "heading": "Contact",
+          "body": "Les questions concernant cette politique ou vos données peuvent être envoyées à l'adresse indiquée sur la page Contact."
+        }
+      ]
+    },
+    "terms": {
+      "title": "Conditions d'utilisation",
+      "metaDescription": "Les conditions d'utilisation d'ImageKitTools, y compris vos responsabilités de compte, l'usage acceptable et la base sans garantie des résultats traités dans le navigateur.",
+      "lastUpdated": "Dernière mise à jour : 4 novembre 2026",
+      "sections": [
+        {
+          "heading": "Acceptation des conditions",
+          "body": "En accédant à ImageKitTools ou en l'utilisant, vous acceptez ces Conditions d'utilisation. Si vous n'acceptez pas, veuillez ne pas utiliser le service."
+        },
+        {
+          "heading": "Le service",
+          "body": "ImageKitTools fournit des outils d'image basés sur le navigateur, notamment la compression, le redimensionnement, la conversion de format, le recadrage, la rotation, l'ajout de filigrane, un générateur de mèmes, un éditeur de photos et le flou de région. Le traitement des images a lieu localement dans votre navigateur par défaut. Un compte en option vous permet d'enregistrer des fichiers dans un stockage cloud privé."
+        },
+        {
+          "heading": "Votre compte",
+          "body": "Si vous vous inscrivez, vous êtes responsable de la confidentialité de votre mot de passe et de toute activité sous votre compte. Vous devez avoir au moins 13 ans pour créer un compte. Vous acceptez de fournir des informations exactes et de nous signaler toute utilisation non autorisée de votre compte."
+        },
+        {
+          "heading": "Votre contenu",
+          "body": "Vous conservez tous les droits sur les images que vous traitez ou stockez. Le traitement a lieu dans votre navigateur ; les fichiers que vous enregistrez dans le stockage cloud sont stockés en votre nom et restent privés pour vous. Vous ne nous accordez que l'autorisation limitée nécessaire au fonctionnement du service — traiter et, lorsque vous nous y autorisez, stocker et vous restituer vos propres fichiers."
+        },
+        {
+          "heading": "Usage acceptable",
+          "body": "Vous acceptez de ne pas :",
+          "items": [
+            "Utiliser le service à des fins illégales ou en violation du droit applicable.",
+            "Téléverser ou stocker du contenu que vous n'avez pas le droit de traiter.",
+            "Tenter d'accéder aux fichiers, comptes ou données d'autres utilisateurs.",
+            "Interférer avec le service, ses serveurs ou son stockage, ou le perturber.",
+            "Utiliser des systèmes automatisés pour abuser des limites de débit ou tenter de surcharger le service."
+          ]
+        },
+        {
+          "heading": "Sans garantie",
+          "body": "ImageKitTools est fourni \"tel quel\" et \"tel que disponible.\" Les résultats d'image sont générés par votre navigateur et peuvent varier selon les navigateurs et les appareils. Nous ne garantissons pas qu'un objectif de taille de fichier, un niveau de qualité ou un résultat spécifique sera atteint, et nous ne sommes pas responsables de toute perte découlant des fichiers traités ou stockés. Conservez toujours vos propres sauvegardes des images importantes."
+        },
+        {
+          "heading": "Limitation de responsabilité",
+          "body": "Dans toute la mesure permise par la loi, ImageKitTools et son opérateur ne sauraient être tenus responsables de tout dommage indirect, accessoire, spécial ou consécutif découlant de votre utilisation du service ou de votre incapacité à l'utiliser."
+        },
+        {
+          "heading": "Liens et services tiers",
+          "body": "Le service peut créer des liens vers des sites tiers et, lorsqu'il est configuré, utiliser des analyses ou une surveillance tierces. Nous ne sommes pas responsables des pratiques des tiers."
+        },
+        {
+          "heading": "Modifications",
+          "body": "Nous pouvons mettre à jour ces conditions de temps à autre. L'utilisation continue après la publication des modifications constitue une acceptation des conditions révisées."
+        },
+        {
+          "heading": "Contact",
+          "body": "Les questions concernant ces conditions peuvent être envoyées à l'adresse indiquée sur la page Contact."
+        }
+      ]
+    },
+    "cookie": {
+      "title": "Politique relative aux cookies",
+      "metaDescription": "Les cookies utilisés par ImageKitTools : un cookie session et un cookie locale essentiels, avec des analyses optionnelles uniquement lorsqu'elles sont activées. Aucun cookie publicitaire.",
+      "lastUpdated": "Dernière mise à jour : 4 novembre 2026",
+      "sections": [
+        {
+          "heading": "Aperçu",
+          "body": "ImageKitTools utilise le minimum de cookies nécessaire au fonctionnement du service. Par défaut, seuls deux cookies essentiels sont définis. Nous ne définissons pas de cookies publicitaires, et les cookies d'analyse ne sont chargés que si l'opérateur a activé les analyses."
+        },
+        {
+          "heading": "Cookies essentiels",
+          "body": "Ces cookies sont nécessaires au fonctionnement du site et ne peuvent pas être désactivés."
+        },
+        {
+          "heading": "Cookies d'analyse",
+          "body": "Si Google Analytics 4 est configuré par l'opérateur, GA4 peut définir ses propres cookies (tels que _ga et les identifiants associés) pour mesurer l'utilisation agrégée. Ils ne sont présents que lorsque les analyses sont activées, et ils collectent des informations telles que les pages visitées et la provenance approximative des visiteurs. Ils ne collectent aucun contenu d'image. Vous pouvez désactiver les analyses via les paramètres de votre navigateur ou un outil de désactivation tiers."
+        },
+        {
+          "heading": "Aucun cookie publicitaire",
+          "body": "Ce site n'intègre aucun réseau publicitaire et ne définit pas de cookies publicitaires ou de suivi intersites. Si la publicité est introduite à l'avenir, elle sera décrite ici et dans la Politique de confidentialité en premier."
+        },
+        {
+          "heading": "Gestion des cookies",
+          "body": "Vous pouvez consulter et supprimer les cookies dans les paramètres de votre navigateur. Supprimer le cookie session vous déconnecte ; supprimer le cookie locale réinitialise la langue de l'interface à la valeur par défaut. La plupart des navigateurs vous permettent également de bloquer les cookies tiers, ce qui n'affectera pas les cookies essentiels utilisés par ce site."
+        }
+      ],
+      "tableHeaders": {
+        "cookie": "Cookie",
+        "purpose": "Objet",
+        "duration": "Durée"
+      },
+      "essentialCookies": [
+        {
+          "name": "session",
+          "purpose": "Vous maintient connecté entre les chargements de page.",
+          "duration": "30 days, ou jusqu'à ce que vous vous déconnectiez"
+        },
+        {
+          "name": "locale",
+          "purpose": "Mémorise la langue d'interface sélectionnée.",
+          "duration": "Persistant"
+        }
+      ]
+    }
+  },
+  "Lang": {
+    "en": "English",
+    "zh": "汉语",
+    "es": "Español",
+    "ar": "العربية",
+    "fr": "Français",
+    "pt": "Português",
+    "ru": "Русский",
+    "ja": "日本語"
+  }
+}
