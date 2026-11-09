@@ -3,7 +3,7 @@ import { getMessages, getTranslations } from "next-intl/server";
 import { renderLegalBody, type LegalMessages } from "@/components/legal/legal-body";
 
 /** Support email shown on the Contact page (owner-provided; on the site domain). */
-const SUPPORT_EMAIL = "noreply@imagekittool.com";
+const SUPPORT_EMAIL = "support@imagekittool.com";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Legal.contact");
