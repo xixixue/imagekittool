@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { getMessages, getTranslations } from "next-intl/server";
 import { renderLegalBody, type LegalMessages } from "@/components/legal/legal-body";
 
+/** Support email shown on the Contact page (owner-provided; on the site domain). */
+const SUPPORT_EMAIL = "noreply@imagekittool.com";
+
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Legal.contact");
   return {
@@ -20,6 +23,17 @@ export default async function ContactPage() {
       <div className="mt-6 space-y-8">
         {contact.intro && (
           <p className="text-sm leading-relaxed text-muted-foreground">{contact.intro}</p>
+        )}
+        {contact.emailLabel && (
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            {contact.emailLabel}:{" "}
+            <a
+              href={`mailto:${SUPPORT_EMAIL}`}
+              className="font-medium text-primary underline-offset-4 hover:underline"
+            >
+              {SUPPORT_EMAIL}
+            </a>
+          </p>
         )}
         {contact.sections?.map((section, i) => (
           <section key={i} className="space-y-2">

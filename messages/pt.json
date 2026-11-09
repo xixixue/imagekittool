@@ -820,7 +820,8 @@
     "contact": {
       "title": "Contato",
       "metaDescription": "Como entrar em contato com o ImageKitTools para suporte, feedback ou solicitações de recursos.",
-      "intro": "Acolhemos feedback, relatórios de bugs e ideias para novas ferramentas de imagem. Um endereço de e-mail dedicado ao suporte será publicado aqui no lançamento. Até lá, as notas abaixo explicam o que incluir para que possamos ajudar rapidamente.",
+      "intro": "Acolhemos feedback, relatórios de bugs e ideias para novas ferramentas de imagem. As notas abaixo explicam o que incluir para que possamos ajudar rapidamente.",
+      "emailLabel": "Envie-nos um e-mail",
       "sections": [
         {
           "heading": "Relatar um problema",

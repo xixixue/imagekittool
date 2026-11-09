@@ -36,6 +36,8 @@ export interface LegalPage {
   lastUpdated?: string;
   paragraphs?: (string | LegalSegment[])[];
   intro?: string;
+  /** Localized label preceding the support email mailto link (Contact page). */
+  emailLabel?: string;
   sections?: LegalSection[];
   tableHeaders?: { cookie: string; purpose: string; duration: string };
   essentialCookies?: LegalCookieRow[];

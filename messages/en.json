@@ -820,7 +820,8 @@
     "contact": {
       "title": "Contact",
       "metaDescription": "How to get in touch with ImageKitTools for support, feedback, or feature requests.",
-      "intro": "We welcome feedback, bug reports, and ideas for new image tools. A dedicated support email address will be published here at launch. Until then, the notes below explain what to include so we can help quickly.",
+      "intro": "We welcome feedback, bug reports, and ideas for new image tools. The notes below explain what to include so we can help quickly.",
+      "emailLabel": "Email us",
       "sections": [
         {
           "heading": "Reporting an issue",

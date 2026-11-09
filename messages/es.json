@@ -820,7 +820,8 @@
     "contact": {
       "title": "Contacto",
       "metaDescription": "Cómo ponerse en contacto con ImageKitTools para soporte, comentarios o solicitudes de funciones.",
-      "intro": "Agradecemos los comentarios, los informes de errores y las ideas para nuevas herramientas de imagen. Se publicará aquí una dirección de correo electrónico de soporte dedicada en el lanzamiento. Hasta entonces, las notas siguientes explican qué incluir para que podamos ayudar rápidamente.",
+      "intro": "Agradecemos los comentarios, los informes de errores y las ideas para nuevas herramientas de imagen. Las notas siguientes explican qué incluir para que podamos ayudar rápidamente.",
+      "emailLabel": "Escríbenos",
       "sections": [
         {
           "heading": "Informar de un problema",

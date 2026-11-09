@@ -834,7 +834,8 @@
     "contact": {
       "title": "Contact",
       "metaDescription": "Comment contacter ImageKitTools pour du support, des retours ou des demandes de fonctionnalités.",
-      "intro": "Nous accueillons favorablement les retours, les rapports de bugs et les idées de nouveaux outils d'images. Une adresse e-mail de support dédiée sera publiée ici lors du lancement. En attendant, les notes ci-dessous expliquent ce qu'il faut inclure pour que nous puissions vous aider rapidement.",
+      "intro": "Nous accueillons favorablement les retours, les rapports de bugs et les idées de nouveaux outils d'images. Les notes ci-dessous expliquent ce qu'il faut inclure pour que nous puissions vous aider rapidement.",
+      "emailLabel": "Écrivez-nous",
       "sections": [
         {
           "heading": "Signaler un problème",
