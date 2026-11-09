@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
+import { AdSlot } from "@/components/ads/ad-slot";
 import { ToolCard } from "@/components/tools/tool-card";
 import { CloudIcon, ShieldIcon, UserIcon } from "@/components/tools/tool-icon";
 import { tools } from "@/lib/data/tools";
@@ -69,6 +70,12 @@ export default async function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* In-content ad between homepage sections — a content zone, not a tool
+          interface. Renders nothing until AdSense is configured. */}
+      <div className="mx-auto max-w-6xl px-4">
+        <AdSlot slot="home-mid" />
+      </div>
 
       <section className="border-t border-border bg-muted/30">
         <div className="mx-auto grid max-w-6xl gap-6 px-4 py-16 sm:grid-cols-3">

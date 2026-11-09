@@ -16,15 +16,43 @@ const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
  * nonce-based CSP is a future hardening item and does not block launch.
  */
 async function securityHeaders() {
+  // Accumulate per-category origins instead of pushing separate directives:
+  // CSP ignores duplicate directives (only the first wins), so a single
+  // script-src-elem / frame-src directive must list every configured source.
+  const scriptSrcElemExtra: string[] = [];
+  const frameSrcExtra: string[] = [];
+
+  if (process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID) {
+    scriptSrcElemExtra.push("https://www.googletagmanager.com", "https://www.google-analytics.com");
+  }
+  if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
+    scriptSrcElemExtra.push("https://browser.sentry-cdn.com");
+  }
+  if (process.env.NEXT_PUBLIC_ADSENSE_CLIENT) {
+    // AdSense loader + creatives (iframes + impression pixels).
+    scriptSrcElemExtra.push("https://pagead2.googlesyndication.com");
+    frameSrcExtra.push(
+      "https://googleads.g.doubleclick.net",
+      "https://*.googleads.g.doubleclick.net",
+      "https://pagead2.googlesyndication.com",
+      "https://tpc.googlesyndication.com",
+    );
+  }
+
+  const scriptSrcElem = `script-src-elem 'self' 'unsafe-inline'${
+    scriptSrcElemExtra.length ? ` ${scriptSrcElemExtra.join(" ")}` : ""
+  }`;
+
   const cspParts: string[] = [
     "default-src 'self'",
     // Images: same-origin, data:/blob: (local processing), any https (presigned R2 GETs).
     "img-src 'self' data: blob: https:",
     // Styles: Tailwind + Next runtime inject inline styles.
     "style-src 'self' 'unsafe-inline'",
-    // Scripts: self + inline payloads; analytics sources added conditionally.
+    // Scripts: self + inline payloads; analytics/ad sources added conditionally.
     "script-src 'self' 'unsafe-inline'",
-    // Connect: same-origin API + presigned R2 PUT/GET + analytics/sentry beacons.
+    scriptSrcElem,
+    // Connect: same-origin API + presigned R2 PUT/GET + analytics/sentry/ad beacons.
     "connect-src 'self' https:",
     "font-src 'self' data:",
     "object-src 'none'",
@@ -32,17 +60,9 @@ async function securityHeaders() {
     "form-action 'self'",
     "frame-ancestors 'none'",
   ];
-
-  if (process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID) {
-    cspParts.push(
-      "script-src-elem 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
-    );
-  }
-  if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
-    cspParts.push(
-      "script-src-elem 'self' 'unsafe-inline' https://browser.sentry-cdn.com",
-      "connect-src 'self' https: https://*.sentry.io https://*.ingest.sentry.io",
-    );
+  // AdSense renders ad creatives inside iframes; allow them only when enabled.
+  if (frameSrcExtra.length) {
+    cspParts.push(`frame-src 'self' ${frameSrcExtra.join(" ")}`);
   }
 
   return [

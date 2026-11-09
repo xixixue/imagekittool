@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getMessages, getTranslations } from "next-intl/server";
+import { AdSlot } from "@/components/ads/ad-slot";
 import { getToolBySlug } from "@/lib/data/tools";
 import { TOOL_SEO_RELATED, type ToolSeoData } from "@/lib/data/tool-seo";
 
@@ -28,6 +29,11 @@ export async function ToolSeoContent({ slug }: { slug: string }) {
 
   return (
     <section className="mt-16 space-y-10">
+      {/* In-content ad — sits inside the SEO content zone, far below the tool's
+          upload/process/download buttons. Renders nothing until AdSense is
+          configured (see ADS.md). */}
+      <AdSlot slot="tool-content-top" />
+
       <div>
         <h2 className="text-xl font-bold tracking-tight">{t("howToUse")}</h2>
         <ol className="mt-3 list-decimal space-y-2 pl-6 text-sm leading-relaxed text-muted-foreground">
@@ -82,6 +88,9 @@ export async function ToolSeoContent({ slug }: { slug: string }) {
           </ul>
         </div>
       )}
+
+      {/* Below-content ad — after all editorial content, never near the tool. */}
+      <AdSlot slot="tool-content-bottom" />
     </section>
   );
 }

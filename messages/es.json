@@ -1,4 +1,7 @@
 {
+  "Ads": {
+    "label": "Publicidad"
+  },
   "Meta": {
     "title": "ImageKitTools — Herramientas de imagen online gratuitas",
     "description": "Herramientas de imagen online gratuitas y centradas en la privacidad. Comprime, redimensiona, convierte, recorta y comprime imágenes a un tamaño objetivo en KB, directamente en tu navegador. No requiere subida."

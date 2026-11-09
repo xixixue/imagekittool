@@ -13,6 +13,9 @@ import Script from "next/script";
  *
  * - GA4: Google Analytics 4, loaded via the gtag snippet.
  * - Sentry: browser error monitoring, loaded from the Sentry CDN.
+ * - AdSense: the adsbygoogle loader, loaded only when a publisher client ID is
+ *   configured. <AdSlot/> units push to window.adsbygoogle; no ad code runs
+ *   before NEXT_PUBLIC_ADSENSE_CLIENT is set (i.e. before AdSense approval).
  *
  * Server-side error capture via @sentry/nextjs is a production follow-up and
  * would use the (non-public) SENTRY_DSN; it is intentionally not added here to
@@ -20,6 +23,7 @@ import Script from "next/script";
  */
 const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 const SENTRY_DSN = process.env.NEXT_PUBLIC_SENTRY_DSN;
+const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
 const SENTRY_VERSION = "8.49.0";
 
 export function Analytics() {
@@ -50,6 +54,16 @@ gtag('config', '${GA_ID}');`}
             {`Sentry.init({ dsn: '${SENTRY_DSN}' });`}
           </Script>
         </>
+      ) : null}
+
+      {ADSENSE_CLIENT ? (
+        <Script
+          id="adsbygoogle-js"
+          async
+          strategy="afterInteractive"
+          crossOrigin="anonymous"
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
+        />
       ) : null}
     </>
   );

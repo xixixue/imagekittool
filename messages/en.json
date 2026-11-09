@@ -1,4 +1,7 @@
 {
+  "Ads": {
+    "label": "Advertisement"
+  },
   "Meta": {
     "title": "ImageKitTools — Free Online Image Tools",
     "description": "Free, privacy-first online image tools. Compress, resize, convert, crop, and compress images to a target KB size — right in your browser. No upload required."
