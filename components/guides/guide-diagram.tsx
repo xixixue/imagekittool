@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { DiagramName } from "@/lib/data/guides";
 
 /**
@@ -439,10 +440,35 @@ export function GuideDiagram({ name, caption }: { name: DiagramName; caption?: s
 }
 
 /**
- * Render a named diagram as a card cover / article hero. Same component as the
- * inline diagram, framed as a compact banner.
+ * Render a guide cover / article hero. Prefers a raster `coverImage` (generated
+ * by `scripts/generate-guide-covers.py` via wan2.7-image-pro) cropped to a
+ * banner with `object-cover`; falls back to the named SVG diagram when no cover
+ * image is present.
  */
-export function GuideCover({ name, className }: { name: DiagramName; className?: string }) {
+export function GuideCover({
+  coverImage,
+  name,
+  className,
+  alt = "",
+}: {
+  coverImage?: string;
+  name: DiagramName;
+  className?: string;
+  alt?: string;
+}) {
+  if (coverImage) {
+    return (
+      <div className={"relative h-40 overflow-hidden " + (className ?? "")}>
+        <Image
+          src={coverImage}
+          alt={alt}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        />
+      </div>
+    );
+  }
   const Cmp = DIAGRAMS[name];
   if (!Cmp) {
     // Fallback cover for a guide whose diagram is not yet implemented.

@@ -12,7 +12,7 @@ export async function GuideCard({ guide }: { guide: Guide }) {
       href={`/guides/${guide.slug}`}
       className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
     >
-      <GuideCover name={guide.coverDiagram} />
+      <GuideCover coverImage={guide.coverImage} name={guide.coverDiagram} alt={guide.title} />
       <div className="flex flex-1 flex-col p-5">
         <div className="flex items-center gap-2 text-xs text-muted-foreground">
           <span className="rounded-full bg-muted px-2 py-0.5 font-medium text-foreground/80">

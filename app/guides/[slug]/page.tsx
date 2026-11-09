@@ -66,7 +66,7 @@ export default async function GuideArticlePage({
       <p className="mt-4 text-lg leading-relaxed text-muted-foreground">{guide.description}</p>
 
       <div className="mt-8 overflow-hidden rounded-2xl border border-border">
-        <GuideCover name={guide.coverDiagram} className="h-48 sm:h-56" />
+        <GuideCover coverImage={guide.coverImage} name={guide.coverDiagram} className="h-48 sm:h-56" alt={guide.title} />
       </div>
 
       <div className="mt-10">

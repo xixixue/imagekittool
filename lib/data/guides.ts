@@ -69,8 +69,14 @@ export interface Guide {
   title: string;
   description: string;
   category: GuideCategory;
-  /** SVG diagram shown as the card cover + article hero. */
+  /** SVG diagram shown as the card cover + article hero (fallback when no coverImage). */
   coverDiagram: DiagramName;
+  /**
+   * Raster cover image generated via wan2.7-image-pro at
+   * `/guides/<slug>-cover.webp`. Rendered as the card cover + article hero when
+   * present; falls back to `coverDiagram`. See `scripts/generate-guide-covers.py`.
+   */
+  coverImage?: string;
   readingTimeMin: number;
   /** Slugs of tools to link from the article footer (resolved via lib/data/tools). */
   relatedToolSlugs: string[];
@@ -87,6 +93,7 @@ export const guides: Guide[] = [
       "A practical comparison of the three most common web image formats — compression, transparency, animation, and browser support — with a real side-by-side example.",
     category: "Formats",
     coverDiagram: "format-support-table",
+    coverImage: "/guides/jpg-vs-png-vs-webp-cover.webp",
     readingTimeMin: 7,
     relatedToolSlugs: ["image-converter", "image-compressor"],
     publishedAt: "2025-01-12",
@@ -100,10 +107,13 @@ export const guides: Guide[] = [
         text: "The three formats at a glance",
       },
       {
-        type: "diagram",
-        name: "format-support-table",
+        type: "image",
+        src: "/guides/jpg-vs-png-vs-webp-cover.webp",
+        alt: "Illustration comparing JPG, PNG, and WebP image formats side by side",
+        width: 1200,
+        height: 1200,
         caption:
-          "Feature and browser-support comparison for JPG, PNG, and WebP. WebP matches or beats the others on every axis except support on very old browsers.",
+          "The three web image formats compared: a photograph, a transparent logo, and a modern web image.",
       },
       {
         type: "heading",
@@ -165,6 +175,7 @@ export const guides: Guide[] = [
       "What actually happens when you compress an image — how lossy and lossless algorithms trade detail for file size, with a visible quality comparison.",
     category: "Compression",
     coverDiagram: "compression-flow",
+    coverImage: "/guides/how-image-compression-works-cover.webp",
     readingTimeMin: 8,
     relatedToolSlugs: ["image-compressor", "compress-image-to-kb"],
     publishedAt: "2025-01-15",
@@ -182,10 +193,13 @@ export const guides: Guide[] = [
         text: "Raw image data is highly redundant. A blue sky is millions of nearly-identical blue pixels in a row; a gradient is a predictable ramp. Compression replaces that redundancy with a compact description — a run of identical pixels becomes \"300 blue pixels,\" a ramp becomes a slope. The more predictable the image, the more it compresses. A noisy photograph compresses far less than a flat-color logo.",
       },
       {
-        type: "diagram",
-        name: "compression-flow",
+        type: "image",
+        src: "/guides/how-image-compression-works-cover.webp",
+        alt: "Illustration of the image compression pipeline",
+        width: 1200,
+        height: 1200,
         caption:
-          "Lossless and lossy compression both start by transforming the image to find redundancy. Lossless encodes it reversibly; lossy quantizes (rounds) the transformed data, discarding detail, then applies lossless entropy coding on what remains.",
+          "An image flowing through the compression pipeline to a smaller file.",
       },
       {
         type: "heading",
@@ -246,6 +260,7 @@ export const guides: Guide[] = [
       "Phone cameras embed an orientation tag in EXIF metadata. Here is why some apps honor it and some do not — and how to fix sideways photos for good.",
     category: "Metadata",
     coverDiagram: "exif-rotation",
+    coverImage: "/guides/exif-orientation-explained-cover.webp",
     readingTimeMin: 6,
     relatedToolSlugs: ["rotate-image"],
     publishedAt: "2025-01-18",
@@ -263,10 +278,13 @@ export const guides: Guide[] = [
         text: "EXIF (Exchangeable Image File Format) is a block of metadata embedded in JPEG and TIFF files by the camera. One of its fields, Orientation (tag 0x0112), is an integer from 1 to 8 that tells the viewer how to rotate or mirror the image so it displays the way the photographer saw it. A value of 1 means \"no rotation needed\"; values 3, 6, and 8 mean rotate 180°, 90° clockwise, and 90° counter-clockwise respectively; the others add mirroring.",
       },
       {
-        type: "diagram",
-        name: "exif-rotation",
+        type: "image",
+        src: "/guides/exif-orientation-explained-cover.webp",
+        alt: "Illustration of the eight EXIF orientation values applied to one photo",
+        width: 1200,
+        height: 1200,
         caption:
-          "The eight EXIF orientation values. Value 1 is the identity; 3, 6, and 8 are the common 90° and 180° rotations phones write when held in landscape.",
+          "The eight EXIF orientation values applied to a single photo.",
       },
       {
         type: "heading",
@@ -319,6 +337,7 @@ export const guides: Guide[] = [
       "The image dimensions and aspect ratios each major social platform expects — and how to crop to them without distortion.",
     category: "Editing",
     coverDiagram: "aspect-ratio-boxes",
+    coverImage: "/guides/social-media-aspect-ratios-cover.webp",
     readingTimeMin: 6,
     relatedToolSlugs: ["image-cropper", "image-resizer"],
     publishedAt: "2025-01-20",
@@ -336,10 +355,13 @@ export const guides: Guide[] = [
         text: "Aspect ratio is the relationship between width and height, independent of pixel count. A 1080×1080 image and a 600×600 image are both 1:1. Platforms care about the ratio because their layouts are built around it — a feed card, a cover photo, a story — and they will crop, letterbox, or stretch any image that does not match. Cropping to the target ratio before uploading lets you control which part is kept.",
       },
       {
-        type: "diagram",
-        name: "aspect-ratio-boxes",
+        type: "image",
+        src: "/guides/social-media-aspect-ratios-cover.webp",
+        alt: "Illustration of common social media aspect ratio frames",
+        width: 1200,
+        height: 1200,
         caption:
-          "Common social media aspect ratios at a glance: 1:1 square, 4:5 portrait, 1.91:1 landscape link card, 16:9 wide, and 9:16 story.",
+          "Common social media frame shapes at their true proportions.",
       },
       {
         type: "heading",
@@ -414,6 +436,7 @@ export const guides: Guide[] = [
       "What resolution really means, the difference between PPI (screen) and DPI (print), and why a 300-PPI image is not 'higher quality' than a 72-PPI one.",
     category: "Resolution",
     coverDiagram: "ppi-vs-dpi",
+    coverImage: "/guides/image-resolution-ppi-dpi-cover.webp",
     readingTimeMin: 7,
     relatedToolSlugs: ["image-resizer"],
     publishedAt: "2025-01-22",
@@ -433,10 +456,13 @@ export const guides: Guide[] = [
         text: "Pixels per inch (PPI) describes how densely those pixels are packed when an image is shown on a screen. A 4000×3000 image displayed at 300 PPI fills about 13×10 inches of screen; at 72 PPI it fills roughly 55×42 inches. The file did not change — only the display density did.",
       },
       {
-        type: "diagram",
-        name: "ppi-vs-dpi",
+        type: "image",
+        src: "/guides/image-resolution-ppi-dpi-cover.webp",
+        alt: "Illustration comparing screen pixels per inch and print dots per inch",
+        width: 1200,
+        height: 1200,
         caption:
-          "PPI measures screen pixel density; DPI measures print dot density. Both are per-inch, but they describe different output devices.",
+          "Screen pixels per inch (left) versus print dots per inch (right).",
       },
       { type: "heading", text: "DPI is output density" },
       {
@@ -470,6 +496,7 @@ export const guides: Guide[] = [
       "A practical workflow for shrinking image files while keeping them looking sharp — format choice, the quality sweet spot, resizing, and metadata.",
     category: "Compression",
     coverDiagram: "quality-size-curve",
+    coverImage: "/guides/compress-images-without-losing-quality-cover.webp",
     readingTimeMin: 7,
     relatedToolSlugs: ["image-compressor", "compress-image-to-kb"],
     publishedAt: "2025-01-24",
@@ -484,10 +511,13 @@ export const guides: Guide[] = [
         text: "Format choice sets the ceiling on how small a file can get. Photographs compress best as JPEG or WebP because they are designed for smooth, continuous-tone content. Graphics with flat color, sharp edges, or transparency — logos, screenshots, diagrams — compress best as PNG or WebP because lossless encoding preserves hard edges that JPEG would blur. Picking the wrong format means you either blur your logo or waste megabytes on a photo.",
       },
       {
-        type: "diagram",
-        name: "quality-size-curve",
+        type: "image",
+        src: "/guides/compress-images-without-losing-quality-cover.webp",
+        alt: "Illustration of the quality versus file size tradeoff",
+        width: 1200,
+        height: 1200,
         caption:
-          "JPEG file size falls steeply as quality drops from 100, then flattens. The visible-quality sweet spot is usually 80–85.",
+          "Trading file size for visible quality when compressing.",
       },
       { type: "heading", text: "Find the quality sweet spot" },
       {
@@ -530,6 +560,7 @@ export const guides: Guide[] = [
       "What bit depth means, the difference between 8-bit and 24-bit color, and why smooth gradients sometimes show visible bands.",
     category: "Color",
     coverDiagram: "bit-depth-gradient",
+    coverImage: "/guides/color-depth-explained-cover.webp",
     readingTimeMin: 8,
     relatedToolSlugs: ["image-converter"],
     publishedAt: "2025-01-26",
@@ -544,10 +575,13 @@ export const guides: Guide[] = [
         text: "Each color channel — red, green, and blue — is stored as a number. Bit depth is how many bits that number has. More bits means more possible values per channel, which means more distinct shades the image can represent. An 8-bit channel has 256 levels; three 8-bit channels combine into about 16.7 million possible colors, which is what '24-bit color' means.",
       },
       {
-        type: "diagram",
-        name: "bit-depth-gradient",
+        type: "image",
+        src: "/guides/color-depth-explained-cover.webp",
+        alt: "Illustration of color depth from banded to smooth gradient",
+        width: 1200,
+        height: 1200,
         caption:
-          "A 1-bit gradient has two colors; an 8-bit gradient shows visible steps; a 24-bit gradient is smooth to the eye.",
+          "From two colors to a smooth gradient as bit depth increases.",
       },
       { type: "heading", text: "1-bit, 8-bit, and 24-bit" },
       {
@@ -595,6 +629,7 @@ export const guides: Guide[] = [
       "How the alpha channel works, which image formats support transparency, and when partial transparency beats a hard edge.",
     category: "Color",
     coverDiagram: "alpha-channel",
+    coverImage: "/guides/alpha-channel-transparency-cover.webp",
     readingTimeMin: 6,
     relatedToolSlugs: ["image-converter", "image-cropper"],
     publishedAt: "2025-01-28",
@@ -609,10 +644,13 @@ export const guides: Guide[] = [
         text: "Every pixel in an image has red, green, and blue values that define its color. A transparent image adds a fourth value — alpha — that defines how opaque the pixel is. An alpha of 1 means fully opaque; 0 means fully transparent; anything in between is partially see-through. The alpha channel is, in effect, a grayscale image that controls visibility.",
       },
       {
-        type: "diagram",
-        name: "alpha-channel",
+        type: "image",
+        src: "/guides/alpha-channel-transparency-cover.webp",
+        alt: "Illustration of the alpha channel and transparency",
+        width: 1200,
+        height: 1200,
         caption:
-          "Five squares of the same violet at increasing alpha over a checkerboard. At α=0 the background shows through completely; at α=1 the square is solid.",
+          "How alpha controls how much of the background shows through.",
       },
       { type: "heading", text: "How formats handle alpha" },
       {
@@ -655,6 +693,7 @@ export const guides: Guide[] = [
       "Resizing changes dimensions, cropping changes the frame. Using the wrong one stretches your image or cuts off the wrong part.",
     category: "Editing",
     coverDiagram: "resize-vs-crop",
+    coverImage: "/guides/resizing-vs-cropping-cover.webp",
     readingTimeMin: 5,
     relatedToolSlugs: ["image-resizer", "image-cropper"],
     publishedAt: "2025-01-30",
@@ -669,10 +708,13 @@ export const guides: Guide[] = [
         text: "Resizing scales every pixel in the image up or down to hit new width and height values. The entire image is preserved — nothing is removed — but if the new dimensions have a different aspect ratio than the original, the content is stretched to fit. A circle becomes an ellipse; a square becomes a rectangle. That distortion is usually unwanted.",
       },
       {
-        type: "diagram",
-        name: "resize-vs-crop",
+        type: "image",
+        src: "/guides/resizing-vs-cropping-cover.webp",
+        alt: "Illustration comparing resizing and cropping",
+        width: 1200,
+        height: 1200,
         caption:
-          "Resized to a new ratio, the circle stretches into an ellipse. Cropped to the same ratio, the circle stays a circle.",
+          "Stretching an image (top) versus cropping it (bottom) to a new shape.",
       },
       { type: "heading", text: "Cropping changes the frame" },
       {
@@ -710,6 +752,7 @@ export const guides: Guide[] = [
       "The anatomy of an image macro — top and bottom captions in Impact font — and how to make one that lands.",
     category: "Editing",
     coverDiagram: "meme-layout",
+    coverImage: "/guides/how-to-make-a-meme-cover.webp",
     readingTimeMin: 6,
     relatedToolSlugs: ["meme-generator"],
     publishedAt: "2025-02-01",
@@ -724,10 +767,13 @@ export const guides: Guide[] = [
         text: "The classic meme has three parts: a top caption that sets up the joke, an image in the middle that provides the context or reaction, and a bottom caption that delivers the punchline. The text is set in the Impact typeface, rendered in white with a heavy black outline so it stays legible over any background, centered horizontally, and in all caps.",
       },
       {
-        type: "diagram",
-        name: "meme-layout",
+        type: "image",
+        src: "/guides/how-to-make-a-meme-cover.webp",
+        alt: "Illustration of the classic meme image macro layout",
+        width: 1200,
+        height: 1200,
         caption:
-          "The classic layout: top caption band, image, bottom caption band. Impact font, white fill, black outline, centered.",
+          "The classic top-and-bottom-caption meme layout.",
       },
       { type: "heading", text: "The caption style" },
       {
@@ -771,6 +817,7 @@ export const guides: Guide[] = [
       "Why and how to watermark images — visible marks that deter casual copying versus invisible marks that prove ownership.",
     category: "Privacy",
     coverDiagram: "watermark-types",
+    coverImage: "/guides/watermarking-your-images-cover.webp",
     readingTimeMin: 7,
     relatedToolSlugs: ["watermark-image"],
     publishedAt: "2025-02-03",
@@ -785,10 +832,13 @@ export const guides: Guide[] = [
         text: "A watermark does two jobs. The first is deterrence: a visible mark makes an image less attractive to copy and harder to pass off as someone else's. The second is provenance: if a dispute arises, a watermark — especially an invisible one — can help establish who created the image first. Most casual use is about the first; professional use is about the second.",
       },
       {
-        type: "diagram",
-        name: "watermark-types",
+        type: "image",
+        src: "/guides/watermarking-your-images-cover.webp",
+        alt: "Illustration of a tiled watermark overlay on an image",
+        width: 1200,
+        height: 1200,
         caption:
-          "A single mark in the center versus a tiled diagonal pattern. Tiled marks are harder to crop out but more intrusive.",
+          "A tiled watermark overlay protecting an image.",
       },
       { type: "heading", text: "Visible watermarks" },
       {
@@ -832,6 +882,7 @@ export const guides: Guide[] = [
       "Two ways to redact a face or sensitive region in a photo — how blur and pixelation differ, and which is harder to reverse.",
     category: "Privacy",
     coverDiagram: "blur-vs-pixelate",
+    coverImage: "/guides/blur-vs-pixelate-cover.webp",
     readingTimeMin: 6,
     relatedToolSlugs: ["blur-image", "photo-editor"],
     publishedAt: "2025-02-05",
@@ -846,10 +897,13 @@ export const guides: Guide[] = [
         text: "Both operations take a region of the image and destroy its detail. Blur averages neighboring pixels together, producing a soft, smooth smear. Pixelate replaces the region with a grid of large blocks, each a single color averaged from the pixels it covers. The visual result is different — one is soft, the other is blocky — and so is the amount of information each leaves behind.",
       },
       {
-        type: "diagram",
-        name: "blur-vs-pixelate",
+        type: "image",
+        src: "/guides/blur-vs-pixelate-cover.webp",
+        alt: "Illustration comparing blur and pixelate redaction",
+        width: 1200,
+        height: 1200,
         caption:
-          "Blur produces a smooth gradient; pixelate produces visible blocks. The blocky version leaves less recoverable structure.",
+          "Two privacy redaction techniques applied to the same face.",
       },
       { type: "heading", text: "Blur: smooth but partially recoverable" },
       {
