@@ -15,9 +15,12 @@ for f in .env .env.vercel .env.local dev.db prisma/dev.db .cloud-storage .next n
   fi
 done
 
-# 2. No .env* file staged.
-if git diff --cached --name-only 2>/dev/null | grep -qE '^\.env'; then
-  echo "  ✗ an .env* file is staged!"; bad=1
+# 2. No real .env* file staged. .env.example is the committed template (empty
+#    values only) and is allowed; everything else (.env, .env.local, .env.vercel,
+#    .env.production, …) must never be staged.
+staged_env=$(git diff --cached --name-only 2>/dev/null | grep -E '^\.env' | grep -vE '^\.env\.example$' || true)
+if [ -n "$staged_env" ]; then
+  echo "  ✗ a real .env* file is staged (only .env.example may be committed):"; echo "$staged_env" | sed 's/^/      /'; bad=1
 fi
 
 # 3. Staged diff must not contain secret / personal-info PATTERNS (generic, not literal secrets):
