@@ -122,6 +122,9 @@
     "language": "Idioma"
   },
   "Home": {
+    "guidesTitle": "Entenda como as imagens funcionam",
+    "guidesSub": "Explicações ilustradas sobre formatos, compressão, resolução, cor e edição de imagens.",
+    "viewAllGuides": "Ver todos os guias",
     "badge": "100% no navegador · sem envio",
     "title": "Ferramentas de imagem gratuitas que respeitam sua privacidade",
     "subtitle": "Comprima, redimensione, converta e recorte imagens direto no seu navegador. Os arquivos nunca saem do seu dispositivo, a menos que você escolha salvá-los na sua nuvem.",

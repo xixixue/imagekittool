@@ -195,6 +195,209 @@ function AspectRatioBoxes() {
 }
 
 /* -------------------------------------------------------------------------- */
+/* New diagrams                                                                */
+/* -------------------------------------------------------------------------- */
+
+/* PPI (screen pixels per inch) vs DPI (print dots per inch). */
+function PpiVsDpi() {
+  const stroke = "stroke-current stroke-[1.5]";
+  const label = "fill-current text-[14px]";
+  const sub = "fill-muted-foreground text-[12px]";
+  const sq = 32;
+  return (
+    <svg viewBox="0 0 720 240" className="mx-auto h-auto w-full max-w-2xl text-muted-foreground" role="img" aria-label="PPI screen pixels per inch versus DPI print dots per inch">
+      <text x={170} y={26} textAnchor="middle" className={label}>PPI — screen pixels</text>
+      {Array.from({ length: 4 }).map((_, r) =>
+        Array.from({ length: 4 }).map((_, c) => (
+          <rect key={`p${r}-${c}`} x={60 + c * sq} y={44 + r * sq} width={sq} height={sq} className={`fill-none ${stroke}`} />
+        ))
+      )}
+      <path d="M60 190 L60 196 L188 196 L188 190" className={stroke} fill="none" />
+      <text x={124} y={214} textAnchor="middle" className={sub}>1 inch</text>
+
+      <text x={530} y={26} textAnchor="middle" className={label}>DPI — print dots</text>
+      {Array.from({ length: 6 }).map((_, r) =>
+        Array.from({ length: 6 }).map((_, c) => (
+          <circle key={`d${r}-${c}`} cx={432 + c * 20} cy={50 + r * 20} r={5} className="fill-current" />
+        ))
+      )}
+      <path d="M427 190 L427 196 L537 196 L537 190" className={stroke} fill="none" />
+      <text x={482} y={214} textAnchor="middle" className={sub}>1 inch</text>
+    </svg>
+  );
+}
+
+/* File-size-vs-quality curve with the 80–85 sweet spot shaded. */
+function QualitySizeCurve() {
+  const label = "fill-current text-[13px]";
+  const sub = "fill-muted-foreground text-[11px]";
+  const x0 = 70, x1 = 540, yTop = 30, yBot = 220;
+  return (
+    <svg viewBox="0 0 600 270" className="mx-auto h-auto w-full max-w-2xl text-muted-foreground" role="img" aria-label="File size versus JPEG quality sweet spot at 80 to 85">
+      <rect x={x0 + (x1 - x0) * 0.8} y={yTop} width={(x1 - x0) * 0.05} height={yBot - yTop} className="fill-primary/15" />
+      <path d={`M${x0} ${yTop} L${x0} ${yBot} L${x1} ${yBot}`} className="stroke-current stroke-[1.5]" fill="none" />
+      <path d={`M${x0} ${yTop + 8} C 150 ${yTop + 20}, 230 120, 320 175 C 390 200, 470 214, ${x1} ${yBot - 4}`} className="stroke-primary stroke-[2.5]" fill="none" />
+      <text x={40} y={yTop + 4} textAnchor="end" className={sub}>size</text>
+      <text x={x0} y={yBot + 18} textAnchor="middle" className={sub}>0</text>
+      <text x={x1} y={yBot + 18} textAnchor="middle" className={sub}>100</text>
+      <text x={(x0 + x1) / 2} y={yBot + 36} textAnchor="middle" className={label}>JPEG quality</text>
+      <text x={x0 + (x1 - x0) * 0.825} y={yTop - 6} textAnchor="middle" className="fill-primary text-[11px] font-medium">sweet spot 80–85</text>
+    </svg>
+  );
+}
+
+/* 1-bit / 8-bit / 24-bit gradient bars (manual, no defs). */
+function BitDepthGradient() {
+  const label = "fill-current text-[12px]";
+  const stroke = "stroke-current stroke-[1]";
+  const gray = (i: number, n: number) =>
+    `rgb(${(30 + i * (215 / (n - 1))) | 0},${(30 + i * (215 / (n - 1))) | 0},${(30 + i * (215 / (n - 1))) | 0})`;
+  return (
+    <svg viewBox="0 0 600 240" className="mx-auto h-auto w-full max-w-2xl text-muted-foreground" role="img" aria-label="Color depth comparison 1-bit 8-bit 24-bit gradients">
+      <text x={20} y={44} className={label}>1-bit (2 colors)</text>
+      <rect x={200} y={30} width={200} height={28} className={`fill-current ${stroke}`} />
+      <rect x={300} y={30} width={100} height={28} className="fill-white" stroke="currentColor" strokeWidth={1} />
+
+      <text x={20} y={114} className={label}>8-bit (256 levels)</text>
+      {Array.from({ length: 8 }).map((_, i) => (
+        <rect key={i} x={200 + i * 25} y={100} width={25} height={28} fill={gray(i, 8)} />
+      ))}
+      <rect x={200} y={100} width={200} height={28} className={`fill-none ${stroke}`} />
+
+      <text x={20} y={184} className={label}>24-bit (16M colors)</text>
+      {Array.from({ length: 50 }).map((_, i) => (
+        <rect key={i} x={200 + i * 4} y={170} width={4} height={28} fill={gray(i, 50)} />
+      ))}
+      <rect x={200} y={170} width={200} height={28} className={`fill-none ${stroke}`} />
+      <text x={300} y={222} textAnchor="middle" className="fill-muted-foreground text-[11px]">more bits → smoother gradient</text>
+    </svg>
+  );
+}
+
+/* Five violet squares at increasing alpha over a checkerboard (manual). */
+function AlphaChannel() {
+  const label = "fill-current text-[12px]";
+  const sub = "fill-muted-foreground text-[11px]";
+  const cell = (x: number, y: number, dark: boolean) => (
+    <rect x={x} y={y} width={10} height={10} fill={dark ? "rgb(220,220,226)" : "rgb(245,245,248)"} />
+  );
+  return (
+    <svg viewBox="0 0 600 180" className="mx-auto h-auto w-full max-w-2xl text-muted-foreground" role="img" aria-label="The alpha channel five violet squares at increasing opacity over a checkerboard">
+      {Array.from({ length: 5 }).map((_, i) => {
+        const x = 20 + i * 116;
+        const alpha = i / 4;
+        return (
+          <g key={i}>
+            {Array.from({ length: 10 }).map((_, r) =>
+              Array.from({ length: 10 }).map((_, c) => cell(x + c * 10, 20 + r * 10, (c + r) % 2 === 0))
+            )}
+            <rect x={x} y={20} width={100} height={100} fill="rgb(139,92,246)" opacity={alpha} />
+            <rect x={x} y={20} width={100} height={100} fill="none" stroke="currentColor" strokeWidth={1} />
+            <text x={x + 50} y={140} textAnchor="middle" className={sub}>{"α="}{alpha === 0 ? "0" : alpha === 1 ? "1" : alpha}</text>
+          </g>
+        );
+      })}
+      <text x={300} y={168} textAnchor="middle" className={label}>higher alpha → more opaque</text>
+    </svg>
+  );
+}
+
+/* Resize (distorts circle→ellipse) vs Crop (circle stays circle). */
+function ResizeVsCrop() {
+  const box = "fill-none stroke-current stroke-[1.5]";
+  const arrow = "stroke-current stroke-[1.5]";
+  const label = "fill-current text-[12px]";
+  return (
+    <svg viewBox="0 0 600 280" className="mx-auto h-auto w-full max-w-2xl text-muted-foreground" role="img" aria-label="Resizing to a new ratio distorts cropping to it does not">
+      <text x={20} y={26} className={label}>Resize to 16:9 (distorted)</text>
+      <rect x={40} y={40} width={70} height={70} className={box} />
+      <circle cx={75} cy={75} r={26} className="fill-primary" />
+      <path d="M125 75 L170 75 M162 70 L170 75 L162 80" className={arrow} fill="none" />
+      <rect x={180} y={50} width={160} height={50} className={box} />
+      <ellipse cx={260} cy={75} rx={56} ry={16} className="fill-primary" />
+
+      <text x={20} y={166} className={label}>Crop to 16:9 (correct)</text>
+      <rect x={40} y={180} width={70} height={70} className={box} />
+      <circle cx={75} cy={215} r={26} className="fill-primary" />
+      <rect x={40} y={195} width={70} height={40} className="fill-none stroke-primary stroke-[1.5]" strokeDasharray="4 3" />
+      <path d="M125 215 L170 215 M162 210 L170 215 L162 220" className={arrow} fill="none" />
+      <rect x={180} y={190} width={160} height={50} className={box} />
+      <circle cx={260} cy={215} r={20} className="fill-primary" />
+    </svg>
+  );
+}
+
+/* Classic image-macro / meme layout: top caption + image + bottom caption. */
+function MemeLayout() {
+  const label = "fill-current text-[13px]";
+  const stroke = "stroke-current stroke-[1.5]";
+  return (
+    <svg viewBox="0 0 600 400" className="mx-auto h-auto w-full max-w-2xl text-muted-foreground" role="img" aria-label="Meme image macro layout top caption image bottom caption">
+      <rect x={40} y={20} width={520} height={360} rx={8} className={`fill-none ${stroke}`} />
+      <rect x={40} y={20} width={520} height={80} className="fill-muted/40" />
+      <rect x={40} y={300} width={520} height={80} className="fill-muted/40" />
+      <text x={300} y={50} textAnchor="middle" className={label}>TOP CAPTION</text>
+      <rect x={160} y={62} width={280} height={20} className="fill-white" />
+      <rect x={200} y={84} width={200} height={12} className="fill-white" />
+      <text x={300} y={210} textAnchor="middle" className="fill-muted-foreground text-[14px]">IMAGE</text>
+      <text x={300} y={330} textAnchor="middle" className={label}>BOTTOM CAPTION</text>
+      <rect x={180} y={342} width={240} height={20} className="fill-white" />
+      <rect x={210} y={364} width={180} height={12} className="fill-white" />
+    </svg>
+  );
+}
+
+/* Single watermark vs tiled (diagonal) watermark. */
+function WatermarkTypes() {
+  const box = "fill-none stroke-current stroke-[1.5]";
+  const label = "fill-current text-[13px]";
+  const mark = "fill-primary";
+  return (
+    <svg viewBox="0 0 600 240" className="mx-auto h-auto w-full max-w-2xl text-muted-foreground" role="img" aria-label="Single watermark versus tiled diagonal watermark">
+      <text x={130} y={26} textAnchor="middle" className={label}>Single</text>
+      <rect x={40} y={40} width={180} height={160} className={box} />
+      <text x={130} y={128} textAnchor="middle" className={`${mark} text-[18px] font-bold`} opacity={0.6}>© SAMPLE</text>
+
+      <text x={430} y={26} textAnchor="middle" className={label}>Tiled (diagonal)</text>
+      <rect x={340} y={40} width={180} height={160} className={box} />
+      <g transform="rotate(-30 430 120)">
+        {Array.from({ length: 5 }).map((_, r) =>
+          Array.from({ length: 4 }).map((_, c) => (
+            <text key={`${r}-${c}`} x={300 + c * 70} y={70 + r * 50} textAnchor="middle" className={`${mark} text-[12px] font-bold`} opacity={0.45}>© SAMPLE</text>
+          ))
+        )}
+      </g>
+    </svg>
+  );
+}
+
+/* Blur (smooth) vs Pixelate (blocky) — manual gradient vs mosaic. */
+function BlurVsPixelate() {
+  const box = "fill-none stroke-current stroke-[1.5]";
+  const label = "fill-current text-[13px]";
+  const gray = (v: number) => `rgb(${v},${v},${v})`;
+  return (
+    <svg viewBox="0 0 600 240" className="mx-auto h-auto w-full max-w-2xl text-muted-foreground" role="img" aria-label="Blur smooth versus pixelate blocky redaction">
+      <text x={130} y={26} textAnchor="middle" className={label}>Blur (smooth)</text>
+      <rect x={40} y={40} width={180} height={160} className={box} />
+      {Array.from({ length: 45 }).map((_, i) => (
+        <rect key={i} x={40 + i * 4} y={40} width={4} height={160} fill={gray(60 + Math.round(120 * (1 - Math.abs((i - 22.5) / 22.5))))} />
+      ))}
+
+      <text x={430} y={26} textAnchor="middle" className={label}>Pixelate (blocky)</text>
+      <rect x={340} y={40} width={180} height={160} className={box} />
+      {Array.from({ length: 9 }).map((_, r) =>
+        Array.from({ length: 9 }).map((_, c) => {
+          const cx = c - 4, cr = r - 4;
+          const d = Math.sqrt(cx * cx + cr * cr) / 5.66;
+          return <rect key={`${r}-${c}`} x={340 + c * 20} y={40 + r * 20} width={20} height={20} fill={gray(60 + Math.round(120 * (1 - d)))} />;
+        })
+      )}
+    </svg>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
 /* Registry + public components                                               */
 /* -------------------------------------------------------------------------- */
 
@@ -203,6 +406,14 @@ const DIAGRAMS: Partial<Record<DiagramName, React.FC>> = {
   "compression-flow": CompressionFlow,
   "exif-rotation": ExifRotation,
   "aspect-ratio-boxes": AspectRatioBoxes,
+  "ppi-vs-dpi": PpiVsDpi,
+  "quality-size-curve": QualitySizeCurve,
+  "bit-depth-gradient": BitDepthGradient,
+  "alpha-channel": AlphaChannel,
+  "resize-vs-crop": ResizeVsCrop,
+  "meme-layout": MemeLayout,
+  "watermark-types": WatermarkTypes,
+  "blur-vs-pixelate": BlurVsPixelate,
 };
 
 /**

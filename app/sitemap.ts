@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { tools } from "@/lib/data/tools";
+import { guides } from "@/lib/data/guides";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
@@ -8,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     "",
     "/tools",
+    "/guides",
     "/about",
     "/contact",
     "/privacy-policy",
@@ -18,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}${path}`,
     lastModified: now,
     changeFrequency: "monthly",
-    priority: path === "" ? 1 : path === "/tools" ? 0.9 : 0.6,
+    priority: path === "" ? 1 : path === "/tools" || path === "/guides" ? 0.9 : 0.6,
   }));
 
   const toolEntries: MetadataRoute.Sitemap = tools.map((tool) => ({
@@ -28,5 +30,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticEntries, ...toolEntries];
+  const guideEntries: MetadataRoute.Sitemap = guides.map((guide) => ({
+    url: `${baseUrl}/guides/${guide.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticEntries, ...toolEntries, ...guideEntries];
 }

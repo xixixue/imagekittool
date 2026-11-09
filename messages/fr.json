@@ -122,6 +122,9 @@
     "language": "Langue"
   },
   "Home": {
+    "guidesTitle": "Comprenez comment fonctionnent les images",
+    "guidesSub": "Explications illustrées sur les formats, la compression, la résolution, la couleur et l'édition d'images.",
+    "viewAllGuides": "Voir tous les guides",
     "badge": "100% local au navigateur · aucun téléversement",
     "title": "Des outils d'image gratuits qui respectent votre confidentialité",
     "subtitle": "Compressez, redimensionnez, convertissez et recadrez des images directement dans votre navigateur. Vos fichiers ne quittent jamais votre appareil, sauf si vous choisissez de les enregistrer dans votre cloud.",

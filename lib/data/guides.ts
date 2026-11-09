@@ -407,4 +407,483 @@ export const guides: Guide[] = [
       },
     ],
   },
+  {
+    slug: "image-resolution-ppi-dpi",
+    title: "Image Resolution, PPI, and DPI Explained",
+    description:
+      "What resolution really means, the difference between PPI (screen) and DPI (print), and why a 300-PPI image is not 'higher quality' than a 72-PPI one.",
+    category: "Resolution",
+    coverDiagram: "ppi-vs-dpi",
+    readingTimeMin: 7,
+    relatedToolSlugs: ["image-resizer"],
+    publishedAt: "2025-01-22",
+    body: [
+      {
+        type: "paragraph",
+        text: "Resolution is one of the most misunderstood image properties. People talk about a photo being 'high resolution' or 'low resolution' without saying what they actually mean — pixel dimensions, pixels per inch, or print size. The three are related but not the same, and confusing them leads to files that print blurry or web pages that load slowly for no reason.",
+      },
+      { type: "heading", text: "Pixel dimensions are the real resolution" },
+      {
+        type: "paragraph",
+        text: "An image file stores a grid of pixels. A 4000×3000 photo has twelve million pixels regardless of any other setting. That grid — the count of pixels wide by tall — is the only thing that determines how much detail the file actually holds. Everything else is about how you choose to display or print that grid.",
+      },
+      { type: "heading", text: "PPI is input density" },
+      {
+        type: "paragraph",
+        text: "Pixels per inch (PPI) describes how densely those pixels are packed when an image is shown on a screen. A 4000×3000 image displayed at 300 PPI fills about 13×10 inches of screen; at 72 PPI it fills roughly 55×42 inches. The file did not change — only the display density did.",
+      },
+      {
+        type: "diagram",
+        name: "ppi-vs-dpi",
+        caption:
+          "PPI measures screen pixel density; DPI measures print dot density. Both are per-inch, but they describe different output devices.",
+      },
+      { type: "heading", text: "DPI is output density" },
+      {
+        type: "paragraph",
+        text: "Dots per inch (DPI) is a printer specification: how many ink dots the printer lays down per inch of paper. A 300 DPI printer sprays 90,000 dots into every square inch. Higher DPI means finer ink detail on paper, but it has nothing to do with the screen.",
+      },
+      { type: "heading", text: "Common targets" },
+      {
+        type: "list",
+        items: [
+          "Web and app screens: 72–96 PPI is the historical baseline, though modern displays are denser; serve images sized to their CSS box, not to a fixed PPI.",
+          "Retina and high-DPI screens: export at 2× (or 3×) the display dimensions so the image stays sharp when the screen packs more pixels per inch.",
+          "Print: 300 PPI is the standard for photographic quality; 150 PPI is acceptable for large posters viewed at a distance.",
+        ],
+      },
+      { type: "heading", text: "Resizing changes pixels, not PPI" },
+      {
+        type: "paragraph",
+        text: "When you resize an image you change its pixel dimensions — you add or remove pixels from the grid. The PPI metadata tag may or may not update, but what matters is the new pixel count. A 4000×3000 image downsized to 800×600 has genuinely lost detail; it cannot be sharpened back into existence.",
+      },
+      {
+        type: "callout",
+        text: "Think in pixel dimensions for the web and in PPI only for print. A '300 PPI' badge on a 400-pixel-wide image is meaningless — it would print at just over an inch wide.",
+      },
+    ],
+  },
+  {
+    slug: "compress-images-without-losing-quality",
+    title: "How to Compress Images Without Losing Quality",
+    description:
+      "A practical workflow for shrinking image files while keeping them looking sharp — format choice, the quality sweet spot, resizing, and metadata.",
+    category: "Compression",
+    coverDiagram: "quality-size-curve",
+    readingTimeMin: 7,
+    relatedToolSlugs: ["image-compressor", "compress-image-to-kb"],
+    publishedAt: "2025-01-24",
+    body: [
+      {
+        type: "paragraph",
+        text: "Most images on the web are larger than they need to be. A phone photo straight off the camera can be 4–6 megabytes; the same image, prepared correctly for a web page, can be 150–300 kilobytes with no visible difference. The gap between those two numbers is almost entirely wasted bytes — and shrinking it is a repeatable process, not guesswork.",
+      },
+      { type: "heading", text: "Start from the right format" },
+      {
+        type: "paragraph",
+        text: "Format choice sets the ceiling on how small a file can get. Photographs compress best as JPEG or WebP because they are designed for smooth, continuous-tone content. Graphics with flat color, sharp edges, or transparency — logos, screenshots, diagrams — compress best as PNG or WebP because lossless encoding preserves hard edges that JPEG would blur. Picking the wrong format means you either blur your logo or waste megabytes on a photo.",
+      },
+      {
+        type: "diagram",
+        name: "quality-size-curve",
+        caption:
+          "JPEG file size falls steeply as quality drops from 100, then flattens. The visible-quality sweet spot is usually 80–85.",
+      },
+      { type: "heading", text: "Find the quality sweet spot" },
+      {
+        type: "paragraph",
+        text: "For lossy formats, the quality setting controls how aggressively detail is discarded. The relationship is not linear: dropping quality from 100 to 85 removes a large amount of file size with almost no perceptible change, while dropping from 85 to 50 keeps removing size but starts to introduce visible blockiness and artifacts around edges. Most photographs look identical to the source at quality 80–85 and are a fraction of the size.",
+      },
+      {
+        type: "image",
+        src: "/guides/quality-comparison.png",
+        alt: "The same photograph saved at JPEG quality 95, 70, and 30, showing how compression artifacts appear as quality drops.",
+        width: 1200,
+        height: 400,
+        caption:
+          "Quality 95 (left) is nearly indistinguishable from the source; quality 30 (right) shows clear blocky artifacts. The middle ground around 80–85 is where most photos belong.",
+      },
+      { type: "heading", text: "Resize before compressing" },
+      {
+        type: "paragraph",
+        text: "An image that will be displayed at 800 pixels wide does not need to be 4000 pixels wide in the file. Resize to the largest dimensions you will actually display (or 2× for retina), then compress. Serving oversized pixels and letting the browser scale them down is the single most common source of wasted bandwidth.",
+      },
+      { type: "heading", text: "Strip what you do not need" },
+      {
+        type: "list",
+        items: [
+          "Remove EXIF metadata (camera model, GPS, timestamps) unless you have a reason to keep it — it can add tens of kilobytes and leak private information.",
+          "Drop embedded color profiles if your image will only ever appear on the web in sRGB.",
+          "Strip thumbnails that duplicate the main image.",
+        ],
+      },
+      {
+        type: "callout",
+        text: "Always compress from a lossless master (PNG or the original). Repeatedly opening and re-saving a JPEG compounds artifacts — each generation loses a little more quality that you can never recover.",
+      },
+    ],
+  },
+  {
+    slug: "color-depth-explained",
+    title: "Understanding Color Depth: 8-bit, 16-bit, and 24-bit",
+    description:
+      "What bit depth means, the difference between 8-bit and 24-bit color, and why smooth gradients sometimes show visible bands.",
+    category: "Color",
+    coverDiagram: "bit-depth-gradient",
+    readingTimeMin: 8,
+    relatedToolSlugs: ["image-converter"],
+    publishedAt: "2025-01-26",
+    body: [
+      {
+        type: "paragraph",
+        text: "Color depth is the number of bits used to store the color of a single pixel. It sounds technical, but it answers a question you have seen the answer to a hundred times: why do some gradients look smooth and others show visible bands of color? The difference is almost always bit depth.",
+      },
+      { type: "heading", text: "What bit depth measures" },
+      {
+        type: "paragraph",
+        text: "Each color channel — red, green, and blue — is stored as a number. Bit depth is how many bits that number has. More bits means more possible values per channel, which means more distinct shades the image can represent. An 8-bit channel has 256 levels; three 8-bit channels combine into about 16.7 million possible colors, which is what '24-bit color' means.",
+      },
+      {
+        type: "diagram",
+        name: "bit-depth-gradient",
+        caption:
+          "A 1-bit gradient has two colors; an 8-bit gradient shows visible steps; a 24-bit gradient is smooth to the eye.",
+      },
+      { type: "heading", text: "1-bit, 8-bit, and 24-bit" },
+      {
+        type: "list",
+        items: [
+          "1-bit: one bit per pixel, so two colors — pure black and white. Used for line art and scanned text.",
+          "8-bit indexed (GIF, some PNG): a palette of up to 256 colors. Fine for flat graphics, limiting for photos.",
+          "8-bit per channel (24-bit RGB): ~16.7 million colors. The default for web photos and most displays.",
+          "Higher bit depths (16-bit per channel): trillions of colors, used in photography and editing to preserve headroom through heavy adjustments.",
+        ],
+      },
+      { type: "heading", text: "Banding and why it happens" },
+      {
+        type: "paragraph",
+        text: "When a smooth gradient — a blue sky, a soft shadow — is stored at low bit depth, the available shades run out before the transition is complete. Instead of a continuous ramp, the eye sees distinct steps between one shade and the next. This is banding. It is most visible in narrow-range gradients where only a few of the available levels are used across a large area.",
+      },
+      {
+        type: "image",
+        src: "/guides/gradient-banding.png",
+        alt: "A blue gradient shown with limited color depth (visible horizontal bands) and with full color depth (smooth).",
+        width: 1200,
+        height: 400,
+        caption:
+          "Limited depth turns a smooth gradient into visible bands. Higher bit depth — or careful dithering — restores the continuous ramp.",
+      },
+      { type: "heading", text: "When bit depth matters" },
+      {
+        type: "list",
+        items: [
+          "Photography with heavy editing: 16-bit preserves smooth gradients through aggressive curves and levels adjustments.",
+          "Web display: 8-bit per channel is standard and sufficient; higher depth is wasted on most screens.",
+          "Flat graphics and logos: 8-bit indexed is usually enough and keeps files small.",
+        ],
+      },
+      {
+        type: "callout",
+        text: "If you see banding in a gradient you exported, the fix is rarely 'more resolution' — it is a higher bit depth in the source, or exporting with dithering so the steps are broken up into noise the eye averages away.",
+      },
+    ],
+  },
+  {
+    slug: "alpha-channel-transparency",
+    title: "Transparency in Images: The Alpha Channel Explained",
+    description:
+      "How the alpha channel works, which image formats support transparency, and when partial transparency beats a hard edge.",
+    category: "Color",
+    coverDiagram: "alpha-channel",
+    readingTimeMin: 6,
+    relatedToolSlugs: ["image-converter", "image-cropper"],
+    publishedAt: "2025-01-28",
+    body: [
+      {
+        type: "paragraph",
+        text: "Transparency is what lets a logo sit cleanly on any background, a UI element cast a soft shadow, or two photos blend into a composite. It is not magic — it is a fourth channel of data stored alongside red, green, and blue. That channel is called alpha, and understanding it explains why some formats support transparency and others do not.",
+      },
+      { type: "heading", text: "What the alpha channel is" },
+      {
+        type: "paragraph",
+        text: "Every pixel in an image has red, green, and blue values that define its color. A transparent image adds a fourth value — alpha — that defines how opaque the pixel is. An alpha of 1 means fully opaque; 0 means fully transparent; anything in between is partially see-through. The alpha channel is, in effect, a grayscale image that controls visibility.",
+      },
+      {
+        type: "diagram",
+        name: "alpha-channel",
+        caption:
+          "Five squares of the same violet at increasing alpha over a checkerboard. At α=0 the background shows through completely; at α=1 the square is solid.",
+      },
+      { type: "heading", text: "How formats handle alpha" },
+      {
+        type: "paragraph",
+        text: "Not every image format can store an alpha channel. PNG and WebP support full 8-bit alpha — 256 levels of transparency, from fully clear to fully opaque. JPEG has no alpha channel at all: every JPEG pixel is fully opaque, and any transparent area gets filled with a solid color (usually white) when the image is exported. This is why a JPEG logo always arrives with a white box around it.",
+      },
+      {
+        type: "image",
+        src: "/guides/transparency-formats.png",
+        alt: "The same image saved as PNG, JPEG, and WebP, showing which formats preserve transparency and which fill it with white.",
+        width: 1200,
+        height: 400,
+        caption:
+          "PNG and WebP keep the transparent checkerboard; JPEG fills it with solid white because it has no alpha channel.",
+      },
+      { type: "heading", text: "Partial transparency" },
+      {
+        type: "paragraph",
+        text: "Alpha is not just on or off. Partial transparency — values between 0 and 1 — is what makes anti-aliased edges look clean, soft drop shadows blend into the background, and glass effects read as translucent. A logo with a hard one-bit mask has jagged edges; the same logo with 8-bit alpha has smooth edges because the boundary pixels are partially transparent.",
+      },
+      { type: "heading", text: "When to use transparency" },
+      {
+        type: "list",
+        items: [
+          "Logos and icons that must sit on varying backgrounds.",
+          "UI elements with soft shadows, glows, or glass effects.",
+          "Composites where one image must blend into another along feathered edges.",
+        ],
+      },
+      {
+        type: "callout",
+        text: "If your image needs transparency, export as PNG or WebP — never JPEG. And if you are placing a PNG with partial transparency onto a photo, make sure the tool you use preserves alpha through the export rather than flattening it onto white.",
+      },
+    ],
+  },
+  {
+    slug: "resizing-vs-cropping",
+    title: "Resizing vs Cropping: When to Use Each",
+    description:
+      "Resizing changes dimensions, cropping changes the frame. Using the wrong one stretches your image or cuts off the wrong part.",
+    category: "Editing",
+    coverDiagram: "resize-vs-crop",
+    readingTimeMin: 5,
+    relatedToolSlugs: ["image-resizer", "image-cropper"],
+    publishedAt: "2025-01-30",
+    body: [
+      {
+        type: "paragraph",
+        text: "Resizing and cropping are the two ways to change an image's dimensions, and they are not interchangeable. Resizing stretches or shrinks the whole image; cropping cuts part of it away. Using the wrong one is how logos end up distorted and how the subject of a photo ends up missing its head after a platform crops it.",
+      },
+      { type: "heading", text: "Resizing changes dimensions" },
+      {
+        type: "paragraph",
+        text: "Resizing scales every pixel in the image up or down to hit new width and height values. The entire image is preserved — nothing is removed — but if the new dimensions have a different aspect ratio than the original, the content is stretched to fit. A circle becomes an ellipse; a square becomes a rectangle. That distortion is usually unwanted.",
+      },
+      {
+        type: "diagram",
+        name: "resize-vs-crop",
+        caption:
+          "Resized to a new ratio, the circle stretches into an ellipse. Cropped to the same ratio, the circle stays a circle.",
+      },
+      { type: "heading", text: "Cropping changes the frame" },
+      {
+        type: "paragraph",
+        text: "Cropping removes pixels from the edges to produce a smaller image with a different aspect ratio. The content that remains is not stretched — its proportions are preserved. Cropping is how you turn a 4:3 photo into a 16:9 banner without distorting anyone's face, by choosing which part of the frame to keep and which to discard.",
+      },
+      {
+        type: "image",
+        src: "/guides/resize-crop-demo.png",
+        alt: "A square image with a circle: resized to 16:9 (circle distorted into an ellipse) versus cropped to 16:9 (circle stays a circle).",
+        width: 1200,
+        height: 400,
+        caption:
+          "The same source, two outcomes. Resizing to 16:9 squashes the circle; cropping to 16:9 keeps it round by discarding the top and bottom.",
+      },
+      { type: "heading", text: "When to use each" },
+      {
+        type: "list",
+        items: [
+          "Resize when you need a smaller or larger file of the same ratio — a thumbnail, a retina 2× version, a print at a different physical size.",
+          "Crop when you need a different aspect ratio — a 1:1 social avatar from a 3:2 photo, a 16:9 banner from a square.",
+          "Never resize to a different ratio. If the target ratio differs from the source, crop first, then resize.",
+        ],
+      },
+      {
+        type: "callout",
+        text: "The safe order is always: crop to the target ratio first, then resize the cropped image to the target pixel dimensions. Cropping first guarantees no distortion; resizing second guarantees the right file size.",
+      },
+    ],
+  },
+  {
+    slug: "how-to-make-a-meme",
+    title: "What Is a Meme and How to Make One",
+    description:
+      "The anatomy of an image macro — top and bottom captions in Impact font — and how to make one that lands.",
+    category: "Editing",
+    coverDiagram: "meme-layout",
+    readingTimeMin: 6,
+    relatedToolSlugs: ["meme-generator"],
+    publishedAt: "2025-02-01",
+    body: [
+      {
+        type: "paragraph",
+        text: "An image macro — what most people call a meme — is one of the most recognizable formats on the internet: a single image with a short line of text above it and another below. The format is rigid on purpose. The constraints are what make it instantly readable and easy to remix.",
+      },
+      { type: "heading", text: "Anatomy of an image macro" },
+      {
+        type: "paragraph",
+        text: "The classic meme has three parts: a top caption that sets up the joke, an image in the middle that provides the context or reaction, and a bottom caption that delivers the punchline. The text is set in the Impact typeface, rendered in white with a heavy black outline so it stays legible over any background, centered horizontally, and in all caps.",
+      },
+      {
+        type: "diagram",
+        name: "meme-layout",
+        caption:
+          "The classic layout: top caption band, image, bottom caption band. Impact font, white fill, black outline, centered.",
+      },
+      { type: "heading", text: "The caption style" },
+      {
+        type: "paragraph",
+        text: "Impact is the meme font not because it is beautiful but because it is unmistakable. The thick, condensed letters in white with a black outline read clearly over photographs, screenshots, and busy backgrounds alike. All caps is standard — lowercase captions break the visual shorthand and make the meme feel off. The outline is what does the legibility work; without it, white text vanishes against light areas of the image.",
+      },
+      {
+        type: "image",
+        src: "/guides/meme-sample.png",
+        alt: "A sample meme with white Impact-style top and bottom captions outlined in black over a simple scene.",
+        width: 800,
+        height: 400,
+        caption:
+          "Top sets up, bottom delivers. White Impact text with a black outline, centered, in all caps.",
+      },
+      { type: "heading", text: "Top and bottom text" },
+      {
+        type: "paragraph",
+        text: "The split is structural. The top line establishes the situation; the bottom line pays it off. 'WHEN THE IMAGE' on top and 'FINALLY LOADS' on the bottom works because the setup creates an expectation and the punchline subverts it. Memes that put the whole joke in one caption usually read as captions, not memes.",
+      },
+      { type: "heading", text: "Tips that land" },
+      {
+        type: "list",
+        items: [
+          "Keep it short. Each caption is a phrase, not a sentence — the image does half the work.",
+          "Set up on top, pay off on bottom. The structure is the joke.",
+          "Stay relatable. The best memes describe a situation the viewer has been in.",
+          "Use the font. Impact, white, outline, all caps. Departures read as wrong.",
+        ],
+      },
+      {
+        type: "callout",
+        text: "The format is older than most platforms that host it, and it survives because the constraints are tight enough that anyone can make one and recognize one instantly. The image matters, but the caption structure is what makes it a meme.",
+      },
+    ],
+  },
+  {
+    slug: "watermarking-your-images",
+    title: "Watermarking Your Images: Visible vs Invisible",
+    description:
+      "Why and how to watermark images — visible marks that deter casual copying versus invisible marks that prove ownership.",
+    category: "Privacy",
+    coverDiagram: "watermark-types",
+    readingTimeMin: 7,
+    relatedToolSlugs: ["watermark-image"],
+    publishedAt: "2025-02-03",
+    body: [
+      {
+        type: "paragraph",
+        text: "Watermarking is the practice of marking an image to signal ownership or deter unauthorized reuse. It ranges from a small logo in the corner to an invisible signature woven into the pixel data. Each approach makes a different trade-off between visibility, deterrence, and proof.",
+      },
+      { type: "heading", text: "Why watermark" },
+      {
+        type: "paragraph",
+        text: "A watermark does two jobs. The first is deterrence: a visible mark makes an image less attractive to copy and harder to pass off as someone else's. The second is provenance: if a dispute arises, a watermark — especially an invisible one — can help establish who created the image first. Most casual use is about the first; professional use is about the second.",
+      },
+      {
+        type: "diagram",
+        name: "watermark-types",
+        caption:
+          "A single mark in the center versus a tiled diagonal pattern. Tiled marks are harder to crop out but more intrusive.",
+      },
+      { type: "heading", text: "Visible watermarks" },
+      {
+        type: "paragraph",
+        text: "A visible watermark is text or a logo overlaid on the image, usually semi-transparent so it identifies the owner without completely obscuring the content. The two common placements are a single mark — typically in a corner or the center — and a tiled pattern repeated across the whole image. A single mark is unobtrusive but easy to crop out; a tiled pattern is nearly impossible to remove cleanly but visibly degrades the image.",
+      },
+      {
+        type: "image",
+        src: "/guides/watermark-demo.png",
+        alt: "The same image with a single semi-transparent watermark and with a tiled diagonal watermark pattern.",
+        width: 1200,
+        height: 400,
+        caption:
+          "A single watermark is clean but croppable. A tiled pattern resists removal but covers the whole image.",
+      },
+      { type: "heading", text: "Placement and opacity" },
+      {
+        type: "list",
+        items: [
+          "Place the mark over the most important part of the image, not an empty corner — a corner mark is trivially cropped away.",
+          "Use enough opacity that the mark survives recompression and screenshots, but not so much that it ruins the image.",
+          "Tiled diagonal patterns are the most robust against removal; single marks are the least intrusive.",
+          "Include identifying info — a name, handle, or site — not just a generic logo.",
+        ],
+      },
+      { type: "heading", text: "Invisible watermarking" },
+      {
+        type: "paragraph",
+        text: "Invisible watermarks encode ownership information into the pixel data in a way that is imperceptible to the eye but recoverable by software. Unlike a visible mark, a well-designed invisible watermark survives resizing, recompression, and partial cropping, which makes it useful for proving provenance after the fact. The trade-off is that it does nothing to deter casual copying — the viewer never sees it.",
+      },
+      {
+        type: "callout",
+        text: "Visible watermarks deter; invisible watermarks prove. For casual protection, a semi-transparent tiled mark over the subject does most of the job. For real provenance disputes, only an invisible watermark that survives edits is meaningful.",
+      },
+    ],
+  },
+  {
+    slug: "blur-vs-pixelate",
+    title: "Blur vs Pixelate: Protecting Privacy in Images",
+    description:
+      "Two ways to redact a face or sensitive region in a photo — how blur and pixelation differ, and which is harder to reverse.",
+    category: "Privacy",
+    coverDiagram: "blur-vs-pixelate",
+    readingTimeMin: 6,
+    relatedToolSlugs: ["blur-image", "photo-editor"],
+    publishedAt: "2025-02-05",
+    body: [
+      {
+        type: "paragraph",
+        text: "When you need to obscure a face, a license plate, or sensitive text in a photo, the two standard tools are blur and pixelate. Both replace the original detail with something unrecoverable to the eye, but they work differently and leave different amounts of information behind. Choosing the wrong one — or applying it too lightly — can leak exactly what you meant to hide.",
+      },
+      { type: "heading", text: "Two ways to redact" },
+      {
+        type: "paragraph",
+        text: "Both operations take a region of the image and destroy its detail. Blur averages neighboring pixels together, producing a soft, smooth smear. Pixelate replaces the region with a grid of large blocks, each a single color averaged from the pixels it covers. The visual result is different — one is soft, the other is blocky — and so is the amount of information each leaves behind.",
+      },
+      {
+        type: "diagram",
+        name: "blur-vs-pixelate",
+        caption:
+          "Blur produces a smooth gradient; pixelate produces visible blocks. The blocky version leaves less recoverable structure.",
+      },
+      { type: "heading", text: "Blur: smooth but partially recoverable" },
+      {
+        type: "paragraph",
+        text: "Gaussian blur is a weighted average of nearby pixels. Because the averaging is a mathematically well-defined operation, researchers have shown it can sometimes be partially reversed through deconvolution — given enough of the surrounding context and a strong enough original, the blur can be unwound to recover a recognizable face. For mild obscuring this is fine; for genuine privacy it is a risk.",
+      },
+      { type: "heading", text: "Pixelate: blocky and harder to reverse" },
+      {
+        type: "paragraph",
+        text: "Pixelation throws away the fine detail by downsampling to a few large blocks and scaling them back up. The information inside each block is averaged into a single color and is genuinely gone. At small block sizes pixelation is much harder to reverse than blur, because there is no smooth function to invert — just flat blocks of averaged color. The trade-off is that it is visually louder.",
+      },
+      {
+        type: "image",
+        src: "/guides/blur-pixelate-demo.png",
+        alt: "The same face region shown blurred (smooth) and pixelated (blocky), contrasting the two redaction methods.",
+        width: 1200,
+        height: 400,
+        caption:
+          "Blur softens the detail; pixelate replaces it with blocks. For real privacy, small-block pixelation is the safer choice.",
+      },
+      { type: "heading", text: "Which to choose" },
+      {
+        type: "list",
+        items: [
+          "Mild obscuring (background faces, mild privacy): blur is acceptable and less visually jarring.",
+          "Genuine privacy (faces, IDs, plates): pixelate with small blocks, or a solid fill.",
+          "Cover the whole sensitive region, not just the center — partial redaction leaks the edges.",
+          "Never use a light blur on small text; it can often be read back with sharpening.",
+        ],
+      },
+      {
+        type: "callout",
+        text: "If the redaction matters — a face, a document, a license plate — pixelate with small blocks or fill the region solid. Blur is fine for aesthetics and for things that are already hard to read. When in doubt, destroy more detail than you think you need.",
+      },
+    ],
+  },
 ];

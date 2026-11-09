@@ -6,6 +6,8 @@ import { AdSlot } from "@/components/ads/ad-slot";
 import { ToolCard } from "@/components/tools/tool-card";
 import { CloudIcon, ShieldIcon, UserIcon } from "@/components/tools/tool-icon";
 import { tools } from "@/lib/data/tools";
+import { guides } from "@/lib/data/guides";
+import { GuideCard } from "@/components/guides/guide-card";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -76,6 +78,29 @@ export default async function HomePage() {
       <div className="mx-auto max-w-6xl px-4">
         <AdSlot slot="home-mid" />
       </div>
+
+      <section className="mx-auto max-w-6xl px-4 py-16">
+        <div className="flex items-end justify-between gap-4">
+          <div>
+            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">{t("guidesTitle")}</h2>
+            <p className="mt-2 text-muted-foreground">{t("guidesSub")}</p>
+          </div>
+          <Link
+            href="/guides"
+            className="hidden text-sm font-medium text-primary hover:underline sm:inline"
+          >
+            {t("viewAllGuides")} →
+          </Link>
+        </div>
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {[...guides]
+            .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
+            .slice(0, 3)
+            .map((guide) => (
+              <GuideCard key={guide.slug} guide={guide} />
+            ))}
+        </div>
+      </section>
 
       <section className="border-t border-border bg-muted/30">
         <div className="mx-auto grid max-w-6xl gap-6 px-4 py-16 sm:grid-cols-3">

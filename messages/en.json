@@ -122,6 +122,9 @@
     "language": "Language"
   },
   "Home": {
+    "guidesTitle": "Learn how images work",
+    "guidesSub": "Illustrated explainers on image formats, compression, resolution, color, and editing.",
+    "viewAllGuides": "View all guides",
     "badge": "100% browser-local · no upload",
     "title": "Free image tools that respect your privacy",
     "subtitle": "Compress, resize, convert, and crop images right in your browser. Files never leave your device unless you choose to save them to your cloud.",
