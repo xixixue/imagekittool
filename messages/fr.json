@@ -2,6 +2,108 @@
   "Ads": {
     "label": "Publicité"
   },
+  "ToolDeepDive": {
+    "image-compressor": {
+      "intro": "Le compresseur d'images réduit la taille des fichiers JPG, PNG et WebP sans modifier leurs dimensions en pixels. Il réencode chaque image dans votre navigateur à l'aide de l'API Canvas, vos fichiers ne quittent donc jamais votre appareil, sauf si vous les enregistrez explicitement dans le cloud. Un curseur de qualité équilibre fidélité visuelle et taille du fichier avec une estimation en temps réel, le traitement par lots gère jusqu'à 20 images à la fois, et les résultats se téléchargent individuellement ou sous forme d'une archive ZIP unique.",
+      "knowledge": [
+        { "heading": "Comment la compression avec perte supprime les détails", "body": "Le JPG et le WebP sont des formats avec perte : ils réduisent la taille des fichiers en supprimant les détails visuels haute fréquence que l'œil humain perçoit le moins. Le curseur de qualité contrôle l'intensité de cette suppression de détails — des valeurs plus basses produisent des fichiers plus petits mais introduisent des artefacts en blocs, en particulier dans les dégradés lisses et le texte. Le PNG est sans perte, le curseur n'a donc aucun effet sur la sortie PNG, qui préserve toujours chaque pixel. Pour les captures d'écran ou les images comportant du texte net, privilégiez le PNG ou une qualité JPG élevée afin de garder des contours nets." }
+      ],
+      "faq": [
+        { "q": "Quelle qualité dois-je utiliser pour les images web ?", "a": "Pour la plupart des photographies destinées au web, une qualité JPG comprise entre 70 et 80 constitue un bon point de départ — elle divise généralement la taille du fichier par deux avec une perte à peine perceptible. Montez à 85 ou 90 pour les images de héros où le détail compte, ou descendez à 60 pour les vignettes et les aperçus où la petite taille est prioritaire." },
+        { "q": "La compression multiple dégrade-t-elle la qualité ?", "a": "Oui. Chaque réencodage avec perte d'un JPG ou d'un WebP supprime un peu plus de détails, un phénomène appelé perte de génération. Pour éviter d'accumuler les artefacts, compressez à chaque fois à partir du fichier source d'origine plutôt que de recompresser une copie déjà compressée." }
+      ]
+    },
+    "image-resizer": {
+      "intro": "Le redimensionneur d'images modifie les dimensions en pixels des images JPG, PNG et WebP. Choisissez des pixels exacts, une mise à l'échelle en pourcentage ou un préréglage courant, et verrouillez le rapport d'aspect pour un ajustement de type contain qui évite toute déformation. Le traitement par lots redimensionne tout un dossier selon une seule spécification d'un coup. Tout le travail s'effectue localement dans votre navigateur, sans téléversement ni traitement côté serveur.",
+      "knowledge": [
+        { "heading": "Résolution, dimensions en pixels et taille d'impression", "body": "Les dimensions en pixels d'une image (largeur par hauteur) définissent combien de pixels elle contient, tandis que la résolution (PPI ou DPI) décrit la densité avec laquelle ces pixels sont imprimés sur papier. Le redimensionnement modifie le nombre de pixels, pas les métadonnées de résolution. Une image de 2000 par 1000 imprimée à 100 PPI couvre 20 par 10 pouces ; le même fichier à 300 PPI couvre environ 6,7 par 3,3 pouces. Pour une utilisation à l'écran, seules les dimensions en pixels comptent — définissez-les pour qu'elles correspondent à votre mise en page et laissez le navigateur gérer le reste." }
+      ],
+      "faq": [
+        { "q": "Quelle est la différence entre redimensionner et recadrer ?", "a": "Le redimensionnement met à l'échelle toute l'image de manière uniforme — chaque pixel reste, simplement plus grand ou plus petit. Le recadrage supprime une partie de l'image pour modifier son cadrage ou son rapport d'aspect. Utilisez le redimensionnement lorsque vous avez besoin de dimensions plus petites ; utilisez le recadreur d'images lorsque vous avez besoin d'une composition différente ou d'un rapport d'aspect fixe." },
+        { "q": "Dois-je redimensionner avant ou après la compression ?", "a": "Redimensionnez d'abord, puis compressez. Des dimensions plus petites signifient moins de pixels à encoder, ce qui s'ajoute aux gains de taille de fichier apportés par la compression. Redimensionner après une compression poussée ne permettra pas de retrouver les détails déjà perdus ; fixer les dimensions cibles dès le départ donne donc le meilleur rapport qualité-taille." }
+      ]
+    },
+    "image-converter": {
+      "intro": "Le convertisseur d'images transforme les images entre les formats JPG, PNG et WebP. Comme le JPG ne gère pas la transparence, la conversion d'un PNG ou d'un WebP comportant des zones transparentes en JPG remplit ces pixels avec une couleur de fond de votre choix. L'extension du fichier de sortie correspond toujours au véritable type MIME encodé, un fichier encodé en JPG n'est donc jamais livré avec un nom trompeur. La conversion par lots gère plusieurs fichiers à la fois, les résultats étant téléchargeables individuellement ou sous forme de ZIP.",
+      "knowledge": [
+        { "heading": "Quand privilégier le WebP plutôt que le JPG ou le PNG", "body": "Le WebP gère à la fois la compression avec et sans perte ainsi que la transparence dans un format unique, et produit généralement des fichiers plus petits que des JPG ou PNG équivalents. Les navigateurs modernes le prennent en charge universellement, ce qui en fait un choix par défaut solide pour les ressources web. Utilisez le JPG lorsque vous avez besoin d'une compatibilité maximale avec les systèmes anciens, et le PNG lorsque vous avez besoin d'une sortie sans perte garantie avec du texte ou des logos nets. Le WebP est aujourd'hui le meilleur choix polyvalent pour le web." }
+      ],
+      "faq": [
+        { "q": "Pourquoi mon PNG transparent obtient-il un fond blanc en JPG ?", "a": "Le JPG ne gère pas de canal alpha, les pixels transparents doivent donc être remplis avec une couleur unie lors de la conversion — le blanc par défaut. Choisissez une couleur de fond qui correspond à l'emplacement où l'image sera placée, ou convertissez plutôt en WebP ou en PNG si vous avez besoin de conserver la transparence." },
+        { "q": "La conversion de PNG en JPG est-elle avec perte ?", "a": "Oui. Le PNG est sans perte et le JPG est avec perte, la conversion réencode donc l'image et peut introduire des artefacts, en particulier dans les zones de fort contraste. Si la qualité est essentielle, conservez le PNG ou convertissez en WebP avec un réglage de qualité élevé." }
+      ]
+    },
+    "image-cropper": {
+      "intro": "Le recadreur d'images découpe les images JPG, PNG et WebP selon une région libre ou un rapport d'aspect fixe tel que 1:1, 4:3, 3:2 ou 16:9. Une commande de rotation à 90 degrés réoriente l'image avant le recadrage, et l'éditeur fonctionne à la fois à la souris et au tactile sur mobile. Le recadrage s'effectue entièrement dans votre navigateur — aucun téléversement, aucun aller-retour serveur.",
+      "knowledge": [
+        { "heading": "Rapports d'aspect pour les plateformes courantes", "body": "Les différentes plateformes favorisent différents rapports d'aspect : les publications carrées Instagram utilisent 1:1 et les publications paysage 1.91:1 ; les vignettes YouTube 16:9 ; de nombreuses images de partage social 16:9 ; les photos de couverture varient selon le réseau. Recadrer au rapport cible avant le téléversement évite le recadrage automatique de la plateforme, qui pourrait couper la mauvaise partie de votre image. Verrouillez le rapport, positionnez le recadrage et exportez à la résolution recommandée par la plateforme pour de meilleurs résultats." }
+      ],
+      "faq": [
+        { "q": "Puis-je recadrer selon un rapport d'aspect personnalisé ?", "a": "Oui. Choisissez le mode de recadrage libre pour tracer une région non contrainte, ou saisissez un rapport personnalisé si votre cas d'usage nécessite une proportion spécifique. Les préréglages fixes (1:1, 4:3, 3:2, 16:9) sont là pour des raisons de commodité et couvrent la plupart des formes de sortie courantes." },
+        { "q": "Le recadrage réduit-il la taille du fichier ?", "a": "Généralement oui — supprimer des pixels réduit les données que l'encodeur doit stocker, le fichier de sortie est donc souvent plus petit que la source. La réduction dépend de la quantité d'image que vous coupez ; combinez le recadrage avec le compresseur d'images pour obtenir la sortie la plus petite possible." }
+      ]
+    },
+    "compress-image-to-kb": {
+      "intro": "Compresser une image en KB réduit une image JPG, PNG ou WebP à une taille de fichier cible que vous spécifiez — 50 KB, 100 KB, 200 KB ou toute autre valeur. Il effectue une recherche de qualité bornée qui trouve le réglage de qualité le plus élevé respectant votre cible, et signale honnêtement lorsqu'une cible est inatteignable (par exemple, une image très détaillée qui ne peut pas tenir en 20 KB sans artefacts sévères). Le traitement est local ; rien n'est téléversé.",
+      "knowledge": [
+        { "heading": "Pourquoi certaines cibles sont inatteignables", "body": "La compression avec perte ne peut supprimer qu'une certaine quantité de détails avant qu'une image ne devienne inutilisable. Une petite cible appliquée à une source grande et détaillée impose des réglages de qualité très bas, et si même la qualité zéro dépasse la cible, l'objectif est mathématiquement impossible sans réduire les dimensions en pixels. L'outil vous signale quand cela se produit au lieu de produire silencieusement un fichier corrompu — combinez-le avec le redimensionneur d'images pour réduire d'abord les dimensions, puis ciblez la taille." }
+      ],
+      "faq": [
+        { "q": "En quoi cela diffère-t-il du compresseur classique ?", "a": "Le compresseur d'images classique vous permet de choisir un niveau de qualité et affiche la taille résultante. Compresser en KB inverse cette relation : vous indiquez la taille dont vous avez besoin, et l'outil recherche la qualité la plus élevée qui convient. Utilisez-le lorsqu'une plateforme ou un système de messagerie impose une limite de taille stricte." },
+        { "q": "Quelle cible dois-je choisir pour les pièces jointes ?", "a": "La plupart des fournisseurs de messagerie plafonnent les pièces jointes autour de 25 Mo au total, mais des images individuelles de 200 à 500 KB s'affichent bien et laissent de la place pour le message. Pour les vignettes insérées dans le texte, 50 à 100 KB suffisent généralement. Choisissez la cible la plus petite qui reste acceptable pour alléger votre message." }
+      ]
+    },
+    "rotate-image": {
+      "intro": "Pivoter une image fait tourner les images JPG, PNG et WebP de 90, 180 ou 270 degrés, et les reflète horizontalement ou verticalement (miroir). Le traitement par lots applique la même rotation à plusieurs fichiers à la fois. Comme les pas de 90 degrés inversent largeur et hauteur, le canevas est redimensionné en conséquence — aucun contenu n'est perdu. Tout le traitement s'effectue localement dans votre navigateur.",
+      "knowledge": [
+        { "heading": "Rotation sans perte et orientation EXIF", "body": "Faire pivoter une image par pas de 90 degrés est mathématiquement sans perte lorsque le format le gère — les pixels sont réorganisés, pas réencodés. Toutefois, les photos prises avec un téléphone comportent souvent une balise d'orientation EXIF qui indique au logiciel comment les afficher ; certaines visionneuses la respectent et d'autres non, c'est pourquoi une photo de téléphone peut apparaître de travers sur un ordinateur de bureau. Le réencodage après rotation intègre l'orientation dans les pixels réels, l'image s'affiche donc correctement partout, même si la visionneuse ignore l'EXIF." }
+      ],
+      "faq": [
+        { "q": "La rotation réduira-t-elle la qualité de l'image ?", "a": "Pour les rotations de 90, 180 et 270 degrés des images JPG, les pixels sont réorganisés plutôt que rééchantillonnés, la qualité est donc préservée autant que le format le permet. Les autres angles, que cet outil ne propose pas, nécessitent un rééchantillonnage et peuvent adoucir les contours. Le retournement est également sans perte de la même manière." },
+        { "q": "Puis-je pivoter plusieurs images d'angles différents ?", "a": "Cette version applique un seul choix de rotation à tout le lot. Si vous avez besoin d'angles par image, exécutez l'outil une fois par groupe d'images partageant la même rotation, ou pivotez-les une à une." }
+      ]
+    },
+    "watermark-image": {
+      "intro": "Filigraner une image appose un filigrane textuel sur les images JPG, PNG et WebP. Positionnez-le sur une grille à 9 points, réglez l'opacité et l'angle, ou répétez-le en mosaïque diagonale sur toute l'image pour dissuader le vol d'images. Le traitement par lots filigrane plusieurs fichiers avec les mêmes réglages à la fois. Tout s'exécute localement — vos images ne sont pas téléversées.",
+      "knowledge": [
+        { "heading": "Filigrane visible contre filigrane invisible", "body": "Un filigrane visible est un texte ou un logo superposé à l'image — ce que cet outil produit — rendant la propriété évidente et décourageant la réutilisation fortuite. Un filigrane invisible, stéganographique, encode les données de propriété dans les pixels de manière imperceptible et nécessite un logiciel spécial pour être détecté. Les filigranes visibles sont le choix pratique pour protéger les aperçus et les portfolios : positionnez une marque en mosaïque, semi-transparente, sur l'image afin qu'elle ne puisse pas être facilement recadrée." }
+      ],
+      "faq": [
+        { "q": "Comment rendre un filigrane difficile à retirer ?", "a": "Utilisez le mode mosaïque (répétition) pour couvrir toute l'image d'un motif diagonal de marques à opacité modérée. Un filigrane unique dans un coin se recadre trivialement ; un motif complet en mosaïque oblige quiconque veut le retirer à reconstruire l'image sous-jacente, ce qui vaut rarement l'effort." },
+        { "q": "Quelle opacité dois-je utiliser ?", "a": "Pour les aperçus de portfolio, une opacité de 20 à 35 pour cent suffit pour revendiquer la propriété sans masquer l'image. Pour les épreuves ou les échantillons de banques d'images où vous souhaitez décourager toute utilisation, 50 à 70 pour cent est courant. Testez sur quelques images et ajustez avant de traiter par lots l'ensemble complet." }
+      ]
+    },
+    "meme-generator": {
+      "intro": "Le générateur de mèmes transforme n'importe quelle image JPG, PNG ou WebP en mème avec les classiques légendes en gras en haut et en bas. Les lettres contourées restent lisibles sur n'importe quel fond, clair ou sombre. Ajustez la taille de la police et la position pour qu'elles s'adaptent à l'image, puis téléchargez le résultat. Tout le rendu s'effectue dans votre navigateur — aucun téléversement, aucun filigrane ajouté.",
+      "knowledge": [
+        { "heading": "Le style classique des légendes de mème", "body": "La légende de mème reconnaissable utilise une police sans-serif condensée épaisse en blanc avec un contour noir, placée en haut et en bas de l'image. Le contour est créé en dessinant le texte plusieurs fois en noir, décalé de quelques pixels dans chaque direction, puis le remplissage blanc par-dessus. Cette technique garde le texte lisible sur n'importe quel fond sans avoir besoin d'une bannière pleine derrière, c'est pourquoi ce style est devenu le défaut pour les macros d'images." }
+      ],
+      "faq": [
+        { "q": "Puis-je ajouter du texte au milieu de l'image ?", "a": "Cet outil se concentre sur la disposition classique des légendes en haut et en bas. Pour du texte libre n'importe où sur l'image — plusieurs blocs, positions arbitraires, autocollants — utilisez l'éditeur de photos, qui vous permet de glisser du texte et des emoji sur le canevas avec un aperçu en direct." },
+        { "q": "Quelle police le générateur de mèmes utilise-t-il ?", "a": "Il utilise une police condensée grasse de type Impact, rendue avec un contour noir, correspondant à l'aspect classique des macros d'images. Si votre navigateur ne dispose pas de la police exacte, un équivalent système proche est utilisé afin que le résultat conserve la même apparence grasse et contourée." }
+      ]
+    },
+    "photo-editor": {
+      "intro": "L'éditeur de photos règle la luminosité, le contraste et la saturation, applique des filtres et vous permet de glisser des autocollants texte et emoji sur votre image avec un aperçu en direct. Tous les réglages sont non destructifs jusqu'à l'export, vous pouvez donc expérimenter librement. L'éditeur fonctionne à la souris et au tactile, et tout s'exécute localement — votre photo n'est jamais téléversée.",
+      "knowledge": [
+        { "heading": "Ordre des réglages non destructifs", "body": "Les réglages interagissent : la luminosité décale toutes les valeurs de pixels vers le haut ou vers le bas, le contraste étire ou compresse la plage autour d'un point médian, et la saturation met à l'échelle l'intensité des couleurs. Appliquer la luminosité avant le contraste diffère de l'ordre inverse. Cet outil applique les réglages dans un pipeline fixe et affiche le résultat combiné en direct, ce que vous voyez est donc ce que vous exportez. Pour des résultats subtils, faites de petits déplacements et vérifiez l'aperçu en pleine taille avant de télécharger." }
+      ],
+      "faq": [
+        { "q": "Les filtres sont-ils destructifs ?", "a": "Les filtres ne servent que d'aperçu jusqu'à l'export — vous pouvez les activer et les combiner pendant l'édition, et l'image d'origine reste intacte sur le disque. Une fois que vous téléchargez le résultat, les réglages sont intégrés au fichier exporté ; conservez donc l'original séparément si vous souhaitez le retoucher plus tard." },
+        { "q": "Puis-je annuler les modifications ?", "a": "Oui — désactivez un filtre ou réinitialisez un curseur à sa valeur par défaut pour retirer un réglage avant l'export. Comme les modifications sont en direct et non destructives, vous pouvez expérimenter librement et seul l'état final est exporté lors du téléchargement." }
+      ]
+    },
+    "blur-image": {
+      "intro": "Flouter une image vous permet de tracer des rectangles sur les visages, les plaques d'immatriculation ou toute zone sensible, et de les flouter ou de les pixelliser. Tout s'exécute localement dans votre navigateur — l'image n'est jamais téléversée — c'est donc adapté aux contenus sensibles pour la vie privée. Basculez entre les effets de flou gaussien et de mosaïque (pixellisation), et ajustez l'intensité à votre convenance.",
+      "knowledge": [
+        { "heading": "Flou contre pixellisation pour la vie privée", "body": "Le flou gaussien lisse les détails en un dégradé doux, ce qui paraît naturel mais peut parfois être inversé par un logiciel de défloutage sophistiqué sur des motifs simples. La pixellisation (mosaïque) remplace la région par des blocs plus grands de couleur moyenne, ce qui détruit les détails fins de manière plus agressive et est plus difficile à reconstruire. Pour une confidentialité maximale sur des contenus sensibles comme des visages ou des plaques, la pixellisation avec une taille de bloc grossière est le choix le plus sûr ; le flou convient pour un effet esthétique ou une obfuscation légère." }
+      ],
+      "faq": [
+        { "q": "Le flou peut-il être inversé ?", "a": "Un flou gaussien fort sur des motifs simples et réguliers a été partiellement inversé en contexte de recherche à l'aide de déconvolution. Pour des contenus réellement sensibles, utilisez la pixellisation avec une taille de bloc grossière, ou couvrez complètement la zone avec une couleur unie. Le risque est faible pour la plupart des usages quotidiens, mais n'est pas nul pour des attaquants déterminés." },
+        { "q": "Comment flouter plusieurs visages à la fois ?", "a": "Tracez un rectangle distinct sur chaque visage — chaque région est floutée indépendamment. Vous pouvez mélanger des régions floutées et pixellisées dans la même image si certaines zones nécessitent une obfuscation plus forte que d'autres. Ajustez l'intensité avant d'exporter le résultat final." }
+      ]
+    }
+  },
   "Meta": {
     "title": "ImageKitTools — Outils d'image en ligne gratuits",
     "description": "Outils d'image en ligne gratuits, axés sur la confidentialité. Compressez, redimensionnez, convertissez, recadrez et compressez des images à une taille cible en KB — directement dans votre navigateur. Aucun téléversement requis."

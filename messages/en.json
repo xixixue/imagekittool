@@ -2,6 +2,108 @@
   "Ads": {
     "label": "Advertisement"
   },
+  "ToolDeepDive": {
+    "image-compressor": {
+      "intro": "The Image Compressor reduces the file size of JPG, PNG, and WebP images without changing their pixel dimensions. It re-encodes each image in your browser using the Canvas API, so files never leave your device unless you explicitly save them to the cloud. A quality slider balances visual fidelity against file size with a live estimate, batch processing handles up to 20 images at once, and results download individually or as a single ZIP archive.",
+      "knowledge": [
+        { "heading": "How lossy compression discards detail", "body": "JPG and WebP are lossy formats: they shrink files by discarding high-frequency visual detail that the human eye notices least. The quality slider controls how aggressively this detail is dropped — lower values produce smaller files but introduce blocky artifacts, especially in smooth gradients and text. PNG is lossless, so the slider has no effect on PNG output, which always preserves every pixel. For screenshots or images with sharp text, prefer PNG or a high JPG quality to keep edges crisp." }
+      ],
+      "faq": [
+        { "q": "What quality should I use for web images?", "a": "For most photographs destined for the web, a JPG quality between 70 and 80 is a good starting point — it typically halves the file size with little perceptible loss. Increase to 85 to 90 for hero images where detail matters, or drop to 60 for thumbnails and previews where small size is the priority." },
+        { "q": "Does compressing multiple times degrade quality?", "a": "Yes. Every lossy re-encode of JPG or WebP discards a little more detail, a phenomenon called generation loss. To avoid compounding artifacts, compress from the original source file each time rather than re-compressing an already-compressed copy." }
+      ]
+    },
+    "image-resizer": {
+      "intro": "The Image Resizer changes the pixel dimensions of JPG, PNG, and WebP images. Choose exact pixels, a percentage scale, or a common preset, and lock the aspect ratio for a contain fit that avoids stretching. Batch processing resizes a whole folder to one specification at once. All work happens locally in your browser, with no upload and no server-side processing.",
+      "knowledge": [
+        { "heading": "Resolution, pixel dimensions, and print size", "body": "An image's pixel dimensions (width by height) define how many pixels it contains, while resolution (PPI or DPI) describes how densely those pixels are printed on paper. Resizing changes the pixel count, not the resolution metadata. A 2000 by 1000 image printed at 100 PPI covers 20 by 10 inches; the same file at 300 PPI covers roughly 6.7 by 3.3 inches. For screen use, only the pixel dimensions matter — set them to match your layout and let the browser handle the rest." }
+      ],
+      "faq": [
+        { "q": "What is the difference between resize and crop?", "a": "Resizing scales the entire image uniformly — every pixel stays, just larger or smaller. Cropping removes part of the image to change its framing or aspect ratio. Use resize when you need smaller dimensions; use the Image Cropper when you need a different composition or a fixed aspect ratio." },
+        { "q": "Should I resize before or after compressing?", "a": "Resize first, then compress. Smaller dimensions mean fewer pixels to encode, which compounds the file-size savings from compression. Resizing after heavy compression will not recover detail already lost, so establishing the target dimensions up front gives the best quality-to-size ratio." }
+      ]
+    },
+    "image-converter": {
+      "intro": "The Image Converter transforms images between JPG, PNG, and WebP. Because JPG has no transparency, converting a PNG or WebP with transparent areas to JPG fills those pixels with a background color you choose. The output file extension always matches the real encoded MIME type, so a JPG-encoded file never ships with a misleading name. Batch conversion handles multiple files at once, with results downloadable individually or as a ZIP.",
+      "knowledge": [
+        { "heading": "When to choose WebP over JPG or PNG", "body": "WebP supports both lossy and lossless compression plus transparency in a single format, and typically produces smaller files than equivalent JPGs or PNGs. Modern browsers support it universally, making it a strong default for web assets. Use JPG when you need maximum compatibility with older systems, and PNG when you need guaranteed lossless output with sharp text or logos. WebP is the best all-round choice for the web today." }
+      ],
+      "faq": [
+        { "q": "Why does my transparent PNG get a white background as JPG?", "a": "JPG does not support an alpha channel, so transparent pixels must be filled with a solid color during conversion — white by default. Pick a background color that matches where the image will be placed, or convert to WebP or PNG instead if you need to keep transparency." },
+        { "q": "Is converting PNG to JPG lossy?", "a": "Yes. PNG is lossless and JPG is lossy, so the conversion re-encodes the image and may introduce artifacts, particularly in areas of sharp contrast. If quality is critical, keep the PNG or convert to WebP with a high quality setting." }
+      ]
+    },
+    "image-cropper": {
+      "intro": "The Image Cropper trims JPG, PNG, and WebP images to a free region or a fixed aspect ratio such as 1:1, 4:3, 3:2, or 16:9. A 90-degree rotation toggle reorients the image before cropping, and the editor works with both mouse and touch on mobile. Cropping runs entirely in your browser — no upload, no server round-trip.",
+      "knowledge": [
+        { "heading": "Aspect ratios for common platforms", "body": "Different platforms favor different aspect ratios: Instagram square posts use 1:1 and landscape posts 1.91:1; YouTube thumbnails 16:9; many social share images 16:9; cover photos vary by network. Cropping to the target ratio before upload avoids automatic platform cropping that may cut off the wrong part of your image. Lock the ratio, position the crop, and export at the platform's recommended resolution for best results." }
+      ],
+      "faq": [
+        { "q": "Can I crop to a custom aspect ratio?", "a": "Yes. Choose the free crop mode to drag an unconstrained region, or enter a custom ratio if your use case needs a specific proportion. The fixed presets (1:1, 4:3, 3:2, 16:9) are there for convenience and cover most common output shapes." },
+        { "q": "Does cropping reduce file size?", "a": "Usually yes — removing pixels reduces the data the encoder must store, so the output file is often smaller than the source. The reduction depends on how much of the image you cut away; combine cropping with the Image Compressor for the smallest possible output." }
+      ]
+    },
+    "compress-image-to-kb": {
+      "intro": "Compress Image to KB shrinks a JPG, PNG, or WebP image to a target file size you specify — 50 KB, 100 KB, 200 KB, or any value. It runs a bounded quality search that finds the highest quality setting meeting your target, and reports honestly when a target is not reachable (for example, a very detailed image that cannot fit in 20 KB without severe artifacts). Processing is local; nothing is uploaded.",
+      "knowledge": [
+        { "heading": "Why some targets are unreachable", "body": "Lossy compression can only discard so much detail before an image becomes unusable. A small target applied to a large, detailed source forces very low quality settings, and if even quality zero exceeds the target, the goal is mathematically impossible without reducing pixel dimensions. The tool tells you when this happens instead of silently producing a broken file — combine it with the Image Resizer to first reduce dimensions, then target the size." }
+      ],
+      "faq": [
+        { "q": "How is this different from the regular compressor?", "a": "The regular Image Compressor lets you pick a quality level and shows the resulting size. Compress to KB reverses that relationship: you state the size you need, and the tool searches for the highest quality that fits. Use it when a platform or email system enforces a hard size cap." },
+        { "q": "What target should I pick for email attachments?", "a": "Most email providers cap attachments around 25 MB total, but individual images of 200 to 500 KB display well and leave room for the message. For inline thumbnails, 50 to 100 KB is usually plenty. Pick the smallest target that still looks acceptable to keep your message light." }
+      ]
+    },
+    "rotate-image": {
+      "intro": "Rotate Image turns JPG, PNG, and WebP images by 90, 180, or 270 degrees, and mirrors them horizontally or vertically (flip). Batch processing applies the same rotation to many files at once. Because 90-degree steps swap width and height, the canvas is resized to match — no content is lost. All processing happens locally in your browser.",
+      "knowledge": [
+        { "heading": "Lossless rotation and EXIF orientation", "body": "Rotating an image by 90-degree steps is mathematically lossless when the format supports it — pixels are rearranged, not re-encoded. However, photos taken on phones often carry an EXIF orientation tag that tells software how to display them; some viewers honor it and some do not, which is why a phone photo may appear sideways on a desktop. Re-encoding after rotation bakes the orientation into the actual pixels, so the image displays correctly everywhere even if the viewer ignores EXIF." }
+      ],
+      "faq": [
+        { "q": "Will rotation reduce image quality?", "a": "For 90, 180, and 270 degree rotations of JPG images, the pixels are rearranged rather than re-sampled, so quality is preserved as much as the format allows. Other angles, which this tool does not offer, require resampling and can soften edges. Flipping is also lossless in the same way." },
+        { "q": "Can I rotate multiple images by different angles?", "a": "This version applies one rotation choice to the whole batch. If you need per-image angles, run the tool once per group of images that share the same rotation, or rotate them one at a time." }
+      ]
+    },
+    "watermark-image": {
+      "intro": "Watermark Image stamps a text watermark onto JPG, PNG, and WebP images. Position it on a 9-point grid, set opacity and angle, or repeat it as a diagonal tile across the whole image to deter image theft. Batch processing watermarks many files with the same settings at once. Everything runs locally — your images are not uploaded.",
+      "knowledge": [
+        { "heading": "Visible vs invisible watermarking", "body": "A visible watermark is text or a logo overlaid on the image — what this tool produces — making ownership obvious and discouraging casual reuse. An invisible, steganographic watermark encodes ownership data into the pixels imperceptibly and requires special software to detect. Visible watermarks are the practical choice for protecting previews and portfolios: position a tiled, semi-transparent mark across the image so it cannot be easily cropped out." }
+      ],
+      "faq": [
+        { "q": "How do I make a watermark hard to remove?", "a": "Use the tile (repeat) mode to cover the whole image with a diagonal pattern of marks at moderate opacity. A single corner watermark is trivially cropped out; a full tiled pattern forces a remover to reconstruct the underlying image, which is rarely worth the effort." },
+        { "q": "What opacity should I use?", "a": "For portfolio previews, 20 to 35 percent opacity is enough to assert ownership without obscuring the image. For proofing or stock samples where you want to discourage use entirely, 50 to 70 percent is common. Test on a few images and adjust before batch-processing the full set." }
+      ]
+    },
+    "meme-generator": {
+      "intro": "The Meme Generator turns any JPG, PNG, or WebP image into a meme with classic bold top and bottom captions. The outlined lettering stays legible over any background, light or dark. Adjust font size and position to fit the image, then download the result. All rendering happens in your browser — no upload, no watermark added.",
+      "knowledge": [
+        { "heading": "The classic meme caption style", "body": "The recognizable meme caption uses a heavy, condensed sans-serif in white with a black outline, placed at the top and bottom of the image. The outline is created by drawing the text multiple times in black offset by a few pixels in each direction, then the white fill on top. This technique keeps text readable over any background without needing a solid banner behind it, which is why the style became the default for image macros." }
+      ],
+      "faq": [
+        { "q": "Can I add text in the middle of the image?", "a": "This tool focuses on the classic top-and-bottom caption layout. For free-form text anywhere on the image — multiple blocks, arbitrary positions, stickers — use the Photo Editor, which lets you drag text and emoji onto the canvas with a live preview." },
+        { "q": "What font does the meme generator use?", "a": "It uses a bold, Impact-style condensed typeface rendered with a black outline, matching the classic image-macro look. If your browser lacks the exact font, a close system equivalent is used so the result keeps the same bold, outlined appearance." }
+      ]
+    },
+    "photo-editor": {
+      "intro": "The Photo Editor adjusts brightness, contrast, and saturation, applies filters, and lets you drag text and emoji stickers onto your image with a live preview. All adjustments are non-destructive until you export, so you can experiment freely. The editor works with mouse and touch, and everything runs locally — your photo is never uploaded.",
+      "knowledge": [
+        { "heading": "Non-destructive adjustment order", "body": "Adjustments interact: brightness shifts all pixel values up or down, contrast stretches or compresses the range around a midpoint, and saturation scales color intensity. Applying brightness before contrast differs from the reverse order. This tool applies adjustments in a fixed pipeline and shows the combined result live, so what you see is what you export. For subtle results, make small moves and check the preview at full size before downloading." }
+      ],
+      "faq": [
+        { "q": "Are the filters destructive?", "a": "Filters are preview-only until you export — you can toggle and combine them while editing, and the original image stays intact on disk. Once you download the result, the adjustments are baked into the exported file, so keep the original separately if you may want to re-edit later." },
+        { "q": "Can I undo changes?", "a": "Yes — toggle a filter off or reset a slider to its default to remove an adjustment before export. Because edits are live and non-destructive, you can freely experiment and only the final state is exported when you download." }
+      ]
+    },
+    "blur-image": {
+      "intro": "Blur Image lets you draw rectangles over faces, license plates, or any sensitive area and blur or pixelate them. Everything runs locally in your browser — the image is never uploaded — so it is safe for privacy-sensitive material. Toggle between Gaussian blur and mosaic (pixelate) effects, and adjust the intensity to taste.",
+      "knowledge": [
+        { "heading": "Blur vs pixelate for privacy", "body": "Gaussian blur smooths detail into a soft gradient, which looks natural but can sometimes be reversed by sophisticated deblurring software on simple patterns. Pixelation (mosaic) replaces the region with larger blocks of average color, which destroys fine detail more aggressively and is harder to reconstruct. For maximum privacy on sensitive content like faces or plates, pixelation at a coarse block size is the safer choice; blur is fine for aesthetic effect or mild obfuscation." }
+      ],
+      "faq": [
+        { "q": "Can blur be reversed?", "a": "Strong Gaussian blur on simple, regular patterns has been partially reversed in research settings using deconvolution. For genuinely sensitive content, use pixelation at a coarse block size, or cover the area completely with a solid fill. The risk is low for most everyday use, but not zero for determined attackers." },
+        { "q": "How do I blur multiple faces at once?", "a": "Draw a separate rectangle over each face — each region is blurred independently. You can mix blur and pixelate regions in the same image if some areas need stronger obfuscation than others. Adjust the intensity before exporting the final result." }
+      ]
+    }
+  },
   "Meta": {
     "title": "ImageKitTools — Free Online Image Tools",
     "description": "Free, privacy-first online image tools. Compress, resize, convert, crop, and compress images to a target KB size — right in your browser. No upload required."

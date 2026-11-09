@@ -18,6 +18,18 @@ export interface ToolSeoData {
 }
 
 /**
+ * Shape of one tool's "deep dive" block inside the `ToolDeepDive` message
+ * namespace: an above-the-fold intro paragraph plus extra knowledge and FAQ
+ * entries that merge with the base `ToolSeo` content to thicken each tool page
+ * (AdSense low-value-content defense).
+ */
+export interface ToolDeepDiveData {
+  intro: string;
+  knowledge: { heading: string; body: string }[];
+  faq: { q: string; a: string }[];
+}
+
+/**
  * Related tools per slug. Slugs only — never user-facing copy — so this map
  * does not need translation. The linked tool's localized name is resolved from
  * the `Tool` namespace at render time.

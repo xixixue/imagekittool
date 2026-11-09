@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getMessages, getTranslations } from "next-intl/server";
 import { AdSlot } from "@/components/ads/ad-slot";
 import { getToolBySlug } from "@/lib/data/tools";
-import { TOOL_SEO_RELATED, type ToolSeoData } from "@/lib/data/tool-seo";
+import { TOOL_SEO_RELATED, type ToolDeepDiveData, type ToolSeoData } from "@/lib/data/tool-seo";
 
 type ToolEntry = NonNullable<ReturnType<typeof getToolBySlug>>;
 
@@ -16,9 +16,17 @@ type ToolEntry = NonNullable<ReturnType<typeof getToolBySlug>>;
  * with the rest of the UI.
  */
 export async function ToolSeoContent({ slug }: { slug: string }) {
-  const messages = (await getMessages()) as { ToolSeo?: Record<string, ToolSeoData> };
+  const messages = (await getMessages()) as {
+    ToolSeo?: Record<string, ToolSeoData>;
+    ToolDeepDive?: Record<string, ToolDeepDiveData>;
+  };
   const seo = messages.ToolSeo?.[slug];
   if (!seo) return null;
+  // Merge the base ToolSeo content with the extra ToolDeepDive knowledge/FAQ so
+  // each tool page carries more original copy (AdSense low-value-content defense).
+  const deep = messages.ToolDeepDive?.[slug];
+  const knowledge = [...seo.knowledge, ...(deep?.knowledge ?? [])];
+  const faq = [...seo.faq, ...(deep?.faq ?? [])];
 
   const t = await getTranslations("ToolSeo");
   const toolName = await getTranslations("Tool");
@@ -52,7 +60,7 @@ export async function ToolSeoContent({ slug }: { slug: string }) {
         </ul>
       </div>
 
-      {seo.knowledge.map((k, i) => (
+      {knowledge.map((k, i) => (
         <div key={i}>
           <h2 className="text-xl font-bold tracking-tight">{k.heading}</h2>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{k.body}</p>
@@ -62,7 +70,7 @@ export async function ToolSeoContent({ slug }: { slug: string }) {
       <div>
         <h2 className="text-xl font-bold tracking-tight">{t("faq")}</h2>
         <dl className="mt-3 space-y-4">
-          {seo.faq.map((f, i) => (
+          {faq.map((f, i) => (
             <div key={i}>
               <dt className="text-sm font-medium text-foreground">{f.q}</dt>
               <dd className="mt-1 text-sm leading-relaxed text-muted-foreground">{f.a}</dd>

@@ -2,6 +2,108 @@
   "Ads": {
     "label": "Publicidad"
   },
+  "ToolDeepDive": {
+    "image-compressor": {
+      "intro": "El Compresor de imágenes reduce el tamaño de archivo de imágenes JPG, PNG y WebP sin cambiar sus dimensiones en píxeles. Vuelve a codificar cada imagen en tu navegador mediante la Canvas API, de modo que los archivos nunca salen de tu dispositivo a menos que los guardes explícitamente en la nube. Un control de calidad equilibra la fidelidad visual con el tamaño de archivo mediante una estimación en tiempo real, el procesamiento por lotes gestiona hasta 20 imágenes a la vez y los resultados se descargan de forma individual o como un único archivo ZIP.",
+      "knowledge": [
+        { "heading": "Cómo la compresión con pérdida descarta detalles", "body": "JPG y WebP son formatos con pérdida: reducen el tamaño de archivo descartando el detalle visual de alta frecuencia que el ojo humano percibe menos. El control de calidad regula la intensidad con la que se elimina este detalle; los valores más bajos generan archivos más pequeños, pero introducen artefactos en forma de bloques, especialmente en degradados suaves y en el texto. PNG es sin pérdida, por lo que el control no afecta a la salida PNG, que siempre conserva cada píxel. Para capturas de pantalla o imágenes con texto nítido, prefiere PNG o una calidad JPG alta para mantener los bordes definidos." }
+      ],
+      "faq": [
+        { "q": "¿Qué calidad debo usar para imágenes web?", "a": "Para la mayoría de las fotografías destinadas a la web, una calidad JPG de entre 70 y 80 es un buen punto de partida; normalmente reduce a la mitad el tamaño de archivo con una pérdida apenas perceptible. Súbela a 85 o 90 para imágenes destacadas en las que el detalle importa, o bájala a 60 para miniaturas y vistas previas en las que el tamaño reducido es la prioridad." },
+        { "q": "¿Comprimir varias veces degrada la calidad?", "a": "Sí. Cada recodificación con pérdida de JPG o WebP descarta un poco más de detalle, un fenómeno conocido como pérdida por generaciones. Para evitar acumular artefactos, comprima cada vez desde el archivo original en lugar de recomprimir una copia ya comprimida." }
+      ]
+    },
+    "image-resizer": {
+      "intro": "El Redimensionador de imágenes cambia las dimensiones en píxeles de imágenes JPG, PNG y WebP. Elige píxeles exactos, un escalado por porcentaje o un preajuste común, y bloquea la relación de aspecto para un ajuste de tipo «contain» que evita estiramientos. El procesamiento por lotes redimensiona una carpeta entera a una misma especificación de una sola vez. Todo el trabajo se realiza localmente en tu navegador, sin subida ni procesamiento en el servidor.",
+      "knowledge": [
+        { "heading": "Resolución, dimensiones en píxeles y tamaño de impresión", "body": "Las dimensiones en píxeles de una imagen (ancho por alto) definen cuántos píxeles contiene, mientras que la resolución (PPI o DPI) describe la densidad con la que esos píxeles se imprimen en papel. Redimensionar cambia el número de píxeles, no los metadatos de resolución. Una imagen de 2000 por 1000 impresa a 100 PPI ocupa 20 por 10 pulgadas; el mismo archivo a 300 PPI ocupa aproximadamente 6,7 por 3,3 pulgadas. Para uso en pantalla, solo importan las dimensiones en píxeles; establécelas para que coincidan con tu diseño y deja que el navegador se ocupe del resto." }
+      ],
+      "faq": [
+        { "q": "¿Cuál es la diferencia entre redimensionar y recortar?", "a": "Redimensionar escala la imagen completa de forma uniforme; cada píxel se mantiene, solo más grande o más pequeño. Recortar elimina parte de la imagen para cambiar su encuadre o su relación de aspecto. Usa redimensionar cuando necesitas dimensiones más pequeñas; usa el Recortador de imágenes cuando necesitas una composición diferente o una relación de aspecto fija." },
+        { "q": "¿Debo redimensionar antes o después de comprimir?", "a": "Primero redimensiona y luego comprime. Unas dimensiones menores suponen menos píxeles que codificar, lo que se suma al ahorro de tamaño de archivo que aporta la compresión. Redimensionar después de una compresión intensa no recuperará el detalle ya perdido, así que fijar las dimensiones objetivo desde el principio ofrece la mejor relación entre calidad y tamaño." }
+      ]
+    },
+    "image-converter": {
+      "intro": "El Conversor de imágenes transforma imágenes entre JPG, PNG y WebP. Como JPG no admite transparencia, al convertir a JPG una PNG o WebP con zonas transparentes esos píxeles se rellenan con un color de fondo que tú eliges. La extensión del archivo de salida siempre coincide con el tipo MIME real codificado, de modo que un archivo codificado como JPG nunca se entrega con un nombre engañoso. La conversión por lotes gestiona varios archivos a la vez, con resultados descargables de forma individual o como ZIP.",
+      "knowledge": [
+        { "heading": "Cuándo elegir WebP en lugar de JPG o PNG", "body": "WebP admite tanto compresión con pérdida como sin pérdida, además de transparencia, en un único formato, y normalmente genera archivos más pequeños que los JPG o PNG equivalentes. Los navegadores modernos lo admiten de forma generalizada, lo que lo convierte en un buen valor predeterminado para recursos web. Usa JPG cuando necesites la máxima compatibilidad con sistemas antiguos, y PNG cuando necesites una salida sin pérdida garantizada con texto o logotipos nítidos. WebP es la mejor opción polivalente para la web hoy en día." }
+      ],
+      "faq": [
+        { "q": "¿Por qué mi PNG transparente adquiere un fondo blanco al pasarlo a JPG?", "a": "JPG no admite un canal alfa, por lo que los píxeles transparentes deben rellenarse con un color sólido durante la conversión; blanco de forma predeterminada. Elige un color de fondo que coincida con el lugar donde se colocará la imagen, o conviértela a WebP o PNG si necesitas conservar la transparencia." },
+        { "q": "¿Convertir PNG a JPG implica pérdida?", "a": "Sí. PNG es sin pérdida y JPG es con pérdida, así que la conversión vuelve a codificar la imagen y puede introducir artefactos, sobre todo en zonas de contraste marcado. Si la calidad es fundamental, conserva el PNG o conviértelo a WebP con una calidad alta." }
+      ]
+    },
+    "image-cropper": {
+      "intro": "El Recortador de imágenes recorta imágenes JPG, PNG y WebP a una región libre o a una relación de aspecto fija como 1:1, 4:3, 3:2 o 16:9. Un conmutador de rotación de 90 grados reorienta la imagen antes del recorte, y el editor funciona tanto con ratón como con táctil en el móvil. El recorte se ejecuta completamente en tu navegador: sin subida ni viaje de ida y vuelta al servidor.",
+      "knowledge": [
+        { "heading": "Relaciones de aspecto para plataformas habituales", "body": "Las distintas plataformas favorecen diferentes relaciones de aspecto: las publicaciones cuadradas de Instagram usan 1:1 y las apaisadas 1.91:1; las miniaturas de YouTube, 16:9; muchas imágenes para compartir en redes, 16:9; y las imágenes de portada varían según la red. Recortar a la relación objetivo antes de la subida evita el recorte automático de la plataforma, que podría eliminar la parte equivocada de tu imagen. Bloquea la relación, posiciona el recorte y exporta a la resolución recomendada por la plataforma para obtener los mejores resultados." }
+      ],
+      "faq": [
+        { "q": "¿Puedo recortar a una relación de aspecto personalizada?", "a": "Sí. Elige el modo de recorte libre para arrastrar una región sin restricciones, o introduce una relación personalizada si tu caso de uso requiere una proporción específica. Los preajustes fijos (1:1, 4:3, 3:2, 16:9) están ahí por comodidad y cubren la mayoría de las formas de salida habituales." },
+        { "q": "¿Recortar reduce el tamaño de archivo?", "a": "Normalmente sí: eliminar píxeles reduce los datos que el codificador debe almacenar, por lo que el archivo de salida suele ser más pequeño que el original. La reducción depende de cuánto de la imagen recortes; combina el recorte con el Compresor de imágenes para obtener la salida más pequeña posible." }
+      ]
+    },
+    "compress-image-to-kb": {
+      "intro": "Comprimir imagen a KB reduce una imagen JPG, PNG o WebP a un tamaño de archivo objetivo que tú indiques: 50 KB, 100 KB, 200 KB o cualquier valor. Ejecuta una búsqueda de calidad acotada que encuentra el ajuste de calidad más alto que cumple tu objetivo, e informa con honestidad cuando un objetivo no es alcanzable (por ejemplo, una imagen muy detallada que no cabe en 20 KB sin artefactos graves). El procesamiento es local; no se sube nada.",
+      "knowledge": [
+        { "heading": "Por qué algunos objetivos no son alcanzables", "body": "La compresión con pérdida solo puede descartar una cantidad limitada de detalle antes de que una imagen quede inservible. Un objetivo pequeño aplicado a un origen grande y detallado obliga a usar ajustes de calidad muy bajos, y si incluso la calidad cero supera el objetivo, la meta es matemáticamente imposible sin reducir las dimensiones en píxeles. La herramienta te avisa cuando esto ocurre en lugar de generar silenciosamente un archivo roto; combínala con el Redimensionador de imágenes para reducir primero las dimensiones y luego apuntar al tamaño." }
+      ],
+      "faq": [
+        { "q": "¿En qué se diferencia del compresor normal?", "a": "El Compresor de imágenes normal te permite elegir un nivel de calidad y muestra el tamaño resultante. Comprimir a KB invierte esa relación: tú indicas el tamaño que necesitas y la herramienta busca la calidad más alta que encaja. Úsalo cuando una plataforma o un sistema de correo electrónico impone un límite estricto de tamaño." },
+        { "q": "¿Qué objetivo debo elegir para los adjuntos de correo electrónico?", "a": "La mayoría de los proveedores de correo electrónico limitan los adjuntos a unos 25 MB en total, pero las imágenes individuales de 200 a 500 KB se ven bien y dejan espacio para el mensaje. Para miniaturas incrustadas, de 50 a 100 KB suele ser más que suficiente. Elige el objetivo más pequeño que aún se vea aceptable para mantener tu mensaje ligero." }
+      ]
+    },
+    "rotate-image": {
+      "intro": "Rotar imagen gira imágenes JPG, PNG y WebP 90, 180 o 270 grados, y las refleja horizontal o verticalmente (voltear). El procesamiento por lotes aplica la misma rotación a muchos archivos a la vez. Como los pasos de 90 grados intercambian ancho y alto, el lienzo se redimensiona para adaptarse; no se pierde contenido. Todo el procesamiento se realiza localmente en tu navegador.",
+      "knowledge": [
+        { "heading": "Rotación sin pérdida y orientación EXIF", "body": "Rotar una imagen en pasos de 90 grados es matemáticamente sin pérdida cuando el formato lo admite; los píxeles se reordenan, no se recodifican. Sin embargo, las fotos tomadas con el móvil suelen llevar una etiqueta de orientación EXIF que indica al software cómo mostrarlas; algunos visores la respetan y otros no, por eso una foto de móvil puede verse girada en un equipo de escritorio. Recodificar la imagen después de rotarla fija la orientación en los píxeles reales, de modo que la imagen se muestra correctamente en cualquier sitio aunque el visor ignore EXIF." }
+      ],
+      "faq": [
+        { "q": "¿La rotación reduce la calidad de la imagen?", "a": "Para rotaciones de 90, 180 y 270 grados de imágenes JPG, los píxeles se reordenan en lugar de remuestrearse, por lo que la calidad se conserva en la medida en que el formato lo permite. Otros ángulos, que esta herramienta no ofrece, requieren remuestreo y pueden suavizar los bordes. Voltear también es sin pérdida de la misma manera." },
+        { "q": "¿Puedo rotar varias imágenes con ángulos diferentes?", "a": "Esta versión aplica una misma elección de rotación a todo el lote. Si necesitas ángulos distintos para cada imagen, ejecuta la herramienta una vez por cada grupo de imágenes que comparten la misma rotación, o rótalas una a una." }
+      ]
+    },
+    "watermark-image": {
+      "intro": "Marca de agua en imagen estampa una marca de agua de texto sobre imágenes JPG, PNG y WebP. Posiciónala en una cuadrícula de 9 puntos, ajusta la opacidad y el ángulo, o repítela como un mosaico diagonal en toda la imagen para disuadir el robo de imágenes. El procesamiento por lotes estampa la marca de agua en muchos archivos con los mismos ajustes a la vez. Todo se ejecuta localmente; tus imágenes no se suben.",
+      "knowledge": [
+        { "heading": "Marcas de agua visibles frente a invisibles", "body": "Una marca de agua visible es un texto o un logotipo superpuesto sobre la imagen —lo que produce esta herramienta—, lo que hace evidente la autoría y desanima el uso casual. Una marca de agua invisible y esteganográfica codifica datos de autoría en los píxeles de forma imperceptible y requiere software especial para detectarse. Las marcas de agua visibles son la opción práctica para proteger vistas previas y portafolios: posiciona una marca en mosaico y semitransparente sobre la imagen para que no pueda recortarse con facilidad." }
+      ],
+      "faq": [
+        { "q": "¿Cómo hago que una marca de agua sea difícil de quitar?", "a": "Usa el modo de mosaico (repetir) para cubrir toda la imagen con un patrón diagonal de marcas a una opacidad moderada. Una marca de agua única en una esquina se recorta de forma trivial; un patrón completo en mosaico obliga a quien quiera eliminarla a reconstruir la imagen subyacente, algo que rara vez merece el esfuerzo." },
+        { "q": "¿Qué opacidad debo usar?", "a": "Para vistas previas de portafolios, una opacidad de entre el 20 y el 35 por ciento basta para reivindicar la autoría sin ocultar la imagen. Para pruebas o muestras de stock en las que quieres desaconsejar por completo su uso, del 50 al 70 por ciento es habitual. Prueba con unas cuantas imágenes y ajusta antes de procesar por lotes el conjunto completo." }
+      ]
+    },
+    "meme-generator": {
+      "intro": "El Generador de memes convierte cualquier imagen JPG, PNG o WebP en un meme con los clásicos textos en negrita arriba y abajo. La letra contorneada se mantiene legible sobre cualquier fondo, claro u oscuro. Ajusta el tamaño de fuente y la posición para adaptarlos a la imagen y luego descarga el resultado. Todo el renderizado se produce en tu navegador: sin subida ni marca de agua añadida.",
+      "knowledge": [
+        { "heading": "El estilo clásico de los textos de meme", "body": "El texto de meme reconocible usa una sans-serif condensada y pesada en blanco con contorno negro, situada en la parte superior e inferior de la imagen. El contorno se crea dibujando el texto varias veces en negro desplazado unos pocos píxeles en cada dirección y luego el relleno blanco encima. Esta técnica mantiene el texto legible sobre cualquier fondo sin necesidad de un banner sólido detrás, motivo por el que el estilo se convirtió en el predeterminado para los image macros." }
+      ],
+      "faq": [
+        { "q": "¿Puedo añadir texto en medio de la imagen?", "a": "Esta herramienta se centra en la disposición clásica de texto arriba y abajo. Para texto libre en cualquier punto de la imagen —varios bloques, posiciones arbitrarias, pegatinas— usa el Editor de fotos, que te permite arrastrar texto y emojis al lienzo con una vista previa en tiempo real." },
+        { "q": "¿Qué fuente usa el generador de memes?", "a": "Usa una tipografía condensada y en negrita de estilo Impact renderizada con contorno negro, acorde al aspecto clásico de los image macros. Si tu navegador no dispone de la fuente exacta, se usa un equivalente cercano del sistema para que el resultado mantenga el mismo aspecto en negrita y contorneado." }
+      ]
+    },
+    "photo-editor": {
+      "intro": "El Editor de fotos ajusta el brillo, el contraste y la saturación, aplica filtros y te permite arrastrar pegatinas de texto y emoji sobre tu imagen con una vista previa en tiempo real. Todos los ajustes son no destructivos hasta que exportas, de modo que puedes experimentar libremente. El editor funciona con ratón y táctil, y todo se ejecuta localmente; tu foto nunca se sube.",
+      "knowledge": [
+        { "heading": "Orden de los ajustes no destructivos", "body": "Los ajustes interactúan: el brillo desplaza todos los valores de píxel hacia arriba o hacia abajo, el contraste estira o comprime el rango en torno a un punto medio y la saturación escala la intensidad del color. Aplicar el brillo antes que el contraste difiere del orden inverso. Esta herramienta aplica los ajustes en una canalización fija y muestra el resultado combinado en tiempo real, así que lo que ves es lo que exportas. Para resultados sutiles, haz cambios pequeños y revisa la vista previa a tamaño completo antes de descargar." }
+      ],
+      "faq": [
+        { "q": "¿Los filtros son destructivos?", "a": "Los filtros son solo de vista previa hasta que exportas; puedes activarlos y combinarlos mientras editas, y la imagen original permanece intacta en el disco. Una vez que descargas el resultado, los ajustes quedan integrados en el archivo exportado, así que conserva el original por separado si es posible que quieras volver a editarlo más adelante." },
+        { "q": "¿Puedo deshacer los cambios?", "a": "Sí: desactiva un filtro o restablece un control a su valor predeterminado para eliminar un ajuste antes de exportar. Como las ediciones son en vivo y no destructivas, puedes experimentar libremente y solo se exporta el estado final al descargar." }
+      ]
+    },
+    "blur-image": {
+      "intro": "Desenfocar imagen te permite dibujar rectángulos sobre rostros, matrículas o cualquier zona sensible y desenfocarlos o pixelarlos. Todo se ejecuta localmente en tu navegador —la imagen nunca se sube—, por lo que es seguro para material sensible a la privacidad. Alterna entre efectos de desenfoque gaussiano y mosaico (pixelado), y ajusta la intensidad a tu gusto.",
+      "knowledge": [
+        { "heading": "Desenfoque frente a pixelado para la privacidad", "body": "El desenfoque gaussiano suaviza el detalle hasta convertirlo en un degradado suave, lo que resulta natural pero a veces puede revertirse con software avanzado de reenfoque sobre patrones sencillos. La pixelación (mosaico) sustituye la zona por bloques más grandes de color promedio, lo que destruye el detalle fino de forma más agresiva y resulta más difícil de reconstruir. Para una privacidad máxima en contenido sensible como rostros o matrículas, la pixelación con un tamaño de bloque grande es la opción más segura; el desenfoque es adecuado para un efecto estético o una ocultación ligera." }
+      ],
+      "faq": [
+        { "q": "¿Se puede revertir el desenfoque?", "a": "El desenfoque gaussiano intenso sobre patrones sencillos y regulares se ha revertido parcialmente en entornos de investigación mediante deconvolución. Para contenido realmente sensible, usa pixelación con un tamaño de bloque grande, o cubre la zona por completo con un relleno sólido. El riesgo es bajo para la mayoría de los usos cotidianos, pero no nulo para atacantes determinados." },
+        { "q": "¿Cómo difumino varios rostros a la vez?", "a": "Dibuja un rectángulo distinto sobre cada rostro; cada región se difumina de forma independiente. Puedes combinar regiones difuminadas y pixeladas en la misma imagen si algunas zonas necesitan una ocultación más fuerte que otras. Ajusta la intensidad antes de exportar el resultado final." }
+      ]
+    }
+  },
   "Meta": {
     "title": "ImageKitTools — Herramientas de imagen online gratuitas",
     "description": "Herramientas de imagen online gratuitas y centradas en la privacidad. Comprime, redimensiona, convierte, recorta y comprime imágenes a un tamaño objetivo en KB, directamente en tu navegador. No requiere subida."
