@@ -112,6 +112,7 @@
     "name": "ImageKitTools"
   },
   "Nav": {
+    "guides": "ガイド",
     "tools": "ツール",
     "about": "概要",
     "contact": "お問い合わせ",
@@ -166,12 +167,21 @@
     "note": "画像はすべてブラウザー内で処理されます。明示的にクラウドに保存しない限り（ログイン後に利用可能）、サーバーにアップロードされることはありません。"
   },
   "Footer": {
+    "guides": "ガイド",
     "rights": "© {year} ImageKitTools. 画像はデフォルトでブラウザー内で処理されます。",
     "about": "概要",
     "contact": "お問い合わせ",
     "privacy": "プライバシーポリシー",
     "terms": "利用規約",
     "cookies": "Cookie ポリシー"
+  },
+  "Guides": {
+    "indexTitle": "画像ガイド",
+    "indexSubtitle": "画像フォーマット、圧縮、解像度、カラー、編集に関する図解入りの詳しい解説——あなたが使う画像ツールが実際にどう動いているか。",
+    "readArticle": "記事を読む",
+    "minRead": "{min} 分で読める",
+    "relatedTools": "関連ツール",
+    "backToGuides": "すべてのガイドに戻る"
   },
   "Tool": {
     "image-compressor": {

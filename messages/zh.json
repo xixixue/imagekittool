@@ -112,6 +112,7 @@
     "name": "ImageKitTools"
   },
   "Nav": {
+    "guides": "指南",
     "tools": "工具",
     "about": "关于",
     "contact": "联系",
@@ -166,12 +167,21 @@
     "note": "您的图片完全在浏览器中处理。除非您明确保存到云端（登录后可用），否则不会上传到服务器。"
   },
   "Footer": {
+    "guides": "指南",
     "rights": "© {year} ImageKitTools。图片默认在浏览器中处理。",
     "about": "关于",
     "contact": "联系",
     "privacy": "隐私政策",
     "terms": "条款",
     "cookies": "Cookie 政策"
+  },
+  "Guides": {
+    "indexTitle": "图像指南",
+    "indexSubtitle": "关于图像格式、压缩、分辨率、色彩与编辑的图文深度讲解——你用的图像工具究竟是怎么工作的。",
+    "readArticle": "阅读全文",
+    "minRead": "{min} 分钟阅读",
+    "relatedTools": "相关工具",
+    "backToGuides": "返回全部指南"
   },
   "Tool": {
     "image-compressor": {

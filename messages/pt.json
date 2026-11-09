@@ -112,6 +112,7 @@
     "name": "ImageKitTools"
   },
   "Nav": {
+    "guides": "Guias",
     "tools": "Ferramentas",
     "about": "Sobre",
     "contact": "Contato",
@@ -166,12 +167,21 @@
     "note": "Suas imagens são processadas integralmente no seu navegador. Elas nunca são enviadas a um servidor, a menos que você as salve explicitamente na sua nuvem (disponível após o login)."
   },
   "Footer": {
+    "guides": "Guias",
     "rights": "© {year} ImageKitTools. As imagens são processadas no seu navegador por padrão.",
     "about": "Sobre",
     "contact": "Contato",
     "privacy": "Política de Privacidade",
     "terms": "Termos",
     "cookies": "Política de Cookies"
+  },
+  "Guides": {
+    "indexTitle": "Guias de imagem",
+    "indexSubtitle": "Explicações ilustradas e detalhadas sobre formatos, compressão, resolução, cor e edição de imagens — como as ferramentas que você usa realmente funcionam.",
+    "readArticle": "Ler artigo",
+    "minRead": "{min} min de leitura",
+    "relatedTools": "Ferramentas relacionadas",
+    "backToGuides": "Voltar para todos os guias"
   },
   "Tool": {
     "image-compressor": {

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
 const footerLinks = [
+  { href: "/guides", key: "guides" },
   { href: "/about", key: "about" },
   { href: "/contact", key: "contact" },
   { href: "/privacy-policy", key: "privacy" },
