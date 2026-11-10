@@ -276,9 +276,27 @@
       "description": "Consulta los metadatos EXIF de una foto —cámara, objetivo, exposición, orientación y GPS— procesados localmente en tu navegador. La imagen nunca se sube.",
       "headerDescription": "Inspecciona los metadatos EXIF de una foto —cámara, objetivo, ajustes de exposición, orientación y coordenadas GPS— todo procesado localmente en tu navegador. La imagen nunca se sube.",
       "action": "Inspeccionar"
+    },
+    "exif-remover": {
+      "name": "Eliminador de EXIF",
+      "tagline": "Elimina metadatos y GPS, verificado",
+      "description": "Elimina los metadatos EXIF, IPTC, XMP y GPS de una foto volviendo a codificarla en tu navegador. La salida se vuelve a analizar para verificar que no queda metadato. La imagen no se sube.",
+      "headerDescription": "Elimina los metadatos EXIF, IPTC, XMP y GPS de una foto volviendo a codificarla localmente en tu navegador. La salida se verifica sin metadatos y la imagen no se sube.",
+      "action": "Eliminar metadatos"
     }
   },
   "Controls": {
+    "exifBeforeTitle": "Antes",
+    "exifFieldsFound": "{count} campos de metadatos encontrados",
+    "exifNoMeta": "No se encontraron metadatos — nada que eliminar.",
+    "exifGpsFound": "Coordenadas GPS encontradas",
+    "exifRemoveAction": "Eliminar metadatos",
+    "exifRemoving": "Eliminando…",
+    "exifAfterTitle": "Después",
+    "exifAllClean": "Todos los metadatos eliminados ✓",
+    "exifFieldsRemaining": "{count} campos restantes",
+    "exifGpsClean": "GPS eliminado ✓",
+    "exifDownloadClean": "Descargar imagen limpia",
     "exifGroupImage": "Imagen",
     "exifGroupCamera": "Cámara",
     "exifGroupSettings": "Ajustes",

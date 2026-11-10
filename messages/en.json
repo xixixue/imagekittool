@@ -276,9 +276,27 @@
       "description": "View the EXIF metadata of a photo — camera, lens, exposure, orientation, and GPS — parsed locally in your browser. The image is never uploaded.",
       "headerDescription": "Inspect the EXIF metadata of a photo — camera, lens, exposure settings, orientation, and GPS coordinates — all parsed locally in your browser. The image is never uploaded.",
       "action": "Inspect"
+    },
+    "exif-remover": {
+      "name": "EXIF Remover",
+      "tagline": "Strip metadata and GPS, verified",
+      "description": "Remove EXIF, IPTC, XMP and GPS metadata from a photo by re-encoding it in your browser. The output is re-parsed to verify no metadata remains. Nothing is uploaded.",
+      "headerDescription": "Strip EXIF, IPTC, XMP and GPS metadata from a photo by re-encoding it locally in your browser. The output is verified to contain no metadata, and nothing is uploaded.",
+      "action": "Remove metadata"
     }
   },
   "Controls": {
+    "exifBeforeTitle": "Before",
+    "exifFieldsFound": "{count} metadata fields found",
+    "exifNoMeta": "No metadata found — nothing to remove.",
+    "exifGpsFound": "GPS coordinates found",
+    "exifRemoveAction": "Remove metadata",
+    "exifRemoving": "Removing…",
+    "exifAfterTitle": "After",
+    "exifAllClean": "All metadata removed ✓",
+    "exifFieldsRemaining": "{count} fields remain",
+    "exifGpsClean": "GPS removed ✓",
+    "exifDownloadClean": "Download clean image",
     "exifGroupImage": "Image",
     "exifGroupCamera": "Camera",
     "exifGroupSettings": "Settings",
@@ -895,6 +913,45 @@
         {
           "q": "Can I remove EXIF after viewing it?",
           "a": "Yes. Use the EXIF Remover tool to re-encode the image without metadata, then verify with this viewer that the fields are gone."
+        }
+      ]
+    },
+    "exif-remover": {
+      "steps": [
+        "Load a photo into the EXIF Remover.",
+        "The tool shows how many metadata fields are present and whether GPS is included.",
+        "Click Remove metadata. The image is re-encoded locally — no upload.",
+        "The output is re-parsed to verify that all EXIF, IPTC, XMP and GPS data is gone.",
+        "Download the clean image."
+      ],
+      "useCases": [
+        "Stripping GPS coordinates before sharing a photo publicly.",
+        "Removing camera and lens details before uploading to a website.",
+        "Sharing a photo without revealing the date, location, or device it was taken with.",
+        "Preparing images for a clean public archive or stock library."
+      ],
+      "knowledge": [
+        {
+          "heading": "How re-encoding removes metadata",
+          "body": "When an image is decoded into a canvas and re-encoded, only the pixel data is kept — EXIF, IPTC, XMP, ICC and GPS blocks are not preserved by the canvas. This tool re-encodes the image locally and then parses the output bytes again to confirm zero metadata remains, rather than assuming the removal worked."
+        },
+        {
+          "heading": "GPS and privacy",
+          "body": "Phones often tag photos with GPS coordinates that can pinpoint your home or workplace. Stripping metadata before sharing removes that leak. Some platforms also strip metadata on upload, but you cannot rely on every recipient doing so."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Does removing EXIF reduce image quality?",
+          "a": "For PNG the re-encode is lossless, so there is no quality loss. For JPEG and WebP the image is re-encoded at high quality (0.92), which is visually near-identical to the original in almost all cases."
+        },
+        {
+          "q": "How do I know the metadata is really gone?",
+          "a": "After removal, the tool parses the output file again and shows the remaining field count (zero) and confirms GPS is gone. You can also load the downloaded file into the EXIF Viewer to double-check."
+        },
+        {
+          "q": "Does the EXIF Remover upload my photo?",
+          "a": "No. The image is decoded and re-encoded entirely in your browser. The file never leaves your device."
         }
       ]
     }

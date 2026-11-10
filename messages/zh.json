@@ -276,9 +276,27 @@
       "description": "在浏览器本地查看照片的 EXIF 元数据——相机、镜头、曝光、方向和 GPS。图片不会被上传。",
       "headerDescription": "在浏览器本地查看照片的 EXIF 元数据——相机、镜头、曝光设置、方向和 GPS 坐标。图片不会被上传。",
       "action": "查看"
+    },
+    "exif-remover": {
+      "name": "EXIF 移除器",
+      "tagline": "清除元数据与 GPS，已验证",
+      "description": "在浏览器本地重新编码图片，移除 EXIF、IPTC、XMP 和 GPS 元数据。输出会再次解析以验证无残留。图片不会被上传。",
+      "headerDescription": "在浏览器本地重新编码图片，剥离 EXIF、IPTC、XMP 和 GPS 元数据。输出经验证不含元数据，图片不会被上传。",
+      "action": "移除元数据"
     }
   },
   "Controls": {
+    "exifBeforeTitle": "处理前",
+    "exifFieldsFound": "发现 {count} 个元数据字段",
+    "exifNoMeta": "未发现元数据——无需移除。",
+    "exifGpsFound": "发现 GPS 坐标",
+    "exifRemoveAction": "移除元数据",
+    "exifRemoving": "正在移除…",
+    "exifAfterTitle": "处理后",
+    "exifAllClean": "所有元数据已移除 ✓",
+    "exifFieldsRemaining": "剩余 {count} 个字段",
+    "exifGpsClean": "GPS 已移除 ✓",
+    "exifDownloadClean": "下载干净图片",
     "exifGroupImage": "图像",
     "exifGroupCamera": "相机",
     "exifGroupSettings": "参数",

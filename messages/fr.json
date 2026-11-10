@@ -276,9 +276,27 @@
       "description": "Consultez les métadonnées EXIF d'une photo — appareil, objectif, exposition, orientation et GPS — analysées localement dans votre navigateur. L'image n'est jamais téléchargée.",
       "headerDescription": "Inspectez les métadonnées EXIF d'une photo — appareil, objectif, réglages d'exposition, orientation et coordonnées GPS — le tout analysé localement dans votre navigateur. L'image n'est jamais téléchargée.",
       "action": "Inspecter"
+    },
+    "exif-remover": {
+      "name": "Suppresseur EXIF",
+      "tagline": "Supprime métadonnées et GPS, vérifié",
+      "description": "Supprime les métadonnées EXIF, IPTC, XMP et GPS d'une photo en la réencodant dans votre navigateur. Le résultat est réanalysé pour vérifier qu'aucune métadonnée ne subsiste. L'image n'est pas téléchargée.",
+      "headerDescription": "Supprime les métadonnées EXIF, IPTC, XMP et GPS d'une photo en la réencodant localement dans votre navigateur. Le résultat est vérifié sans métadonnée et l'image n'est pas téléchargée.",
+      "action": "Supprimer les métadonnées"
     }
   },
   "Controls": {
+    "exifBeforeTitle": "Avant",
+    "exifFieldsFound": "{count} champs de métadonnées trouvés",
+    "exifNoMeta": "Aucune métadonnée trouvée — rien à supprimer.",
+    "exifGpsFound": "Coordonnées GPS trouvées",
+    "exifRemoveAction": "Supprimer les métadonnées",
+    "exifRemoving": "Suppression…",
+    "exifAfterTitle": "Après",
+    "exifAllClean": "Toutes les métadonnées supprimées ✓",
+    "exifFieldsRemaining": "{count} champs restants",
+    "exifGpsClean": "GPS supprimé ✓",
+    "exifDownloadClean": "Télécharger l'image nettoyée",
     "exifGroupImage": "Image",
     "exifGroupCamera": "Appareil",
     "exifGroupSettings": "Réglages",

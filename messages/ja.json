@@ -276,9 +276,27 @@
       "description": "写真の EXIF メタデータ（カメラ、レンズ、露出、向き、GPS）をブラウザでローカルに解析して表示します。画像はアップロードされません。",
       "headerDescription": "写真の EXIF メタデータ（カメラ、レンズ、露出設定、向き、GPS 座標）をブラウザでローカルに解析して表示します。画像はアップロードされません。",
       "action": "確認"
+    },
+    "exif-remover": {
+      "name": "EXIF 削除",
+      "tagline": "メタデータと GPS を削除（検証済み）",
+      "description": "ブラウザで画像を再エンコードして、EXIF、IPTC、XMP、GPS メタデータを削除します。出力を再解析して残留がないことを検証します。画像はアップロードされません。",
+      "headerDescription": "ブラウザでローカルに画像を再エンコードし、EXIF、IPTC、XMP、GPS メタデータを削除します。出力はメタデータなしを検証済みで、画像はアップロードされません。",
+      "action": "メタデータを削除"
     }
   },
   "Controls": {
+    "exifBeforeTitle": "処理前",
+    "exifFieldsFound": "{count} 個のメタデータを検出",
+    "exifNoMeta": "メタデータが見つかりません——削除対象はありません。",
+    "exifGpsFound": "GPS 座標を検出",
+    "exifRemoveAction": "メタデータを削除",
+    "exifRemoving": "削除中…",
+    "exifAfterTitle": "処理後",
+    "exifAllClean": "すべてのメタデータを削除しました ✓",
+    "exifFieldsRemaining": "残り {count} 個",
+    "exifGpsClean": "GPS を削除しました ✓",
+    "exifDownloadClean": "クリーンな画像をダウンロード",
     "exifGroupImage": "画像",
     "exifGroupCamera": "カメラ",
     "exifGroupSettings": "設定",

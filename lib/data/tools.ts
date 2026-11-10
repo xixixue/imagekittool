@@ -166,6 +166,18 @@ export const tools: Tool[] = [
     icon: "exif",
     accent: "blue",
   },
+  {
+    slug: "exif-remover",
+    href: "/exif-remover",
+    name: "EXIF Remover",
+    tagline: "Strip metadata and GPS, verified",
+    description:
+      "Remove EXIF, IPTC, XMP and GPS metadata from a photo by re-encoding it in your browser. The output is re-parsed to verify no metadata remains. Nothing is uploaded.",
+    formats: "JPG · PNG · WebP",
+    status: "active",
+    icon: "exif",
+    accent: "emerald",
+  },
 ];
 
 export function getToolBySlug(slug: string): Tool | undefined {
