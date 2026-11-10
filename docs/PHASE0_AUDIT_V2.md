@@ -191,7 +191,7 @@ V2 §4.1 列出的 10 个现有工具，**全部已上线且为真实实现**（
 
 | # | 问题 | 影响 | 建议 |
 |---|---|---|---|
-| P0-1 | `DEPLOYMENT.md`（**已提交入库**）含部分脱敏的真实生产凭证：R2 endpoint（含真实 Cloudflare account ID）、R2 Access Key ID 前缀、Secret 前缀、Resend key 前缀、Neon 连接串片段、bucket 名 `imagekittool-prod` | 凭证碎片泄露于 Git 历史；account ID 暴露；社交工程/定向攻击面扩大；违反 AGENTS「Never commit secrets」 | 从 DEPLOYMENT.md 移除所有真实凭证片段（含 endpoint account ID、key 前缀、连接串），改为占位符 `<owner-provided>`（已完成）；用 `git filter-repo` 清理历史（待负责人授权）；轮换 R2 token / Resend key / Neon 密码（待负责人操作） |
+| P0-1 | `DEPLOYMENT.md` 历史曾含部分脱敏的真实生产凭证：R2 endpoint（含真实 Cloudflare account ID）、R2 Access Key ID 前缀、Secret 前缀、Resend key 前缀、Neon 连接串片段 | 凭证碎片曾泄露于 Git 历史；account ID 暴露；违反 AGENTS「Never commit secrets」 | ✅ 已从 DEPLOYMENT.md 移除真实片段为占位符；✅ 已用 `git filter-branch` 重写全部历史并 force-push（本地+远程零匹配，提交信息亦无残留）；负责人决定不轮换凭证（残留风险：若仓库曾被 fork/clone 或曾为公开，旧历史或留存他处） |
 | P0-2 | V2 §9.2 结构化数据完全缺失（无 FAQ/Article/BreadcrumbList/WebApplication JSON-LD） | 富媒体结果机会丧失；面包屑缺失影响 SEO 与 SERP 体验 | Phase 1 补 JSON-LD（FAQPage 对应 ToolSeo faq、Article 对应 guides、BreadcrumbList 全站） |
 
 ### P1（产品完整性，V2 Phase 1–3）
@@ -257,7 +257,7 @@ Phase 1 聚焦"现有 10 工具的体验统一、SEO 补齐、埋点、历史"�
 
 | 事项 | 说明 | 需决策 |
 |---|---|---|
-| DEPLOYMENT.md 凭证泄露（P0-1） | 真实凭证片段在 Git 历史 | 是否授权清理 Git 历史 + 轮换 R2/Resend/Neon 凭证？ |
+| DEPLOYMENT.md 凭证泄露（P0-1） | 真实凭证片段曾在 Git 历史 | ✅ 已清理 Git 历史（filter-branch 重写 + force-push）；负责人决定不轮换凭证 |
 | 生产已用真实云服务 | R2/Neon/Resend 已开通运行 | V2 Phase 0 假设"未配置"已不成立；后续阶段可直接对接，但成本已产生 |
 | next-intl 9 语言 | V2 未明确要求多语言，但已实现且增加维护成本 | 是否保留全 9 语言？或收敛到 en + 少量？ |
 | 工具页 Dynamic vs Static | 影响 SEO/性能 | 是否优先静态化（Phase 1）？ |
