@@ -201,7 +201,7 @@ V2 §4.1 列出的 10 个现有工具，**全部已上线且为真实实现**（
 | P1-1 | 无 V2 事件埋点体系（§13.1 14+ 事件） | 无法统计 Tool Usage/成功率/下载转化/漏斗；运营复盘无数据 | Phase 1 建统一 `analytics` 适配层 + 事件触发点 |
 | P1-2 | Batch Workspace 不满足 V2 §5：无多步管线、无取消、无拖拽排序、无逐文件参数覆盖、状态机不符、无独立路由 | V2 最重要升级能力缺失 | Phase 3 重构为独立 `/batch-workspace` + 多步管线引擎 |
 | P1-3 | 无面包屑导航 | SEO/UX | Phase 1 加 Breadcrumb 组件 + JSON-LD |
-| P1-4 | ProcessingHistory 未实现（V1.1 P1 遗留） | 无云端处理历史；V2 §12 要求本地/云端历史区分 | Phase 1/6 加 model + 路由 |
+| P1-4 ✅ | ProcessingHistory 未实现（V1.1 P1 遗留） | 无云端处理历史；V2 §12 要求本地/云端历史区分 | **已解决**：ProcessingHistory model + features/history + /api/history + /account/history（commit 1452fb4） |
 | P1-5 ✅ | 工具页为 Dynamic(ƒ) 而非 Static | SEO/首屏可优化 | **已解决**：`force-static` 预渲染 10 工具页为 ○ Static（commit d662968） |
 | P1-6 | 无 Quick Workflows（§6）+ Social Media Resizer（§7）+ 尺寸预设集中管理 | V2 Phase 4 核心缺失 | Phase 4 |
 | P1-7 | Image Size Reference 中心缺失（§8.4） | 内容/SEO 缺口 | Phase 5 |
@@ -244,10 +244,10 @@ Phase 1 聚焦"现有 10 工具的体验统一、SEO 补齐、埋点、历史"�
 - 统一错误提示、空状态、禁用态文案（i18n）。✅ workspace hook 4 处 batchError + per-file 验证/像素错误全部 i18n（8 语言 en/zh/es/fr/ja/pt/ru/ar）；coded-error 重构（limits/validate 追加 `code`+`params`、decode 抛 `ProcessingError`、hook 按 `errors.${code}` 翻译、analytics error_code 用 code）；空状态/禁用态文案已一致（DropZone/FileList/DownloadButtons/ImageToolWorkspace 均 useTranslations）。**遗留**：canvas 2 处罕见技术异常（2D context / encode 失败，`err.message` 英文）+ 云上传服务端错误（upload.ts，英文）——非本地工具主路径，后续按 coded-error 模式处理。
 - 复核 `lib/auth/cookies.ts`。✅ HttpOnly + SameSite=Lax + Secure(`NODE_ENV==="production"`) + path="/" + maxAge，设置正确无需改动。
 
-### 步骤 1.4 — 处理历史基础（对应 P1-4，可选并入 Phase 1）
-- `prisma/schema.prisma` 加 `ProcessingHistory` 模型（user_id/tool_type/input/output metadata/parameters/created_at，不存二进制/EXIF）。
-- `features/history/` 实现 + `/api/history` 路由 + `/account/history` 页（区分本地历史[localStorage] 与云端历史）。
-- 迁移：`prisma db push`（需负责人确认动 Neon schema）。
+### 步骤 1.4 — 处理历史基础（对应 P1-4）✅ 已完成
+- `prisma/schema.prisma` 加 `ProcessingHistory` 模型（userId/toolType/inputMeta/outputMeta/parameters/createdAt，metadata-only：不存二进制/EXIF/原始文件名/GPS，V2 §12/§13.2）。✅
+- `features/history/` 实现（types/build/local/cloud）+ `/api/history` 路由（GET/POST + DELETE [id]，requireUser + 所有权校验）+ `/account/history` 页（HistoryView 本地/云端分栏；本地 localStorage 自动记录、云端仅用户主动保存）。✅ workspace hook 批处理完成后自动写入本地历史；AccountSubNav 加 History 入口；8 语言 i18n（History 命名空间 15 键 + Cloud.historyNav）；buildHistoryInput 复用 analytics sizeBucket 保证一致、参数 4KB 截断防护；本地历史上限 50 条。
+- 迁移：`prisma db push`。✅ 已应用到 Neon（加性建表，14.48s，无破坏性变更，未触碰既有数据）。
 
 **每步结束**：跑 `pnpm typecheck && pnpm lint && pnpm test && pnpm build` 并按 V2 §20 报告。
 
@@ -261,7 +261,7 @@ Phase 1 聚焦"现有 10 工具的体验统一、SEO 补齐、埋点、历史"�
 | 生产已用真实云服务 | R2/Neon/Resend 已开通运行 | V2 Phase 0 假设"未配置"已不成立；后续阶段可直接对接，但成本已产生 |
 | next-intl 8 语言 | V2 未明确要求多语言，但已实现且增加维护成本 | 是否保留全 8 语言（en/zh/es/fr/ja/pt/ru/ar）？或收敛到 en + 少量？ |
 | 工具页 Dynamic vs Static ✅ | 影响 SEO/性能 | **已静态化**：10 工具页 `force-static` → ○（en 预渲染 header/SEO + 客户端控件本地化）；详见 §5.4 |
-| ProcessingHistory 改 Neon schema | 需 `db push` 到生产 DB | 是否授权改生产 schema？ |
+| ProcessingHistory 改 Neon schema ✅ | 需 `db push` 到生产 DB | **已完成**：owner 授权后 db push 应用 ProcessingHistory 表（加性，无数据破坏） |
 | AI / 付费 / AdSense / 支付 | V2 §22 待确认 | 维持 Disabled/Mock，不接入 |
 
 ---
