@@ -163,7 +163,15 @@
     "errors": {
       "addAtLeastOne": "Adicione pelo menos uma imagem compatível para processar.",
       "tooManyFiles": "Você pode processar no máximo {limit} arquivos por vez.",
-      "processingFailed": "Falha ao processar."
+      "processingFailed": "Falha ao processar.",
+      "partialBatchAdded": "Apenas os primeiros {accepted} arquivo(s) foram adicionados (o limite por lote é {limit}).",
+      "fileEmpty": "O arquivo está vazio.",
+      "fileTooLarge": "O arquivo excede o limite de {limit}.",
+      "unsupportedFormat": "Formato não suportado ou não reconhecido. Apenas JPG, PNG e WebP são aceitos.",
+      "mimeMismatch": "O conteúdo do arquivo não corresponde ao tipo declarado.",
+      "extMismatch": "O conteúdo do arquivo não corresponde à extensão.",
+      "imageTooLarge": "A imagem é muito grande ({pixels}). O limite é {limit}.",
+      "invalidDimensions": "Dimensões de imagem inválidas."
     }
   },
   "FileList": {

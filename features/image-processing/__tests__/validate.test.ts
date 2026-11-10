@@ -25,16 +25,19 @@ describe("validateImageMetadata", () => {
   it("rejects a disguised file (jpeg content declared as png)", () => {
     const r = validateImageMetadata(1024, u8(JPEG), "image/png", "png");
     expect(r.ok).toBe(false);
+    expect(r.code).toBe("mimeMismatch");
   });
 
   it("rejects when extension disagrees with content", () => {
     const r = validateImageMetadata(1024, u8(JPEG), "image/jpeg", "png");
     expect(r.ok).toBe(false);
+    expect(r.code).toBe("extMismatch");
   });
 
   it("rejects unknown content", () => {
     const r = validateImageMetadata(1024, u8(UNKNOWN), undefined, null);
     expect(r.ok).toBe(false);
+    expect(r.code).toBe("unsupportedFormat");
   });
 
   it("rejects a file that exceeds the size limit", () => {
@@ -42,6 +45,8 @@ describe("validateImageMetadata", () => {
     const r = validateImageMetadata(over, u8(JPEG), "image/jpeg", "jpeg");
     expect(r.ok).toBe(false);
     expect(r.error).toMatch(/exceeds/i);
+    expect(r.code).toBe("fileTooLarge");
+    expect(r.params).toMatchObject({ limit: expect.any(String) });
   });
 
   it("rejects an empty file", () => {

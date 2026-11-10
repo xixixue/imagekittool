@@ -5,6 +5,10 @@ import type { ImageFormat } from "./types";
 export interface ValidationResult {
   ok: boolean;
   error?: string;
+  /** Stable i18n code for UI translation (English `error` kept as fallback). */
+  code?: string;
+  /** Parameters for the i18n message. */
+  params?: Record<string, string | number>;
   format?: ImageFormat;
 }
 
@@ -23,22 +27,24 @@ export function validateImageMetadata(
   declaredExt: ImageFormat | null,
 ): ValidationResult {
   const sizeCheck = validateFileSize(size);
-  if (!sizeCheck.ok) return { ok: false, error: sizeCheck.error };
+  if (!sizeCheck.ok)
+    return { ok: false, error: sizeCheck.error, code: sizeCheck.code, params: sizeCheck.params };
 
   const format = detectFormat(bytes);
   if (!format) {
     return {
       ok: false,
       error: "Unsupported or unrecognized format. Only JPG, PNG, and WebP are accepted.",
+      code: "unsupportedFormat",
     };
   }
 
   const mimeFormat = mimeToFormat(declaredMime);
   if (mimeFormat && mimeFormat !== format) {
-    return { ok: false, error: "File content does not match its declared type." };
+    return { ok: false, error: "File content does not match its declared type.", code: "mimeMismatch" };
   }
   if (declaredExt && declaredExt !== format) {
-    return { ok: false, error: "File content does not match its extension." };
+    return { ok: false, error: "File content does not match its extension.", code: "extMismatch" };
   }
 
   return { ok: true, format };

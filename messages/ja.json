@@ -163,7 +163,15 @@
     "errors": {
       "addAtLeastOne": "処理するには、少なくとも1枚の対応画像を追加してください。",
       "tooManyFiles": "一度に処理できるファイルは最大 {limit} 個です。",
-      "processingFailed": "処理に失敗しました。"
+      "processingFailed": "処理に失敗しました。",
+      "partialBatchAdded": "最初の {accepted} 個のファイルのみ追加されました（バッチ上限は {limit}）。",
+      "fileEmpty": "ファイルが空です。",
+      "fileTooLarge": "ファイルが {limit} の制限を超えています。",
+      "unsupportedFormat": "サポートされていない、または認識できない形式です。JPG、PNG、WebP のみ対応しています。",
+      "mimeMismatch": "ファイルの内容が宣言された形式と一致しません。",
+      "extMismatch": "ファイルの内容が拡張子と一致しません。",
+      "imageTooLarge": "画像が大きすぎます（{pixels}）。上限は {limit} です。",
+      "invalidDimensions": "画像の寸法が無効です。"
     }
   },
   "FileList": {

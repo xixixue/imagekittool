@@ -163,7 +163,15 @@
     "errors": {
       "addAtLeastOne": "Add at least one supported image to process.",
       "tooManyFiles": "You can process at most {limit} files at once.",
-      "processingFailed": "Processing failed."
+      "processingFailed": "Processing failed.",
+      "partialBatchAdded": "Only the first {accepted} file(s) were added (batch limit is {limit}).",
+      "fileEmpty": "File is empty.",
+      "fileTooLarge": "File exceeds the {limit} limit.",
+      "unsupportedFormat": "Unsupported or unrecognized format. Only JPG, PNG, and WebP are accepted.",
+      "mimeMismatch": "File content does not match its declared type.",
+      "extMismatch": "File content does not match its extension.",
+      "imageTooLarge": "Image is too large ({pixels}). Limit is {limit}.",
+      "invalidDimensions": "Invalid image dimensions."
     }
   },
   "FileList": {

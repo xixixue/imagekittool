@@ -163,7 +163,15 @@
     "errors": {
       "addAtLeastOne": "أضف صورة واحدة مدعومة على الأقل للمعالجة.",
       "tooManyFiles": "يمكنك معالجة {limit} ملفات كحد أقصى في المرة الواحدة.",
-      "processingFailed": "فشلت المعالجة."
+      "processingFailed": "فشلت المعالجة.",
+      "partialBatchAdded": "تمت إضافة أول {accepted} ملف(ات) فقط (الحد الأقصى للدفعة هو {limit}).",
+      "fileEmpty": "الملف فارغ.",
+      "fileTooLarge": "يتجاوز الملف الحد {limit}.",
+      "unsupportedFormat": "تنسيق غير مدعوم أو غير معروف. يتم قبول JPG و PNG و WebP فقط.",
+      "mimeMismatch": "محتوى الملف لا يتطابق مع النوع المعلن.",
+      "extMismatch": "محتوى الملف لا يتطابق مع الامتداد.",
+      "imageTooLarge": "الصورة كبيرة جدًا ({pixels}). الحد هو {limit}.",
+      "invalidDimensions": "أبعاد الصورة غير صالحة."
     }
   },
   "FileList": {

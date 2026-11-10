@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import {
   LIMITS,
+  ProcessingError,
   type CompressToKbResult,
   type DecodedImage,
   type FileStatus,
@@ -116,7 +117,10 @@ export function useImageToolWorkspace<O>(
     const accepted = incoming.slice(0, room);
     if (accepted.length < incoming.length) {
       setBatchError(
-        `Only the first ${accepted.length} file(s) were added (batch limit is ${LIMITS.maxBatchFiles}).`,
+        tRef.current("errors.partialBatchAdded", {
+          accepted: accepted.length,
+          limit: LIMITS.maxBatchFiles,
+        }),
       );
     }
 
@@ -128,7 +132,7 @@ export function useImageToolWorkspace<O>(
         id: makeId(),
         file,
         status: result.ok ? "pending" : "invalid",
-        error: result.error,
+        error: result.code ? tRef.current(`errors.${result.code}`, result.params) : result.error,
         previewUrl,
         originalSize: file.size,
         originalFormat: result.format,
@@ -204,10 +208,15 @@ export function useImageToolWorkspace<O>(
           );
         } catch (err) {
           failedCount += 1;
-          const message = err instanceof Error ? err.message : tRef.current("errors.processingFailed");
+          const message =
+            err instanceof ProcessingError
+              ? tRef.current(`errors.${err.code}`, err.params)
+              : err instanceof Error
+                ? err.message
+                : tRef.current("errors.processingFailed");
           track(AnalyticsEvent.processingFailed, {
             tool_id: toolId,
-            error_code: sanitizeError(err),
+            error_code: err instanceof ProcessingError ? err.code : sanitizeError(err),
           });
           setItems((prev) =>
             prev.map((it) => (it.id === item.id ? { ...it, status: "error", error: message } : it)),

@@ -1,4 +1,5 @@
 import { validatePixels } from "./limits";
+import { ProcessingError } from "./errors";
 import type { DecodedImage, ImageFormat } from "./types";
 
 /**
@@ -22,7 +23,11 @@ export async function decodeToImage(file: File, format: ImageFormat): Promise<De
   const px = validatePixels(bitmap.width, bitmap.height);
   if (!px.ok) {
     bitmap.close?.();
-    throw new Error(px.error ?? "Image is too large to process.");
+    throw new ProcessingError(
+      px.code ?? "imageTooLarge",
+      px.error ?? "Image is too large to process.",
+      px.params,
+    );
   }
 
   return {

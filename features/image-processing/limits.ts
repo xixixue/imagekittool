@@ -16,17 +16,34 @@ export const LIMITS = {
 export interface CheckResult {
   ok: boolean;
   error?: string;
+  /** Stable i18n code for UI translation (English `error` kept as fallback). */
+  code?: string;
+  /** Parameters for the i18n message (e.g. { limit }, { pixels }). */
+  params?: Record<string, string | number>;
 }
 
 export function validateFileSize(bytes: number, limit = LIMITS.maxFileSizeBytes): CheckResult {
-  if (!Number.isFinite(bytes) || bytes <= 0) return { ok: false, error: "File is empty." };
-  if (bytes > limit) return { ok: false, error: `File exceeds the ${formatBytes(limit)} limit.` };
+  if (!Number.isFinite(bytes) || bytes <= 0)
+    return { ok: false, error: "File is empty.", code: "fileEmpty" };
+  if (bytes > limit)
+    return {
+      ok: false,
+      error: `File exceeds the ${formatBytes(limit)} limit.`,
+      code: "fileTooLarge",
+      params: { limit: formatBytes(limit) },
+    };
   return { ok: true };
 }
 
 export function validateBatchCount(count: number, limit = LIMITS.maxBatchFiles): CheckResult {
-  if (count <= 0) return { ok: false, error: "No files selected." };
-  if (count > limit) return { ok: false, error: `You can process at most ${limit} files at once.` };
+  if (count <= 0) return { ok: false, error: "No files selected.", code: "noFiles" };
+  if (count > limit)
+    return {
+      ok: false,
+      error: `You can process at most ${limit} files at once.`,
+      code: "tooManyFiles",
+      params: { limit },
+    };
   return { ok: true };
 }
 
@@ -36,11 +53,14 @@ export function validatePixels(
   limit = LIMITS.maxPixels,
 ): CheckResult {
   const px = width * height;
-  if (!Number.isFinite(px) || px <= 0) return { ok: false, error: "Invalid image dimensions." };
+  if (!Number.isFinite(px) || px <= 0)
+    return { ok: false, error: "Invalid image dimensions.", code: "invalidDimensions" };
   if (px > limit) {
     return {
       ok: false,
       error: `Image is too large (${formatPixels(px)}). Limit is ${formatPixels(limit)}.`,
+      code: "imageTooLarge",
+      params: { pixels: formatPixels(px), limit: formatPixels(limit) },
     };
   }
   return { ok: true };

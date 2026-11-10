@@ -163,7 +163,15 @@
     "errors": {
       "addAtLeastOne": "请至少添加一张受支持的图片进行处理。",
       "tooManyFiles": "一次最多可处理 {limit} 个文件。",
-      "processingFailed": "处理失败。"
+      "processingFailed": "处理失败。",
+      "partialBatchAdded": "仅添加了前 {accepted} 个文件（批次上限为 {limit}）。",
+      "fileEmpty": "文件为空。",
+      "fileTooLarge": "文件超过 {limit} 的限制。",
+      "unsupportedFormat": "不支持或无法识别的格式。仅接受 JPG、PNG 和 WebP。",
+      "mimeMismatch": "文件内容与其声明的类型不符。",
+      "extMismatch": "文件内容与其扩展名不符。",
+      "imageTooLarge": "图片过大（{pixels}）。上限为 {limit}。",
+      "invalidDimensions": "图片尺寸无效。"
     }
   },
   "FileList": {
