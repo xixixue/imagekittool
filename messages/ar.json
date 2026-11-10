@@ -304,9 +304,26 @@
       "description": "ادمج عدة صور في ملف PDF واحد في متصفحك — أعد ترتيب الصفحات، اختر A4 أو Letter، الاتجاه، والهوامش. يُنشأ محلياً بـ pdf-lib؛ بدون رفع.",
       "headerDescription": "ادمج عدة صور في ملف PDF واحد في متصفحك. أعد ترتيب الصفحات، اختر حجم A4 أو Letter، الاتجاه، والهوامش. يُنشأ محلياً بـ pdf-lib؛ بدون رفع.",
       "action": "إنشاء PDF"
+    },
+    "pdf-to-image": {
+      "name": "PDF إلى صورة",
+      "tagline": "تحويل صفحات PDF إلى PNG أو JPG",
+      "description": "حوّل صفحات PDF إلى PNG أو JPG في متصفحك — اختر نطاق الصفحات، DPI، والصيغة، ثم نزّل فردياً أو كـ ZIP. يُعرض محلياً بـ pdf.js؛ بدون رفع.",
+      "headerDescription": "حوّل صفحات PDF إلى PNG أو JPG في متصفحك. اختر نطاق الصفحات، DPI، والصيغة، ثم نزّل فردياً أو كـ ZIP. يُعرض محلياً بـ pdf.js؛ بدون رفع.",
+      "action": "تحويل"
     }
   },
   "Controls": {
+    "pdfOnly": "يرجى تحميل ملف PDF.",
+    "pdfPageCount": "{count} صفحة",
+    "pdfPageRange": "نطاق الصفحات",
+    "pdfPageRangeHint": "مثال 1-3,5 (فارغ = الكل)",
+    "pdfDpi": "DPI",
+    "pdfFormat": "الصيغة",
+    "pdfConvert": "تحويل",
+    "pdfConverting": "جارٍ التحويل…",
+    "pdfDownloadZip": "تنزيل الكل (.zip)",
+    "pdfPageLabel": "صفحة {n}",
     "pdfPngJpegOnly": "يمكن تضمين صور JPG و PNG فقط في ملف PDF.",
     "pdfEmpty": "أضف صوراً لإنشاء PDF.",
     "pdfCount": "{count} صور",

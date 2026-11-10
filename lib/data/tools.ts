@@ -217,6 +217,18 @@ export const tools: Tool[] = [
     icon: "document",
     accent: "rose",
   },
+  {
+    slug: "pdf-to-image",
+    href: "/pdf-to-image",
+    name: "PDF to Image",
+    tagline: "Convert PDF pages to PNG or JPG",
+    description:
+      "Convert PDF pages to PNG or JPG in your browser — choose a page range, DPI, and format, then download individually or as a ZIP. Rendered locally with pdf.js; nothing is uploaded.",
+    formats: "PDF → PNG · JPG",
+    status: "active",
+    icon: "document",
+    accent: "blue",
+  },
 ];
 
 export function getToolBySlug(slug: string): Tool | undefined {

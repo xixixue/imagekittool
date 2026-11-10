@@ -9,3 +9,5 @@ export {
   type PdfImageInput,
   type PageLayout,
 } from "./build";
+
+export { parsePageRange, allPages } from "./pages";

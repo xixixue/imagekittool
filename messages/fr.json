@@ -304,9 +304,26 @@
       "description": "Combinez plusieurs images en un PDF dans votre navigateur — réordonnez les pages, choisissez A4 ou Letter, l'orientation et les marges. Généré localement avec pdf-lib ; rien n'est téléchargé.",
       "headerDescription": "Combinez plusieurs images en un PDF dans votre navigateur. Réordonnez les pages, choisissez le format A4 ou Letter, l'orientation et les marges. Généré localement avec pdf-lib ; rien n'est téléchargé.",
       "action": "Générer PDF"
+    },
+    "pdf-to-image": {
+      "name": "PDF en Image",
+      "tagline": "Convertir des pages PDF en PNG ou JPG",
+      "description": "Convertit des pages PDF en PNG ou JPG dans votre navigateur — choisissez une plage de pages, un DPI et un format, puis téléchargez individuellement ou en ZIP. Rendu localement avec pdf.js ; rien n'est téléchargé.",
+      "headerDescription": "Convertit des pages PDF en PNG ou JPG dans votre navigateur. Choisissez une plage de pages, un DPI et un format, puis téléchargez individuellement ou en ZIP. Rendu localement avec pdf.js ; rien n'est téléchargé.",
+      "action": "Convertir"
     }
   },
   "Controls": {
+    "pdfOnly": "Veuillez charger un fichier PDF.",
+    "pdfPageCount": "{count} pages",
+    "pdfPageRange": "Plage de pages",
+    "pdfPageRangeHint": "ex. 1-3,5 (vide = tout)",
+    "pdfDpi": "DPI",
+    "pdfFormat": "Format",
+    "pdfConvert": "Convertir",
+    "pdfConverting": "Conversion…",
+    "pdfDownloadZip": "Tout télécharger (.zip)",
+    "pdfPageLabel": "Page {n}",
     "pdfPngJpegOnly": "Seules les images JPG et PNG peuvent être intégrées dans un PDF.",
     "pdfEmpty": "Ajoutez des images pour créer un PDF.",
     "pdfCount": "{count} images",

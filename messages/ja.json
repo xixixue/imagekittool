@@ -304,9 +304,26 @@
       "description": "ブラウザで複数の画像を 1 つの PDF にまとめます——ページ並べ替え、A4/Letter、向き、余白を選択。pdf-lib でローカル生成、アップロードなし。",
       "headerDescription": "ブラウザで複数の画像を 1 つの PDF にまとめます。ページ並べ替え、A4/Letter サイズ、向き、余白を選択。pdf-lib でローカル生成、アップロードなし。",
       "action": "PDF を生成"
+    },
+    "pdf-to-image": {
+      "name": "PDF を画像に",
+      "tagline": "PDF ページを PNG/JPG に変換",
+      "description": "ブラウザで PDF ページを PNG または JPG に変換——ページ範囲、DPI、形式を選択し、個別または ZIP でダウンロード。pdf.js でローカル描画、アップロードなし。",
+      "headerDescription": "ブラウザで PDF ページを PNG または JPG に変換します。ページ範囲、DPI、形式を選択し、個別または ZIP でダウンロード。pdf.js でローカル描画、アップロードなし。",
+      "action": "変換"
     }
   },
   "Controls": {
+    "pdfOnly": "PDF ファイルを読み込んでください。",
+    "pdfPageCount": "{count} ページ",
+    "pdfPageRange": "ページ範囲",
+    "pdfPageRangeHint": "例: 1-3,5（空欄=すべて）",
+    "pdfDpi": "DPI",
+    "pdfFormat": "形式",
+    "pdfConvert": "変換",
+    "pdfConverting": "変換中…",
+    "pdfDownloadZip": "すべてダウンロード（.zip）",
+    "pdfPageLabel": "{n} ページ",
     "pdfPngJpegOnly": "PDF に埋め込めるのは JPG と PNG 画像のみです。",
     "pdfEmpty": "画像を追加して PDF を作成します。",
     "pdfCount": "{count} 枚の画像",

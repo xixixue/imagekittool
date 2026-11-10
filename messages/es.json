@@ -304,9 +304,26 @@
       "description": "Combina varias imágenes en un PDF en tu navegador — reordena páginas, elige A4 o Letter, orientación y márgenes. Generado localmente con pdf-lib; no se sube.",
       "headerDescription": "Combina varias imágenes en un PDF en tu navegador. Reordena páginas, elige tamaño A4 o Letter, orientación y márgenes. Generado localmente con pdf-lib; no se sube.",
       "action": "Generar PDF"
+    },
+    "pdf-to-image": {
+      "name": "PDF a Imagen",
+      "tagline": "Convierte páginas PDF a PNG o JPG",
+      "description": "Convierte páginas PDF a PNG o JPG en tu navegador — elige un rango de páginas, DPI y formato, y descarga individualmente o como ZIP. Renderizado localmente con pdf.js; no se sube.",
+      "headerDescription": "Convierte páginas PDF a PNG o JPG en tu navegador. Elige un rango de páginas, DPI y formato, y descarga individualmente o como ZIP. Renderizado localmente con pdf.js; no se sube.",
+      "action": "Convertir"
     }
   },
   "Controls": {
+    "pdfOnly": "Carga un archivo PDF.",
+    "pdfPageCount": "{count} páginas",
+    "pdfPageRange": "Rango de páginas",
+    "pdfPageRangeHint": "ej. 1-3,5 (vacío = todas)",
+    "pdfDpi": "DPI",
+    "pdfFormat": "Formato",
+    "pdfConvert": "Convertir",
+    "pdfConverting": "Convirtiendo…",
+    "pdfDownloadZip": "Descargar todo (.zip)",
+    "pdfPageLabel": "Página {n}",
     "pdfPngJpegOnly": "Solo se pueden incrustar imágenes JPG y PNG en un PDF.",
     "pdfEmpty": "Añade imágenes para crear un PDF.",
     "pdfCount": "{count} imágenes",

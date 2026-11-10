@@ -304,9 +304,26 @@
       "description": "Combine multiple images into one PDF in your browser — reorder pages, choose A4 or Letter, orientation, and margins. Generated locally with pdf-lib; nothing is uploaded.",
       "headerDescription": "Combine multiple images into one PDF in your browser. Reorder pages, choose A4 or Letter page size, orientation, and margins. Generated locally with pdf-lib; nothing is uploaded.",
       "action": "Generate PDF"
+    },
+    "pdf-to-image": {
+      "name": "PDF to Image",
+      "tagline": "Convert PDF pages to PNG or JPG",
+      "description": "Convert PDF pages to PNG or JPG in your browser — choose a page range, DPI, and format, then download individually or as a ZIP. Rendered locally with pdf.js; nothing is uploaded.",
+      "headerDescription": "Convert PDF pages to PNG or JPG in your browser. Choose a page range, DPI, and format, then download individually or as a ZIP. Rendered locally with pdf.js; nothing is uploaded.",
+      "action": "Convert"
     }
   },
   "Controls": {
+    "pdfOnly": "Please load a PDF file.",
+    "pdfPageCount": "{count} pages",
+    "pdfPageRange": "Page range",
+    "pdfPageRangeHint": "e.g. 1-3,5 (blank = all)",
+    "pdfDpi": "DPI",
+    "pdfFormat": "Format",
+    "pdfConvert": "Convert",
+    "pdfConverting": "Converting…",
+    "pdfDownloadZip": "Download all (.zip)",
+    "pdfPageLabel": "Page {n}",
     "pdfPngJpegOnly": "Only JPG and PNG images can be embedded in a PDF.",
     "pdfEmpty": "Add images to build a PDF.",
     "pdfCount": "{count} images",
@@ -1115,6 +1132,45 @@
         {
           "q": "Is my data uploaded?",
           "a": "No. The PDF is generated entirely in your browser with pdf-lib. The images never leave your device."
+        }
+      ]
+    },
+    "pdf-to-image": {
+      "steps": [
+        "Load a PDF file into the tool.",
+        "The tool reports the page count. Enter a page range like 1-3,5 or leave blank for all.",
+        "Choose a DPI (72, 150, or 300) and an output format (PNG or JPG).",
+        "Click Convert — each page is rendered locally with pdf.js, nothing is uploaded.",
+        "Download individual images or the whole set as a ZIP."
+      ],
+      "useCases": [
+        "Extracting pages from a PDF as images for a presentation.",
+        "Converting a scanned PDF into image files.",
+        "Saving a single PDF page as a PNG for sharing.",
+        "Rasterizing a PDF for use in a tool that needs images."
+      ],
+      "knowledge": [
+        {
+          "heading": "DPI and render size",
+          "body": "PDFs are vector and have no fixed pixel size; the DPI you choose sets the render scale. 72 DPI matches the PDF's native point size (compact), 150 DPI is good for screen reading, and 300 DPI produces sharp, print-quality output. Higher DPI means larger image files."
+        },
+        {
+          "heading": "Local rendering with pdf.js",
+          "body": "Rendering happens entirely in your browser with pdf.js (Mozilla's PDF engine). The PDF bytes never leave your device, and the pdf.js worker is served locally rather than from a CDN — consistent with the project's Local First principle."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Why are my converted images large?",
+          "a": "Image size scales with DPI and page count. 300 DPI produces detailed but large images. Drop to 150 or 72 DPI for smaller files, or convert fewer pages."
+        },
+        {
+          "q": "Can I convert only some pages?",
+          "a": "Yes. Enter a page range like 1-3,5 in the Page range field. Leave it blank to convert every page. Ranges are clamped to the document's page count."
+        },
+        {
+          "q": "Is my PDF uploaded?",
+          "a": "No. The PDF is rendered entirely in your browser with pdf.js. The file never leaves your device."
         }
       ]
     }
