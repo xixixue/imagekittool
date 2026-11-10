@@ -44,7 +44,7 @@ interface ImageToolWorkspaceProps<O> {
  */
 export function ImageToolWorkspace<O>(props: ImageToolWorkspaceProps<O>) {
   const t = useTranslations("Workspace");
-  const workspace = useImageToolWorkspace(props.processFn);
+  const workspace = useImageToolWorkspace(props.processFn, props.operation);
   const [options, setOptions] = useState<O>(props.defaultOptions);
 
   const first = workspace.items.find((it) => it.originalFormat);

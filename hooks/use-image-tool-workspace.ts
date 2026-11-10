@@ -13,6 +13,8 @@ import {
   validateImageFile,
 } from "@/features/image-processing";
 import { triggerDownload } from "@/lib/download";
+import { track } from "@/lib/analytics/track";
+import { AnalyticsEvent, durationBucket, fileCountBucket, sanitizeError } from "@/lib/analytics/events";
 
 export interface WorkspaceItem {
   id: string;
@@ -74,6 +76,7 @@ async function mapWithConcurrency<T>(
  */
 export function useImageToolWorkspace<O>(
   processFn: (image: DecodedImage, options: O) => Promise<ProcessResult>,
+  toolId?: string,
 ) {
   const [items, setItems] = useState<WorkspaceItem[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -126,7 +129,13 @@ export function useImageToolWorkspace<O>(
       });
     }
     setItems((prev) => [...prev, ...validated]);
-  }, []);
+    if (validated.length > 0) {
+      track(AnalyticsEvent.fileSelected, {
+        tool_id: toolId,
+        file_count: fileCountBucket(validated.length),
+      });
+    }
+  }, [toolId]);
 
   const processAll = useCallback(
     async (options: O) => {
@@ -142,6 +151,13 @@ export function useImageToolWorkspace<O>(
       setBatchError(null);
       setIsProcessing(true);
       setProgress({ done: 0, total: processable.length });
+
+      const startedAt = Date.now();
+      let failedCount = 0;
+      track(AnalyticsEvent.batchStarted, {
+        tool_id: toolId,
+        file_count: fileCountBucket(processable.length),
+      });
 
       setItems((prev) =>
         prev.map((it) =>
@@ -181,7 +197,12 @@ export function useImageToolWorkspace<O>(
             ),
           );
         } catch (err) {
+          failedCount += 1;
           const message = err instanceof Error ? err.message : "Processing failed.";
+          track(AnalyticsEvent.processingFailed, {
+            tool_id: toolId,
+            error_code: sanitizeError(err),
+          });
           setItems((prev) =>
             prev.map((it) => (it.id === item.id ? { ...it, status: "error", error: message } : it)),
           );
@@ -190,16 +211,23 @@ export function useImageToolWorkspace<O>(
         setProgress({ done, total: processable.length });
       });
 
+      track(AnalyticsEvent.batchCompleted, {
+        tool_id: toolId,
+        file_count: fileCountBucket(processable.length),
+        duration: durationBucket(Date.now() - startedAt),
+        had_errors: failedCount > 0,
+      });
       setIsProcessing(false);
     },
-    [processFn],
+    [processFn, toolId],
   );
 
   const downloadOne = useCallback((id: string) => {
     const item = itemsRef.current.find((it) => it.id === id);
     if (!item?.result) return;
     triggerDownload(item.result.blob, item.result.filename);
-  }, []);
+    track(AnalyticsEvent.downloadClicked, { tool_id: toolId, method: "single" });
+  }, [toolId]);
 
   const downloadZip = useCallback(async (zipName = "images.zip") => {
     const doneItems = itemsRef.current.filter((it) => it.result);
@@ -221,7 +249,12 @@ export function useImageToolWorkspace<O>(
     const zipped = zipSync(files);
     const blob = new Blob([zipped], { type: "application/zip" });
     triggerDownload(blob, zipName);
-  }, []);
+    track(AnalyticsEvent.downloadClicked, {
+      tool_id: toolId,
+      method: "zip",
+      file_count: fileCountBucket(doneItems.length),
+    });
+  }, [toolId]);
 
   const removeFile = useCallback((id: string) => {
     setItems((prev) => {

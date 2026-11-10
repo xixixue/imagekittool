@@ -1,6 +1,7 @@
 import { getMessages, getTranslations } from "next-intl/server";
 import { getToolBySlug } from "@/lib/data/tools";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
+import { ToolViewTracker } from "@/components/analytics/tool-view-tracker";
 import type { Crumb } from "@/lib/seo/json-ld";
 import { ToolIcon } from "./tool-icon";
 
@@ -26,6 +27,7 @@ export async function ToolPageHeader({ slug }: ToolPageHeaderProps) {
   ];
   return (
     <div className="mb-8">
+      <ToolViewTracker toolId={slug} />
       <Breadcrumbs trail={trail} />
       <header className="flex items-start gap-4">
         <ToolIcon icon={icon} accent={accent} size="lg" className="shrink-0" />

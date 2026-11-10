@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { uploadToCloud } from "@/lib/cloud/client";
 import type { OperationType } from "@/features/cloud-storage/types";
+import { AnalyticsEvent } from "@/lib/analytics/events";
+import { track } from "@/lib/analytics/track";
 
 interface SaveToCloudButtonProps {
   blob: Blob;
@@ -37,6 +39,7 @@ export function SaveToCloudButton({
   const onSave = async () => {
     setState("saving");
     setError("");
+    track(AnalyticsEvent.cloudSaveStarted, { tool_id: operationType, category });
     try {
       await uploadToCloud(blob, {
         fileName,
@@ -44,6 +47,7 @@ export function SaveToCloudButton({
         category,
         operationType,
       });
+      track(AnalyticsEvent.cloudSaveCompleted, { tool_id: operationType, category });
       setState("saved");
       onSaved?.();
     } catch (e) {

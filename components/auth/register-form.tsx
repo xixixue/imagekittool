@@ -7,6 +7,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import { registerSchema, type RegisterInput } from "@/lib/validation/auth";
+import { AnalyticsEvent } from "@/lib/analytics/events";
+import { track } from "@/lib/analytics/track";
 
 export function RegisterForm() {
   const t = useTranslations("Auth");
@@ -33,6 +35,7 @@ export function RegisterForm() {
       setServerError(json.error ?? "Registration failed.");
       return;
     }
+    track(AnalyticsEvent.signupCompleted);
     router.push("/account");
     router.refresh();
   };
