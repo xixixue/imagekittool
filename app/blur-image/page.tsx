@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/blur-image" },
 };
 
+// Statically prerendered for fast TTFB + crawlable SEO (see image-compressor).
+export const dynamic = "force-static";
+
 export default function BlurImagePage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-12">
