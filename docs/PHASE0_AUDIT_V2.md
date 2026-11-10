@@ -239,10 +239,10 @@ Phase 1 聚焦"现有 10 工具的体验统一、SEO 补齐、埋点、历史"�
 - 修改 `app/tools/[...]`、各工具 `page.tsx`：tool_view。
 - 测试：`tests/analytics/events.test.ts` 校验事件 schema 与脱敏。
 
-### 步骤 1.3 — 工具交互/状态/移动端/空状态统一与缺陷修复（V2 §17 Phase 1）
-- 审查 10 工具的大图处理、EXIF 方向（`decode.ts` 是否 honor orientation）、透明度、输出 MIME 一致性；按需补单测。
-- 统一错误提示、空状态、禁用态文案（i18n）。
-- 复核 `lib/auth/cookies.ts` Secure/SameSite 生产设置。
+### 步骤 1.3 — 工具交互/状态/移动端/空状态统一与缺陷修复（V2 §17 Phase 1）✅ 已完成
+- 审查 10 工具的大图处理、EXIF 方向、透明度、输出 MIME 一致性。✅ EXIF 已 honor（`imageOrientation: "from-image"` + fallback）；MIME/扩展名一致（`buildOutputFilename`）；limits 守护大图（25MB/40MP/20 文件）。**修复 5 处透明度缺陷**：rotate/compress/resize/meme/watermark 输出 JPEG 时未填白底 → PNG/WebP 透明区变黑（rotate 甚至注释声称填白但代码未填）。抽取纯函数 `backgroundForFormat(format, background?)` + 薄 canvas helper，统一全部 10 处理器；补 `canvas.test.ts`（4 测试）。
+- 统一错误提示、空状态、禁用态文案（i18n）。✅ workspace hook 4 处 batchError + per-file 验证/像素错误全部 i18n（8 语言 en/zh/es/fr/ja/pt/ru/ar）；coded-error 重构（limits/validate 追加 `code`+`params`、decode 抛 `ProcessingError`、hook 按 `errors.${code}` 翻译、analytics error_code 用 code）；空状态/禁用态文案已一致（DropZone/FileList/DownloadButtons/ImageToolWorkspace 均 useTranslations）。**遗留**：canvas 2 处罕见技术异常（2D context / encode 失败，`err.message` 英文）+ 云上传服务端错误（upload.ts，英文）——非本地工具主路径，后续按 coded-error 模式处理。
+- 复核 `lib/auth/cookies.ts`。✅ HttpOnly + SameSite=Lax + Secure(`NODE_ENV==="production"`) + path="/" + maxAge，设置正确无需改动。
 
 ### 步骤 1.4 — 处理历史基础（对应 P1-4，可选并入 Phase 1）
 - `prisma/schema.prisma` 加 `ProcessingHistory` 模型（user_id/tool_type/input/output metadata/parameters/created_at，不存二进制/EXIF）。
