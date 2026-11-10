@@ -67,7 +67,7 @@
 5. 创建后会显示**四样东西**（只显示一次，立刻复制保存）：
    - **Access Key ID**
    - **Secret Access Key**
-   - **Endpoint**（本项目的真实值：`https://<account_id>.r2.cloudflarestorage.com`）
+   - **Endpoint**（形如：`https://<account_id>.r2.cloudflarestorage.com`）
    - （可选）**Jurisdiction** / region
 
 ### 填到 Vercel 环境变量（§6 一起填）
@@ -201,7 +201,7 @@
 | 变量名 | 来自哪 | 真实值（密钥已脱敏，完整值见本地 `.env.vercel`） |
 |---|---|---|
 | `NEXT_PUBLIC_APP_URL` | 你的域名 | `https://imagekittool.com` |
-| `DATABASE_URL` | §3 Neon | `postgresql://<user>:••••@<host>-pooler…/neondb?sslmode=require` |
+| `DATABASE_URL` | §3 Neon | `postgresql://<user>:<password>@<host>-pooler/<dbname>?sslmode=require` |
 | `S3_ENDPOINT` | §2 R2 | `https://<account_id>.r2.cloudflarestorage.com` |
 | `S3_REGION` | 固定 | `auto` |
 | `S3_BUCKET` | §2 R2 | `imagekittool-prod` |
