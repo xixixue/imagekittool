@@ -3,6 +3,8 @@ import { getTranslations } from "next-intl/server";
 import { ToolCard } from "@/components/tools/tool-card";
 import { ShieldIcon } from "@/components/tools/tool-icon";
 import { tools } from "@/lib/data/tools";
+import { Breadcrumbs } from "@/components/layout/breadcrumbs";
+import type { Crumb } from "@/lib/seo/json-ld";
 
 export const metadata: Metadata = {
   title: "All Image Tools",
@@ -13,8 +15,14 @@ export const metadata: Metadata = {
 
 export default async function ToolsPage() {
   const t = await getTranslations("ToolsPage");
+  const tNav = await getTranslations("Nav");
+  const trail: Crumb[] = [
+    { name: "ImageKitTools", href: "/" },
+    { name: tNav("tools"), href: "/tools" },
+  ];
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
+      <Breadcrumbs trail={trail} />
       <div className="max-w-2xl">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{t("title")}</h1>
         <p className="mt-3 text-muted-foreground">{t("subtitle")}</p>

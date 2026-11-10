@@ -3,6 +3,8 @@ import { getMessages, getTranslations } from "next-intl/server";
 import { AdSlot } from "@/components/ads/ad-slot";
 import { getToolBySlug } from "@/lib/data/tools";
 import { TOOL_SEO_RELATED, type ToolDeepDiveData, type ToolSeoData } from "@/lib/data/tool-seo";
+import { JsonLd } from "@/components/seo/json-ld";
+import { buildFaqPage, buildWebApplication } from "@/lib/seo/json-ld";
 
 type ToolEntry = NonNullable<ReturnType<typeof getToolBySlug>>;
 
@@ -35,8 +37,24 @@ export async function ToolSeoContent({ slug }: { slug: string }) {
     .map((s) => getToolBySlug(s))
     .filter((entry): entry is ToolEntry => Boolean(entry));
 
+  // Structured data (SPEC V2 §9.2): a FAQPage graph built from the Q/A pairs
+  // rendered below, plus a WebApplication graph describing the tool. The data
+  // mirrors the page's real content — no fabricated fields.
+  const tool = getToolBySlug(slug);
+  const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+  const faqLd = buildFaqPage(faq);
+  const webAppLd = tool
+    ? buildWebApplication({
+        name: toolName(`${slug}.name`),
+        description: tool.description,
+        url: `${siteUrl}${tool.href}`,
+      })
+    : null;
+  const structuredData = webAppLd ? [faqLd, webAppLd] : [faqLd];
+
   return (
     <section className="mt-16 space-y-10">
+      <JsonLd data={structuredData} />
       {/* In-content ad — sits inside the SEO content zone, far below the tool's
           upload/process/download buttons. Renders nothing until AdSense is
           configured (see ADS.md). */}

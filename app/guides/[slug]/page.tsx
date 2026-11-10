@@ -7,6 +7,9 @@ import { getToolBySlug } from "@/lib/data/tools";
 import { GuideBody } from "@/components/guides/guide-body";
 import { GuideCover } from "@/components/guides/guide-diagram";
 import { ArrowRightIcon } from "@/components/tools/tool-icon";
+import { Breadcrumbs } from "@/components/layout/breadcrumbs";
+import { JsonLd } from "@/components/seo/json-ld";
+import { buildArticle, type Crumb } from "@/lib/seo/json-ld";
 
 export function generateStaticParams() {
   return guides.map((g) => ({ slug: g.slug }));
@@ -37,13 +40,34 @@ export default async function GuideArticlePage({
   if (!guide) notFound();
 
   const t = await getTranslations("Guides");
+  const tNav = await getTranslations("Nav");
   const toolName = await getTranslations("Tool");
   const related = guide.relatedToolSlugs
     .map((s) => getToolBySlug(s))
     .filter((entry): entry is NonNullable<ReturnType<typeof getToolBySlug>> => Boolean(entry));
 
+  const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+  const canonical = `${siteUrl}/guides/${slug}`;
+  const trail: Crumb[] = [
+    { name: "ImageKitTools", href: "/" },
+    { name: tNav("guides"), href: "/guides" },
+    { name: guide.title, href: `/guides/${slug}` },
+  ];
+  // Article structured data mirrors the guide's real headline, description,
+  // publish date and cover (SPEC V2 §9.2).
+  const articleLd = buildArticle({
+    headline: guide.title,
+    description: guide.description,
+    datePublished: guide.publishedAt,
+    image: guide.coverImage ? `${siteUrl}${guide.coverImage}` : undefined,
+    url: canonical,
+  });
+
   return (
     <article className="mx-auto max-w-3xl px-4 py-12">
+      <JsonLd data={articleLd} />
+      <Breadcrumbs trail={trail} />
+
       <Link
         href="/guides"
         className="inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-foreground"
