@@ -311,9 +311,29 @@
       "description": "在浏览器中将 PDF 页面转为 PNG 或 JPG——选择页码范围、DPI 和格式，可单独下载或打包 ZIP。本地用 pdf.js 渲染，不上传。",
       "headerDescription": "在浏览器中将 PDF 页面转为 PNG 或 JPG。选择页码范围、DPI 和格式，可单独下载或打包 ZIP。本地用 pdf.js 渲染，不上传。",
       "action": "转换"
+    },
+    "batch-workspace": {
+      "name": "批处理工作区",
+      "tagline": "多图多步骤批量处理",
+      "description": "在浏览器中批量处理多张图片——添加文件、链式步骤（调整大小、转换、压缩、水印、旋转、重命名），可单独下载或打包 ZIP。本地运行，不上传。",
+      "headerDescription": "在浏览器中批量处理多张图片。添加文件、链式步骤（调整大小、转换、压缩、水印、旋转、重命名），可单独下载或打包 ZIP。本地运行，不上传。",
+      "action": "处理"
     }
   },
   "Controls": {
+    "batchCount": "{count} 个文件",
+    "batchClearAll": "全部清除",
+    "batchDownload": "下载",
+    "batchRemove": "移除",
+    "batchSteps": "步骤",
+    "batchNoSteps": "至少添加一个处理步骤。",
+    "batchAddStep": "添加步骤",
+    "batchConcurrency": "并发数",
+    "batchProcess": "全部处理",
+    "batchProcessing": "处理中…",
+    "batchCancel": "取消",
+    "batchDownloadZip": "全部下载（.zip）",
+    "batchInvalid": "请先修正步骤设置再处理。",
     "pdfOnly": "请加载 PDF 文件。",
     "pdfPageCount": "{count} 页",
     "pdfPageRange": "页码范围",

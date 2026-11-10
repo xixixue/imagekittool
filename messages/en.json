@@ -311,9 +311,29 @@
       "description": "Convert PDF pages to PNG or JPG in your browser — choose a page range, DPI, and format, then download individually or as a ZIP. Rendered locally with pdf.js; nothing is uploaded.",
       "headerDescription": "Convert PDF pages to PNG or JPG in your browser. Choose a page range, DPI, and format, then download individually or as a ZIP. Rendered locally with pdf.js; nothing is uploaded.",
       "action": "Convert"
+    },
+    "batch-workspace": {
+      "name": "Batch Workspace",
+      "tagline": "Chain steps across many images",
+      "description": "Process many images at once in your browser — add files, chain steps (resize, convert, compress, watermark, rotate, rename), and download individually or as a ZIP. Runs locally; nothing is uploaded.",
+      "headerDescription": "Process many images at once in your browser. Add files, chain steps (resize, convert, compress, watermark, rotate, rename), and download individually or as a ZIP. Runs locally; nothing is uploaded.",
+      "action": "Process"
     }
   },
   "Controls": {
+    "batchCount": "{count} files",
+    "batchClearAll": "Clear all",
+    "batchDownload": "Download",
+    "batchRemove": "Remove",
+    "batchSteps": "Steps",
+    "batchNoSteps": "Add at least one processing step.",
+    "batchAddStep": "Add step",
+    "batchConcurrency": "Concurrency",
+    "batchProcess": "Process all",
+    "batchProcessing": "Processing…",
+    "batchCancel": "Cancel",
+    "batchDownloadZip": "Download all (.zip)",
+    "batchInvalid": "Fix the step settings before processing.",
     "pdfOnly": "Please load a PDF file.",
     "pdfPageCount": "{count} pages",
     "pdfPageRange": "Page range",
@@ -1171,6 +1191,45 @@
         {
           "q": "Is my PDF uploaded?",
           "a": "No. The PDF is rendered entirely in your browser with pdf.js. The file never leaves your device."
+        }
+      ]
+    },
+    "batch-workspace": {
+      "steps": [
+        "Drop or select multiple JPG, PNG, or WebP images.",
+        "Add one or more processing steps — resize, convert, compress, watermark, rotate, or rename — and reorder them.",
+        "Choose a concurrency level and click Process all.",
+        "Each file runs through the step pipeline locally; one failure never stops the batch.",
+        "Download individual results or the whole set as a ZIP."
+      ],
+      "useCases": [
+        "Resizing a folder of photos for a website in one pass.",
+        "Converting a batch of PNGs to WebP.",
+        "Watermarking many images with the same text.",
+        "Renaming and compressing a set of exports at once."
+      ],
+      "knowledge": [
+        {
+          "heading": "A real pipeline, not a single op",
+          "body": "Each file flows through every step you add, in order — resize then compress then watermark, for example. Between steps the intermediate result is re-decoded so the next step sees the previous step's output. Steps reuse the same processing functions as the single tools, so results are identical."
+        },
+        {
+          "heading": "Concurrency and isolation",
+          "body": "Files process with a small concurrency limit (1–3) to avoid exhausting browser memory. A failure on one file is isolated — it is marked failed and the rest continue. You can cancel pending work at any time; running tasks are interrupted best-effort."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Is there a file or step limit?",
+          "a": "Each file must be under 25 MB and a supported image type (JPG, PNG, WebP). There is no hard step limit, but very long pipelines re-decode between steps, so they take longer per file."
+        },
+        {
+          "q": "Does the batch upload my images?",
+          "a": "No. All processing happens in your browser. Images never leave your device, and results are only saved to the cloud if you explicitly choose to."
+        },
+        {
+          "q": "What happens if one image fails?",
+          "a": "It is marked failed with the reason; every other file continues processing. You can fix the issue and re-run, or download the successful results."
         }
       ]
     }

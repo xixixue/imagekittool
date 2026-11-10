@@ -311,9 +311,29 @@
       "description": "ブラウザで PDF ページを PNG または JPG に変換——ページ範囲、DPI、形式を選択し、個別または ZIP でダウンロード。pdf.js でローカル描画、アップロードなし。",
       "headerDescription": "ブラウザで PDF ページを PNG または JPG に変換します。ページ範囲、DPI、形式を選択し、個別または ZIP でダウンロード。pdf.js でローカル描画、アップロードなし。",
       "action": "変換"
+    },
+    "batch-workspace": {
+      "name": "バッチワークスペース",
+      "tagline": "複数画像にステップを連鎖",
+      "description": "ブラウザで複数画像を一括処理——ファイル追加、ステップ連鎖（リサイズ・変換・圧縮・透かし・回転・リネーム）、個別または ZIP でダウンロード。ローカル実行、アップロードなし。",
+      "headerDescription": "ブラウザで複数画像を一括処理します。ファイル追加、ステップ連鎖（リサイズ・変換・圧縮・透かし・回転・リネーム）、個別または ZIP でダウンロード。ローカル実行、アップロードなし。",
+      "action": "処理"
     }
   },
   "Controls": {
+    "batchCount": "{count} ファイル",
+    "batchClearAll": "すべて消去",
+    "batchDownload": "ダウンロード",
+    "batchRemove": "削除",
+    "batchSteps": "ステップ",
+    "batchNoSteps": "少なくとも1つの処理ステップを追加してください。",
+    "batchAddStep": "ステップ追加",
+    "batchConcurrency": "並列数",
+    "batchProcess": "すべて処理",
+    "batchProcessing": "処理中…",
+    "batchCancel": "キャンセル",
+    "batchDownloadZip": "すべてダウンロード（.zip）",
+    "batchInvalid": "処理前にステップ設定を修正してください。",
     "pdfOnly": "PDF ファイルを読み込んでください。",
     "pdfPageCount": "{count} ページ",
     "pdfPageRange": "ページ範囲",

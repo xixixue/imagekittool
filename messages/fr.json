@@ -311,9 +311,29 @@
       "description": "Convertit des pages PDF en PNG ou JPG dans votre navigateur — choisissez une plage de pages, un DPI et un format, puis téléchargez individuellement ou en ZIP. Rendu localement avec pdf.js ; rien n'est téléchargé.",
       "headerDescription": "Convertit des pages PDF en PNG ou JPG dans votre navigateur. Choisissez une plage de pages, un DPI et un format, puis téléchargez individuellement ou en ZIP. Rendu localement avec pdf.js ; rien n'est téléchargé.",
       "action": "Convertir"
+    },
+    "batch-workspace": {
+      "name": "Espace de lot",
+      "tagline": "Enchaîne des étapes sur plusieurs images",
+      "description": "Traitez plusieurs images à la fois dans votre navigateur — ajoutez des fichiers, enchaînez des étapes (redimensionner, convertir, compresser, filigrane, pivoter, renommer) et téléchargez individuellement ou en ZIP. Local ; rien n'est téléchargé.",
+      "headerDescription": "Traitez plusieurs images à la fois dans votre navigateur. Ajoutez des fichiers, enchaînez des étapes (redimensionner, convertir, compresser, filigrane, pivoter, renommer) et téléchargez individuellement ou en ZIP. Local ; rien n'est téléchargé.",
+      "action": "Traiter"
     }
   },
   "Controls": {
+    "batchCount": "{count} fichiers",
+    "batchClearAll": "Tout effacer",
+    "batchDownload": "Télécharger",
+    "batchRemove": "Retirer",
+    "batchSteps": "Étapes",
+    "batchNoSteps": "Ajoutez au moins une étape de traitement.",
+    "batchAddStep": "Ajouter une étape",
+    "batchConcurrency": "Concurrence",
+    "batchProcess": "Tout traiter",
+    "batchProcessing": "Traitement…",
+    "batchCancel": "Annuler",
+    "batchDownloadZip": "Tout télécharger (.zip)",
+    "batchInvalid": "Corrigez les réglages des étapes avant de traiter.",
     "pdfOnly": "Veuillez charger un fichier PDF.",
     "pdfPageCount": "{count} pages",
     "pdfPageRange": "Plage de pages",

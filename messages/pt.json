@@ -311,9 +311,29 @@
       "description": "Converta páginas PDF em PNG ou JPG no seu navegador — escolha um intervalo de páginas, DPI e formato, e baixe individualmente ou como ZIP. Renderizado localmente com pdf.js; nada é enviado.",
       "headerDescription": "Converta páginas PDF em PNG ou JPG no seu navegador. Escolha um intervalo de páginas, DPI e formato, e baixe individualmente ou como ZIP. Renderizado localmente com pdf.js; nada é enviado.",
       "action": "Converter"
+    },
+    "batch-workspace": {
+      "name": "Espaço de lote",
+      "tagline": "Encadeia etapas em várias imagens",
+      "description": "Processe várias imagens de uma vez no seu navegador — adicione arquivos, encadeie etapas (redimensionar, converter, comprimir, marca d'água, girar, renomear) e baixe individualmente ou como ZIP. Local; nada é enviado.",
+      "headerDescription": "Processe várias imagens de uma vez no seu navegador. Adicione arquivos, encadeie etapas (redimensionar, converter, comprimir, marca d'água, girar, renomear) e baixe individualmente ou como ZIP. Local; nada é enviado.",
+      "action": "Processar"
     }
   },
   "Controls": {
+    "batchCount": "{count} arquivos",
+    "batchClearAll": "Limpar tudo",
+    "batchDownload": "Baixar",
+    "batchRemove": "Remover",
+    "batchSteps": "Etapas",
+    "batchNoSteps": "Adicione pelo menos uma etapa de processamento.",
+    "batchAddStep": "Adicionar etapa",
+    "batchConcurrency": "Concorrência",
+    "batchProcess": "Processar tudo",
+    "batchProcessing": "Processando…",
+    "batchCancel": "Cancelar",
+    "batchDownloadZip": "Baixar tudo (.zip)",
+    "batchInvalid": "Corrija as configurações das etapas antes de processar.",
     "pdfOnly": "Carregue um arquivo PDF.",
     "pdfPageCount": "{count} páginas",
     "pdfPageRange": "Intervalo de páginas",

@@ -240,6 +240,16 @@ export function DocumentIcon(props: IconProps) {
   );
 }
 
+export function BatchIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 3 3 7l9 4 9-4-9-4Z" />
+      <path d="m3 12 9 4 9-4" />
+      <path d="m3 17 9 4 9-4" />
+    </svg>
+  );
+}
+
 const ICONS: Record<IconKey, (props: IconProps) => React.ReactElement> = {
   compress: CompressIcon,
   resize: ResizeIcon,
@@ -256,6 +266,7 @@ const ICONS: Record<IconKey, (props: IconProps) => React.ReactElement> = {
   ruler: RulerIcon,
   favicon: FaviconIcon,
   document: DocumentIcon,
+  batch: BatchIcon,
 };
 
 // Literal class strings so Tailwind v4's scanner generates them.

@@ -22,7 +22,8 @@ export type IconKey =
   | "exif"
   | "ruler"
   | "favicon"
-  | "document";
+  | "document"
+  | "batch";
 
 export type Tool = {
   slug: string;
@@ -228,6 +229,18 @@ export const tools: Tool[] = [
     status: "active",
     icon: "document",
     accent: "blue",
+  },
+  {
+    slug: "batch-workspace",
+    href: "/batch-workspace",
+    name: "Batch Workspace",
+    tagline: "Chain steps across many images",
+    description:
+      "Process many images at once in your browser — add files, chain steps (resize, convert, compress, watermark, rotate, rename), and download individually or as a ZIP. Runs locally; nothing is uploaded.",
+    formats: "JPG · PNG · WebP",
+    status: "active",
+    icon: "batch",
+    accent: "violet",
   },
 ];
 
