@@ -108,12 +108,12 @@ export const guides: Guide[] = [
       },
       {
         type: "image",
-        src: "/guides/jpg-vs-png-vs-webp-cover.webp",
-        alt: "Illustration comparing JPG, PNG, and WebP image formats side by side",
+        src: "/guides/jpg-vs-png-vs-webp-inline.webp",
+        alt: "Decision guide for choosing JPG, PNG, or WebP by image content type",
         width: 1200,
         height: 1200,
         caption:
-          "The three web image formats compared: a photograph, a transparent logo, and a modern web image.",
+          "Match the format to the content: photographs to JPG, transparent logos to PNG, modern web images to WebP.",
       },
       {
         type: "heading",
@@ -194,12 +194,12 @@ export const guides: Guide[] = [
       },
       {
         type: "image",
-        src: "/guides/how-image-compression-works-cover.webp",
-        alt: "Illustration of the image compression pipeline",
+        src: "/guides/how-image-compression-works-inline.webp",
+        alt: "A clean image compared to a heavily compressed image with visible blocking artifacts",
         width: 1200,
         height: 1200,
         caption:
-          "An image flowing through the compression pipeline to a smaller file.",
+          "A clean image (left) versus the same image heavily compressed (right), showing 8×8 blocking and ringing artifacts.",
       },
       {
         type: "heading",
@@ -279,12 +279,12 @@ export const guides: Guide[] = [
       },
       {
         type: "image",
-        src: "/guides/exif-orientation-explained-cover.webp",
-        alt: "Illustration of the eight EXIF orientation values applied to one photo",
+        src: "/guides/exif-orientation-explained-inline.webp",
+        alt: "A phone photo displayed sideways in one viewer and upright in another",
         width: 1200,
         height: 1200,
         caption:
-          "The eight EXIF orientation values applied to a single photo.",
+          "The same photo shown sideways (viewer ignoring EXIF) and upright (viewer honoring the orientation tag).",
       },
       {
         type: "heading",
@@ -356,12 +356,12 @@ export const guides: Guide[] = [
       },
       {
         type: "image",
-        src: "/guides/social-media-aspect-ratios-cover.webp",
-        alt: "Illustration of common social media aspect ratio frames",
+        src: "/guides/social-media-aspect-ratios-inline.webp",
+        alt: "One photograph cropped into square, vertical, and wide social media frames",
         width: 1200,
         height: 1200,
         caption:
-          "Common social media frame shapes at their true proportions.",
+          "One source image cropped to a square, a tall story, and a wide banner — each a different aspect ratio.",
       },
       {
         type: "heading",
@@ -457,12 +457,12 @@ export const guides: Guide[] = [
       },
       {
         type: "image",
-        src: "/guides/image-resolution-ppi-dpi-cover.webp",
-        alt: "Illustration comparing screen pixels per inch and print dots per inch",
+        src: "/guides/image-resolution-ppi-dpi-inline.webp",
+        alt: "The same image at high resolution (sharp) and low resolution (blurry) at the same display size",
         width: 1200,
         height: 1200,
         caption:
-          "Screen pixels per inch (left) versus print dots per inch (right).",
+          "High resolution stays sharp at large display sizes; low resolution blurs. Pixel count is the real resolution.",
       },
       { type: "heading", text: "DPI is output density" },
       {
@@ -512,12 +512,12 @@ export const guides: Guide[] = [
       },
       {
         type: "image",
-        src: "/guides/compress-images-without-losing-quality-cover.webp",
-        alt: "Illustration of the quality versus file size tradeoff",
+        src: "/guides/compress-images-without-losing-quality-inline.webp",
+        alt: "The image optimization workflow: format, quality, resize, strip metadata",
         width: 1200,
         height: 1200,
         caption:
-          "Trading file size for visible quality when compressing.",
+          "The optimization pipeline: pick the format, dial in quality, resize to display dimensions, strip metadata.",
       },
       { type: "heading", text: "Find the quality sweet spot" },
       {
@@ -576,12 +576,12 @@ export const guides: Guide[] = [
       },
       {
         type: "image",
-        src: "/guides/color-depth-explained-cover.webp",
-        alt: "Illustration of color depth from banded to smooth gradient",
+        src: "/guides/color-depth-explained-inline.webp",
+        alt: "A sky gradient shown smooth at high bit depth and banded at low bit depth",
         width: 1200,
         height: 1200,
         caption:
-          "From two colors to a smooth gradient as bit depth increases.",
+          "The same sky gradient: smooth at high bit depth (top) and visibly banded at low bit depth (bottom).",
       },
       { type: "heading", text: "1-bit, 8-bit, and 24-bit" },
       {
@@ -645,12 +645,12 @@ export const guides: Guide[] = [
       },
       {
         type: "image",
-        src: "/guides/alpha-channel-transparency-cover.webp",
-        alt: "Illustration of the alpha channel and transparency",
+        src: "/guides/alpha-channel-transparency-inline.webp",
+        alt: "A logo edge with jagged one-bit transparency versus smooth eight-bit alpha",
         width: 1200,
         height: 1200,
         caption:
-          "How alpha controls how much of the background shows through.",
+          "One-bit alpha leaves jagged stair-step edges; eight-bit alpha anti-aliases the edge clean.",
       },
       { type: "heading", text: "How formats handle alpha" },
       {
@@ -709,12 +709,12 @@ export const guides: Guide[] = [
       },
       {
         type: "image",
-        src: "/guides/resizing-vs-cropping-cover.webp",
-        alt: "Illustration comparing resizing and cropping",
+        src: "/guides/resizing-vs-cropping-inline.webp",
+        alt: "A group photo resized to a square (distorted) versus cropped to a square (edges lost)",
         width: 1200,
         height: 1200,
         caption:
-          "Stretching an image (top) versus cropping it (bottom) to a new shape.",
+          "Resized to a square, faces stretch; cropped to a square, faces stay correct but the edges are lost.",
       },
       { type: "heading", text: "Cropping changes the frame" },
       {
@@ -768,12 +768,12 @@ export const guides: Guide[] = [
       },
       {
         type: "image",
-        src: "/guides/how-to-make-a-meme-cover.webp",
-        alt: "Illustration of the classic meme image macro layout",
+        src: "/guides/how-to-make-a-meme-inline.webp",
+        alt: "Meme caption text in white Impact font with black outline over different backgrounds",
         width: 1200,
         height: 1200,
         caption:
-          "The classic top-and-bottom-caption meme layout.",
+          "White Impact text with a black outline stays legible over light, busy, and dark backgrounds alike.",
       },
       { type: "heading", text: "The caption style" },
       {
@@ -833,12 +833,12 @@ export const guides: Guide[] = [
       },
       {
         type: "image",
-        src: "/guides/watermarking-your-images-cover.webp",
-        alt: "Illustration of a tiled watermark overlay on an image",
+        src: "/guides/watermarking-your-images-inline.webp",
+        alt: "A single corner watermark versus a full tiled diagonal watermark pattern",
         width: 1200,
         height: 1200,
         caption:
-          "A tiled watermark overlay protecting an image.",
+          "A single corner mark is easily cropped out; a tiled diagonal pattern covers the whole image and resists removal.",
       },
       { type: "heading", text: "Visible watermarks" },
       {
@@ -898,12 +898,12 @@ export const guides: Guide[] = [
       },
       {
         type: "image",
-        src: "/guides/blur-vs-pixelate-cover.webp",
-        alt: "Illustration comparing blur and pixelate redaction",
+        src: "/guides/blur-vs-pixelate-inline.webp",
+        alt: "Blur as partially recoverable versus pixelate as harder to reverse",
         width: 1200,
         height: 1200,
         caption:
-          "Two privacy redaction techniques applied to the same face.",
+          "Blur can sometimes be partially reversed; small-block pixelation is harder to unwind, making it the safer redaction.",
       },
       { type: "heading", text: "Blur: smooth but partially recoverable" },
       {
