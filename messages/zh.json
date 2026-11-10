@@ -392,10 +392,28 @@
     "signOutBtn": "退出登录",
     "signingOut": "退出中…"
   },
+  "History": {
+    "title": "处理历史",
+    "localNote": "本地历史保存在浏览器中。清除浏览器数据后可能会丢失。",
+    "cloudNote": "云端历史仅在您明确保存时才会创建。",
+    "tabLocal": "本地",
+    "tabCloud": "云端",
+    "emptyLocal": "暂无本地历史。处理一张图片即可开始。",
+    "emptyCloud": "暂无云端历史。将本地记录保存到云端后即可在此查看。",
+    "saveToCloud": "保存到云端",
+    "saved": "已保存",
+    "delete": "删除",
+    "clearAll": "全部清除",
+    "files": "{count} 个文件",
+    "loadingCloud": "加载中…",
+    "errorCloud": "无法加载云端历史。",
+    "confirmDelete": "删除这条历史记录？"
+  },
   "Cloud": {
     "accountNav": "账户",
     "filesNav": "云端文件",
     "storageNav": "存储",
+    "historyNav": "历史",
     "filesTitle": "云端文件",
     "storageTitle": "存储用量",
     "loading": "加载中…",

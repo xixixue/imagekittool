@@ -392,10 +392,28 @@
     "signOutBtn": "Sign out",
     "signingOut": "Signing out…"
   },
+  "History": {
+    "title": "Processing History",
+    "localNote": "Local history is saved in your browser. It may be lost when you clear browser data.",
+    "cloudNote": "Cloud history is saved only when you explicitly save an entry.",
+    "tabLocal": "Local",
+    "tabCloud": "Cloud",
+    "emptyLocal": "No local history yet. Process an image to get started.",
+    "emptyCloud": "No cloud history yet. Save a local entry to cloud to see it here.",
+    "saveToCloud": "Save to cloud",
+    "saved": "Saved",
+    "delete": "Delete",
+    "clearAll": "Clear all",
+    "files": "{count} files",
+    "loadingCloud": "Loading…",
+    "errorCloud": "Could not load cloud history.",
+    "confirmDelete": "Delete this history entry?"
+  },
   "Cloud": {
     "accountNav": "Account",
     "filesNav": "Cloud files",
     "storageNav": "Storage",
+    "historyNav": "History",
     "filesTitle": "Cloud files",
     "storageTitle": "Storage usage",
     "loading": "Loading…",

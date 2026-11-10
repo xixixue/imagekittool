@@ -28,6 +28,7 @@ model User {
   storageFiles  StorageFile[]
   uploadTasks   UploadTask[]
   storageQuota  UserStorageQuota?
+  processingHistory ProcessingHistory[]
 }
 
 model Session {
@@ -115,4 +116,26 @@ model UserStorageQuota {
   usedBytes     Int      @default(0)
   reservedBytes Int      @default(0)
   updatedAt     DateTime @updatedAt
+}
+
+// ---- Phase 1: processing history (SPEC V2 §12) ----
+
+// A cloud-saved record of one completed processing run. Metadata only: no
+// binary image data, no original filename, no EXIF/GPS or other personal data
+// (V2 §12/§13.2). Local history lives in the browser (localStorage); this table
+// holds only entries the user explicitly saved to the cloud. `inputMeta` and
+// `outputMeta` store coarse, privacy-safe buckets (format + size bucket + count).
+model ProcessingHistory {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  toolType   String   // tool slug, e.g. image-compressor | image-resizer | …
+  inputMeta  Json     // { count, formats[], sizeBuckets[] } — no filename/EXIF
+  outputMeta Json     // { count, formats[], sizeBuckets[] }
+  parameters Json     // sanitized tool options used (no file data)
+  createdAt  DateTime @default(now())
+
+  @@index([userId])
+  @@index([toolType])
+  @@index([createdAt])
 }

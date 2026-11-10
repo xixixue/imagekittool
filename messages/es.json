@@ -392,10 +392,28 @@
     "signOutBtn": "Cerrar sesión",
     "signingOut": "Cerrando sesión…"
   },
+  "History": {
+    "title": "Historial de procesamiento",
+    "localNote": "El historial local se guarda en tu navegador. Puede perderse al borrar los datos del navegador.",
+    "cloudNote": "El historial en la nube solo se guarda cuando guardas una entrada explícitamente.",
+    "tabLocal": "Local",
+    "tabCloud": "Nube",
+    "emptyLocal": "Aún no hay historial local. Procesa una imagen para empezar.",
+    "emptyCloud": "Aún no hay historial en la nube. Guarda una entrada local en la nube para verla aquí.",
+    "saveToCloud": "Guardar en la nube",
+    "saved": "Guardado",
+    "delete": "Eliminar",
+    "clearAll": "Borrar todo",
+    "files": "{count} archivos",
+    "loadingCloud": "Cargando…",
+    "errorCloud": "No se pudo cargar el historial en la nube.",
+    "confirmDelete": "¿Eliminar esta entrada del historial?"
+  },
   "Cloud": {
     "accountNav": "Cuenta",
     "filesNav": "Archivos en la nube",
     "storageNav": "Almacenamiento",
+    "historyNav": "Historial",
     "filesTitle": "Archivos en la nube",
     "storageTitle": "Uso de almacenamiento",
     "loading": "Cargando…",

@@ -17,6 +17,7 @@ import {
 import { triggerDownload } from "@/lib/download";
 import { track } from "@/lib/analytics/track";
 import { AnalyticsEvent, durationBucket, fileCountBucket, sanitizeError } from "@/lib/analytics/events";
+import { addLocalHistory, buildHistoryInput } from "@/features/history";
 
 export interface WorkspaceItem {
   id: string;
@@ -178,6 +179,8 @@ export function useImageToolWorkspace<O>(
       );
 
       let done = 0;
+      const historyInputs: { format?: string; sizeBytes: number }[] = [];
+      const historyOutputs: { format?: string; sizeBytes: number }[] = [];
       await mapWithConcurrency(processable, LIMITS.maxConcurrency, async (item) => {
         try {
           const decoded = await decodeToImage(item.file, item.originalFormat!);
@@ -206,6 +209,8 @@ export function useImageToolWorkspace<O>(
                 : it,
             ),
           );
+          historyInputs.push({ format: item.originalFormat, sizeBytes: item.originalSize });
+          historyOutputs.push({ format: result.format, sizeBytes: result.sizeBytes });
         } catch (err) {
           failedCount += 1;
           const message =
@@ -226,6 +231,16 @@ export function useImageToolWorkspace<O>(
         setProgress({ done, total: processable.length });
       });
 
+      if (historyInputs.length > 0) {
+        addLocalHistory(
+          buildHistoryInput({
+            toolType: toolId ?? "unknown",
+            inputs: historyInputs,
+            outputs: historyOutputs,
+            parameters: options as Record<string, unknown>,
+          }),
+        );
+      }
       track(AnalyticsEvent.batchCompleted, {
         tool_id: toolId,
         file_count: fileCountBucket(processable.length),

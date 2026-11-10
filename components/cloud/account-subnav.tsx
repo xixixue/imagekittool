@@ -9,6 +9,7 @@ const ITEMS = [
   { href: "/account", key: "accountNav" },
   { href: "/account/files", key: "filesNav" },
   { href: "/account/storage", key: "storageNav" },
+  { href: "/account/history", key: "historyNav" },
 ] as const;
 
 /** Sub-navigation shared across /account, /account/files, /account/storage. */

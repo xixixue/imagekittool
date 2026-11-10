@@ -392,10 +392,28 @@
     "signOutBtn": "Sair",
     "signingOut": "Saindo…"
   },
+  "History": {
+    "title": "Histórico de processamento",
+    "localNote": "O histórico local é salvo no seu navegador. Pode ser perdido ao limpar os dados do navegador.",
+    "cloudNote": "O histórico na nuvem é salvo apenas quando você salva uma entrada explicitamente.",
+    "tabLocal": "Local",
+    "tabCloud": "Nuvem",
+    "emptyLocal": "Sem histórico local ainda. Processe uma imagem para começar.",
+    "emptyCloud": "Sem histórico na nuvem ainda. Salve uma entrada local na nuvem para vê-la aqui.",
+    "saveToCloud": "Salvar na nuvem",
+    "saved": "Salvo",
+    "delete": "Excluir",
+    "clearAll": "Limpar tudo",
+    "files": "{count} arquivos",
+    "loadingCloud": "Carregando…",
+    "errorCloud": "Não foi possível carregar o histórico na nuvem.",
+    "confirmDelete": "Excluir esta entrada do histórico?"
+  },
   "Cloud": {
     "accountNav": "Conta",
     "filesNav": "Arquivos na nuvem",
     "storageNav": "Armazenamento",
+    "historyNav": "Histórico",
     "filesTitle": "Arquivos na nuvem",
     "storageTitle": "Uso de armazenamento",
     "loading": "Carregando…",

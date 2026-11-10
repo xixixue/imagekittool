@@ -392,10 +392,28 @@
     "signOutBtn": "ログアウト",
     "signingOut": "ログアウト中…"
   },
+  "History": {
+    "title": "処理履歴",
+    "localNote": "ローカル履歴はブラウザに保存されます。ブラウザのデータを削除すると失われる場合があります。",
+    "cloudNote": "クラウド履歴は、エントリを明示的に保存した場合にのみ作成されます。",
+    "tabLocal": "ローカル",
+    "tabCloud": "クラウド",
+    "emptyLocal": "ローカル履歴はまだありません。画像を処理すると開始できます。",
+    "emptyCloud": "クラウド履歴はまだありません。ローカルエントリをクラウドに保存するとここに表示されます。",
+    "saveToCloud": "クラウドに保存",
+    "saved": "保存済み",
+    "delete": "削除",
+    "clearAll": "すべて消去",
+    "files": "{count} 個のファイル",
+    "loadingCloud": "読み込み中…",
+    "errorCloud": "クラウド履歴を読み込めませんでした。",
+    "confirmDelete": "この履歴エントリを削除しますか？"
+  },
   "Cloud": {
     "accountNav": "アカウント",
     "filesNav": "クラウドファイル",
     "storageNav": "ストレージ",
+    "historyNav": "履歴",
     "filesTitle": "クラウドファイル",
     "storageTitle": "ストレージ使用量",
     "loading": "読み込み中…",

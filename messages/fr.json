@@ -392,10 +392,28 @@
     "signOutBtn": "Se déconnecter",
     "signingOut": "Déconnexion…"
   },
+  "History": {
+    "title": "Historique de traitement",
+    "localNote": "L'historique local est enregistré dans votre navigateur. Il peut être perdu lorsque vous effacez les données de navigation.",
+    "cloudNote": "L'historique cloud n'est enregistré que lorsque vous enregistrez explicitement une entrée.",
+    "tabLocal": "Local",
+    "tabCloud": "Cloud",
+    "emptyLocal": "Aucun historique local pour le moment. Traitez une image pour commencer.",
+    "emptyCloud": "Aucun historique cloud pour le moment. Enregistrez une entrée locale dans le cloud pour la voir ici.",
+    "saveToCloud": "Enregistrer dans le cloud",
+    "saved": "Enregistré",
+    "delete": "Supprimer",
+    "clearAll": "Tout effacer",
+    "files": "{count} fichiers",
+    "loadingCloud": "Chargement…",
+    "errorCloud": "Impossible de charger l'historique cloud.",
+    "confirmDelete": "Supprimer cette entrée de l'historique ?"
+  },
   "Cloud": {
     "accountNav": "Compte",
     "filesNav": "Fichiers cloud",
     "storageNav": "Stockage",
+    "historyNav": "Historique",
     "filesTitle": "Fichiers cloud",
     "storageTitle": "Utilisation du stockage",
     "loading": "Chargement…",
