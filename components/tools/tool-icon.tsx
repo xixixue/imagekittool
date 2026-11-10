@@ -206,6 +206,18 @@ export function ExifIcon(props: IconProps) {
   );
 }
 
+export function RulerIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="2" y="9" width="20" height="6" rx="1" />
+      <path d="M6 9v2" />
+      <path d="M10 9v3" />
+      <path d="M14 9v2" />
+      <path d="M18 9v3" />
+    </svg>
+  );
+}
+
 const ICONS: Record<IconKey, (props: IconProps) => React.ReactElement> = {
   compress: CompressIcon,
   resize: ResizeIcon,
@@ -219,6 +231,7 @@ const ICONS: Record<IconKey, (props: IconProps) => React.ReactElement> = {
   editor: EditorIcon,
   blur: BlurIcon,
   exif: ExifIcon,
+  ruler: RulerIcon,
 };
 
 // Literal class strings so Tailwind v4's scanner generates them.

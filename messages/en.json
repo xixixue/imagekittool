@@ -283,9 +283,25 @@
       "description": "Remove EXIF, IPTC, XMP and GPS metadata from a photo by re-encoding it in your browser. The output is re-parsed to verify no metadata remains. Nothing is uploaded.",
       "headerDescription": "Strip EXIF, IPTC, XMP and GPS metadata from a photo by re-encoding it locally in your browser. The output is verified to contain no metadata, and nothing is uploaded.",
       "action": "Remove metadata"
+    },
+    "dpi-changer": {
+      "name": "DPI Changer",
+      "tagline": "Set DPI/PPI metadata losslessly",
+      "description": "Change the DPI/PPI metadata of a JPEG or PNG without re-encoding pixels — EXIF is preserved. Includes a print-size preview. Runs locally; nothing is uploaded.",
+      "headerDescription": "Losslessly change the DPI/PPI metadata of a JPEG or PNG in your browser. Pixels and EXIF are preserved, and a print-size preview is shown. Nothing is uploaded.",
+      "action": "Change DPI"
     }
   },
   "Controls": {
+    "dpiUnsupported": "WebP DPI is not supported. Use JPEG or PNG.",
+    "dpiPixels": "{w} × {h} px",
+    "dpiCurrent": "Current DPI",
+    "dpiNone": "None",
+    "dpiPrintSize": "Print size at {dpi} DPI",
+    "dpiTarget": "Target DPI",
+    "dpiCustom": "Custom",
+    "dpiNote": "Changing DPI only sets the resolution metadata — it does not add pixels or improve clarity.",
+    "dpiApply": "Apply DPI",
     "exifBeforeTitle": "Before",
     "exifFieldsFound": "{count} metadata fields found",
     "exifNoMeta": "No metadata found — nothing to remove.",
@@ -952,6 +968,45 @@
         {
           "q": "Does the EXIF Remover upload my photo?",
           "a": "No. The image is decoded and re-encoded entirely in your browser. The file never leaves your device."
+        }
+      ]
+    },
+    "dpi-changer": {
+      "steps": [
+        "Load a JPEG or PNG into the DPI Changer.",
+        "The tool reads the current DPI (if any) and shows the pixel dimensions.",
+        "Pick a preset (72, 96, 300, 600) or enter a custom DPI. A print-size preview updates live.",
+        "Click Apply DPI. The metadata is edited in place — pixels and EXIF are preserved, nothing is uploaded.",
+        "Download the image with the new DPI."
+      ],
+      "useCases": [
+        "Setting a photo to 300 DPI for print submission.",
+        "Switching a screenshot to 72 DPI for web display.",
+        "Preparing a JPEG for a print shop that requires a specific DPI.",
+        "Checking the print size of an image at a given DPI before printing."
+      ],
+      "knowledge": [
+        {
+          "heading": "DPI metadata vs pixel resolution",
+          "body": "DPI (dots per inch) is metadata that tells software the intended physical size of an image when printed — it does not change the pixel data. A 3000px image at 300 DPI prints at 10 inches; at 72 DPI it prints at roughly 41.7 inches. The pixels are identical; only the printed size differs. Changing DPI never adds detail that was not already captured."
+        },
+        {
+          "heading": "Why this tool is lossless",
+          "body": "The DPI Changer edits the resolution metadata in place — the JFIF density block for JPEG and the pHYs chunk for PNG — without re-encoding the pixel data. Your EXIF metadata (camera, lens, GPS) and image quality are preserved. Re-encoding through a canvas would strip metadata and re-compress; this tool avoids both."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Does changing DPI make my image sharper?",
+          "a": "No. DPI is only metadata — it tells print software how large to print the image. It does not add pixels or increase detail. A low-resolution image stays low-resolution no matter what DPI you set."
+        },
+        {
+          "q": "Why is WebP not supported?",
+          "a": "WebP stores resolution inside a RIFF/EXIF chunk that is more complex to edit losslessly. JPEG and PNG cover the vast majority of print-prep workflows; use the converter first if you have a WebP file."
+        },
+        {
+          "q": "Is my EXIF metadata preserved?",
+          "a": "Yes. The tool edits only the DPI metadata (JFIF density for JPEG, pHYs for PNG) and leaves the rest of the file — including EXIF — untouched. Use the EXIF Remover if you want to strip metadata."
         }
       ]
     }

@@ -19,7 +19,8 @@ export type IconKey =
   | "meme"
   | "editor"
   | "blur"
-  | "exif";
+  | "exif"
+  | "ruler";
 
 export type Tool = {
   slug: string;
@@ -177,6 +178,18 @@ export const tools: Tool[] = [
     status: "active",
     icon: "exif",
     accent: "emerald",
+  },
+  {
+    slug: "dpi-changer",
+    href: "/dpi-changer",
+    name: "DPI Changer",
+    tagline: "Set DPI/PPI metadata losslessly",
+    description:
+      "Change the DPI/PPI metadata of a JPEG or PNG without re-encoding pixels — EXIF is preserved. Includes a print-size preview. Runs locally; nothing is uploaded.",
+    formats: "JPG · PNG",
+    status: "active",
+    icon: "ruler",
+    accent: "violet",
   },
 ];
 

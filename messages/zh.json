@@ -283,9 +283,25 @@
       "description": "在浏览器本地重新编码图片，移除 EXIF、IPTC、XMP 和 GPS 元数据。输出会再次解析以验证无残留。图片不会被上传。",
       "headerDescription": "在浏览器本地重新编码图片，剥离 EXIF、IPTC、XMP 和 GPS 元数据。输出经验证不含元数据，图片不会被上传。",
       "action": "移除元数据"
+    },
+    "dpi-changer": {
+      "name": "DPI 修改器",
+      "tagline": "无损修改 DPI/PPI 元数据",
+      "description": "无损修改 JPEG 或 PNG 的 DPI/PPI 元数据——不重新编码像素，保留 EXIF。附带打印尺寸预览。本地运行，不上传。",
+      "headerDescription": "在浏览器中无损修改 JPEG 或 PNG 的 DPI/PPI 元数据。保留像素和 EXIF，并显示打印尺寸预览。不上传。",
+      "action": "修改 DPI"
     }
   },
   "Controls": {
+    "dpiUnsupported": "不支持 WebP 的 DPI。请使用 JPEG 或 PNG。",
+    "dpiPixels": "{w} × {h} 像素",
+    "dpiCurrent": "当前 DPI",
+    "dpiNone": "无",
+    "dpiPrintSize": "{dpi} DPI 下的打印尺寸",
+    "dpiTarget": "目标 DPI",
+    "dpiCustom": "自定义",
+    "dpiNote": "修改 DPI 仅设置分辨率元数据——不会增加像素或提升清晰度。",
+    "dpiApply": "应用 DPI",
     "exifBeforeTitle": "处理前",
     "exifFieldsFound": "发现 {count} 个元数据字段",
     "exifNoMeta": "未发现元数据——无需移除。",

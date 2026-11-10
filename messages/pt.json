@@ -283,9 +283,25 @@
       "description": "Remove os metadados EXIF, IPTC, XMP e GPS de uma foto recodificando-a no seu navegador. A saída é reanalisada para verificar que não restam metadados. A imagem não é enviada.",
       "headerDescription": "Remove os metadados EXIF, IPTC, XMP e GPS de uma foto recodificando-a localmente no seu navegador. A saída é verificada sem metadados e a imagem não é enviada.",
       "action": "Remover metadados"
+    },
+    "dpi-changer": {
+      "name": "Alterador de DPI",
+      "tagline": "Altera metadados DPI/PPI sem perda",
+      "description": "Altera os metadados DPI/PPI de um JPEG ou PNG sem recodificar os pixels — o EXIF é preservado. Inclui uma prévia do tamanho de impressão. Executa localmente; nada é enviado.",
+      "headerDescription": "Altera sem perda os metadados DPI/PPI de um JPEG ou PNG no seu navegador. Pixels e EXIF são preservados, com prévia do tamanho de impressão. Nada é enviado.",
+      "action": "Alterar DPI"
     }
   },
   "Controls": {
+    "dpiUnsupported": "DPI para WebP não é suportado. Use JPEG ou PNG.",
+    "dpiPixels": "{w} × {h} px",
+    "dpiCurrent": "DPI atual",
+    "dpiNone": "Nenhum",
+    "dpiPrintSize": "Tamanho de impressão a {dpi} DPI",
+    "dpiTarget": "DPI alvo",
+    "dpiCustom": "Personalizado",
+    "dpiNote": "Alterar o DPI define apenas os metadados de resolução — não adiciona pixels nem melhora a nitidez.",
+    "dpiApply": "Aplicar DPI",
     "exifBeforeTitle": "Antes",
     "exifFieldsFound": "{count} campos de metadados encontrados",
     "exifNoMeta": "Nenhum metadado encontrado — nada a remover.",

@@ -283,9 +283,25 @@
       "description": "ブラウザで画像を再エンコードして、EXIF、IPTC、XMP、GPS メタデータを削除します。出力を再解析して残留がないことを検証します。画像はアップロードされません。",
       "headerDescription": "ブラウザでローカルに画像を再エンコードし、EXIF、IPTC、XMP、GPS メタデータを削除します。出力はメタデータなしを検証済みで、画像はアップロードされません。",
       "action": "メタデータを削除"
+    },
+    "dpi-changer": {
+      "name": "DPI 変更",
+      "tagline": "DPI/PPI メタデータをロスレス変更",
+      "description": "JPEG または PNG の DPI/PPI メタデータをピクセルを再エンコードせずに変更します（EXIF を保持）。印刷サイズのプレビュー付き。ローカルで実行、アップロードなし。",
+      "headerDescription": "ブラウザで JPEG または PNG の DPI/PPI メタデータをロスレス変更します。ピクセルと EXIF を保持し、印刷サイズのプレビューを表示します。アップロードなし。",
+      "action": "DPI を変更"
     }
   },
   "Controls": {
+    "dpiUnsupported": "WebP の DPI には対応していません。JPEG または PNG を使用してください。",
+    "dpiPixels": "{w} × {h} px",
+    "dpiCurrent": "現在の DPI",
+    "dpiNone": "なし",
+    "dpiPrintSize": "{dpi} DPI での印刷サイズ",
+    "dpiTarget": "目標 DPI",
+    "dpiCustom": "カスタム",
+    "dpiNote": "DPI の変更は解像度メタデータを設定するだけです——ピクセルは増えず、解像度も向上しません。",
+    "dpiApply": "DPI を適用",
     "exifBeforeTitle": "処理前",
     "exifFieldsFound": "{count} 個のメタデータを検出",
     "exifNoMeta": "メタデータが見つかりません——削除対象はありません。",

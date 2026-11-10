@@ -283,9 +283,25 @@
       "description": "Supprime les métadonnées EXIF, IPTC, XMP et GPS d'une photo en la réencodant dans votre navigateur. Le résultat est réanalysé pour vérifier qu'aucune métadonnée ne subsiste. L'image n'est pas téléchargée.",
       "headerDescription": "Supprime les métadonnées EXIF, IPTC, XMP et GPS d'une photo en la réencodant localement dans votre navigateur. Le résultat est vérifié sans métadonnée et l'image n'est pas téléchargée.",
       "action": "Supprimer les métadonnées"
+    },
+    "dpi-changer": {
+      "name": "Changeur de DPI",
+      "tagline": "Modifie les métadonnées DPI/PPI sans perte",
+      "description": "Modifie les métadonnées DPI/PPI d'un JPEG ou PNG sans réencoder les pixels — l'EXIF est conservé. Inclut un aperçu de la taille d'impression. S'exécute localement ; rien n'est téléchargé.",
+      "headerDescription": "Modifie sans perte les métadonnées DPI/PPI d'un JPEG ou PNG dans votre navigateur. Les pixels et l'EXIF sont conservés, avec un aperçu de la taille d'impression. Rien n'est téléchargé.",
+      "action": "Changer DPI"
     }
   },
   "Controls": {
+    "dpiUnsupported": "Le DPI WebP n'est pas pris en charge. Utilisez JPEG ou PNG.",
+    "dpiPixels": "{w} × {h} px",
+    "dpiCurrent": "DPI actuel",
+    "dpiNone": "Aucun",
+    "dpiPrintSize": "Taille d'impression à {dpi} DPI",
+    "dpiTarget": "DPI cible",
+    "dpiCustom": "Personnalisé",
+    "dpiNote": "Changer le DPI ne définit que les métadonnées de résolution — cela n'ajoute pas de pixels et n'améliore pas la netteté.",
+    "dpiApply": "Appliquer DPI",
     "exifBeforeTitle": "Avant",
     "exifFieldsFound": "{count} champs de métadonnées trouvés",
     "exifNoMeta": "Aucune métadonnée trouvée — rien à supprimer.",
