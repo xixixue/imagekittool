@@ -297,9 +297,26 @@
       "description": "1 枚の画像から完全な favicon パッケージを生成——PNG（16–512）、多サイズ ICO、web manifest、HTML スニペット。ライブプレビュー付き。ローカルで実行、アップロードなし。",
       "headerDescription": "ブラウザで 1 枚の画像から完全な favicon パッケージを生成：16～512px の PNG、多サイズ ICO、web manifest、貼り付け可能な HTML スニペット。ライブプレビュー付き。アップロードなし。",
       "action": "生成"
+    },
+    "image-to-pdf": {
+      "name": "画像を PDF に変換",
+      "tagline": "複数画像を 1 つの PDF に",
+      "description": "ブラウザで複数の画像を 1 つの PDF にまとめます——ページ並べ替え、A4/Letter、向き、余白を選択。pdf-lib でローカル生成、アップロードなし。",
+      "headerDescription": "ブラウザで複数の画像を 1 つの PDF にまとめます。ページ並べ替え、A4/Letter サイズ、向き、余白を選択。pdf-lib でローカル生成、アップロードなし。",
+      "action": "PDF を生成"
     }
   },
   "Controls": {
+    "pdfPngJpegOnly": "PDF に埋め込めるのは JPG と PNG 画像のみです。",
+    "pdfEmpty": "画像を追加して PDF を作成します。",
+    "pdfCount": "{count} 枚の画像",
+    "pdfClearAll": "すべて消去",
+    "pdfPageSize": "ページサイズ",
+    "pdfOrientation": "向き",
+    "pdfMargin": "余白",
+    "pdfRemove": "削除",
+    "pdfGenerate": "PDF を生成",
+    "pdfGenerating": "生成中…",
     "faviconWorking": "生成中…",
     "faviconPreview": "プレビュー",
     "faviconSnippet": "HTML スニペット",

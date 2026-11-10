@@ -297,9 +297,26 @@
       "description": "Générez un paquet favicon complet à partir d'une image — PNG (16–512), un ICO multi-tailles, un web manifest et un extrait HTML — avec un aperçu en direct. S'exécute localement ; rien n'est téléchargé.",
       "headerDescription": "Générez dans votre navigateur un paquet favicon complet à partir d'une image : PNG de 16 à 512px, un ICO multi-tailles, un web manifest et un extrait HTML prêt à coller, avec aperçu en direct. Rien n'est téléchargé.",
       "action": "Générer"
+    },
+    "image-to-pdf": {
+      "name": "Image en PDF",
+      "tagline": "Combinez des images en un PDF",
+      "description": "Combinez plusieurs images en un PDF dans votre navigateur — réordonnez les pages, choisissez A4 ou Letter, l'orientation et les marges. Généré localement avec pdf-lib ; rien n'est téléchargé.",
+      "headerDescription": "Combinez plusieurs images en un PDF dans votre navigateur. Réordonnez les pages, choisissez le format A4 ou Letter, l'orientation et les marges. Généré localement avec pdf-lib ; rien n'est téléchargé.",
+      "action": "Générer PDF"
     }
   },
   "Controls": {
+    "pdfPngJpegOnly": "Seules les images JPG et PNG peuvent être intégrées dans un PDF.",
+    "pdfEmpty": "Ajoutez des images pour créer un PDF.",
+    "pdfCount": "{count} images",
+    "pdfClearAll": "Tout effacer",
+    "pdfPageSize": "Taille de page",
+    "pdfOrientation": "Orientation",
+    "pdfMargin": "Marge",
+    "pdfRemove": "Retirer",
+    "pdfGenerate": "Générer PDF",
+    "pdfGenerating": "Génération…",
     "faviconWorking": "Génération…",
     "faviconPreview": "Aperçu",
     "faviconSnippet": "Extrait HTML",

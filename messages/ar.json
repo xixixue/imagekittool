@@ -297,9 +297,26 @@
       "description": "أنشئ حزمة favicon كاملة من صورة واحدة — PNG (16–512)، ICO بأحجام متعددة، web manifest، ومقطع HTML — مع معاينة مباشرة. يعمل محلياً؛ بدون رفع.",
       "headerDescription": "أنشئ في متصفحك حزمة favicon كاملة من صورة واحدة: PNG من 16 إلى 512px، ICO بأحجام متعددة، web manifest، ومقطع HTML جاهز للصق، مع معاينة مباشرة. بدون رفع.",
       "action": "إنشاء"
+    },
+    "image-to-pdf": {
+      "name": "صورة إلى PDF",
+      "tagline": "ادمج الصور في ملف PDF واحد",
+      "description": "ادمج عدة صور في ملف PDF واحد في متصفحك — أعد ترتيب الصفحات، اختر A4 أو Letter، الاتجاه، والهوامش. يُنشأ محلياً بـ pdf-lib؛ بدون رفع.",
+      "headerDescription": "ادمج عدة صور في ملف PDF واحد في متصفحك. أعد ترتيب الصفحات، اختر حجم A4 أو Letter، الاتجاه، والهوامش. يُنشأ محلياً بـ pdf-lib؛ بدون رفع.",
+      "action": "إنشاء PDF"
     }
   },
   "Controls": {
+    "pdfPngJpegOnly": "يمكن تضمين صور JPG و PNG فقط في ملف PDF.",
+    "pdfEmpty": "أضف صوراً لإنشاء PDF.",
+    "pdfCount": "{count} صور",
+    "pdfClearAll": "مسح الكل",
+    "pdfPageSize": "حجم الصفحة",
+    "pdfOrientation": "الاتجاه",
+    "pdfMargin": "الهامش",
+    "pdfRemove": "إزالة",
+    "pdfGenerate": "إنشاء PDF",
+    "pdfGenerating": "جارٍ الإنشاء…",
     "faviconWorking": "جارٍ الإنشاء…",
     "faviconPreview": "معاينة",
     "faviconSnippet": "مقطع HTML",

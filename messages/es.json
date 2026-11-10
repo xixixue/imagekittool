@@ -297,9 +297,26 @@
       "description": "Genera un paquete completo de favicon desde una imagen — PNG (16–512), un ICO multiresolución, un web manifest y un fragmento HTML — con vista previa en vivo. Se ejecuta localmente; no se sube.",
       "headerDescription": "Genera en tu navegador un paquete completo de favicon desde una imagen: PNG de 16 a 512px, un ICO multiresolución, un web manifest y un fragmento HTML listo para pegar, con vista previa en vivo. No se sube.",
       "action": "Generar"
+    },
+    "image-to-pdf": {
+      "name": "Imagen a PDF",
+      "tagline": "Combina imágenes en un PDF",
+      "description": "Combina varias imágenes en un PDF en tu navegador — reordena páginas, elige A4 o Letter, orientación y márgenes. Generado localmente con pdf-lib; no se sube.",
+      "headerDescription": "Combina varias imágenes en un PDF en tu navegador. Reordena páginas, elige tamaño A4 o Letter, orientación y márgenes. Generado localmente con pdf-lib; no se sube.",
+      "action": "Generar PDF"
     }
   },
   "Controls": {
+    "pdfPngJpegOnly": "Solo se pueden incrustar imágenes JPG y PNG en un PDF.",
+    "pdfEmpty": "Añade imágenes para crear un PDF.",
+    "pdfCount": "{count} imágenes",
+    "pdfClearAll": "Borrar todo",
+    "pdfPageSize": "Tamaño de página",
+    "pdfOrientation": "Orientación",
+    "pdfMargin": "Margen",
+    "pdfRemove": "Quitar",
+    "pdfGenerate": "Generar PDF",
+    "pdfGenerating": "Generando…",
     "faviconWorking": "Generando…",
     "faviconPreview": "Vista previa",
     "faviconSnippet": "Fragmento HTML",

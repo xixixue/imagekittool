@@ -21,7 +21,8 @@ export type IconKey =
   | "blur"
   | "exif"
   | "ruler"
-  | "favicon";
+  | "favicon"
+  | "document";
 
 export type Tool = {
   slug: string;
@@ -203,6 +204,18 @@ export const tools: Tool[] = [
     status: "active",
     icon: "favicon",
     accent: "emerald",
+  },
+  {
+    slug: "image-to-pdf",
+    href: "/image-to-pdf",
+    name: "Image to PDF",
+    tagline: "Combine images into one PDF",
+    description:
+      "Combine multiple images into one PDF in your browser — reorder pages, choose A4 or Letter, orientation, and margins. Generated locally with pdf-lib; nothing is uploaded.",
+    formats: "JPG · PNG",
+    status: "active",
+    icon: "document",
+    accent: "rose",
   },
 ];
 

@@ -297,9 +297,26 @@
       "description": "从一张图片生成完整的 favicon 包——PNG（16–512）、多尺寸 ICO、web manifest 和 HTML 片段，并附实时预览。本地运行，不上传。",
       "headerDescription": "在浏览器中从一张图片生成完整的 favicon 包：16 到 512px 的 PNG、多尺寸 ICO、web manifest 和可直接粘贴的 HTML 片段，并附实时预览。不上传。",
       "action": "生成"
+    },
+    "image-to-pdf": {
+      "name": "图片转 PDF",
+      "tagline": "多图合并为一个 PDF",
+      "description": "在浏览器中将多张图片合并为一个 PDF——可重排页面、选择 A4 或 Letter、方向和边距。本地用 pdf-lib 生成，不上传。",
+      "headerDescription": "在浏览器中将多张图片合并为一个 PDF。可重排页面、选择 A4 或 Letter 页面尺寸、方向和边距。本地用 pdf-lib 生成，不上传。",
+      "action": "生成 PDF"
     }
   },
   "Controls": {
+    "pdfPngJpegOnly": "PDF 仅可嵌入 JPG 和 PNG 图片。",
+    "pdfEmpty": "添加图片以生成 PDF。",
+    "pdfCount": "{count} 张图片",
+    "pdfClearAll": "全部清除",
+    "pdfPageSize": "页面尺寸",
+    "pdfOrientation": "方向",
+    "pdfMargin": "边距",
+    "pdfRemove": "移除",
+    "pdfGenerate": "生成 PDF",
+    "pdfGenerating": "生成中…",
     "faviconWorking": "生成中…",
     "faviconPreview": "预览",
     "faviconSnippet": "HTML 片段",

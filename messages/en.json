@@ -297,9 +297,26 @@
       "description": "Generate a full favicon package from one image — PNGs (16–512), a multi-size ICO, a web manifest, and an HTML snippet — with a live preview. Runs locally; nothing is uploaded.",
       "headerDescription": "Generate a complete favicon package from one image in your browser: PNGs from 16 to 512px, a multi-size ICO, a web manifest, and a ready-to-paste HTML snippet, with a live preview. Nothing is uploaded.",
       "action": "Generate"
+    },
+    "image-to-pdf": {
+      "name": "Image to PDF",
+      "tagline": "Combine images into one PDF",
+      "description": "Combine multiple images into one PDF in your browser — reorder pages, choose A4 or Letter, orientation, and margins. Generated locally with pdf-lib; nothing is uploaded.",
+      "headerDescription": "Combine multiple images into one PDF in your browser. Reorder pages, choose A4 or Letter page size, orientation, and margins. Generated locally with pdf-lib; nothing is uploaded.",
+      "action": "Generate PDF"
     }
   },
   "Controls": {
+    "pdfPngJpegOnly": "Only JPG and PNG images can be embedded in a PDF.",
+    "pdfEmpty": "Add images to build a PDF.",
+    "pdfCount": "{count} images",
+    "pdfClearAll": "Clear all",
+    "pdfPageSize": "Page size",
+    "pdfOrientation": "Orientation",
+    "pdfMargin": "Margin",
+    "pdfRemove": "Remove",
+    "pdfGenerate": "Generate PDF",
+    "pdfGenerating": "Generating…",
     "faviconWorking": "Generating…",
     "faviconPreview": "Preview",
     "faviconSnippet": "HTML snippet",
@@ -1059,6 +1076,45 @@
         {
           "q": "Can I use any image as the source?",
           "a": "Yes — JPG, PNG or WebP. A square image with a simple logo produces the clearest favicons. Detailed photos work but lose detail at 16px."
+        }
+      ]
+    },
+    "image-to-pdf": {
+      "steps": [
+        "Load one or more JPG or PNG images into the tool.",
+        "Reorder the pages with the up and down buttons.",
+        "Choose a page size (A4 or Letter), orientation (auto, portrait, landscape), and margin.",
+        "Click Generate PDF — the file is built locally with pdf-lib, nothing is uploaded.",
+        "Download the single PDF with one image per page."
+      ],
+      "useCases": [
+        "Combining scanned document pages into one PDF.",
+        "Building a PDF portfolio from a set of photos.",
+        "Creating a printable PDF from screenshots.",
+        "Sending several images as a single file."
+      ],
+      "knowledge": [
+        {
+          "heading": "One image per page, fit to the page",
+          "body": "Each image becomes one PDF page. The image is contain-fit into the page size minus the margins, preserving its aspect ratio — so it is never stretched or cropped. Auto orientation picks portrait or landscape per page based on each image's shape."
+        },
+        {
+          "heading": "Why JPG and PNG only",
+          "body": "PDF embeds image data as-is, and pdf-lib supports embedding JPG and PNG directly. Other formats (WebP, GIF) are not part of the PDF image model; convert them to PNG or JPG first with the Image Converter."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Does the tool compress my images when making the PDF?",
+          "a": "No. Images are embedded in the PDF at their original quality — pdf-lib inserts the JPG or PNG bytes directly. The PDF is roughly the sum of the input image sizes."
+        },
+        {
+          "q": "Can I change the order of pages?",
+          "a": "Yes. Use the up and down buttons next to each image to reorder before generating. The PDF is built in the order shown."
+        },
+        {
+          "q": "Is my data uploaded?",
+          "a": "No. The PDF is generated entirely in your browser with pdf-lib. The images never leave your device."
         }
       ]
     }
