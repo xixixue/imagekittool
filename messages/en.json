@@ -159,7 +159,12 @@
     "download": "Download",
     "downloadAll": "Download all ({count}) as ZIP",
     "clearAll": "Clear all",
-    "remove": "Remove file"
+    "remove": "Remove file",
+    "errors": {
+      "addAtLeastOne": "Add at least one supported image to process.",
+      "tooManyFiles": "You can process at most {limit} files at once.",
+      "processingFailed": "Processing failed."
+    }
   },
   "FileList": {
     "processing": "Processing…",

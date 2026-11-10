@@ -159,7 +159,12 @@
     "download": "ダウンロード",
     "downloadAll": "すべて ({count}) を ZIP でダウンロード",
     "clearAll": "すべて消去",
-    "remove": "ファイルを削除"
+    "remove": "ファイルを削除",
+    "errors": {
+      "addAtLeastOne": "処理するには、少なくとも1枚の対応画像を追加してください。",
+      "tooManyFiles": "一度に処理できるファイルは最大 {limit} 個です。",
+      "processingFailed": "処理に失敗しました。"
+    }
   },
   "FileList": {
     "processing": "処理中…",

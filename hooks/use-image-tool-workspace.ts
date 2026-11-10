@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import {
   LIMITS,
   type CompressToKbResult,
@@ -82,6 +83,11 @@ export function useImageToolWorkspace<O>(
   const [isProcessing, setIsProcessing] = useState(false);
   const [progress, setProgress] = useState<Progress>({ done: 0, total: 0 });
   const [batchError, setBatchError] = useState<string | null>(null);
+  // Translator is read through a ref so useCallback deps stay stable (the
+  // translator identity can change on locale switch) while messages stay fresh.
+  const t = useTranslations("Workspace");
+  const tRef = useRef(t);
+  tRef.current = t;
 
   const itemsRef = useRef(items);
   itemsRef.current = items;
@@ -104,7 +110,7 @@ export function useImageToolWorkspace<O>(
     const currentCount = itemsRef.current.length;
     const room = LIMITS.maxBatchFiles - currentCount;
     if (room <= 0) {
-      setBatchError(`You can process at most ${LIMITS.maxBatchFiles} files at once.`);
+      setBatchError(tRef.current("errors.tooManyFiles", { limit: LIMITS.maxBatchFiles }));
       return;
     }
     const accepted = incoming.slice(0, room);
@@ -145,7 +151,7 @@ export function useImageToolWorkspace<O>(
       // Only valid items can be processed.
       const processable = pending.filter((it) => it.originalFormat);
       if (processable.length === 0) {
-        setBatchError("Add at least one supported image to process.");
+        setBatchError(tRef.current("errors.addAtLeastOne"));
         return;
       }
       setBatchError(null);
@@ -198,7 +204,7 @@ export function useImageToolWorkspace<O>(
           );
         } catch (err) {
           failedCount += 1;
-          const message = err instanceof Error ? err.message : "Processing failed.";
+          const message = err instanceof Error ? err.message : tRef.current("errors.processingFailed");
           track(AnalyticsEvent.processingFailed, {
             tool_id: toolId,
             error_code: sanitizeError(err),

@@ -159,7 +159,12 @@
     "download": "下载",
     "downloadAll": "下载全部（{count} 个）为 ZIP",
     "clearAll": "全部清除",
-    "remove": "移除文件"
+    "remove": "移除文件",
+    "errors": {
+      "addAtLeastOne": "请至少添加一张受支持的图片进行处理。",
+      "tooManyFiles": "一次最多可处理 {limit} 个文件。",
+      "processingFailed": "处理失败。"
+    }
   },
   "FileList": {
     "processing": "处理中…",

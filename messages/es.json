@@ -159,7 +159,12 @@
     "download": "Descargar",
     "downloadAll": "Descargar todas ({count}) como ZIP",
     "clearAll": "Borrar todo",
-    "remove": "Quitar archivo"
+    "remove": "Quitar archivo",
+    "errors": {
+      "addAtLeastOne": "Añade al menos una imagen compatible para procesar.",
+      "tooManyFiles": "Puedes procesar como máximo {limit} archivos a la vez.",
+      "processingFailed": "Error al procesar."
+    }
   },
   "FileList": {
     "processing": "Procesando…",

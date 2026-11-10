@@ -159,7 +159,12 @@
     "download": "Télécharger",
     "downloadAll": "Tout télécharger ({count}) en ZIP",
     "clearAll": "Tout effacer",
-    "remove": "Supprimer le fichier"
+    "remove": "Supprimer le fichier",
+    "errors": {
+      "addAtLeastOne": "Ajoutez au moins une image prise en charge à traiter.",
+      "tooManyFiles": "Vous pouvez traiter au maximum {limit} fichiers à la fois.",
+      "processingFailed": "Échec du traitement."
+    }
   },
   "FileList": {
     "processing": "Traitement…",

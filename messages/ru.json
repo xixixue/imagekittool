@@ -159,7 +159,12 @@
     "download": "Скачать",
     "downloadAll": "Скачать все ({count}) в ZIP",
     "clearAll": "Очистить всё",
-    "remove": "Удалить файл"
+    "remove": "Удалить файл",
+    "errors": {
+      "addAtLeastOne": "Добавьте хотя бы одно поддерживаемое изображение для обработки.",
+      "tooManyFiles": "За один раз можно обработать не более {limit} файлов.",
+      "processingFailed": "Обработка не удалась."
+    }
   },
   "FileList": {
     "processing": "Обработка…",

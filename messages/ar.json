@@ -159,7 +159,12 @@
     "download": "تنزيل",
     "downloadAll": "تنزيل الكل ({count}) كملف ZIP",
     "clearAll": "مسح الكل",
-    "remove": "إزالة الملف"
+    "remove": "إزالة الملف",
+    "errors": {
+      "addAtLeastOne": "أضف صورة واحدة مدعومة على الأقل للمعالجة.",
+      "tooManyFiles": "يمكنك معالجة {limit} ملفات كحد أقصى في المرة الواحدة.",
+      "processingFailed": "فشلت المعالجة."
+    }
   },
   "FileList": {
     "processing": "جارٍ المعالجة…",
