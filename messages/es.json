@@ -269,9 +269,28 @@
       "description": "Dibuja rectángulos sobre caras, matrículas o cualquier zona sensible y desenfócalas o pixela. Todo se ejecuta localmente, no se sube nada.",
       "headerDescription": "Dibuja rectángulos sobre caras, matrículas o cualquier zona sensible y desenfócalas o pixela. Todo se ejecuta localmente, no se sube nada.",
       "action": "Desenfocar"
+    },
+    "exif-viewer": {
+      "name": "Visor EXIF",
+      "tagline": "Inspecciona los metadatos y el GPS de la foto",
+      "description": "Consulta los metadatos EXIF de una foto —cámara, objetivo, exposición, orientación y GPS— procesados localmente en tu navegador. La imagen nunca se sube.",
+      "headerDescription": "Inspecciona los metadatos EXIF de una foto —cámara, objetivo, ajustes de exposición, orientación y coordenadas GPS— todo procesado localmente en tu navegador. La imagen nunca se sube.",
+      "action": "Inspeccionar"
     }
   },
   "Controls": {
+    "exifGroupImage": "Imagen",
+    "exifGroupCamera": "Cámara",
+    "exifGroupSettings": "Ajustes",
+    "exifGroupGps": "GPS",
+    "exifNoData": "No se encontraron metadatos EXIF en esta imagen.",
+    "exifLoading": "Leyendo metadatos…",
+    "exifViewMap": "Ver en el mapa",
+    "exifShowRaw": "Mostrar todos los campos",
+    "exifHideRaw": "Ocultar",
+    "exifReplace": "Cargar otra imagen",
+    "exifGpsLat": "Latitud",
+    "exifGpsLon": "Longitud",
     "quality": "Calidad: {percent}%",
     "qualityHint": "Menor calidad = archivo más pequeño. Solo se aplica a JPG y WebP.",
     "outputFormat": "Formato de salida",

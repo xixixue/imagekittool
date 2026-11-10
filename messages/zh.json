@@ -269,9 +269,28 @@
       "description": "在人脸、车牌或任何敏感区域上绘制矩形并进行模糊或马赛克处理。全部在本地运行 —— 不上传任何内容。",
       "headerDescription": "在人脸、车牌或任何敏感区域上绘制矩形并进行模糊或马赛克处理。全部在本地运行 —— 不上传任何内容。",
       "action": "模糊"
+    },
+    "exif-viewer": {
+      "name": "EXIF 查看器",
+      "tagline": "查看照片元数据与 GPS",
+      "description": "在浏览器本地查看照片的 EXIF 元数据——相机、镜头、曝光、方向和 GPS。图片不会被上传。",
+      "headerDescription": "在浏览器本地查看照片的 EXIF 元数据——相机、镜头、曝光设置、方向和 GPS 坐标。图片不会被上传。",
+      "action": "查看"
     }
   },
   "Controls": {
+    "exifGroupImage": "图像",
+    "exifGroupCamera": "相机",
+    "exifGroupSettings": "参数",
+    "exifGroupGps": "GPS",
+    "exifNoData": "此图片未找到 EXIF 元数据。",
+    "exifLoading": "正在读取元数据…",
+    "exifViewMap": "在地图中查看",
+    "exifShowRaw": "显示全部字段",
+    "exifHideRaw": "隐藏",
+    "exifReplace": "加载其他图片",
+    "exifGpsLat": "纬度",
+    "exifGpsLon": "经度",
     "quality": "质量：{percent}%",
     "qualityHint": "质量越低，文件越小。仅适用于 JPG 和 WebP。",
     "outputFormat": "输出格式",

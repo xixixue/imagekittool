@@ -18,7 +18,8 @@ export type IconKey =
   | "watermark"
   | "meme"
   | "editor"
-  | "blur";
+  | "blur"
+  | "exif";
 
 export type Tool = {
   slug: string;
@@ -152,6 +153,18 @@ export const tools: Tool[] = [
     status: "active",
     icon: "blur",
     accent: "amber",
+  },
+  {
+    slug: "exif-viewer",
+    href: "/exif-viewer",
+    name: "EXIF Viewer",
+    tagline: "Inspect photo metadata and GPS",
+    description:
+      "View the EXIF metadata of a photo — camera, lens, exposure, orientation, and GPS — parsed locally in your browser. The image is never uploaded.",
+    formats: "JPG · PNG · WebP",
+    status: "active",
+    icon: "exif",
+    accent: "blue",
   },
 ];
 

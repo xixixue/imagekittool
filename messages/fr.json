@@ -269,9 +269,28 @@
       "description": "Dessinez des rectangles sur les visages, les plaques ou toute zone sensible et floutez-les ou pixelisez-les. Tout s'exécute localement — rien n'est téléversé.",
       "headerDescription": "Dessinez des rectangles sur les visages, les plaques ou toute zone sensible et floutez-les ou pixelisez-les. Tout s'exécute localement — rien n'est téléversé.",
       "action": "Flouter"
+    },
+    "exif-viewer": {
+      "name": "Visionneuse EXIF",
+      "tagline": "Inspecter les métadonnées et le GPS de la photo",
+      "description": "Consultez les métadonnées EXIF d'une photo — appareil, objectif, exposition, orientation et GPS — analysées localement dans votre navigateur. L'image n'est jamais téléchargée.",
+      "headerDescription": "Inspectez les métadonnées EXIF d'une photo — appareil, objectif, réglages d'exposition, orientation et coordonnées GPS — le tout analysé localement dans votre navigateur. L'image n'est jamais téléchargée.",
+      "action": "Inspecter"
     }
   },
   "Controls": {
+    "exifGroupImage": "Image",
+    "exifGroupCamera": "Appareil",
+    "exifGroupSettings": "Réglages",
+    "exifGroupGps": "GPS",
+    "exifNoData": "Aucune métadonnée EXIF trouvée dans cette image.",
+    "exifLoading": "Lecture des métadonnées…",
+    "exifViewMap": "Voir sur la carte",
+    "exifShowRaw": "Afficher tous les champs",
+    "exifHideRaw": "Masquer",
+    "exifReplace": "Charger une autre image",
+    "exifGpsLat": "Latitude",
+    "exifGpsLon": "Longitude",
     "quality": "Qualité : {percent}%",
     "qualityHint": "Une qualité inférieure = un fichier plus petit. S'applique uniquement à JPG et WebP.",
     "outputFormat": "Format de sortie",

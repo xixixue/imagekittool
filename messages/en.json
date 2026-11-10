@@ -269,9 +269,28 @@
       "description": "Draw rectangles over faces, plates or any sensitive area and blur or pixelate them. Everything runs locally — nothing is uploaded.",
       "headerDescription": "Draw rectangles over faces, plates or any sensitive area and blur or pixelate them. Everything runs locally — nothing is uploaded.",
       "action": "Blur"
+    },
+    "exif-viewer": {
+      "name": "EXIF Viewer",
+      "tagline": "Inspect photo metadata and GPS",
+      "description": "View the EXIF metadata of a photo — camera, lens, exposure, orientation, and GPS — parsed locally in your browser. The image is never uploaded.",
+      "headerDescription": "Inspect the EXIF metadata of a photo — camera, lens, exposure settings, orientation, and GPS coordinates — all parsed locally in your browser. The image is never uploaded.",
+      "action": "Inspect"
     }
   },
   "Controls": {
+    "exifGroupImage": "Image",
+    "exifGroupCamera": "Camera",
+    "exifGroupSettings": "Settings",
+    "exifGroupGps": "GPS",
+    "exifNoData": "No EXIF metadata found in this image.",
+    "exifLoading": "Reading metadata…",
+    "exifViewMap": "View on map",
+    "exifShowRaw": "Show all fields",
+    "exifHideRaw": "Hide",
+    "exifReplace": "Load another image",
+    "exifGpsLat": "Latitude",
+    "exifGpsLon": "Longitude",
     "quality": "Quality: {percent}%",
     "qualityHint": "Lower quality = smaller file. Applies to JPG and WebP only.",
     "outputFormat": "Output format",
@@ -837,6 +856,45 @@
         {
           "q": "Is the blur applied to the downloaded file?",
           "a": "Yes. The export re-renders the image at full resolution with all your regions blurred or pixelated."
+        }
+      ]
+    },
+    "exif-viewer": {
+      "steps": [
+        "Load a photo into the EXIF Viewer.",
+        "The tool reads the metadata locally in your browser — no upload.",
+        "Review the Image, Camera, and Settings groups for dimensions, orientation, make, lens, focal length, aperture, exposure, and ISO.",
+        "If the photo carries GPS data, see the coordinates and open them on a map.",
+        "Toggle “Show all fields” to inspect every raw EXIF value."
+      ],
+      "useCases": [
+        "Checking what metadata a photo exposes before you share it publicly.",
+        "Verifying the camera settings used for a shot (focal length, aperture, ISO, exposure).",
+        "Finding the GPS location where a photo was taken.",
+        "Confirming whether orientation or software edits are embedded in the file."
+      ],
+      "knowledge": [
+        {
+          "heading": "What is EXIF metadata?",
+          "body": "EXIF (Exchangeable Image File Format) data is written by most cameras and phones into JPEG and TIFF files. It records the camera make and model, lens, exposure settings (aperture, shutter speed, ISO), focal length, date taken, orientation, and optionally GPS coordinates. Viewing it helps you understand how a photo was taken and what information it leaks."
+        },
+        {
+          "heading": "Privacy and EXIF",
+          "body": "Photos taken on a phone often embed GPS coordinates, which can reveal your home or workplace. This viewer parses metadata locally so nothing is uploaded, but the same data is visible to anyone who receives the original file. Use the EXIF Remover tool before sharing sensitive photos."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Does the EXIF Viewer upload my photo?",
+          "a": "No. The image is parsed entirely in your browser with a local library. The file never leaves your device."
+        },
+        {
+          "q": "Why does my photo show no EXIF data?",
+          "a": "Some images have no EXIF — for example, PNG and WebP files rarely carry it, and images exported through certain editors or social platforms have metadata stripped. The viewer shows whatever is present."
+        },
+        {
+          "q": "Can I remove EXIF after viewing it?",
+          "a": "Yes. Use the EXIF Remover tool to re-encode the image without metadata, then verify with this viewer that the fields are gone."
         }
       ]
     }

@@ -269,9 +269,28 @@
       "description": "Desenhe retângulos sobre rostos, placas ou qualquer área sensível e desfoque-as ou pixelize-as. Tudo é executado localmente — nada é enviado.",
       "headerDescription": "Desenhe retângulos sobre rostos, placas ou qualquer área sensível e desfoque-as ou pixelize-as. Tudo é executado localmente — nada é enviado.",
       "action": "Desfocar"
+    },
+    "exif-viewer": {
+      "name": "Visualizador de EXIF",
+      "tagline": "Inspecione metadados e GPS da foto",
+      "description": "Veja os metadados EXIF de uma foto — câmera, lente, exposição, orientação e GPS — processados localmente no seu navegador. A imagem nunca é enviada.",
+      "headerDescription": "Inspecione os metadados EXIF de uma foto — câmera, lente, configurações de exposição, orientação e coordenadas GPS — tudo processado localmente no seu navegador. A imagem nunca é enviada.",
+      "action": "Inspecionar"
     }
   },
   "Controls": {
+    "exifGroupImage": "Imagem",
+    "exifGroupCamera": "Câmera",
+    "exifGroupSettings": "Ajustes",
+    "exifGroupGps": "GPS",
+    "exifNoData": "Nenhum metadado EXIF encontrado nesta imagem.",
+    "exifLoading": "Lendo metadados…",
+    "exifViewMap": "Ver no mapa",
+    "exifShowRaw": "Mostrar todos os campos",
+    "exifHideRaw": "Ocultar",
+    "exifReplace": "Carregar outra imagem",
+    "exifGpsLat": "Latitude",
+    "exifGpsLon": "Longitude",
     "quality": "Qualidade: {percent}%",
     "qualityHint": "Menor qualidade = arquivo menor. Aplica-se apenas a JPG e WebP.",
     "outputFormat": "Formato de saída",

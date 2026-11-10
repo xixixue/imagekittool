@@ -269,9 +269,28 @@
       "description": "顔、ナンバープレート、機密部分の上に矩形を描いてぼかしまたはピクセル化できます。すべてローカルで実行され、アップロードされることはありません。",
       "headerDescription": "顔、ナンバープレート、機密部分の上に矩形を描いてぼかしまたはピクセル化できます。すべてローカルで実行され、アップロードされることはありません。",
       "action": "ぼかす"
+    },
+    "exif-viewer": {
+      "name": "EXIF ビューアー",
+      "tagline": "写真のメタデータと GPS を確認",
+      "description": "写真の EXIF メタデータ（カメラ、レンズ、露出、向き、GPS）をブラウザでローカルに解析して表示します。画像はアップロードされません。",
+      "headerDescription": "写真の EXIF メタデータ（カメラ、レンズ、露出設定、向き、GPS 座標）をブラウザでローカルに解析して表示します。画像はアップロードされません。",
+      "action": "確認"
     }
   },
   "Controls": {
+    "exifGroupImage": "画像",
+    "exifGroupCamera": "カメラ",
+    "exifGroupSettings": "設定",
+    "exifGroupGps": "GPS",
+    "exifNoData": "この画像に EXIF メタデータは見つかりませんでした。",
+    "exifLoading": "メタデータを読み込み中…",
+    "exifViewMap": "地図で見る",
+    "exifShowRaw": "すべてのフィールドを表示",
+    "exifHideRaw": "隠す",
+    "exifReplace": "別の画像を読み込む",
+    "exifGpsLat": "緯度",
+    "exifGpsLon": "経度",
     "quality": "品質: {percent}%",
     "qualityHint": "品質を下げるとファイルサイズが小さくなります。JPG と WebP のみに適用されます。",
     "outputFormat": "出力形式",

@@ -195,6 +195,17 @@ export function BlurIcon(props: IconProps) {
   );
 }
 
+export function ExifIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="11" cy="11" r="7" />
+      <path d="M16.5 16.5L21 21" />
+      <path d="M11 10v3" />
+      <path d="M11 7.5h.01" />
+    </svg>
+  );
+}
+
 const ICONS: Record<IconKey, (props: IconProps) => React.ReactElement> = {
   compress: CompressIcon,
   resize: ResizeIcon,
@@ -207,6 +218,7 @@ const ICONS: Record<IconKey, (props: IconProps) => React.ReactElement> = {
   meme: MemeIcon,
   editor: EditorIcon,
   blur: BlurIcon,
+  exif: ExifIcon,
 };
 
 // Literal class strings so Tailwind v4's scanner generates them.
