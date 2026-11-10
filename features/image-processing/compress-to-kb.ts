@@ -1,4 +1,4 @@
-import { canvasToBlob, clampQuality, drawBitmap, makeProcessResult } from "./canvas";
+import { canvasToBlob, clampQuality, drawBitmapToFormat, makeProcessResult } from "./canvas";
 import { findQualityForTargetSize } from "./search";
 import type { CompressToKbOptions, CompressToKbResult, DecodedImage, ImageFormat } from "./types";
 
@@ -11,7 +11,7 @@ async function searchFormat(
   format: ImageFormat,
   opts: CompressToKbOptions,
 ): Promise<{ blob: Blob; met: boolean; iterations: number }> {
-  const canvas = drawBitmap(image.bitmap, image.width, image.height);
+  const canvas = drawBitmapToFormat(image.bitmap, image.width, image.height, format);
   const encode = async (quality: number) => {
     const blob = await canvasToBlob(canvas, format, quality);
     return { bytes: blob.size };
@@ -55,7 +55,7 @@ export async function compressImageToKb(
           : "Could not reach the target even as WebP. Closest result returned; transparency may be lost.",
       };
     }
-    const canvas = drawBitmap(image.bitmap, image.width, image.height);
+    const canvas = drawBitmapToFormat(image.bitmap, image.width, image.height, "png");
     const blob = await canvasToBlob(canvas, "png");
     const base = makeProcessResult(blob, image, "png", image.width, image.height);
     const met = blob.size <= target;

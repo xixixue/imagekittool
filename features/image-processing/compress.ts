@@ -1,4 +1,4 @@
-import { canvasToBlob, clampQuality, drawBitmap, makeProcessResult } from "./canvas";
+import { canvasToBlob, clampQuality, drawBitmapToFormat, makeProcessResult } from "./canvas";
 import type { CompressOptions, DecodedImage, ProcessResult } from "./types";
 
 /**
@@ -13,7 +13,7 @@ export async function compressImage(
   opts: CompressOptions,
 ): Promise<ProcessResult> {
   const format = opts.format ?? image.format;
-  const canvas = drawBitmap(image.bitmap, image.width, image.height);
+  const canvas = drawBitmapToFormat(image.bitmap, image.width, image.height, format);
   const quality = format === "png" ? undefined : clampQuality(opts.quality);
   const blob = await canvasToBlob(canvas, format, quality);
   return makeProcessResult(blob, image, format, image.width, image.height);

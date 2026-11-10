@@ -2,6 +2,7 @@ import {
   canvasToBlob,
   clampQuality,
   createCanvas,
+  fillBackgroundForFormat,
   get2DContext,
   makeProcessResult,
 } from "./canvas";
@@ -50,10 +51,7 @@ export async function cropImage(image: DecodedImage, opts: CropOptions): Promise
 
   const out = createCanvas(rect.width, rect.height);
   const octx = get2DContext(out);
-  if (format === "jpeg") {
-    octx.fillStyle = "#ffffff";
-    octx.fillRect(0, 0, rect.width, rect.height);
-  }
+  fillBackgroundForFormat(octx, rect.width, rect.height, format);
   octx.drawImage(work, rect.x, rect.y, rect.width, rect.height, 0, 0, rect.width, rect.height);
 
   const quality = format === "png" ? undefined : clampQuality(0.92);

@@ -43,6 +43,50 @@ export function drawBitmap(
   return canvas;
 }
 
+/**
+ * The background color to composite transparency onto for `format`, or
+ * undefined to keep the alpha channel. JPEG has no alpha: transparent pixels
+ * would render as black, so they are filled with white (or `background`).
+ * PNG/WebP keep alpha and return undefined. Pure/testable (SPEC V2 §13.2).
+ */
+export function backgroundForFormat(format: ImageFormat, background?: string): string | undefined {
+  if (format !== "jpeg") return undefined;
+  return background ?? "#ffffff";
+}
+
+/**
+ * Paint the background fill for formats without alpha (JPEG) onto `ctx`. Call
+ * after getting the 2D context and before drawing the image. No-op for
+ * PNG/WebP (alpha preserved).
+ */
+export function fillBackgroundForFormat(
+  ctx: CanvasRenderingContext2D,
+  width: number,
+  height: number,
+  format: ImageFormat,
+  background?: string,
+): void {
+  const fill = backgroundForFormat(format, background);
+  if (fill) {
+    ctx.fillStyle = fill;
+    ctx.fillRect(0, 0, width, height);
+  }
+}
+
+/**
+ * drawBitmap that auto-fills a background for formats without alpha (JPEG).
+ * PNG/WebP keep transparency. `background` overrides the default white.
+ */
+export function drawBitmapToFormat(
+  bitmap: ImageBitmap,
+  width: number,
+  height: number,
+  format: ImageFormat,
+  background?: string,
+): HTMLCanvasElement {
+  return drawBitmap(bitmap, width, height, backgroundForFormat(format, background));
+}
+
 /** Clamp quality to a safe 0.05..0.95 range. */
 export function clampQuality(quality: number): number {
   if (!Number.isFinite(quality)) return 0.9;

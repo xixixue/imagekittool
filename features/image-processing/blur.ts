@@ -1,4 +1,4 @@
-import { canvasToBlob, clampQuality, createCanvas, get2DContext, makeProcessResult } from "./canvas";
+import { canvasToBlob, clampQuality, createCanvas, fillBackgroundForFormat, get2DContext, makeProcessResult } from "./canvas";
 import { clampCropRect } from "./dimensions";
 import type { BlurOptions, BlurRegion, DecodedImage, ProcessResult } from "./types";
 
@@ -65,10 +65,7 @@ export async function blurImage(image: DecodedImage, opts: BlurOptions): Promise
   const height = image.height;
   const canvas = createCanvas(width, height);
   const ctx = get2DContext(canvas);
-  if (format === "jpeg") {
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(0, 0, width, height);
-  }
+  fillBackgroundForFormat(ctx, width, height, format);
   composeBlurred(ctx, image.bitmap, width, height, opts);
   const blob = await canvasToBlob(canvas, format, format === "png" ? undefined : clampQuality(0.92));
   return makeProcessResult(blob, image, format, width, height);

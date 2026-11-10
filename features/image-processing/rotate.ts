@@ -1,4 +1,4 @@
-import { canvasToBlob, clampQuality, createCanvas, get2DContext, makeProcessResult } from "./canvas";
+import { canvasToBlob, clampQuality, createCanvas, fillBackgroundForFormat, get2DContext, makeProcessResult } from "./canvas";
 import type { DecodedImage, ProcessResult, RotateOptions } from "./types";
 
 /** Output dimensions after a 90°-step rotation (width/height swap for 90/270). */
@@ -49,6 +49,7 @@ export async function rotateImage(
   const { width, height } = rotatedSize(image.width, image.height, opts.angle);
   const canvas = createCanvas(width, height);
   const ctx = get2DContext(canvas);
+  fillBackgroundForFormat(ctx, width, height, format);
   composeRotate(ctx, image.bitmap, width, height, opts);
   const blob = await canvasToBlob(canvas, format, format === "png" ? undefined : clampQuality(0.92));
   return makeProcessResult(blob, image, format, width, height);

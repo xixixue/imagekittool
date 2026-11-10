@@ -1,4 +1,4 @@
-import { canvasToBlob, clampQuality, createCanvas, get2DContext, makeProcessResult } from "./canvas";
+import { canvasToBlob, clampQuality, createCanvas, fillBackgroundForFormat, get2DContext, makeProcessResult } from "./canvas";
 import type { DecodedImage, ProcessResult, WatermarkAnchor, WatermarkOptions } from "./types";
 
 /** Nine-grid anchors in visual reading order (used by the position picker UI). */
@@ -128,6 +128,7 @@ export async function watermarkImage(
   const height = image.height;
   const canvas = createCanvas(width, height);
   const ctx = get2DContext(canvas);
+  fillBackgroundForFormat(ctx, width, height, format);
   composeWatermark(ctx, image.bitmap, width, height, opts);
   const blob = await canvasToBlob(canvas, format, format === "png" ? undefined : clampQuality(0.92));
   return makeProcessResult(blob, image, format, width, height);

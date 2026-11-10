@@ -1,4 +1,4 @@
-import { canvasToBlob, clampQuality, createCanvas, get2DContext, makeProcessResult } from "./canvas";
+import { canvasToBlob, clampQuality, createCanvas, fillBackgroundForFormat, get2DContext, makeProcessResult } from "./canvas";
 import type { DecodedImage, MemeOptions, ProcessResult } from "./types";
 
 /**
@@ -78,6 +78,7 @@ export async function memeImage(image: DecodedImage, opts: MemeOptions): Promise
   const height = image.height;
   const canvas = createCanvas(width, height);
   const ctx = get2DContext(canvas);
+  fillBackgroundForFormat(ctx, width, height, format);
   composeMeme(ctx, image.bitmap, width, height, opts);
   const blob = await canvasToBlob(canvas, format, format === "png" ? undefined : clampQuality(0.92));
   return makeProcessResult(blob, image, format, width, height);

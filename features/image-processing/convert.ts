@@ -1,4 +1,4 @@
-import { canvasToBlob, clampQuality, drawBitmap, makeProcessResult } from "./canvas";
+import { canvasToBlob, clampQuality, drawBitmapToFormat, makeProcessResult } from "./canvas";
 import type { ConvertOptions, DecodedImage, ProcessResult } from "./types";
 
 /**
@@ -12,8 +12,7 @@ export async function convertImage(
   opts: ConvertOptions,
 ): Promise<ProcessResult> {
   const format = opts.format;
-  const background = format === "jpeg" ? (opts.background ?? "#ffffff") : undefined;
-  const canvas = drawBitmap(image.bitmap, image.width, image.height, background);
+  const canvas = drawBitmapToFormat(image.bitmap, image.width, image.height, format, opts.background);
   const quality = format === "png" ? undefined : clampQuality(0.92);
   const blob = await canvasToBlob(canvas, format, quality);
   return makeProcessResult(blob, image, format, image.width, image.height);

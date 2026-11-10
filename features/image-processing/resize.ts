@@ -1,4 +1,4 @@
-import { canvasToBlob, clampQuality, drawBitmap, makeProcessResult } from "./canvas";
+import { canvasToBlob, clampQuality, drawBitmapToFormat, makeProcessResult } from "./canvas";
 import { computeResizeDimensions } from "./dimensions";
 import type { DecodedImage, ProcessResult, ResizeOptions } from "./types";
 
@@ -19,7 +19,7 @@ export async function resizeImage(
     percent: opts.percent,
   });
   const format = opts.format ?? image.format;
-  const canvas = drawBitmap(image.bitmap, width, height);
+  const canvas = drawBitmapToFormat(image.bitmap, width, height, format);
   const quality = format === "png" ? undefined : clampQuality(0.92);
   const blob = await canvasToBlob(canvas, format, quality);
   return makeProcessResult(blob, image, format, width, height);
