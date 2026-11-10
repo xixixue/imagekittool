@@ -156,7 +156,7 @@ V2 §4.1 列出的 10 个现有工具，**全部已上线且为真实实现**（
 - **差距**：
   - ❌ 无结构化数据 JSON-LD（FAQ/Article/BreadcrumbList/WebApplication）——V2 §9.2 要求。
   - ❌ 无面包屑导航组件。
-  - ⚠️ 工具页为 `ƒ`(Dynamic) 而非静态——因 next-intl 动态 getTranslations；可优化为静态以利 SEO/性能（非阻塞）。
+  - ✅ 工具页已静态化（○ Static）：各页加 `export const dynamic = "force-static"`，构建期按默认 locale(en) 预渲染；root layout 仍动态读 locale cookie → NextIntlClientProvider → 客户端工具控件本地化；服务端 header/SEO 内容（h1/description/breadcrumbs+FAQ/WebApplication JSON-LD）以 en 预渲染，与 guides 页一致、利于 canonical SEO 爬取。
 
 ### 5.5 首页与导航（V2 §3）—— 部分
 
@@ -202,7 +202,7 @@ V2 §4.1 列出的 10 个现有工具，**全部已上线且为真实实现**（
 | P1-2 | Batch Workspace 不满足 V2 §5：无多步管线、无取消、无拖拽排序、无逐文件参数覆盖、状态机不符、无独立路由 | V2 最重要升级能力缺失 | Phase 3 重构为独立 `/batch-workspace` + 多步管线引擎 |
 | P1-3 | 无面包屑导航 | SEO/UX | Phase 1 加 Breadcrumb 组件 + JSON-LD |
 | P1-4 | ProcessingHistory 未实现（V1.1 P1 遗留） | 无云端处理历史；V2 §12 要求本地/云端历史区分 | Phase 1/6 加 model + 路由 |
-| P1-5 | 工具页为 Dynamic(ƒ) 而非 Static | SEO/首屏可优化 | 评估 next-intl 静态化或 generateStaticParams |
+| P1-5 ✅ | 工具页为 Dynamic(ƒ) 而非 Static | SEO/首屏可优化 | **已解决**：`force-static` 预渲染 10 工具页为 ○ Static（commit d662968） |
 | P1-6 | 无 Quick Workflows（§6）+ Social Media Resizer（§7）+ 尺寸预设集中管理 | V2 Phase 4 核心缺失 | Phase 4 |
 | P1-7 | Image Size Reference 中心缺失（§8.4） | 内容/SEO 缺口 | Phase 5 |
 
@@ -259,8 +259,8 @@ Phase 1 聚焦"现有 10 工具的体验统一、SEO 补齐、埋点、历史"�
 |---|---|---|
 | DEPLOYMENT.md 凭证泄露（P0-1） | 真实凭证片段曾在 Git 历史 | ✅ 已清理 Git 历史（filter-branch 重写 + force-push）；负责人决定不轮换凭证 |
 | 生产已用真实云服务 | R2/Neon/Resend 已开通运行 | V2 Phase 0 假设"未配置"已不成立；后续阶段可直接对接，但成本已产生 |
-| next-intl 9 语言 | V2 未明确要求多语言，但已实现且增加维护成本 | 是否保留全 9 语言？或收敛到 en + 少量？ |
-| 工具页 Dynamic vs Static | 影响 SEO/性能 | 是否优先静态化（Phase 1）？ |
+| next-intl 8 语言 | V2 未明确要求多语言，但已实现且增加维护成本 | 是否保留全 8 语言（en/zh/es/fr/ja/pt/ru/ar）？或收敛到 en + 少量？ |
+| 工具页 Dynamic vs Static ✅ | 影响 SEO/性能 | **已静态化**：10 工具页 `force-static` → ○（en 预渲染 header/SEO + 客户端控件本地化）；详见 §5.4 |
 | ProcessingHistory 改 Neon schema | 需 `db push` 到生产 DB | 是否授权改生产 schema？ |
 | AI / 付费 / AdSense / 支付 | V2 §22 待确认 | 维持 Disabled/Mock，不接入 |
 
