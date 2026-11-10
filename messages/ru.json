@@ -290,9 +290,22 @@
       "description": "Изменяет метаданные DPI/PPI в JPEG или PNG без перекодирования пикселей — EXIF сохраняется. Включает предпросмотр размера печати. Работает локально; без загрузки.",
       "headerDescription": "Без потерь изменяет метаданные DPI/PPI в JPEG или PNG в браузере. Пиксели и EXIF сохраняются, показан предпросмотр размера печати. Без загрузки.",
       "action": "Изменить DPI"
+    },
+    "favicon-generator": {
+      "name": "Генератор Favicon",
+      "tagline": "PNG разных размеров, ICO, manifest, сниппет",
+      "description": "Создайте полный пакет favicon из одного изображения — PNG (16–512), многоформатный ICO, web manifest и HTML-сниппет — с предпросмотром в реальном времени. Работает локально; без загрузки.",
+      "headerDescription": "Создайте в браузере полный пакет favicon из одного изображения: PNG от 16 до 512px, многоформатный ICO, web manifest и готовый HTML-сниппет, с предпросмотром. Без загрузки.",
+      "action": "Создать"
     }
   },
   "Controls": {
+    "faviconWorking": "Создание…",
+    "faviconPreview": "Предпросмотр",
+    "faviconSnippet": "HTML-сниппет",
+    "faviconCopy": "Копировать",
+    "faviconCopied": "Скопировано ✓",
+    "faviconDownload": "Скачать пакет favicon (.zip)",
     "dpiUnsupported": "DPI для WebP не поддерживается. Используйте JPEG или PNG.",
     "dpiPixels": "{w} × {h} px",
     "dpiCurrent": "Текущий DPI",

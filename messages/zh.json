@@ -290,9 +290,22 @@
       "description": "无损修改 JPEG 或 PNG 的 DPI/PPI 元数据——不重新编码像素，保留 EXIF。附带打印尺寸预览。本地运行，不上传。",
       "headerDescription": "在浏览器中无损修改 JPEG 或 PNG 的 DPI/PPI 元数据。保留像素和 EXIF，并显示打印尺寸预览。不上传。",
       "action": "修改 DPI"
+    },
+    "favicon-generator": {
+      "name": "Favicon 生成器",
+      "tagline": "多尺寸 PNG、ICO、manifest、代码片段",
+      "description": "从一张图片生成完整的 favicon 包——PNG（16–512）、多尺寸 ICO、web manifest 和 HTML 片段，并附实时预览。本地运行，不上传。",
+      "headerDescription": "在浏览器中从一张图片生成完整的 favicon 包：16 到 512px 的 PNG、多尺寸 ICO、web manifest 和可直接粘贴的 HTML 片段，并附实时预览。不上传。",
+      "action": "生成"
     }
   },
   "Controls": {
+    "faviconWorking": "生成中…",
+    "faviconPreview": "预览",
+    "faviconSnippet": "HTML 片段",
+    "faviconCopy": "复制",
+    "faviconCopied": "已复制 ✓",
+    "faviconDownload": "下载 favicon 包（.zip）",
     "dpiUnsupported": "不支持 WebP 的 DPI。请使用 JPEG 或 PNG。",
     "dpiPixels": "{w} × {h} 像素",
     "dpiCurrent": "当前 DPI",

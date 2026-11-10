@@ -20,7 +20,8 @@ export type IconKey =
   | "editor"
   | "blur"
   | "exif"
-  | "ruler";
+  | "ruler"
+  | "favicon";
 
 export type Tool = {
   slug: string;
@@ -190,6 +191,18 @@ export const tools: Tool[] = [
     status: "active",
     icon: "ruler",
     accent: "violet",
+  },
+  {
+    slug: "favicon-generator",
+    href: "/favicon-generator",
+    name: "Favicon Generator",
+    tagline: "Multi-size PNG, ICO, manifest, snippet",
+    description:
+      "Generate a full favicon package from one image — PNGs (16–512), a multi-size ICO, a web manifest, and an HTML snippet — with a live preview. Runs locally; nothing is uploaded.",
+    formats: "JPG · PNG · WebP",
+    status: "active",
+    icon: "favicon",
+    accent: "emerald",
   },
 ];
 

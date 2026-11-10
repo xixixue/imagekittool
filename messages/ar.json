@@ -290,9 +290,22 @@
       "description": "غيّر بيانات DPI/PPI الوصفية لصورة JPEG أو PNG دون إعادة ترميز البكسل — مع الحفاظ على EXIF. تتضمن معاينة حجم الطباعة. تعمل محلياً؛ بدون رفع.",
       "headerDescription": "غيّر دون فقدان بيانات DPI/PPI الوصفية لصورة JPEG أو PNG في متصفحك. يتم الحفاظ على البكسل و EXIF، مع معاينة حجم الطباعة. بدون رفع.",
       "action": "تغيير DPI"
+    },
+    "favicon-generator": {
+      "name": "مولّد Favicon",
+      "tagline": "PNG بأحجام متعددة، ICO، manifest، مقطع",
+      "description": "أنشئ حزمة favicon كاملة من صورة واحدة — PNG (16–512)، ICO بأحجام متعددة، web manifest، ومقطع HTML — مع معاينة مباشرة. يعمل محلياً؛ بدون رفع.",
+      "headerDescription": "أنشئ في متصفحك حزمة favicon كاملة من صورة واحدة: PNG من 16 إلى 512px، ICO بأحجام متعددة، web manifest، ومقطع HTML جاهز للصق، مع معاينة مباشرة. بدون رفع.",
+      "action": "إنشاء"
     }
   },
   "Controls": {
+    "faviconWorking": "جارٍ الإنشاء…",
+    "faviconPreview": "معاينة",
+    "faviconSnippet": "مقطع HTML",
+    "faviconCopy": "نسخ",
+    "faviconCopied": "تم النسخ ✓",
+    "faviconDownload": "تنزيل حزمة favicon (.zip)",
     "dpiUnsupported": "DPI لـ WebP غير مدعوم. استخدم JPEG أو PNG.",
     "dpiPixels": "{w} × {h} بكسل",
     "dpiCurrent": "DPI الحالي",

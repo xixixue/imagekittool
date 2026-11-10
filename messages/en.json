@@ -290,9 +290,22 @@
       "description": "Change the DPI/PPI metadata of a JPEG or PNG without re-encoding pixels — EXIF is preserved. Includes a print-size preview. Runs locally; nothing is uploaded.",
       "headerDescription": "Losslessly change the DPI/PPI metadata of a JPEG or PNG in your browser. Pixels and EXIF are preserved, and a print-size preview is shown. Nothing is uploaded.",
       "action": "Change DPI"
+    },
+    "favicon-generator": {
+      "name": "Favicon Generator",
+      "tagline": "Multi-size PNG, ICO, manifest, snippet",
+      "description": "Generate a full favicon package from one image — PNGs (16–512), a multi-size ICO, a web manifest, and an HTML snippet — with a live preview. Runs locally; nothing is uploaded.",
+      "headerDescription": "Generate a complete favicon package from one image in your browser: PNGs from 16 to 512px, a multi-size ICO, a web manifest, and a ready-to-paste HTML snippet, with a live preview. Nothing is uploaded.",
+      "action": "Generate"
     }
   },
   "Controls": {
+    "faviconWorking": "Generating…",
+    "faviconPreview": "Preview",
+    "faviconSnippet": "HTML snippet",
+    "faviconCopy": "Copy",
+    "faviconCopied": "Copied ✓",
+    "faviconDownload": "Download favicon package (.zip)",
     "dpiUnsupported": "WebP DPI is not supported. Use JPEG or PNG.",
     "dpiPixels": "{w} × {h} px",
     "dpiCurrent": "Current DPI",
@@ -1007,6 +1020,45 @@
         {
           "q": "Is my EXIF metadata preserved?",
           "a": "Yes. The tool edits only the DPI metadata (JFIF density for JPEG, pHYs for PNG) and leaves the rest of the file — including EXIF — untouched. Use the EXIF Remover if you want to strip metadata."
+        }
+      ]
+    },
+    "favicon-generator": {
+      "steps": [
+        "Load a square image (a logo works best) into the Favicon Generator.",
+        "The tool generates PNGs at 16, 32, 48, 96, 180, 192 and 512px and a multi-size ICO (16/32/48).",
+        "Preview how the favicon looks at several sizes.",
+        "Copy the HTML snippet and download the ZIP — everything is generated locally, nothing is uploaded.",
+        "Place the files at your site root and paste the snippet into your <head>."
+      ],
+      "useCases": [
+        "Creating a favicon set for a new website.",
+        "Generating an Apple touch icon and Android PWA icons from one logo.",
+        "Producing a multi-size ICO for legacy browser support.",
+        "Getting a ready-to-paste HTML snippet with all the link tags."
+      ],
+      "knowledge": [
+        {
+          "heading": "What goes in a favicon package",
+          "body": "A modern favicon set includes a multi-size ICO (favicon.ico) for legacy browsers, PNGs at 16/32px for browser tabs, a 180px apple-touch-icon.png for iOS home screens, and 192/512px PNGs plus a web manifest for Android/PWA install. This generator produces all of them from a single source image."
+        },
+        {
+          "heading": "Square, simple images work best",
+          "body": "Favicons are tiny — 16px is the most common size — so detailed photos become muddy. Use a simple logo or mark, ideally square, with strong contrast. The source can be any size; it is scaled down to each target with the browser's default smoothing."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Do I still need a .ico file?",
+          "a": "Most modern browsers accept PNG favicons, but a multi-size .ico (16/32/48) guarantees compatibility with older browsers and bookmarks. The package includes both, so you are covered everywhere."
+        },
+        {
+          "q": "Where do I put the files?",
+          "a": "Place favicon.ico, the PNGs, and site.webmanifest at your site root, then paste the HTML snippet into the <head> of your pages. The paths in the snippet and manifest assume the site root."
+        },
+        {
+          "q": "Can I use any image as the source?",
+          "a": "Yes — JPG, PNG or WebP. A square image with a simple logo produces the clearest favicons. Detailed photos work but lose detail at 16px."
         }
       ]
     }

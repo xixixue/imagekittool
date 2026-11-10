@@ -290,9 +290,22 @@
       "description": "Altera os metadados DPI/PPI de um JPEG ou PNG sem recodificar os pixels — o EXIF é preservado. Inclui uma prévia do tamanho de impressão. Executa localmente; nada é enviado.",
       "headerDescription": "Altera sem perda os metadados DPI/PPI de um JPEG ou PNG no seu navegador. Pixels e EXIF são preservados, com prévia do tamanho de impressão. Nada é enviado.",
       "action": "Alterar DPI"
+    },
+    "favicon-generator": {
+      "name": "Gerador de Favicon",
+      "tagline": "PNG multiresolução, ICO, manifest, snippet",
+      "description": "Gere um pacote completo de favicon a partir de uma imagem — PNG (16–512), um ICO multiresolução, um web manifest e um trecho HTML — com prévia ao vivo. Executa localmente; nada é enviado.",
+      "headerDescription": "Gere no seu navegador um pacote completo de favicon a partir de uma imagem: PNG de 16 a 512px, um ICO multiresolução, um web manifest e um trecho HTML pronto para colar, com prévia ao vivo. Nada é enviado.",
+      "action": "Gerar"
     }
   },
   "Controls": {
+    "faviconWorking": "Gerando…",
+    "faviconPreview": "Prévia",
+    "faviconSnippet": "Trecho HTML",
+    "faviconCopy": "Copiar",
+    "faviconCopied": "Copiado ✓",
+    "faviconDownload": "Baixar pacote favicon (.zip)",
     "dpiUnsupported": "DPI para WebP não é suportado. Use JPEG ou PNG.",
     "dpiPixels": "{w} × {h} px",
     "dpiCurrent": "DPI atual",

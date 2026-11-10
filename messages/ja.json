@@ -290,9 +290,22 @@
       "description": "JPEG または PNG の DPI/PPI メタデータをピクセルを再エンコードせずに変更します（EXIF を保持）。印刷サイズのプレビュー付き。ローカルで実行、アップロードなし。",
       "headerDescription": "ブラウザで JPEG または PNG の DPI/PPI メタデータをロスレス変更します。ピクセルと EXIF を保持し、印刷サイズのプレビューを表示します。アップロードなし。",
       "action": "DPI を変更"
+    },
+    "favicon-generator": {
+      "name": "Favicon ジェネレーター",
+      "tagline": "多サイズ PNG、ICO、manifest、スニペット",
+      "description": "1 枚の画像から完全な favicon パッケージを生成——PNG（16–512）、多サイズ ICO、web manifest、HTML スニペット。ライブプレビュー付き。ローカルで実行、アップロードなし。",
+      "headerDescription": "ブラウザで 1 枚の画像から完全な favicon パッケージを生成：16～512px の PNG、多サイズ ICO、web manifest、貼り付け可能な HTML スニペット。ライブプレビュー付き。アップロードなし。",
+      "action": "生成"
     }
   },
   "Controls": {
+    "faviconWorking": "生成中…",
+    "faviconPreview": "プレビュー",
+    "faviconSnippet": "HTML スニペット",
+    "faviconCopy": "コピー",
+    "faviconCopied": "コピー済み ✓",
+    "faviconDownload": "favicon パッケージをダウンロード（.zip）",
     "dpiUnsupported": "WebP の DPI には対応していません。JPEG または PNG を使用してください。",
     "dpiPixels": "{w} × {h} px",
     "dpiCurrent": "現在の DPI",

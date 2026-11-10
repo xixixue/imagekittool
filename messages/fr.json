@@ -290,9 +290,22 @@
       "description": "Modifie les métadonnées DPI/PPI d'un JPEG ou PNG sans réencoder les pixels — l'EXIF est conservé. Inclut un aperçu de la taille d'impression. S'exécute localement ; rien n'est téléchargé.",
       "headerDescription": "Modifie sans perte les métadonnées DPI/PPI d'un JPEG ou PNG dans votre navigateur. Les pixels et l'EXIF sont conservés, avec un aperçu de la taille d'impression. Rien n'est téléchargé.",
       "action": "Changer DPI"
+    },
+    "favicon-generator": {
+      "name": "Générateur de Favicon",
+      "tagline": "PNG multi-tailles, ICO, manifest, snippet",
+      "description": "Générez un paquet favicon complet à partir d'une image — PNG (16–512), un ICO multi-tailles, un web manifest et un extrait HTML — avec un aperçu en direct. S'exécute localement ; rien n'est téléchargé.",
+      "headerDescription": "Générez dans votre navigateur un paquet favicon complet à partir d'une image : PNG de 16 à 512px, un ICO multi-tailles, un web manifest et un extrait HTML prêt à coller, avec aperçu en direct. Rien n'est téléchargé.",
+      "action": "Générer"
     }
   },
   "Controls": {
+    "faviconWorking": "Génération…",
+    "faviconPreview": "Aperçu",
+    "faviconSnippet": "Extrait HTML",
+    "faviconCopy": "Copier",
+    "faviconCopied": "Copié ✓",
+    "faviconDownload": "Télécharger le paquet favicon (.zip)",
     "dpiUnsupported": "Le DPI WebP n'est pas pris en charge. Utilisez JPEG ou PNG.",
     "dpiPixels": "{w} × {h} px",
     "dpiCurrent": "DPI actuel",
