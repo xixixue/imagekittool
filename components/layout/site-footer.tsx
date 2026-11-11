@@ -2,6 +2,8 @@ import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
 const footerLinks = [
+  { href: "/workflows", key: "workflows" },
+  { href: "/image-size-reference", key: "imageSizeReference" },
   { href: "/guides", key: "guides" },
   { href: "/about", key: "about" },
   { href: "/contact", key: "contact" },

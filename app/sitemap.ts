@@ -10,6 +10,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/tools",
     "/guides",
+    "/workflows",
+    "/image-size-reference",
     "/about",
     "/contact",
     "/privacy-policy",
@@ -20,7 +22,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}${path}`,
     lastModified: now,
     changeFrequency: "monthly",
-    priority: path === "" ? 1 : path === "/tools" || path === "/guides" ? 0.9 : 0.6,
+    priority:
+      path === ""
+        ? 1
+        : path === "/tools" ||
+            path === "/guides" ||
+            path === "/workflows" ||
+            path === "/image-size-reference"
+          ? 0.9
+          : 0.6,
   }));
 
   const toolEntries: MetadataRoute.Sitemap = tools.map((tool) => ({

@@ -185,6 +185,8 @@
   },
   "Footer": {
     "guides": "ガイド",
+    "workflows": "ワークフロー",
+    "imageSizeReference": "画像サイズ",
     "rights": "© {year} ImageKitTools. 画像はデフォルトでブラウザー内で処理されます。",
     "about": "概要",
     "contact": "お問い合わせ",
@@ -339,9 +341,24 @@
       "tagline": "タスク指向の画像ワークフロー",
       "description": "厳選したマルチステップ画像ワークフロー——Web 最適化、Instagram/印刷向け準備、目標サイズへの圧縮。いずれもブラウザでローカル実行。",
       "headerDescription": "厳選したマルチステップ画像ワークフロー。Web 最適化、Instagram/印刷向け準備、目標サイズへの圧縮——いずれもブラウザでローカル実行、アップロードなし。"
+    },
+    "image-size-reference": {
+      "name": "画像サイズリファレンス",
+      "tagline": "用途別の推奨サイズ",
+      "description": "SNS、Web、メール、動画サムネイル、プロフィール、印刷の推奨画像サイズを検索できるリファレンス。各項目に対応ツールへのリンク。確認済み・日付付き。",
+      "headerDescription": "6 カテゴリ（SNS/Web/メール/動画サムネイル/プロフィール/印刷）の推奨画像サイズを検索できるリファレンス。各項目に対応ツールへのリンク。サイズは確認済み・日付付き；推奨値であり強制ルールではありません。"
     }
   },
   "Controls": {
+    "isrSearch": "サイズを検索…",
+    "isrAll": "すべて",
+    "isrResults": "件",
+    "isrName": "サイズ",
+    "isrDimensions": "寸法",
+    "isrRatio": "比率",
+    "isrFormats": "形式",
+    "isrOpenResizer": "ツールを開く",
+    "isrNoResults": "該当するサイズはありません。",
     "owQuality": "品質",
     "owResize": "リサイズ幅（任意）",
     "owOptimize": "最適化",

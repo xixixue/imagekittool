@@ -185,6 +185,8 @@
   },
   "Footer": {
     "guides": "Guides",
+    "workflows": "Workflows",
+    "imageSizeReference": "Image Sizes",
     "rights": "© {year} ImageKitTools. Images are processed in your browser by default.",
     "about": "About",
     "contact": "Contact",
@@ -339,9 +341,24 @@
       "tagline": "Task-oriented image workflows",
       "description": "Curated multi-step image workflows — optimize for the web, prepare for Instagram or printing, or reduce to a target size. Each runs locally in your browser.",
       "headerDescription": "Curated multi-step image workflows. Optimize for the web, prepare for Instagram or printing, or reduce to a target size — each runs locally in your browser; nothing is uploaded."
+    },
+    "image-size-reference": {
+      "name": "Image Size Reference",
+      "tagline": "Recommended sizes for every use",
+      "description": "A searchable reference of recommended image sizes for social media, websites, email, video thumbnails, profiles, and print. Each entry links to a resizer tool. Reviewed and dated.",
+      "headerDescription": "A searchable reference of recommended image sizes across six categories — social media, website, email, video thumbnail, profile, and print. Each entry links to a resizer tool. Sizes are reviewed and dated; treat them as recommendations, not enforced rules."
     }
   },
   "Controls": {
+    "isrSearch": "Search sizes…",
+    "isrAll": "All",
+    "isrResults": "results",
+    "isrName": "Size",
+    "isrDimensions": "Dimensions",
+    "isrRatio": "Ratio",
+    "isrFormats": "Formats",
+    "isrOpenResizer": "Open Resizer",
+    "isrNoResults": "No sizes match your search.",
     "owQuality": "Quality",
     "owResize": "Resize width (optional)",
     "owOptimize": "Optimize",
@@ -1346,6 +1363,44 @@
         {
           "q": "Why is my result larger than the original?",
           "a": "If the original was already a tiny, well-compressed WebP, re-encoding may not shrink it further. This is rare; try a lower quality or a resize width."
+        }
+      ]
+    },
+    "image-size-reference": {
+      "steps": [
+        "Browse the table or search for a use, e.g. 'instagram' or 'favicon'.",
+        "Filter by category (Social Media, Website, Email, Video Thumbnail, Profile, Print).",
+        "Each row shows the recommended width, height, ratio, and formats.",
+        "Use the Open Resizer link to open the matching tool and apply the size."
+      ],
+      "useCases": [
+        "Finding the right social media post or story dimensions.",
+        "Picking an Open Graph image size for link previews.",
+        "Choosing a favicon or Apple touch icon size.",
+        "Looking up 300 DPI pixel dimensions for photo prints."
+      ],
+      "knowledge": [
+        {
+          "heading": "Recommended, not enforced",
+          "body": "These sizes are commonly recommended values, each with a review date. Platforms and devices change over time, so treat them as starting points and verify against current platform docs for production work."
+        },
+        {
+          "heading": "DPI and print sizes",
+          "body": "Print entries show pixel dimensions at 300 DPI, a common minimum for photo printing. A 4×6 inch print at 300 DPI is 1200×1800 pixels. Changing DPI metadata does not add pixels — a smaller image upscaled to these dimensions will not gain detail."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Are these the official sizes?",
+          "a": "They are commonly recommended sizes, each with a review date. Platforms update their guidance, so they are starting points rather than enforced rules."
+        },
+        {
+          "q": "How do I apply a size to my image?",
+          "a": "Click the Open Resizer link on any row. It opens the matching tool — the Social Media Resizer for social sizes, the Favicon Generator for favicons, the DPI Changer for print sizes, or the Resize tool for the rest."
+        },
+        {
+          "q": "Can I search by ratio?",
+          "a": "Yes. The search matches names, descriptions, category labels, and ratios — try '1:1' or '16:9'."
         }
       ]
     }

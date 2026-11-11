@@ -185,6 +185,8 @@
   },
   "Footer": {
     "guides": "指南",
+    "workflows": "工作流",
+    "imageSizeReference": "图片尺寸",
     "rights": "© {year} ImageKitTools。图片默认在浏览器中处理。",
     "about": "关于",
     "contact": "联系",
@@ -339,9 +341,24 @@
       "tagline": "面向任务的图片工作流",
       "description": "精选多步骤图片工作流——网站优化、Instagram/打印准备、或压缩到目标大小。均在浏览器本地运行。",
       "headerDescription": "精选多步骤图片工作流。网站优化、Instagram/打印准备、或压缩到目标大小——均在浏览器本地运行，不上传。"
+    },
+    "image-size-reference": {
+      "name": "图片尺寸参考",
+      "tagline": "各类用途的推荐尺寸",
+      "description": "可检索的推荐图片尺寸参考——社交媒体、网站、邮件、视频缩略图、头像、打印。每条链接到对应调整工具。已核验并标注日期。",
+      "headerDescription": "六类推荐图片尺寸的可检索参考——社交媒体、网站、邮件、视频缩略图、头像、打印。每条链接到对应调整工具。尺寸已核验并标注日期；视为推荐值，非强制规则。"
     }
   },
   "Controls": {
+    "isrSearch": "搜索尺寸…",
+    "isrAll": "全部",
+    "isrResults": "条结果",
+    "isrName": "尺寸",
+    "isrDimensions": "宽高",
+    "isrRatio": "比例",
+    "isrFormats": "格式",
+    "isrOpenResizer": "打开工具",
+    "isrNoResults": "没有匹配的尺寸。",
     "owQuality": "质量",
     "owResize": "调整宽度（可选）",
     "owOptimize": "优化",

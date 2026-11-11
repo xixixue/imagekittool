@@ -185,6 +185,8 @@
   },
   "Footer": {
     "guides": "Guias",
+    "workflows": "Fluxos",
+    "imageSizeReference": "Tamanhos",
     "rights": "© {year} ImageKitTools. As imagens são processadas no seu navegador por padrão.",
     "about": "Sobre",
     "contact": "Contato",
@@ -339,9 +341,24 @@
       "tagline": "Fluxos de imagem orientados a tarefas",
       "description": "Fluxos de imagem multipasso curados — otimize para web, prepare para Instagram ou impressão, ou reduza a um tamanho alvo. Cada um roda localmente no seu navegador.",
       "headerDescription": "Fluxos de imagem multipasso curados. Otimize para web, prepare para Instagram ou impressão, ou reduza a um tamanho alvo — cada um roda localmente; nada é enviado."
+    },
+    "image-size-reference": {
+      "name": "Referência de tamanhos de imagem",
+      "tagline": "Tamanhos recomendados para cada uso",
+      "description": "Referência pesquisável de tamanhos de imagem recomendados para redes sociais, web, email, miniaturas de vídeo, perfis e impressão. Cada entrada linka para uma ferramenta. Revisado e datado.",
+      "headerDescription": "Referência pesquisável de tamanhos recomendados em seis categorias — redes sociais, web, email, miniatura de vídeo, perfil e impressão. Cada entrada linka para uma ferramenta. Tamanhos revisados e datados; trate como recomendações, não regras."
     }
   },
   "Controls": {
+    "isrSearch": "Buscar tamanhos…",
+    "isrAll": "Todos",
+    "isrResults": "resultados",
+    "isrName": "Tamanho",
+    "isrDimensions": "Dimensões",
+    "isrRatio": "Proporção",
+    "isrFormats": "Formatos",
+    "isrOpenResizer": "Abrir ferramenta",
+    "isrNoResults": "Nenhum tamanho corresponde.",
     "owQuality": "Qualidade",
     "owResize": "Largura (opcional)",
     "owOptimize": "Otimizar",
