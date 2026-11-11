@@ -100,7 +100,7 @@ export const guides: Guide[] = [
     body: [
       {
         type: "paragraph",
-        text: "Most images on the web are saved as one of three formats: JPG, PNG, or WebP. They are not interchangeable. Each was designed for a different kind of image, and picking the wrong one either bloats your file or throws away detail you wanted to keep. This guide compares them on the dimensions that actually matter — compression, transparency, animation, and browser support — so you can choose with confidence.",
+        text: "Most images on the web are saved as one of four common formats: JPG, PNG, WebP, and increasingly AVIF. They are not interchangeable. Each was designed for a different kind of image, and picking the wrong one either bloats your file or throws away detail you wanted to keep. This guide compares them on the dimensions that actually matter — compression, transparency, animation, and browser support — so you can choose with confidence.",
       },
       {
         type: "heading",
@@ -149,8 +149,16 @@ export const guides: Guide[] = [
         text: "WebP was built by Google to replace both. It supports lossy compression (like JPG), lossless compression (like PNG), a full alpha channel, and animation — all in one format, and typically at smaller file sizes than either counterpart. Every modern browser supports it. The only reason to avoid WebP is compatibility with very old software or non-browser consumers that have not been updated since before roughly 2020.",
       },
       {
+        type: "heading",
+        text: "AVIF: the next step",
+      },
+      {
+        type: "paragraph",
+        text: "AVIF (AV1 Image File Format) is the newest of the four. It compresses photographs even more tightly than WebP at the same visual quality, and like WebP it supports lossy and lossless modes, alpha transparency, and animation. The trade-offs are encoding speed — AVIF is slower to produce — and support: it works in Chrome, Firefox, and Safari 16+, but not every tool, CMS, or older browser handles it yet. For most sites today, WebP is still the safer default; AVIF is worth serving when you can also fall back to WebP or JPG for the browsers that need it.",
+      },
+      {
         type: "callout",
-        text: "Rule of thumb: photographs → JPG or WebP; graphics with transparency or text → PNG or WebP; animated images → WebP. When in doubt, pick WebP — it is the best all-round choice for the web today.",
+        text: "Rule of thumb: photographs → JPG, WebP, or AVIF; graphics with transparency or text → PNG or WebP; animated images → WebP. When in doubt, pick WebP — it is the best all-round choice for the web today; add AVIF when you can serve a fallback.",
       },
       {
         type: "heading",
