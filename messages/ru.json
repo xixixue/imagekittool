@@ -334,6 +334,7 @@
     "batchCancel": "Отмена",
     "batchDownloadZip": "Скачать всё (.zip)",
     "batchInvalid": "Перед обработкой исправьте настройки шагов.",
+    "batchEditParams": "Изменить параметры",
     "pdfOnly": "Загрузите файл PDF.",
     "pdfPageCount": "{count} стр.",
     "pdfPageRange": "Диапазон страниц",

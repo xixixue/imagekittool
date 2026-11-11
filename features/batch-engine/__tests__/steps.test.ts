@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   applyRename,
+  effectiveSteps,
   validatePipeline,
   validateStepParams,
   type BatchStep,
@@ -108,5 +109,27 @@ describe("applyRename", () => {
 
   it("zero-pads sequence to 3 digits", () => {
     expect(applyRename({ pattern: "{n}" }, "x", "jpg", 11)).toMatch(/^012/);
+  });
+});
+
+describe("effectiveSteps", () => {
+  const steps: BatchStep[] = [
+    { type: "resize", params: { targetWidth: 800, lockAspect: true } },
+    { type: "compress", params: { quality: 0.7 } },
+  ];
+
+  it("passes steps through unchanged when no overrides", () => {
+    expect(effectiveSteps(steps, {})).toEqual(steps);
+  });
+
+  it("merges a partial override onto the targeted step only", () => {
+    const out = effectiveSteps(steps, { 0: { targetWidth: 400 } });
+    expect(out[0].params).toMatchObject({ targetWidth: 400, lockAspect: true });
+    expect(out[1]).toEqual(steps[1]); // sibling untouched
+  });
+
+  it("ignores overrides at non-existent indices", () => {
+    const out = effectiveSteps(steps, { 5: { quality: 0.1 } });
+    expect(out).toEqual(steps);
   });
 });

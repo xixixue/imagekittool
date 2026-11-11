@@ -169,6 +169,23 @@ export function applyRename(
   return out;
 }
 
+/**
+ * Merge per-file param overrides onto the global step list. `overrides` is keyed
+ * by step index; a partial params object is merged onto that step's global
+ * params (shallow merge). Steps without an override pass through unchanged.
+ * Pure — unit-testable. (SPEC §5.4: '统一参数和逐文件覆盖参数'.)
+ */
+export function effectiveSteps(
+  steps: BatchStep[],
+  overrides: Record<number, Partial<BatchStep["params"]>>,
+): BatchStep[] {
+  return steps.map((step, idx) => {
+    const patch = overrides[idx];
+    if (!patch) return step;
+    return { ...step, params: { ...step.params, ...patch } } as BatchStep;
+  });
+}
+
 /** Apply a single (non-rename) pixel step to a decoded image. Canvas-coupled. */
 export async function applyStep(
   image: DecodedImage,

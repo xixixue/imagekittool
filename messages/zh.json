@@ -334,6 +334,7 @@
     "batchCancel": "取消",
     "batchDownloadZip": "全部下载（.zip）",
     "batchInvalid": "请先修正步骤设置再处理。",
+    "batchEditParams": "编辑参数",
     "pdfOnly": "请加载 PDF 文件。",
     "pdfPageCount": "{count} 页",
     "pdfPageRange": "页码范围",

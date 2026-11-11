@@ -334,6 +334,7 @@
     "batchCancel": "Cancelar",
     "batchDownloadZip": "Baixar tudo (.zip)",
     "batchInvalid": "Corrija as configurações das etapas antes de processar.",
+    "batchEditParams": "Editar parâmetros",
     "pdfOnly": "Carregue um arquivo PDF.",
     "pdfPageCount": "{count} páginas",
     "pdfPageRange": "Intervalo de páginas",

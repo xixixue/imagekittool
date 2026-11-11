@@ -334,6 +334,7 @@
     "batchCancel": "キャンセル",
     "batchDownloadZip": "すべてダウンロード（.zip）",
     "batchInvalid": "処理前にステップ設定を修正してください。",
+    "batchEditParams": "パラメータ編集",
     "pdfOnly": "PDF ファイルを読み込んでください。",
     "pdfPageCount": "{count} ページ",
     "pdfPageRange": "ページ範囲",

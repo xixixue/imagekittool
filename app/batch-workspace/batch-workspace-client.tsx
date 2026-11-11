@@ -7,6 +7,7 @@ import { startBatch, type BatchHandle } from "@/features/batch-engine/scheduler"
 import type { BatchItem } from "@/features/batch-engine/state";
 import {
   applySteps,
+  effectiveSteps,
   validatePipeline,
   type BatchStep,
   type BatchStepType,
@@ -24,6 +25,8 @@ interface BatchFile {
   status: "queued" | "processing" | "completed" | "failed" | "cancelled";
   error?: string;
   result?: { url: string; filename: string };
+  /** Per-step param overrides (keyed by step index) for this file (§5.4). */
+  overrides: Record<number, Partial<BatchStep["params"]>>;
 }
 
 const STEP_TYPES: BatchStepType[] = [
@@ -80,6 +83,7 @@ export function BatchWorkspaceClient() {
   const [concurrency, setConcurrency] = useState(2);
   const [running, setRunning] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
   const handleRef = useRef<BatchHandle<File, ProcessResult> | null>(null);
   const urlsRef = useRef<string[]>([]);
   urlsRef.current = [
@@ -107,6 +111,7 @@ export function BatchWorkspaceClient() {
         size: file.size,
         thumbUrl: URL.createObjectURL(file),
         status: "queued",
+        overrides: {},
       });
     }
     if (next.length) setFiles((prev) => [...prev, ...next]);
@@ -172,6 +177,26 @@ export function BatchWorkspaceClient() {
     );
   }, []);
 
+  /** Set a per-file override for one step (§5.4 per-file param override). */
+  const setOverride = useCallback(
+    (fileId: string, idx: number, patch: Partial<BatchStep["params"]>) => {
+      setFiles((prev) =>
+        prev.map((f) =>
+          f.id === fileId
+            ? {
+                ...f,
+                overrides: {
+                  ...f.overrides,
+                  [idx]: { ...f.overrides[idx], ...patch },
+                },
+              }
+            : f,
+        ),
+      );
+    },
+    [],
+  );
+
   const completed = useMemo(() => files.filter((f) => f.status === "completed"), [files]);
 
   const onProcess = useCallback(() => {
@@ -196,9 +221,15 @@ export function BatchWorkspaceClient() {
       input: f.file,
       status: "queued" as const,
     }));
+    // Per-file param overrides (§5.4): each file may override specific steps.
+    const overridesMap = new Map(files.map((f) => [f.id, f.overrides]));
 
     const runner = async (item: BatchItem<File, ProcessResult>, signal: AbortSignal) => {
-      const result = await applySteps(item.input, steps, { signal, index: items.indexOf(item) });
+      const eff = effectiveSteps(steps, overridesMap.get(item.id) ?? {});
+      const result = await applySteps(item.input, eff, {
+        signal,
+        index: items.indexOf(item),
+      });
       return result;
     };
 
@@ -270,31 +301,62 @@ export function BatchWorkspaceClient() {
       {files.length > 0 && (
         <ul className="space-y-2">
           {files.map((f, i) => (
-            <li
-              key={f.id}
-              className="flex items-center gap-3 rounded-lg border border-border bg-card p-3"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={f.thumbUrl} alt="" className="h-10 w-10 rounded object-cover" />
-              <div className="min-w-0 flex-1">
-                <p className="truncate text-sm font-medium">{f.name}</p>
-                <p className="text-xs text-muted-foreground">
-                  {(f.size / 1024).toFixed(0)} KB · <span className="capitalize">{f.status}</span>
-                  {f.error ? ` · ${f.error}` : ""}
-                </p>
+            <li key={f.id} className="rounded-lg border border-border bg-card p-3">
+              <div className="flex items-center gap-3">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={f.thumbUrl} alt="" className="h-10 w-10 rounded object-cover" />
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-sm font-medium">{f.name}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {(f.size / 1024).toFixed(0)} KB · <span className="capitalize">{f.status}</span>
+                    {f.error ? ` · ${f.error}` : ""}
+                  </p>
+                </div>
+                <div className="flex items-center gap-1">
+                  <button type="button" onClick={() => moveFile(f.id, -1)} disabled={i === 0 || running} className="rounded px-2 py-1 text-sm hover:bg-muted disabled:opacity-30">↑</button>
+                  <button type="button" onClick={() => moveFile(f.id, 1)} disabled={i === files.length - 1 || running} className="rounded px-2 py-1 text-sm hover:bg-muted disabled:opacity-30">↓</button>
+                  {steps.length > 0 && (
+                    <button
+                      type="button"
+                      onClick={() => setExpandedId(expandedId === f.id ? null : f.id)}
+                      disabled={running}
+                      className="rounded border border-border px-2 py-1 text-sm hover:bg-muted disabled:opacity-30"
+                    >
+                      {tC("batchEditParams")}
+                    </button>
+                  )}
+                  {f.result && (
+                    <a href={f.result.url} download={f.result.filename} className="rounded border border-border px-2 py-1 text-sm hover:bg-muted">
+                      {tC("batchDownload")}
+                    </a>
+                  )}
+                  <button type="button" onClick={() => removeFile(f.id)} disabled={running} className="rounded px-2 py-1 text-sm text-destructive hover:bg-muted disabled:opacity-30">
+                    {tC("batchRemove")}
+                  </button>
+                </div>
               </div>
-              <div className="flex items-center gap-1">
-                <button type="button" onClick={() => moveFile(f.id, -1)} disabled={i === 0 || running} className="rounded px-2 py-1 text-sm hover:bg-muted disabled:opacity-30">↑</button>
-                <button type="button" onClick={() => moveFile(f.id, 1)} disabled={i === files.length - 1 || running} className="rounded px-2 py-1 text-sm hover:bg-muted disabled:opacity-30">↓</button>
-                {f.result && (
-                  <a href={f.result.url} download={f.result.filename} className="rounded border border-border px-2 py-1 text-sm hover:bg-muted">
-                    {tC("batchDownload")}
-                  </a>
-                )}
-                <button type="button" onClick={() => removeFile(f.id)} disabled={running} className="rounded px-2 py-1 text-sm text-destructive hover:bg-muted disabled:opacity-30">
-                  {tC("batchRemove")}
-                </button>
-              </div>
+              {expandedId === f.id && steps.length > 0 && (
+                <div className="mt-3 space-y-2 border-t border-border pt-3">
+                  <p className="text-xs text-muted-foreground">
+                    Per-file step params — override the global settings for this file.
+                  </p>
+                  {steps.map((step, idx) => {
+                    const merged = {
+                      ...step,
+                      params: { ...step.params, ...f.overrides[idx] },
+                    } as BatchStep;
+                    return (
+                      <div key={idx} className="rounded border border-border p-2">
+                        <p className="mb-1 text-xs font-medium capitalize">{step.type}</p>
+                        <StepParamsFields
+                          step={merged}
+                          onChange={(patch) => setOverride(f.id, idx, patch)}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </li>
           ))}
         </ul>

@@ -334,6 +334,7 @@
     "batchCancel": "Cancel",
     "batchDownloadZip": "Download all (.zip)",
     "batchInvalid": "Fix the step settings before processing.",
+    "batchEditParams": "Edit params",
     "pdfOnly": "Please load a PDF file.",
     "pdfPageCount": "{count} pages",
     "pdfPageRange": "Page range",

@@ -334,6 +334,7 @@
     "batchCancel": "إلغاء",
     "batchDownloadZip": "تنزيل الكل (.zip)",
     "batchInvalid": "صحّح إعدادات الخطوات قبل المعالجة.",
+    "batchEditParams": "تحرير المعلمات",
     "pdfOnly": "يرجى تحميل ملف PDF.",
     "pdfPageCount": "{count} صفحة",
     "pdfPageRange": "نطاق الصفحات",
