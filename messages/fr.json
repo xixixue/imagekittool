@@ -347,9 +347,20 @@
       "tagline": "Tailles recommandées pour chaque usage",
       "description": "Référence cherchable de tailles d'image recommandées pour les réseaux sociaux, le web, l'email, les miniatures vidéo, les profils et l'impression. Chaque entrée lien vers un outil. Révisé et daté.",
       "headerDescription": "Référence cherchable de tailles recommandées en six catégories — réseaux sociaux, web, email, miniature vidéo, profil et impression. Chaque entrée lien vers un outil. Tailles révisées et datées ; ce sont des recommandations, pas des règles."
+    },
+    "heic-to-jpg": {
+      "name": "HEIC vers JPG",
+      "tagline": "Convertir les photos HEIC de l'iPhone",
+      "description": "Convertit les photos HEIC et HEIF en JPG, PNG ou WebP dans votre navigateur — sans téléversement, sans inscription. Réglez la qualité et téléchargez. S'exécute localement.",
+      "headerDescription": "Convertit les photos HEIC et HEIF (de l'iPhone) en JPG, PNG ou WebP dans votre navigateur — sans téléversement, sans inscription. Réglez la qualité et téléchargez le résultat. S'exécute entièrement localement dans votre navigateur ; rien n'est téléversé."
     }
   },
   "Controls": {
+    "heicFormat": "Format",
+    "heicQuality": "Qualité",
+    "heicConvert": "Convertir",
+    "heicConverting": "Conversion…",
+    "heicNotHeic": "Chargez un fichier HEIC ou HEIF.",
     "isrSearch": "Rechercher des tailles…",
     "isrAll": "Tous",
     "isrResults": "résultats",

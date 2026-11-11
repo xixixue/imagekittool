@@ -347,9 +347,20 @@
       "tagline": "Recommended sizes for every use",
       "description": "A searchable reference of recommended image sizes for social media, websites, email, video thumbnails, profiles, and print. Each entry links to a resizer tool. Reviewed and dated.",
       "headerDescription": "A searchable reference of recommended image sizes across six categories — social media, website, email, video thumbnail, profile, and print. Each entry links to a resizer tool. Sizes are reviewed and dated; treat them as recommendations, not enforced rules."
+    },
+    "heic-to-jpg": {
+      "name": "HEIC to JPG",
+      "tagline": "Convert iPhone HEIC photos",
+      "description": "Convert HEIC and HEIF photos to JPG, PNG, or WebP in your browser — no upload, no signup. Adjust quality and download. Runs locally.",
+      "headerDescription": "Convert HEIC and HEIF photos (from iPhone) to JPG, PNG, or WebP in your browser — no upload, no signup. Adjust quality and download the result. Runs entirely locally in your browser; nothing is uploaded."
     }
   },
   "Controls": {
+    "heicFormat": "Format",
+    "heicQuality": "Quality",
+    "heicConvert": "Convert",
+    "heicConverting": "Converting…",
+    "heicNotHeic": "Please load a HEIC or HEIF file.",
     "isrSearch": "Search sizes…",
     "isrAll": "All",
     "isrResults": "results",
@@ -1402,6 +1413,49 @@
         {
           "q": "Can I search by ratio?",
           "a": "Yes. The search matches names, descriptions, category labels, and ratios — try '1:1' or '16:9'."
+        }
+      ]
+    },
+    "heic-to-jpg": {
+      "steps": [
+        "Click the upload area and select a HEIC or HEIF photo (iPhone photos are usually .heic).",
+        "Choose an output format — JPG for compatibility, PNG for lossless, WebP for the smallest web file.",
+        "If you chose JPG or WebP, adjust the quality slider (90% is a good default for photos).",
+        "Click Convert. The HEIC is decoded in your browser and re-encoded to your chosen format.",
+        "Click Download to save the converted file."
+      ],
+      "useCases": [
+        "Opening iPhone HEIC photos on a Windows PC or older software that doesn't read HEIC.",
+        "Uploading HEIC photos to a website or form that only accepts JPG or PNG.",
+        "Sharing HEIC photos with someone who can't view HEIC.",
+        "Reducing file size by converting HEIC to WebP for the web."
+      ],
+      "knowledge": [
+        {
+          "heading": "What HEIC is",
+          "body": "HEIC (High Efficiency Image Container) is the format iPhones use by default since iOS 11. It stores photos at roughly half the size of JPG at the same quality, using the HEVC codec. The trade-off is compatibility: not all browsers, operating systems, and apps can read HEIC, which is why converting to JPG is often necessary."
+        },
+        {
+          "heading": "Quality and format choice",
+          "body": "JPG is the safest output for sharing — universally supported. PNG is lossless and supports transparency but produces larger files for photos. WebP gives the smallest files for the web and is supported by all modern browsers. For most iPhone photos, JPG at 90% quality is visually indistinguishable from the original HEIC."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Is HEIC better than JPG?",
+          "a": "HEIC files are about half the size of JPG at similar quality, so they're more efficient. But HEIC is less widely supported — many apps, browsers, and websites can't read it. Converting to JPG makes the photo universally viewable."
+        },
+        {
+          "q": "Does converting HEIC to JPG lose quality?",
+          "a": "HEIC and JPG are both lossy formats. Converting HEIC to JPG at a high quality setting (90% or above) produces a result that is visually indistinguishable from the original for most photos. At lower quality settings, JPG compression artifacts become visible."
+        },
+        {
+          "q": "Can this tool convert HEIC to PNG or WebP?",
+          "a": "Yes. Select PNG for a lossless conversion (larger file), or WebP for the smallest web-ready file. JPG is the default because it's the most widely compatible."
+        },
+        {
+          "q": "Are my photos uploaded?",
+          "a": "No. The HEIC conversion runs entirely in your browser using WebAssembly. Your photos are never uploaded to a server."
         }
       ]
     }

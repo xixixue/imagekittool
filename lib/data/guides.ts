@@ -1319,6 +1319,73 @@ export const guides: Guide[] = [
       },
     ],
   },
+  {
+    slug: "convert-heic-to-jpg",
+    title: "How to Convert HEIC to JPG",
+    description:
+      "Convert iPhone HEIC photos to JPG, PNG, or WebP in your browser — what HEIC is, why conversion is sometimes needed, and how to do it without uploading anything.",
+    category: "Formats",
+    coverDiagram: "format-support-table",
+    readingTimeMin: 4,
+    relatedToolSlugs: ["heic-to-jpg"],
+    publishedAt: "2025-01-15",
+    body: [
+      {
+        type: "heading",
+        text: "What HEIC is",
+      },
+      {
+        type: "paragraph",
+        text: "HEIC (High Efficiency Image Container) is the photo format iPhones use by default since iOS 11. It stores photos at about half the file size of JPG at the same visual quality, using the HEVC codec. The trade-off is compatibility: many web browsers, Windows PCs, photo editors, and upload forms can't read HEIC, which is why converting to JPG is often necessary.",
+      },
+      {
+        type: "callout",
+        text: "The fastest way: open HEIC to JPG, drop in a .heic photo, pick a format (JPG, PNG, or WebP), and click Convert — the file is decoded in your browser and nothing is uploaded.",
+      },
+      {
+        type: "heading",
+        text: "How to convert HEIC to JPG",
+      },
+      {
+        type: "list",
+        items: [
+          "Open HEIC to JPG and drop in your .heic or .heif photo.",
+          "Choose an output format — JPG for compatibility, PNG for lossless, WebP for the smallest web file.",
+          "If you chose JPG or WebP, adjust the quality slider (90% is a good default).",
+          "Click Convert. The HEIC is decoded in your browser and re-encoded to your chosen format.",
+          "Click Download to save the converted file.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Choosing an output format",
+      },
+      {
+        type: "paragraph",
+        text: "JPG is the safest choice for sharing — universally supported by browsers, apps, and devices. PNG is lossless and supports transparency, but produces larger files for photographs. WebP gives the smallest files for the web and is supported by all modern browsers. For most iPhone photos destined for general use, JPG at 90% quality is the right call.",
+      },
+      {
+        type: "heading",
+        text: "Does converting HEIC to JPG lose quality?",
+      },
+      {
+        type: "paragraph",
+        text: "HEIC and JPG are both lossy formats, so a conversion does re-encode the image. At a high quality setting (90% or above), the result is visually indistinguishable from the original HEIC for most photos. At lower quality settings, JPG compression artifacts — blotchiness in smooth areas, ringing around edges — become visible.",
+      },
+      {
+        type: "heading",
+        text: "Why iPhones use HEIC",
+      },
+      {
+        type: "paragraph",
+        text: "Apple switched to HEIC to save storage — a HEIC photo takes roughly half the space of an equivalent JPG. In iPhone Settings > Camera > Formats, 'High Efficiency' uses HEIC and 'Most Compatible' uses JPG. If you need JPG directly from the camera, switching to 'Most Compatible' avoids the conversion step entirely, at the cost of larger files.",
+      },
+      {
+        type: "callout",
+        text: "HEIC to JPG runs entirely in your browser via WebAssembly. Your photos are decoded on your device and never uploaded to a server.",
+      },
+    ],
+  },
 ];
 
 /**

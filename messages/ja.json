@@ -347,9 +347,20 @@
       "tagline": "用途別の推奨サイズ",
       "description": "SNS、Web、メール、動画サムネイル、プロフィール、印刷の推奨画像サイズを検索できるリファレンス。各項目に対応ツールへのリンク。確認済み・日付付き。",
       "headerDescription": "6 カテゴリ（SNS/Web/メール/動画サムネイル/プロフィール/印刷）の推奨画像サイズを検索できるリファレンス。各項目に対応ツールへのリンク。サイズは確認済み・日付付き；推奨値であり強制ルールではありません。"
+    },
+    "heic-to-jpg": {
+      "name": "HEIC → JPG",
+      "tagline": "iPhoneのHEIC写真を変換",
+      "description": "ブラウザ内でHEIC/HEIF写真をJPG・PNG・WebPに変換——アップロード不要・登録不要。品質を調整してダウンロード。ローカル実行。",
+      "headerDescription": "ブラウザ内でHEIC/HEIF写真（iPhone由来）をJPG・PNG・WebPに変換——アップロード不要・登録不要。品質を調整して結果をダウンロード。ブラウザ内で完全にローカル実行；何もアップロードしません。"
     }
   },
   "Controls": {
+    "heicFormat": "形式",
+    "heicQuality": "品質",
+    "heicConvert": "変換",
+    "heicConverting": "変換中…",
+    "heicNotHeic": "HEIC または HEIF ファイルを読み込んでください。",
     "isrSearch": "サイズを検索…",
     "isrAll": "すべて",
     "isrResults": "件",

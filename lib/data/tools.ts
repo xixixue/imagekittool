@@ -266,6 +266,18 @@ export const tools: Tool[] = [
     icon: "compress",
     accent: "emerald",
   },
+  {
+    slug: "heic-to-jpg",
+    href: "/heic-to-jpg",
+    name: "HEIC to JPG",
+    tagline: "Convert iPhone HEIC photos",
+    description:
+      "Convert HEIC and HEIF photos to JPG, PNG, or WebP in your browser — no upload, no signup. Adjust quality and download. Runs locally.",
+    formats: "HEIC · HEIF → JPG · PNG · WebP",
+    status: "active",
+    icon: "image",
+    accent: "blue",
+  },
 ];
 
 export function getToolBySlug(slug: string): Tool | undefined {

@@ -347,9 +347,20 @@
       "tagline": "各类用途的推荐尺寸",
       "description": "可检索的推荐图片尺寸参考——社交媒体、网站、邮件、视频缩略图、头像、打印。每条链接到对应调整工具。已核验并标注日期。",
       "headerDescription": "六类推荐图片尺寸的可检索参考——社交媒体、网站、邮件、视频缩略图、头像、打印。每条链接到对应调整工具。尺寸已核验并标注日期；视为推荐值，非强制规则。"
+    },
+    "heic-to-jpg": {
+      "name": "HEIC 转 JPG",
+      "tagline": "转换 iPhone HEIC 照片",
+      "description": "在浏览器中将 HEIC/HEIF 照片转换为 JPG、PNG 或 WebP——无需上传、无需注册。可调质量后下载。本地运行。",
+      "headerDescription": "在浏览器中将 HEIC/HEIF 照片（来自 iPhone）转换为 JPG、PNG 或 WebP——无需上传、无需注册。可调质量后下载结果。完全在浏览器本地运行；不上传任何文件。"
     }
   },
   "Controls": {
+    "heicFormat": "格式",
+    "heicQuality": "质量",
+    "heicConvert": "转换",
+    "heicConverting": "转换中…",
+    "heicNotHeic": "请载入 HEIC 或 HEIF 文件。",
     "isrSearch": "搜索尺寸…",
     "isrAll": "全部",
     "isrResults": "条结果",
