@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { loginSchema, type LoginInput } from "@/lib/validation/auth";
+import { notifyAuthChange } from "@/lib/auth/auth-event";
 
 export function LoginForm() {
   const t = useTranslations("Auth");
@@ -35,6 +36,7 @@ export function LoginForm() {
       setServerError(json.error ?? "Sign in failed.");
       return;
     }
+    notifyAuthChange();
     router.push(next);
     router.refresh();
   };

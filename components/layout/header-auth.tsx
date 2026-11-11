@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { AUTH_CHANGE_EVENT } from "@/lib/auth/auth-event";
 
 interface SessionUser {
   email: string;
@@ -18,16 +19,22 @@ export function HeaderAuth() {
 
   useEffect(() => {
     let active = true;
-    fetch("/api/auth/session", { cache: "no-store" })
-      .then((r) => r.json())
-      .then((d: { user: SessionUser | null }) => {
-        if (active) setUser(d.user ?? null);
-      })
-      .catch(() => {
-        if (active) setUser(null);
-      });
+    const load = () => {
+      fetch("/api/auth/session", { cache: "no-store" })
+        .then((r) => r.json())
+        .then((d: { user: SessionUser | null }) => {
+          if (active) setUser(d.user ?? null);
+        })
+        .catch(() => {
+          if (active) setUser(null);
+        });
+    };
+    load();
+    const onChange = () => load();
+    window.addEventListener(AUTH_CHANGE_EVENT, onChange);
     return () => {
       active = false;
+      window.removeEventListener(AUTH_CHANGE_EVENT, onChange);
     };
   }, []);
 

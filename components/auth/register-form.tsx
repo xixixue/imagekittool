@@ -9,6 +9,7 @@ import { useTranslations } from "next-intl";
 import { registerSchema, type RegisterInput } from "@/lib/validation/auth";
 import { AnalyticsEvent } from "@/lib/analytics/events";
 import { track } from "@/lib/analytics/track";
+import { notifyAuthChange } from "@/lib/auth/auth-event";
 
 export function RegisterForm() {
   const t = useTranslations("Auth");
@@ -36,6 +37,7 @@ export function RegisterForm() {
       return;
     }
     track(AnalyticsEvent.signupCompleted);
+    notifyAuthChange();
     router.push("/account");
     router.refresh();
   };
