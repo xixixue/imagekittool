@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getMessages, getTranslations } from "next-intl/server";
 import { AdSlot } from "@/components/ads/ad-slot";
 import { getToolBySlug } from "@/lib/data/tools";
+import { guidesForTool } from "@/lib/data/guides";
 import { TOOL_SEO_RELATED, type ToolDeepDiveData, type ToolSeoData } from "@/lib/data/tool-seo";
 import { JsonLd } from "@/components/seo/json-ld";
 import { buildFaqPage, buildWebApplication } from "@/lib/seo/json-ld";
@@ -36,6 +37,8 @@ export async function ToolSeoContent({ slug }: { slug: string }) {
   const related = relatedSlugs
     .map((s) => getToolBySlug(s))
     .filter((entry): entry is ToolEntry => Boolean(entry));
+  // Reverse index: guides whose relatedToolSlugs include this tool (§8.2/§9.1).
+  const relatedGuides = guidesForTool(slug);
 
   // Structured data (SPEC V2 §9.2): a FAQPage graph built from the Q/A pairs
   // rendered below, plus a WebApplication graph describing the tool. The data
@@ -108,6 +111,24 @@ export async function ToolSeoContent({ slug }: { slug: string }) {
                   className="rounded-md border border-border px-3 py-1.5 text-sm transition-colors hover:border-primary hover:text-primary"
                 >
                   {toolName(`${entry.slug}.name`)}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {relatedGuides.length > 0 && (
+        <div>
+          <h2 className="text-xl font-bold tracking-tight">{t("relatedGuides")}</h2>
+          <ul className="mt-3 flex flex-wrap gap-2">
+            {relatedGuides.map((g) => (
+              <li key={g.slug}>
+                <Link
+                  href={`/guides/${g.slug}`}
+                  className="rounded-md border border-border px-3 py-1.5 text-sm transition-colors hover:border-primary hover:text-primary"
+                >
+                  {g.title}
                 </Link>
               </li>
             ))}

@@ -3,6 +3,8 @@ import {
   buildArticle,
   buildBreadcrumbList,
   buildFaqPage,
+  buildHowTo,
+  buildItemList,
   buildWebApplication,
 } from "@/lib/seo/json-ld";
 
@@ -111,5 +113,51 @@ describe("buildBreadcrumbList", () => {
       "https://other.example",
     );
     expect((ld.itemListElement as Record<string, unknown>[])[0].item).toBe("https://example.com/");
+  });
+});
+
+describe("buildHowTo", () => {
+  it("builds a HowTo graph with numbered steps", () => {
+    const ld = buildHowTo({
+      name: "How to Remove EXIF Metadata",
+      description: "Strip metadata from a photo in your browser.",
+      url: "https://example.com/guides/remove-exif",
+      steps: [
+        { name: "Load the image", text: "Drop a JPG or PNG into the tool." },
+        { name: "Remove EXIF", text: "Click Remove; the tool re-encodes without metadata." },
+      ],
+    });
+    expect(ld["@type"]).toBe("HowTo");
+    expect(ld.name).toBe("How to Remove EXIF Metadata");
+    const steps = ld.step as Record<string, unknown>[];
+    expect(steps).toHaveLength(2);
+    expect(steps[0].position).toBe(1);
+    expect(steps[1].position).toBe(2);
+    expect(steps[0].name).toBe("Load the image");
+  });
+});
+
+describe("buildItemList", () => {
+  it("builds an ItemList with positioned entries", () => {
+    const ld = buildItemList(
+      [
+        { name: "Instagram Post", url: "/social-media-resizer" },
+        { name: "Favicon 32px", url: "/favicon-generator" },
+      ],
+      "https://example.com",
+    );
+    expect(ld["@type"]).toBe("ItemList");
+    const items = ld.itemListElement as Record<string, unknown>[];
+    expect(items).toHaveLength(2);
+    expect(items[0].position).toBe(1);
+    expect(items[0].url).toBe("https://example.com/social-media-resizer");
+  });
+
+  it("leaves absolute URLs untouched", () => {
+    const ld = buildItemList(
+      [{ name: "External", url: "https://other.example/x" }],
+      "https://example.com",
+    );
+    expect((ld.itemListElement as Record<string, unknown>[])[0].url).toBe("https://other.example/x");
   });
 });

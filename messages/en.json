@@ -625,6 +625,7 @@
     "whenToUse": "When to use it",
     "faq": "FAQ",
     "relatedTools": "Related tools",
+    "relatedGuides": "Related guides",
     "image-compressor": {
       "steps": [
         "Drag your JPG, PNG, or WebP image into the drop zone, or click to pick files. You can add several at once.",

@@ -625,6 +625,7 @@
     "whenToUse": "Quand l'utiliser",
     "faq": "FAQ",
     "relatedTools": "Outils associés",
+    "relatedGuides": "Guides associés",
     "image-compressor": {
       "steps": [
         "Glissez votre image JPG, PNG ou WebP dans la zone de dépôt, ou cliquez pour choisir des fichiers. Vous pouvez en ajouter plusieurs à la fois.",

@@ -625,6 +625,7 @@
     "whenToUse": "Cuándo usarlo",
     "faq": "Preguntas frecuentes",
     "relatedTools": "Herramientas relacionadas",
+    "relatedGuides": "Guías relacionadas",
     "image-compressor": {
       "steps": [
         "Arrastra tu imagen JPG, PNG o WebP a la zona de soltado, o haz clic para elegir archivos. Puedes añadir varios a la vez.",

@@ -117,3 +117,62 @@ export function buildBreadcrumbList(trail: Crumb[], siteUrl: string): Record<str
     })),
   };
 }
+
+export interface HowToStep {
+  /** Short step title. */
+  name: string;
+  /** Step instruction text (the actual guidance shown on the page). */
+  text: string;
+}
+
+export interface HowToInput {
+  name: string;
+  description: string;
+  /** Canonical absolute URL of the how-to page. */
+  url: string;
+  /** Steps actually rendered on the page (§9.2: must match real content). */
+  steps: HowToStep[];
+}
+
+/**
+ * Build a HowTo graph from the steps actually rendered on the page. Use for
+ * guides that present a numbered procedure (§8.3 how-to topics).
+ */
+export function buildHowTo(input: HowToInput): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: input.name,
+    description: input.description,
+    url: input.url,
+    step: input.steps.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+    })),
+  };
+}
+
+export interface ItemListEntry {
+  name: string;
+  /** Site-relative path (e.g. "/image-size-reference") or an absolute URL. */
+  url: string;
+}
+
+/**
+ * Build an ItemList graph from a list of named entries (e.g. a size reference
+ * table or a guides index). Each item links to its own page.
+ */
+export function buildItemList(items: ItemListEntry[], siteUrl: string): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((it, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: it.name,
+      url: it.url.startsWith("http") ? it.url : `${siteUrl}${it.url}`,
+    })),
+  };
+}

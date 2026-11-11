@@ -625,6 +625,7 @@
     "whenToUse": "こんな時に使う",
     "faq": "よくある質問",
     "relatedTools": "関連ツール",
+    "relatedGuides": "関連ガイド",
     "image-compressor": {
       "steps": [
         "JPG, PNG, WebP 画像をドロップゾーンにドラッグするか、クリックしてファイルを選択します。一度に複数追加できます。",

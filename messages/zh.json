@@ -625,6 +625,7 @@
     "whenToUse": "适用场景",
     "faq": "常见问题",
     "relatedTools": "相关工具",
+    "relatedGuides": "相关指南",
     "image-compressor": {
       "steps": [
         "将 JPG、PNG 或 WebP 图片拖入放置区，或点击选择文件。可一次添加多张。",

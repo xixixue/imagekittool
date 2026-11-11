@@ -941,3 +941,13 @@ export const guides: Guide[] = [
     ],
   },
 ];
+
+/**
+ * Guides whose `relatedToolSlugs` include the given tool slug — a reverse index
+ * from a tool to the guides that link to it (SPEC V2 §8.2/§9.1 internal
+ * linking). Derived from the guides data so it never drifts.
+ */
+export function guidesForTool(toolSlug: string): Guide[] {
+  return guides.filter((g) => g.relatedToolSlugs.includes(toolSlug));
+}
+
