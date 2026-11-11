@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 
 interface SessionUser {
   email: string;
+  username: string | null;
   emailVerified: boolean;
 }
 
@@ -55,13 +56,19 @@ export function HeaderAuth() {
       </div>
     );
   }
+  const displayName = user.username ?? user.email;
+  const initial = displayName.charAt(0).toUpperCase();
   return (
     <div className="flex items-center gap-2 sm:gap-3">
       <Link
         href="/account"
-        className="max-w-[120px] truncate text-sm text-muted-foreground transition-colors hover:text-foreground sm:max-w-[180px]"
+        title={user.email}
+        className="flex items-center gap-1.5 rounded-full border border-border bg-muted/50 py-1 pl-1 pr-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
       >
-        {user.email}
+        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
+          {initial}
+        </span>
+        <span className="max-w-[90px] truncate sm:max-w-[140px]">{displayName}</span>
       </Link>
       <button
         type="button"

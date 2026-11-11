@@ -20,7 +20,7 @@ export function RegisterForm() {
     formState: { errors, isSubmitting },
   } = useForm<RegisterInput>({
     resolver: zodResolver(registerSchema),
-    defaultValues: { email: "", password: "" },
+    defaultValues: { username: "", email: "", password: "" },
   });
 
   const onSubmit = async (data: RegisterInput) => {
@@ -42,6 +42,23 @@ export function RegisterForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" noValidate>
+      <div>
+        <label htmlFor="register-username" className="text-sm font-medium">
+          {t("username")}
+        </label>
+        <input
+          id="register-username"
+          type="text"
+          autoComplete="username"
+          aria-invalid={!!errors.username}
+          className="mt-1.5 block w-full rounded-md border border-border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+          {...register("username")}
+        />
+        {errors.username && (
+          <span className="mt-1 block text-xs text-destructive">{errors.username.message}</span>
+        )}
+        <span className="mt-1 block text-xs text-muted-foreground">{t("usernameHint")}</span>
+      </div>
       <div>
         <label htmlFor="register-email" className="text-sm font-medium">
           {t("email")}

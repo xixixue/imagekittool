@@ -7,30 +7,51 @@ import {
 } from "@/lib/validation/auth";
 
 describe("auth validation", () => {
-  it("register accepts a valid email and 8+ char password", () => {
-    expect(registerSchema.safeParse({ email: "a@b.com", password: "12345678" }).success).toBe(true);
+  const validUser = { username: "alice", email: "a@b.com", password: "12345678" };
+
+  it("register accepts a valid username, email and 8+ char password", () => {
+    expect(registerSchema.safeParse(validUser).success).toBe(true);
   });
 
   it("register trims and lowercases the email", () => {
-    const r = registerSchema.safeParse({ email: "  User@Example.COM  ", password: "12345678" });
+    const r = registerSchema.safeParse({ ...validUser, email: "  User@Example.COM  " });
     expect(r.success).toBe(true);
     if (r.success) expect(r.data.email).toBe("user@example.com");
   });
 
+  it("register trims the username", () => {
+    const r = registerSchema.safeParse({ ...validUser, username: "  alice  " });
+    expect(r.success).toBe(true);
+    if (r.success) expect(r.data.username).toBe("alice");
+  });
+
   it("register rejects a short password", () => {
-    expect(registerSchema.safeParse({ email: "a@b.com", password: "1234567" }).success).toBe(false);
+    expect(registerSchema.safeParse({ ...validUser, password: "1234567" }).success).toBe(false);
   });
 
   it("register rejects an invalid email", () => {
-    expect(registerSchema.safeParse({ email: "not-an-email", password: "12345678" }).success).toBe(
+    expect(registerSchema.safeParse({ ...validUser, email: "not-an-email" }).success).toBe(false);
+  });
+
+  it("register rejects a password over 72 characters", () => {
+    expect(registerSchema.safeParse({ ...validUser, password: "x".repeat(73) }).success).toBe(
       false,
     );
   });
 
-  it("register rejects a password over 72 characters", () => {
-    expect(registerSchema.safeParse({ email: "a@b.com", password: "x".repeat(73) }).success).toBe(
+  it("register rejects a username shorter than 3 characters", () => {
+    expect(registerSchema.safeParse({ ...validUser, username: "ab" }).success).toBe(false);
+  });
+
+  it("register rejects a username over 20 characters", () => {
+    expect(registerSchema.safeParse({ ...validUser, username: "x".repeat(21) }).success).toBe(
       false,
     );
+  });
+
+  it("register rejects a username with invalid characters", () => {
+    expect(registerSchema.safeParse({ ...validUser, username: "alice doe" }).success).toBe(false);
+    expect(registerSchema.safeParse({ ...validUser, username: "alice!" }).success).toBe(false);
   });
 
   it("login requires a non-empty password", () => {

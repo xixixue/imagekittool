@@ -22,6 +22,12 @@ export default async function AccountPage() {
       <div>
         <h1 className="text-2xl font-bold tracking-tight">{t("accountTitle")}</h1>
         <dl className="mt-6 space-y-3 rounded-2xl border border-border bg-card p-6 text-sm shadow-sm">
+          {user.username && (
+            <div className="flex justify-between gap-4">
+              <dt className="text-muted-foreground">{t("accountUsername")}</dt>
+              <dd className="font-medium">{user.username}</dd>
+            </div>
+          )}
           <div className="flex justify-between gap-4">
             <dt className="text-muted-foreground">{t("accountEmail")}</dt>
             <dd className="font-medium">{user.email}</dd>

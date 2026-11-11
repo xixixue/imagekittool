@@ -12,7 +12,15 @@ export const passwordSchema = z
   .min(8, "Password must be at least 8 characters.")
   .max(72, "Password must be at most 72 characters.");
 
+export const usernameSchema = z
+  .string()
+  .trim()
+  .min(3, "Username must be at least 3 characters.")
+  .max(20, "Username must be at most 20 characters.")
+  .regex(/^[a-zA-Z0-9_-]+$/, "Use letters, numbers, underscores, and hyphens only.");
+
 export const registerSchema = z.object({
+  username: usernameSchema,
   email: emailSchema,
   password: passwordSchema,
 });

@@ -11,11 +11,17 @@ import {
 export interface SessionUser {
   id: string;
   email: string;
+  username: string | null;
   emailVerified: boolean;
 }
 
 function toSessionUser(user: User): SessionUser {
-  return { id: user.id, email: user.email, emailVerified: !!user.emailVerifiedAt };
+  return {
+    id: user.id,
+    email: user.email,
+    username: user.username,
+    emailVerified: !!user.emailVerifiedAt,
+  };
 }
 
 /** Create a new session for a user and return the raw token (for the cookie). */

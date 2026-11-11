@@ -26,18 +26,25 @@ export async function POST(request: Request) {
   if (!parsed.success) {
     return NextResponse.json({ error: parsed.error.issues[0].message }, { status: 400 });
   }
-  const { email, password } = parsed.data;
+  const { username, email, password } = parsed.data;
 
-  const existing = await prisma.user.findUnique({ where: { email } });
-  if (existing) {
+  const existingEmail = await prisma.user.findUnique({ where: { email } });
+  if (existingEmail) {
     return NextResponse.json(
       { error: "An account with this email already exists." },
       { status: 409 },
     );
   }
+  const existingUsername = await prisma.user.findUnique({ where: { username } });
+  if (existingUsername) {
+    return NextResponse.json(
+      { error: "That username is already taken." },
+      { status: 409 },
+    );
+  }
 
   const passwordHash = await hashPassword(password);
-  const user = await prisma.user.create({ data: { email, passwordHash } });
+  const user = await prisma.user.create({ data: { email, username, passwordHash } });
 
   const verifyToken = await createVerificationToken(user.id);
   const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
@@ -52,7 +59,7 @@ export async function POST(request: Request) {
   const sessionToken = await createSession(user.id);
   const response = NextResponse.json({
     ok: true,
-    user: { email: user.email, emailVerified: false },
+    user: { email: user.email, username: user.username, emailVerified: false },
   });
   setSessionCookie(response, sessionToken);
   return response;
