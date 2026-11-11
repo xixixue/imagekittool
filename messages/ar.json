@@ -318,9 +318,25 @@
       "description": "عالج عدة صور دفعة واحدة في متصفحك — أضف ملفات، سلسلة خطوات (تغيير الحجم، التحويل، الضغط، العلامة المائية، التدوير، إعادة التسمية)، ونزّل فردياً أو كـ ZIP. محلياً؛ بدون رفع.",
       "headerDescription": "عالج عدة صور دفعة واحدة في متصفحك. أضف ملفات، سلسلة خطوات (تغيير الحجم، التحويل، الضغط، العلامة المائية، التدوير، إعادة التسمية)، ونزّل فردياً أو كـ ZIP. محلياً؛ بدون رفع.",
       "action": "معالجة"
+    },
+    "social-media-resizer": {
+      "name": "أداة تغيير حجم وسائل التواصل",
+      "tagline": "لـ Instagram وFacebook وYouTube",
+      "description": "غيّر حجم الصور لـ Instagram وFacebook وYouTube وPinterest وLinkedIn في متصفحك — اختر preset أو حجم مخصص، وضع Cover أو Contain، وصدّر PNG/JPG/WebP. محلياً؛ بدون رفع.",
+      "headerDescription": "غيّر حجم الصور لـ Instagram وFacebook وYouTube وPinterest وLinkedIn في متصفحك. اختر preset أو حجم مخصص، وضع Cover أو Contain، وصدّر PNG/JPG/WebP. محلياً؛ بدون رفع.",
+      "action": "تغيير الحجم"
     }
   },
   "Controls": {
+    "socialPlatform": "المنصة",
+    "socialPreset": "الإعداد المسبق",
+    "socialFit": "الملاءمة",
+    "socialFormat": "الصيغة",
+    "socialWidth": "العرض",
+    "socialHeight": "الارتفاع",
+    "socialRecommendedNote": "حجم موصى به — ليس قاعدة إلزامية للمنصة.",
+    "socialProcess": "تغيير الحجم",
+    "socialProcessing": "جارٍ تغيير الحجم…",
     "batchCount": "{count} ملف",
     "batchClearAll": "مسح الكل",
     "batchDownload": "تنزيل",

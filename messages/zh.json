@@ -318,9 +318,25 @@
       "description": "在浏览器中批量处理多张图片——添加文件、链式步骤（调整大小、转换、压缩、水印、旋转、重命名），可单独下载或打包 ZIP。本地运行，不上传。",
       "headerDescription": "在浏览器中批量处理多张图片。添加文件、链式步骤（调整大小、转换、压缩、水印、旋转、重命名），可单独下载或打包 ZIP。本地运行，不上传。",
       "action": "处理"
+    },
+    "social-media-resizer": {
+      "name": "社交媒体尺寸调整",
+      "tagline": "适配 Instagram/Facebook/YouTube",
+      "description": "在浏览器中为 Instagram、Facebook、YouTube、Pinterest、LinkedIn 调整图片尺寸——选择预设或自定义尺寸，Cover 或 Contain 适配，导出 PNG/JPG/WebP。本地运行，不上传。",
+      "headerDescription": "在浏览器中为 Instagram、Facebook、YouTube、Pinterest、LinkedIn 调整图片尺寸。选择预设或自定义尺寸，Cover 或 Contain 适配，导出 PNG/JPG/WebP。本地运行，不上传。",
+      "action": "调整"
     }
   },
   "Controls": {
+    "socialPlatform": "平台",
+    "socialPreset": "预设",
+    "socialFit": "适配方式",
+    "socialFormat": "格式",
+    "socialWidth": "宽度",
+    "socialHeight": "高度",
+    "socialRecommendedNote": "推荐尺寸——非平台强制规则。",
+    "socialProcess": "调整尺寸",
+    "socialProcessing": "调整中…",
     "batchCount": "{count} 个文件",
     "batchClearAll": "全部清除",
     "batchDownload": "下载",

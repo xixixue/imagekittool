@@ -318,9 +318,25 @@
       "description": "ブラウザで複数画像を一括処理——ファイル追加、ステップ連鎖（リサイズ・変換・圧縮・透かし・回転・リネーム）、個別または ZIP でダウンロード。ローカル実行、アップロードなし。",
       "headerDescription": "ブラウザで複数画像を一括処理します。ファイル追加、ステップ連鎖（リサイズ・変換・圧縮・透かし・回転・リネーム）、個別または ZIP でダウンロード。ローカル実行、アップロードなし。",
       "action": "処理"
+    },
+    "social-media-resizer": {
+      "name": "SNS 画像リサイズ",
+      "tagline": "Instagram/Facebook/YouTube に最適化",
+      "description": "ブラウザで Instagram、Facebook、YouTube、Pinterest、LinkedIn 向けに画像をリサイズ——プリセットまたはカスタムサイズ、Cover/Contain 選択、PNG/JPG/WebP 書き出し。ローカル実行、アップロードなし。",
+      "headerDescription": "ブラウザで Instagram、Facebook、YouTube、Pinterest、LinkedIn 向けに画像をリサイズします。プリセットまたはカスタムサイズ、Cover/Contain 選択、PNG/JPG/WebP 書き出し。ローカル実行、アップロードなし。",
+      "action": "リサイズ"
     }
   },
   "Controls": {
+    "socialPlatform": "プラットフォーム",
+    "socialPreset": "プリセット",
+    "socialFit": "フィット",
+    "socialFormat": "形式",
+    "socialWidth": "幅",
+    "socialHeight": "高さ",
+    "socialRecommendedNote": "推奨サイズ——プラットフォームの強制ルールではありません。",
+    "socialProcess": "リサイズ",
+    "socialProcessing": "リサイズ中…",
     "batchCount": "{count} ファイル",
     "batchClearAll": "すべて消去",
     "batchDownload": "ダウンロード",

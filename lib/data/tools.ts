@@ -242,6 +242,18 @@ export const tools: Tool[] = [
     icon: "batch",
     accent: "violet",
   },
+  {
+    slug: "social-media-resizer",
+    href: "/social-media-resizer",
+    name: "Social Media Resizer",
+    tagline: "Resize for Instagram, Facebook, YouTube",
+    description:
+      "Resize images for Instagram, Facebook, YouTube, Pinterest, and LinkedIn in your browser — pick a preset or custom size, choose Cover or Contain fit, and export PNG, JPG, or WebP. Runs locally; nothing is uploaded.",
+    formats: "JPG · PNG · WebP",
+    status: "active",
+    icon: "resize",
+    accent: "rose",
+  },
 ];
 
 export function getToolBySlug(slug: string): Tool | undefined {

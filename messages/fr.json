@@ -318,9 +318,25 @@
       "description": "Traitez plusieurs images à la fois dans votre navigateur — ajoutez des fichiers, enchaînez des étapes (redimensionner, convertir, compresser, filigrane, pivoter, renommer) et téléchargez individuellement ou en ZIP. Local ; rien n'est téléchargé.",
       "headerDescription": "Traitez plusieurs images à la fois dans votre navigateur. Ajoutez des fichiers, enchaînez des étapes (redimensionner, convertir, compresser, filigrane, pivoter, renommer) et téléchargez individuellement ou en ZIP. Local ; rien n'est téléchargé.",
       "action": "Traiter"
+    },
+    "social-media-resizer": {
+      "name": "Redimensionneur réseaux sociaux",
+      "tagline": "Adapte à Instagram, Facebook, YouTube",
+      "description": "Redimensionnez des images pour Instagram, Facebook, YouTube, Pinterest et LinkedIn dans votre navigateur — choisissez un preset ou une taille personnalisée, ajustement Cover ou Contain, et exportez PNG, JPG ou WebP. Local ; rien n'est téléchargé.",
+      "headerDescription": "Redimensionnez des images pour Instagram, Facebook, YouTube, Pinterest et LinkedIn dans votre navigateur. Choisissez un preset ou une taille personnalisée, ajustement Cover ou Contain, et exportez PNG, JPG ou WebP. Local ; rien n'est téléchargé.",
+      "action": "Redimensionner"
     }
   },
   "Controls": {
+    "socialPlatform": "Plateforme",
+    "socialPreset": "Preset",
+    "socialFit": "Ajustement",
+    "socialFormat": "Format",
+    "socialWidth": "Largeur",
+    "socialHeight": "Hauteur",
+    "socialRecommendedNote": "Taille recommandée — pas une règle imposée par la plateforme.",
+    "socialProcess": "Redimensionner",
+    "socialProcessing": "Redimensionnement…",
     "batchCount": "{count} fichiers",
     "batchClearAll": "Tout effacer",
     "batchDownload": "Télécharger",

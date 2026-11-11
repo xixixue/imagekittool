@@ -318,9 +318,25 @@
       "description": "Processe várias imagens de uma vez no seu navegador — adicione arquivos, encadeie etapas (redimensionar, converter, comprimir, marca d'água, girar, renomear) e baixe individualmente ou como ZIP. Local; nada é enviado.",
       "headerDescription": "Processe várias imagens de uma vez no seu navegador. Adicione arquivos, encadeie etapas (redimensionar, converter, comprimir, marca d'água, girar, renomear) e baixe individualmente ou como ZIP. Local; nada é enviado.",
       "action": "Processar"
+    },
+    "social-media-resizer": {
+      "name": "Redimensionador para redes sociais",
+      "tagline": "Adapta para Instagram, Facebook, YouTube",
+      "description": "Redimensione imagens para Instagram, Facebook, YouTube, Pinterest e LinkedIn no seu navegador — escolha um preset ou tamanho personalizado, ajuste Cover ou Contain, e exporte PNG, JPG ou WebP. Local; nada é enviado.",
+      "headerDescription": "Redimensione imagens para Instagram, Facebook, YouTube, Pinterest e LinkedIn no seu navegador. Escolha um preset ou tamanho personalizado, ajuste Cover ou Contain, e exporte PNG, JPG ou WebP. Local; nada é enviado.",
+      "action": "Redimensionar"
     }
   },
   "Controls": {
+    "socialPlatform": "Plataforma",
+    "socialPreset": "Preset",
+    "socialFit": "Ajuste",
+    "socialFormat": "Formato",
+    "socialWidth": "Largura",
+    "socialHeight": "Altura",
+    "socialRecommendedNote": "Tamanho recomendado — não é uma regra obrigatória da plataforma.",
+    "socialProcess": "Redimensionar",
+    "socialProcessing": "Redimensionando…",
     "batchCount": "{count} arquivos",
     "batchClearAll": "Limpar tudo",
     "batchDownload": "Baixar",

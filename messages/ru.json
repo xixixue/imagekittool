@@ -318,9 +318,25 @@
       "description": "Обрабатывайте много изображений сразу в браузере — добавьте файлы, цепочку шагов (изменение размера, конвертация, сжатие, водяной знак, поворот, переименование) и скачивайте по отдельности или ZIP. Локально; без загрузки.",
       "headerDescription": "Обрабатывайте много изображений сразу в браузере. Добавьте файлы, цепочку шагов (изменение размера, конвертация, сжатие, водяной знак, поворот, переименование) и скачивайте по отдельности или ZIP. Локально; без загрузки.",
       "action": "Обработать"
+    },
+    "social-media-resizer": {
+      "name": "Ресайзер для соцсетей",
+      "tagline": "Под Instagram, Facebook, YouTube",
+      "description": "Меняйте размер изображений для Instagram, Facebook, YouTube, Pinterest и LinkedIn в браузере — выберите пресет или свой размер, режим Cover или Contain, экспорт PNG/JPG/WebP. Локально; без загрузки.",
+      "headerDescription": "Меняйте размер изображений для Instagram, Facebook, YouTube, Pinterest и LinkedIn в браузере. Выберите пресет или свой размер, режим Cover или Contain, экспорт PNG/JPG/WebP. Локально; без загрузки.",
+      "action": "Изменить размер"
     }
   },
   "Controls": {
+    "socialPlatform": "Платформа",
+    "socialPreset": "Пресет",
+    "socialFit": "Подгонка",
+    "socialFormat": "Формат",
+    "socialWidth": "Ширина",
+    "socialHeight": "Высота",
+    "socialRecommendedNote": "Рекомендуемый размер — не обязательное правило платформы.",
+    "socialProcess": "Изменить размер",
+    "socialProcessing": "Изменение размера…",
     "batchCount": "{count} файлов",
     "batchClearAll": "Очистить всё",
     "batchDownload": "Скачать",

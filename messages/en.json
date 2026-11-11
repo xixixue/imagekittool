@@ -318,9 +318,25 @@
       "description": "Process many images at once in your browser — add files, chain steps (resize, convert, compress, watermark, rotate, rename), and download individually or as a ZIP. Runs locally; nothing is uploaded.",
       "headerDescription": "Process many images at once in your browser. Add files, chain steps (resize, convert, compress, watermark, rotate, rename), and download individually or as a ZIP. Runs locally; nothing is uploaded.",
       "action": "Process"
+    },
+    "social-media-resizer": {
+      "name": "Social Media Resizer",
+      "tagline": "Resize for Instagram, Facebook, YouTube",
+      "description": "Resize images for Instagram, Facebook, YouTube, Pinterest, and LinkedIn in your browser — pick a preset or custom size, choose Cover or Contain fit, and export PNG, JPG, or WebP. Runs locally; nothing is uploaded.",
+      "headerDescription": "Resize images for Instagram, Facebook, YouTube, Pinterest, and LinkedIn in your browser. Pick a preset or custom size, choose Cover or Contain fit, and export PNG, JPG, or WebP. Runs locally; nothing is uploaded.",
+      "action": "Resize"
     }
   },
   "Controls": {
+    "socialPlatform": "Platform",
+    "socialPreset": "Preset",
+    "socialFit": "Fit",
+    "socialFormat": "Format",
+    "socialWidth": "Width",
+    "socialHeight": "Height",
+    "socialRecommendedNote": "Recommended size — not an enforced platform rule.",
+    "socialProcess": "Resize",
+    "socialProcessing": "Resizing…",
     "batchCount": "{count} files",
     "batchClearAll": "Clear all",
     "batchDownload": "Download",
@@ -1231,6 +1247,45 @@
         {
           "q": "What happens if one image fails?",
           "a": "It is marked failed with the reason; every other file continues processing. You can fix the issue and re-run, or download the successful results."
+        }
+      ]
+    },
+    "social-media-resizer": {
+      "steps": [
+        "Load a JPG, PNG, or WebP image.",
+        "Pick a platform and a preset (e.g. Instagram Post, YouTube Thumbnail), or enter a custom width and height.",
+        "Choose a fit mode: Cover crops to fill the target, Contain fits inside with letterboxing.",
+        "Choose an output format (JPG, PNG, WebP).",
+        "Click Resize — the image is rendered locally, nothing is uploaded — then download the result."
+      ],
+      "useCases": [
+        "Preparing an Instagram feed post or story.",
+        "Making a YouTube video thumbnail.",
+        "Sizing a Facebook page cover.",
+        "Creating a LinkedIn banner at the recommended ratio."
+      ],
+      "knowledge": [
+        {
+          "heading": "Cover vs Contain",
+          "body": "Cover scales the image to fill the entire target box and crops the overflow — best when the subject is centered and you want no empty space. Contain fits the whole image inside the box, leaving letterboxed bars — best when you must show the entire image."
+        },
+        {
+          "heading": "Presets are recommendations, not rules",
+          "body": "The preset sizes are commonly recommended values, reviewed and dated. Platforms change their guidance and display sizes differently across devices. Treat these as starting points, not official enforced specifications — verify against the platform's current docs for production work."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Are these the official platform sizes?",
+          "a": "They are commonly recommended sizes, each with a review date. Platforms update their guidance and display images differently across devices, so they are starting points rather than enforced rules."
+        },
+        {
+          "q": "Can I use a custom size?",
+          "a": "Yes. Enter any width and height in the custom fields; they override the preset. The fit mode still applies to your custom target."
+        },
+        {
+          "q": "Is my image uploaded?",
+          "a": "No. The resize runs entirely in your browser. The image never leaves your device."
         }
       ]
     }
