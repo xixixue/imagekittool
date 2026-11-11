@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getTranslations } from "next-intl/server";
-import { guides } from "@/lib/data/guides";
+import { guides, howToFromGuide } from "@/lib/data/guides";
 import { getToolBySlug } from "@/lib/data/tools";
 import { GuideBody } from "@/components/guides/guide-body";
 import { GuideCover } from "@/components/guides/guide-diagram";
 import { ArrowRightIcon } from "@/components/tools/tool-icon";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { JsonLd } from "@/components/seo/json-ld";
-import { buildArticle, type Crumb } from "@/lib/seo/json-ld";
+import { buildArticle, buildHowTo, type Crumb } from "@/lib/seo/json-ld";
 
 export function generateStaticParams() {
   return guides.map((g) => ({ slug: g.slug }));
@@ -62,10 +62,22 @@ export default async function GuideArticlePage({
     image: guide.coverImage ? `${siteUrl}${guide.coverImage}` : undefined,
     url: canonical,
   });
+  // HowTo structured data for how-to guides: steps derived from the list under
+  // the "How to" heading (§9.2 — mirrors the rendered content). Null otherwise.
+  const howTo = howToFromGuide(guide);
+  const howToLd = howTo
+    ? buildHowTo({
+        name: howTo.name,
+        description: howTo.description,
+        url: canonical,
+        steps: howTo.steps,
+      })
+    : null;
+  const structuredData = howToLd ? [articleLd, howToLd] : articleLd;
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-12">
-      <JsonLd data={articleLd} />
+      <JsonLd data={structuredData} />
       <Breadcrumbs trail={trail} />
 
       <Link

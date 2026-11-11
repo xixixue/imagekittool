@@ -1322,3 +1322,40 @@ export function guidesForTool(toolSlug: string): Guide[] {
   return guides.filter((g) => g.relatedToolSlugs.includes(toolSlug));
 }
 
+export interface GuideHowTo {
+  name: string;
+  description: string;
+  steps: { name: string; text: string }[];
+}
+
+/**
+ * Derive a HowTo graph from a guide's body: find the first list block that
+ * follows a heading containing "how to", and use its items as steps (SPEC V2
+ * §9.2 — structured data must match the page's real content, so the steps are
+ * exactly the list rendered under the "How to" heading). Returns null when the
+ * guide has no such section (not a how-to guide).
+ */
+export function howToFromGuide(guide: Guide): GuideHowTo | null {
+  let stepsList: string[] | null = null;
+  for (let i = 0; i < guide.body.length; i++) {
+    const block = guide.body[i];
+    if (block.type === "heading" && /how to/i.test(block.text)) {
+      for (let j = i + 1; j < guide.body.length; j++) {
+        const next = guide.body[j];
+        if (next.type === "list") {
+          stepsList = next.items;
+          break;
+        }
+        if (next.type === "heading") break; // next section — stop
+      }
+      if (stepsList) break;
+    }
+  }
+  if (!stepsList || stepsList.length === 0) return null;
+  return {
+    name: guide.title,
+    description: guide.description,
+    steps: stepsList.map((text, idx) => ({ name: `Step ${idx + 1}`, text })),
+  };
+}
+
