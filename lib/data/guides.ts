@@ -1005,6 +1005,72 @@ export const guides: Guide[] = [
       },
     ],
   },
+  {
+    slug: "make-a-favicon",
+    title: "How to Make a Favicon for a Website",
+    description:
+      "Create a favicon (and Apple touch icon) from a single image — the sizes you need, the formats that matter, and how to add it to your site. Runs in your browser.",
+    category: "Resolution",
+    coverDiagram: "aspect-ratio-boxes",
+    readingTimeMin: 4,
+    relatedToolSlugs: ["favicon-generator"],
+    publishedAt: "2025-01-15",
+    body: [
+      {
+        type: "heading",
+        text: "What a favicon is",
+      },
+      {
+        type: "paragraph",
+        text: "A favicon is the small icon shown in the browser tab, the bookmark bar, and the shortcut on a phone home screen. It represents your site at a glance, and because it is displayed at many different sizes — from 16 pixels in a tab to 180 pixels on an iOS home screen — a single source image has to be produced at several dimensions.",
+      },
+      {
+        type: "callout",
+        text: "The fastest way: open the Favicon Generator, drop in a square image, and it produces the common favicon sizes (16, 32, 48) plus a 180×180 Apple touch icon — all in your browser, nothing uploaded.",
+      },
+      {
+        type: "heading",
+        text: "How to make a favicon",
+      },
+      {
+        type: "list",
+        items: [
+          "Start with a square source image, ideally 512×512 or larger, with a simple design that stays legible at 16 pixels.",
+          "Open the Favicon Generator and drop in the image (PNG with a transparent background works best).",
+          "Click Generate. The tool renders each size from the source pixels.",
+          "Download the sizes and place them in your site root (or an assets folder).",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Favicon sizes and formats",
+      },
+      {
+        type: "paragraph",
+        text: "The sizes that matter: 16×16 for the browser tab, 32×32 for the taskbar and shortcut on hi-DPI displays, 48×48 for the desktop shortcut, and 180×180 for the Apple touch icon used when a user adds your site to an iPhone home screen. For Android and progressive web apps, 192×192 and 512×512 are the conventions. An .ico file can bundle several sizes in one; modern browsers also accept PNG (and SVG for simple, scalable marks).",
+      },
+      {
+        type: "heading",
+        text: "Add it to your site",
+      },
+      {
+        type: "paragraph",
+        text: "Place the files in your site root and reference them in the document head. A minimal setup: a link to favicon.ico for legacy browsers, plus an apple-touch-icon link for iOS. Most platforms and frameworks (Next.js included) can also generate the full set of sizes for you from a single source icon.",
+      },
+      {
+        type: "heading",
+        text: "Source image tips",
+      },
+      {
+        type: "paragraph",
+        text: "Favicons fail when the source is too detailed: a logo that looks great at 512 pixels can become an unrecognizable smudge at 16. Use a simple, high-contrast mark, keep padding around it, and prefer a transparent PNG so the icon sits cleanly on any tab color. If your logo is wide rather than square, crop or redesign to a square mark first.",
+      },
+      {
+        type: "callout",
+        text: "The Favicon Generator runs locally in your browser. Your source image is never uploaded — every size is rendered on your device.",
+      },
+    ],
+  },
 ];
 
 /**
