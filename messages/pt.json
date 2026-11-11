@@ -1026,6 +1026,438 @@
           "a": "Sim. A exportação renderiza a imagem novamente em resolução total com todas as suas regiões desfocadas ou pixelizadas."
         }
       ]
+    },
+    "exif-viewer": {
+      "steps": [
+        "Carregue uma foto no EXIF Viewer.",
+        "A ferramenta lê os metadados localmente no seu navegador — sem upload.",
+        "Revise os grupos Imagem, Câmera e Configurações para dimensões, orientação, fabricante, lente, distância focal, abertura, exposição e ISO.",
+        "Se a foto tiver dados de GPS, veja as coordenadas e abra-as em um mapa.",
+        "Ative “Mostrar todos os campos” para inspecionar todos os valores brutos de EXIF."
+      ],
+      "useCases": [
+        "Verificar quais metadados uma foto expõe antes de compartilhá-la publicamente.",
+        "Confirmar as configurações da câmera usadas em uma foto (distância focal, abertura, ISO, exposição).",
+        "Encontrar a localização de GPS onde uma foto foi tirada.",
+        "Confirmar se a orientação ou edições de software estão incorporadas ao arquivo."
+      ],
+      "knowledge": [
+        {
+          "heading": "O que é metadado EXIF?",
+          "body": "Os dados EXIF (Exchangeable Image File Format) são gravados pela maioria das câmeras e telefones em arquivos JPEG e TIFF. Eles registram o fabricante e o modelo da câmera, a lente, as configurações de exposição (abertura, velocidade do obturador, ISO), a distância focal, a data da foto, a orientação e, opcionalmente, as coordenadas de GPS. Visualizá-los ajuda a entender como uma foto foi tirada e quais informações ela revela."
+        },
+        {
+          "heading": "Privacidade e EXIF",
+          "body": "Fotos tiradas em um telefone costumam incorporar coordenadas de GPS, que podem revelar sua casa ou local de trabalho. Este visualizador analisa os metadados localmente, então nada é enviado, mas os mesmos dados ficam visíveis para qualquer pessoa que receba o arquivo original. Use a ferramenta EXIF Remover antes de compartilhar fotos sensíveis."
+        }
+      ],
+      "faq": [
+        {
+          "q": "O EXIF Viewer envia minha foto?",
+          "a": "Não. A imagem é analisada inteiramente no seu navegador com uma biblioteca local. O arquivo nunca sai do seu dispositivo."
+        },
+        {
+          "q": "Por que minha foto não mostra dados EXIF?",
+          "a": "Algumas imagens não têm EXIF — por exemplo, arquivos PNG e WebP raramente o carregam, e imagens exportadas por certos editores ou plataformas sociais têm os metadados removidos. O visualizador mostra o que estiver presente."
+        },
+        {
+          "q": "Posso remover o EXIF depois de visualizá-lo?",
+          "a": "Sim. Use a ferramenta EXIF Remover para recodificar a imagem sem metadados e depois confirme com este visualizador que os campos foram removidos."
+        }
+      ]
+    },
+    "exif-remover": {
+      "steps": [
+        "Carregue uma foto no EXIF Remover.",
+        "A ferramenta mostra quantos campos de metadados estão presentes e se o GPS está incluído.",
+        "Clique em Remover metadados. A imagem é recodificada localmente — sem upload.",
+        "A saída é reanalisada para confirmar que todos os dados de EXIF, IPTC, XMP e GPS foram removidos.",
+        "Baixe a imagem limpa."
+      ],
+      "useCases": [
+        "Remover coordenadas de GPS antes de compartilhar uma foto publicamente.",
+        "Remover detalhes da câmera e da lente antes de enviar para um site.",
+        "Compartilhar uma foto sem revelar a data, a localização ou o dispositivo com que foi tirada.",
+        "Preparar imagens para um arquivo público limpo ou uma biblioteca de banco de imagens."
+      ],
+      "knowledge": [
+        {
+          "heading": "Como a recodificação remove metadados",
+          "body": "Quando uma imagem é decodificada em uma canvas e recodificada, apenas os dados de pixel são mantidos — os blocos de EXIF, IPTC, XMP, ICC e GPS não são preservados pela canvas. Esta ferramenta recodifica a imagem localmente e depois analisa os bytes de saída novamente para confirmar que não restou nenhum metadado, em vez de presumir que a remoção funcionou."
+        },
+        {
+          "heading": "GPS e privacidade",
+          "body": "Telefones costumam marcar fotos com coordenadas de GPS que podem localizar sua casa ou local de trabalho. Remover os metadados antes de compartilhar elimina esse vazamento. Algumas plataformas também removem metadados no upload, mas você não pode contar que todo destinatário faça o mesmo."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Remover o EXIF reduz a qualidade da imagem?",
+          "a": "Para PNG a recodificação é sem perdas, então não há perda de qualidade. Para JPEG e WebP a imagem é recodificada em alta qualidade (0.92), o que é visualmente quase idêntico ao original em quase todos os casos."
+        },
+        {
+          "q": "Como sei que os metadados foram realmente removidos?",
+          "a": "Após a remoção, a ferramenta analisa o arquivo de saída novamente e mostra a contagem de campos restantes (zero) e confirma que o GPS foi removido. Você também pode carregar o arquivo baixado no EXIF Viewer para conferir."
+        },
+        {
+          "q": "O EXIF Remover envia minha foto?",
+          "a": "Não. A imagem é decodificada e recodificada inteiramente no seu navegador. O arquivo nunca sai do seu dispositivo."
+        }
+      ]
+    },
+    "dpi-changer": {
+      "steps": [
+        "Carregue um JPEG ou PNG no DPI Changer.",
+        "A ferramenta lê o DPI atual (se houver) e mostra as dimensões em pixels.",
+        "Escolha uma predefinição (72, 96, 300, 600) ou insira um DPI personalizado. Uma prévia do tamanho de impressão é atualizada em tempo real.",
+        "Clique em Aplicar DPI. Os metadados são editados no lugar — pixels e EXIF são preservados, nada é enviado.",
+        "Baixe a imagem com o novo DPI."
+      ],
+      "useCases": [
+        "Definir uma foto em 300 DPI para envio para impressão.",
+        "Mudar uma captura de tela para 72 DPI para exibição na web.",
+        "Preparar um JPEG para uma gráfica que exige um DPI específico.",
+        "Verificar o tamanho de impressão de uma imagem em um determinado DPI antes de imprimir."
+      ],
+      "knowledge": [
+        {
+          "heading": "Metadado de DPI vs resolução em pixels",
+          "body": "DPI (dots per inch) é um metadado que informa ao software o tamanho físico pretendido de uma imagem ao ser impressa — ele não altera os dados de pixel. Uma imagem de 3000px a 300 DPI é impressa em 10 polegadas; a 72 DPI é impressa em aproximadamente 41,7 polegadas. Os pixels são idênticos; apenas o tamanho impresso difere. Mudar o DPI nunca adiciona detalhe que já não tenha sido capturado."
+        },
+        {
+          "heading": "Por que esta ferramenta é sem perdas",
+          "body": "O DPI Changer edita os metadados de resolução no lugar — o bloco de densidade JFIF para JPEG e o chunk pHYs para PNG — sem recodificar os dados de pixel. Seus metadados EXIF (câmera, lente, GPS) e a qualidade da imagem são preservados. Recodificar por meio de uma canvas removeria metadados e recomprimiria; esta ferramenta evita ambos."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Mudar o DPI deixa minha imagem mais nítida?",
+          "a": "Não. O DPI é apenas um metadado — ele informa ao software de impressão o tamanho para imprimir a imagem. Ele não adiciona pixels nem aumenta detalhes. Uma imagem de baixa resolução permanece de baixa resolução independentemente do DPI que você definir."
+        },
+        {
+          "q": "Por que o WebP não é suportado?",
+          "a": "O WebP armazena a resolução dentro de um chunk RIFF/EXIF que é mais complexo de editar sem perdas. JPEG e PNG cobrem a grande maioria dos fluxos de preparação para impressão; use o conversor primeiro se você tiver um arquivo WebP."
+        },
+        {
+          "q": "Meus metadados EXIF são preservados?",
+          "a": "Sim. A ferramenta edita apenas os metadados de DPI (densidade JFIF para JPEG, pHYs para PNG) e deixa o restante do arquivo — incluindo o EXIF — intacto. Use o EXIF Remover se quiser remover os metadados."
+        }
+      ]
+    },
+    "favicon-generator": {
+      "steps": [
+        "Carregue uma imagem quadrada (um logotipo funciona melhor) no Favicon Generator.",
+        "A ferramenta gera PNGs em 16, 32, 48, 96, 180, 192 e 512px e um ICO multamanho (16/32/48).",
+        "Veja uma prévia de como o favicon fica em vários tamanhos.",
+        "Copie o snippet de HTML e baixe o ZIP — tudo é gerado localmente, nada é enviado.",
+        "Coloque os arquivos na raiz do seu site e cole o snippet no seu <head>."
+      ],
+      "useCases": [
+        "Criar um conjunto de favicons para um novo site.",
+        "Gerar um Apple touch icon e ícones de PWA para Android a partir de um logotipo.",
+        "Produzir um ICO multamanho para suporte a navegadores antigos.",
+        "Obter um snippet de HTML pronto para colar com todas as tags de link."
+      ],
+      "knowledge": [
+        {
+          "heading": "O que entra em um pacote de favicons",
+          "body": "Um conjunto moderno de favicons inclui um ICO multamanho (favicon.ico) para navegadores antigos, PNGs em 16/32px para abas do navegador, um apple-touch-icon.png de 180px para telas iniciais do iOS e PNGs de 192/512px além de um web manifest para instalação de Android/PWA. Este gerador produz todos eles a partir de uma única imagem de origem."
+        },
+        {
+          "heading": "Imagens quadradas e simples funcionam melhor",
+          "body": "Favicons são minúsculos — 16px é o tamanho mais comum — então fotos detalhadas ficam embaralhadas. Use um logotipo ou marca simples, idealmente quadrada, com forte contraste. A origem pode ter qualquer tamanho; ela é reduzida para cada destino com a suavização padrão do navegador."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Ainda preciso de um arquivo .ico?",
+          "a": "A maioria dos navegadores modernos aceita favicons em PNG, mas um .ico multamanho (16/32/48) garante compatibilidade com navegadores antigos e favoritos. O pacote inclui ambos, então você está coberto em todos os lugares."
+        },
+        {
+          "q": "Onde coloco os arquivos?",
+          "a": "Coloque o favicon.ico, os PNGs e o site.webmanifest na raiz do seu site e cole o snippet de HTML no <head> das suas páginas. Os caminhos no snippet e no manifest presumem a raiz do site."
+        },
+        {
+          "q": "Posso usar qualquer imagem como origem?",
+          "a": "Sim — JPG, PNG ou WebP. Uma imagem quadrada com um logotipo simples produz os favicons mais nítidos. Fotos detalhadas funcionam, mas perdem detalhes em 16px."
+        }
+      ]
+    },
+    "image-to-pdf": {
+      "steps": [
+        "Carregue uma ou mais imagens JPG ou PNG na ferramenta.",
+        "Reordene as páginas com os botões para cima e para baixo.",
+        "Escolha um tamanho de página (A4 ou Letter), orientação (automática, retrato, paisagem) e margem.",
+        "Clique em Gerar PDF — o arquivo é construído localmente com pdf-lib, nada é enviado.",
+        "Baixe o PDF único com uma imagem por página."
+      ],
+      "useCases": [
+        "Combinar páginas de documentos digitalizados em um único PDF.",
+        "Montar um portfólio em PDF a partir de um conjunto de fotos.",
+        "Criar um PDF imprimível a partir de capturas de tela.",
+        "Enviar várias imagens como um único arquivo."
+      ],
+      "knowledge": [
+        {
+          "heading": "Uma imagem por página, ajustada à página",
+          "body": "Cada imagem vira uma página do PDF. A imagem é ajustada por contain no tamanho da página menos as margens, preservando sua proporção — então nunca é esticada nem cortada. A orientação automática escolhe retrato ou paisagem por página com base no formato de cada imagem."
+        },
+        {
+          "heading": "Por que apenas JPG e PNG",
+          "body": "O PDF incorpora os dados da imagem como estão, e o pdf-lib suporta a incorporação de JPG e PNG diretamente. Outros formatos (WebP, GIF) não fazem parte do modelo de imagem do PDF; converta-os para PNG ou JPG primeiro com o Image Converter."
+        }
+      ],
+      "faq": [
+        {
+          "q": "A ferramenta comprime minhas imagens ao criar o PDF?",
+          "a": "Não. As imagens são incorporadas ao PDF na qualidade original — o pdf-lib insere os bytes de JPG ou PNG diretamente. O PDF tem, aproximadamente, o tamanho da soma das imagens de entrada."
+        },
+        {
+          "q": "Posso alterar a ordem das páginas?",
+          "a": "Sim. Use os botões para cima e para baixo ao lado de cada imagem para reordenar antes de gerar. O PDF é construído na ordem exibida."
+        },
+        {
+          "q": "Meus dados são enviados?",
+          "a": "Não. O PDF é gerado inteiramente no seu navegador com pdf-lib. As imagens nunca saem do seu dispositivo."
+        }
+      ]
+    },
+    "pdf-to-image": {
+      "steps": [
+        "Carregue um arquivo PDF na ferramenta.",
+        "A ferramenta informa a contagem de páginas. Insira um intervalo de páginas como 1-3,5 ou deixe em branco para todas.",
+        "Escolha um DPI (72, 150 ou 300) e um formato de saída (PNG ou JPG).",
+        "Clique em Converter — cada página é renderizada localmente com pdf.js, nada é enviado.",
+        "Baixe imagens individuais ou o conjunto inteiro como um ZIP."
+      ],
+      "useCases": [
+        "Extrair páginas de um PDF como imagens para uma apresentação.",
+        "Converter um PDF digitalizado em arquivos de imagem.",
+        "Salvar uma única página de PDF como PNG para compartilhar.",
+        "Rasterizar um PDF para uso em uma ferramenta que precisa de imagens."
+      ],
+      "knowledge": [
+        {
+          "heading": "DPI e tamanho de renderização",
+          "body": "PDFs são vetoriais e não têm um tamanho fixo em pixels; o DPI que você escolhe define a escala de renderização. 72 DPI corresponde ao tamanho de ponto nativo do PDF (compacto), 150 DPI é bom para leitura em tela e 300 DPI produz uma saída nítida com qualidade de impressão. Um DPI mais alto significa arquivos de imagem maiores."
+        },
+        {
+          "heading": "Renderização local com pdf.js",
+          "body": "A renderização acontece inteiramente no seu navegador com pdf.js (o motor de PDF da Mozilla). Os bytes do PDF nunca saem do seu dispositivo, e o worker do pdf.js é servido localmente em vez de a partir de um CDN — em consonância com o princípio de Local First do projeto."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Por que minhas imagens convertidas são grandes?",
+          "a": "O tamanho da imagem cresce com o DPI e a contagem de páginas. 300 DPI produz imagens detalhadas, porém grandes. Reduza para 150 ou 72 DPI para arquivos menores, ou converta menos páginas."
+        },
+        {
+          "q": "Posso converter apenas algumas páginas?",
+          "a": "Sim. Insira um intervalo de páginas como 1-3,5 no campo Intervalo de páginas. Deixe em branco para converter todas as páginas. Os intervalos são limitados à contagem de páginas do documento."
+        },
+        {
+          "q": "Meu PDF é enviado?",
+          "a": "Não. O PDF é renderizado inteiramente no seu navegador com pdf.js. O arquivo nunca sai do seu dispositivo."
+        }
+      ]
+    },
+    "batch-workspace": {
+      "steps": [
+        "Solte ou selecione várias imagens JPG, PNG ou WebP.",
+        "Adicione uma ou mais etapas de processamento — redimensionar, converter, comprimir, marca d'água, girar ou renomear — e reordene-as.",
+        "Escolha um nível de concorrência e clique em Processar tudo.",
+        "Cada arquivo percorre o pipeline de etapas localmente; uma falha nunca interrompe o lote.",
+        "Baixe resultados individuais ou o conjunto inteiro como um ZIP."
+      ],
+      "useCases": [
+        "Redimensionar uma pasta de fotos para um site em uma única passada.",
+        "Converter um lote de PNGs para WebP.",
+        "Aplicar marca d'água em muitas imagens com o mesmo texto.",
+        "Renomear e comprimir um conjunto de exportações de uma só vez."
+      ],
+      "knowledge": [
+        {
+          "heading": "Um pipeline real, não uma única operação",
+          "body": "Cada arquivo percorre todas as etapas que você adiciona, em ordem — redimensionar, depois comprimir, depois marca d'água, por exemplo. Entre as etapas, o resultado intermediário é decodificado novamente para que a próxima etapa veja a saída da etapa anterior. As etapas reutilizam as mesmas funções de processamento das ferramentas individuais, então os resultados são idênticos."
+        },
+        {
+          "heading": "Concorrência e isolamento",
+          "body": "Os arquivos são processados com um pequeno limite de concorrência (1–3) para evitar esgotar a memória do navegador. Uma falha em um arquivo é isolada — ele é marcado como falha e os demais continuam. Você pode cancelar o trabalho pendente a qualquer momento; as tarefas em execução são interrompidas na melhor das hipóteses."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Há um limite de arquivos ou etapas?",
+          "a": "Cada arquivo deve ter menos de 25 MB e ser de um tipo de imagem suportado (JPG, PNG, WebP). Não há um limite rígido de etapas, mas pipelines muito longos decodificam novamente entre as etapas, então levam mais tempo por arquivo."
+        },
+        {
+          "q": "O lote envia minhas imagens?",
+          "a": "Não. Todo o processamento acontece no seu navegador. As imagens nunca saem do seu dispositivo, e os resultados só são salvos na nuvem se você escolher explicitamente."
+        },
+        {
+          "q": "O que acontece se uma imagem falhar?",
+          "a": "Ela é marcada como falha com o motivo; todos os outros arquivos continuam o processamento. Você pode corrigir o problema e executar novamente, ou baixar os resultados bem-sucedidos."
+        }
+      ]
+    },
+    "social-media-resizer": {
+      "steps": [
+        "Carregue uma imagem JPG, PNG ou WebP.",
+        "Escolha uma plataforma e uma predefinição (ex.: Post do Instagram, Thumbnail do YouTube) ou insira uma largura e altura personalizadas.",
+        "Escolha um modo de ajuste: Cover recorta para preencher o destino, Contain ajusta por dentro com barras pretas.",
+        "Escolha um formato de saída (JPG, PNG, WebP).",
+        "Clique em Redimensionar — a imagem é renderizada localmente, nada é enviado — e baixe o resultado."
+      ],
+      "useCases": [
+        "Preparar uma publicação ou story para o feed do Instagram.",
+        "Criar uma thumbnail de vídeo do YouTube.",
+        "Definir o tamanho de uma capa de página do Facebook.",
+        "Criar um banner do LinkedIn na proporção recomendada."
+      ],
+      "knowledge": [
+        {
+          "heading": "Cover vs Contain",
+          "body": "Cover dimensiona a imagem para preencher toda a caixa de destino e recorta o excesso — ideal quando o assunto está centralizado e você não quer espaços vazios. Contain ajusta a imagem inteira dentro da caixa, deixando barras pretas — ideal quando você precisa mostrar a imagem por completo."
+        },
+        {
+          "heading": "As predefinições são recomendações, não regras",
+          "body": "Os tamanhos das predefinições são valores comumente recomendados, revisados e datados. As plataformas mudam suas diretrizes e exibem os tamanhos de forma diferente entre dispositivos. Trate-os como pontos de partida, não como especificações oficiais obrigatórias — confira a documentação atual da plataforma para trabalho em produção."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Estes são os tamanhos oficiais das plataformas?",
+          "a": "São tamanhos comumente recomendados, cada um com uma data de revisão. As plataformas atualizam suas diretrizes e exibem as imagens de forma diferente entre dispositivos, então eles são pontos de partida em vez de regras obrigatórias."
+        },
+        {
+          "q": "Posso usar um tamanho personalizado?",
+          "a": "Sim. Insira qualquer largura e altura nos campos personalizados; eles substituem a predefinição. O modo de ajuste ainda se aplica ao seu destino personalizado."
+        },
+        {
+          "q": "Minha imagem é enviada?",
+          "a": "Não. O redimensionamento é executado inteiramente no seu navegador. A imagem nunca sai do seu dispositivo."
+        }
+      ]
+    },
+    "optimize-website": {
+      "steps": [
+        "Carregue uma imagem JPG, PNG ou WebP.",
+        "Opcionalmente, defina uma largura de redimensionamento e ajuste a qualidade do WebP.",
+        "Clique em Otimizar — a imagem é convertida para WebP e comprimida localmente, nada é enviado.",
+        "Veja o tamanho original, o tamanho do resultado e a porcentagem economizada.",
+        "Baixe o WebP otimizado."
+      ],
+      "useCases": [
+        "Preparar imagens de destaque para um site de carregamento rápido.",
+        "Converter fotos em WebP para publicações de blog.",
+        "Reduzir exportações grandes antes de enviar para um CMS.",
+        "Reduzir a largura de banda em páginas iniciais com muitas imagens."
+      ],
+      "knowledge": [
+        {
+          "heading": "Por que WebP para a web",
+          "body": "O WebP gera arquivos significativamente menores que JPG e PNG com qualidade visual semelhante e agora é suportado por todos os principais navegadores. Servir WebP pode melhorar de forma mensurável o tempo de carregamento da página e as Core Web Vitals."
+        },
+        {
+          "heading": "Qualidade vs tamanho",
+          "body": "Uma qualidade menor reduz o tamanho do arquivo, mas introduz artefatos de compressão. 70–80% é uma boa faixa para a maioria das imagens fotográficas para a web; aumente para imagens com detalhes finos ou texto e diminua para grandes galerias onde a largura de banda é mais importante."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Isto redimensiona minha imagem?",
+          "a": "Apenas se você inserir uma largura de redimensionamento. Caso contrário, as dimensões são preservadas — o fluxo apenas converte para WebP e comprime."
+        },
+        {
+          "q": "Minha imagem é enviada?",
+          "a": "Não. A otimização é executada inteiramente no seu navegador. A imagem nunca sai do seu dispositivo."
+        },
+        {
+          "q": "Por que meu resultado é maior que o original?",
+          "a": "Se o original já fosse um WebP minúsculo e bem comprimido, a recodificação pode não reduzi-lo mais. Isso é raro; tente uma qualidade menor ou uma largura de redimensionamento."
+        }
+      ]
+    },
+    "image-size-reference": {
+      "steps": [
+        "Navegue pela tabela ou pesquise por um uso, ex.: 'instagram' ou 'favicon'.",
+        "Filtre por categoria (Social Media, Website, Email, Video Thumbnail, Profile, Print).",
+        "Cada linha mostra a largura, altura, proporção e formatos recomendados.",
+        "Use o link Open Resizer para abrir a ferramenta correspondente e aplicar o tamanho."
+      ],
+      "useCases": [
+        "Encontrar as dimensões certas para publicações ou stories em redes sociais.",
+        "Escolher um tamanho de imagem Open Graph para visualizações de link.",
+        "Escolher um tamanho de favicon ou Apple touch icon.",
+        "Consultar dimensões em pixels a 300 DPI para impressões de fotos."
+      ],
+      "knowledge": [
+        {
+          "heading": "Recomendado, não obrigatório",
+          "body": "Esses tamanhos são valores comumente recomendados, cada um com uma data de revisão. As plataformas e os dispositivos mudam ao longo do tempo, então trate-os como pontos de partida e confira a documentação atual da plataforma para trabalho em produção."
+        },
+        {
+          "heading": "DPI e tamanhos de impressão",
+          "body": "As entradas de impressão mostram dimensões em pixels a 300 DPI, um mínimo comum para impressão de fotos. Uma impressão de 4×6 polegadas a 300 DPI tem 1200×1800 pixels. Mudar os metadados de DPI não adiciona pixels — uma imagem menor ampliada para essas dimensões não ganha detalhe."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Estes são os tamanhos oficiais?",
+          "a": "São tamanhos comumente recomendados, cada um com uma data de revisão. As plataformas atualizam suas diretrizes, então eles são pontos de partida em vez de regras obrigatórias."
+        },
+        {
+          "q": "Como aplico um tamanho à minha imagem?",
+          "a": "Clique no link Open Resizer em qualquer linha. Ele abre a ferramenta correspondente — o Social Media Resizer para tamanhos de redes sociais, o Favicon Generator para favicons, o DPI Changer para tamanhos de impressão ou a ferramenta Resize para os demais."
+        },
+        {
+          "q": "Posso pesquisar por proporção?",
+          "a": "Sim. A pesquisa corresponde a nomes, descrições, rótulos de categoria e proporções — tente '1:1' ou '16:9'."
+        }
+      ]
+    },
+    "heic-to-jpg": {
+      "steps": [
+        "Clique na área de upload e selecione uma foto HEIC ou HEIF (fotos de iPhone costumam ser .heic).",
+        "Escolha um formato de saída — JPG para compatibilidade, PNG sem perdas, WebP para o menor arquivo web.",
+        "Se você escolheu JPG ou WebP, ajuste o controle de qualidade (90% é um bom padrão para fotos).",
+        "Clique em Converter. O HEIC é decodificado no seu navegador e recodificado para o formato escolhido.",
+        "Clique em Baixar para salvar o arquivo convertido."
+      ],
+      "useCases": [
+        "Abrir fotos HEIC de iPhone em um PC Windows ou em software antigo que não lê HEIC.",
+        "Enviar fotos HEIC para um site ou formulário que aceita apenas JPG ou PNG.",
+        "Compartilhar fotos HEIC com alguém que não consegue visualizar HEIC.",
+        "Reduzir o tamanho do arquivo convertendo HEIC para WebP para a web."
+      ],
+      "knowledge": [
+        {
+          "heading": "O que é HEIC",
+          "body": "HEIC (High Efficiency Image Container) é o formato que os iPhones usam por padrão desde o iOS 11. Ele armazena fotos com aproximadamente metade do tamanho do JPG na mesma qualidade, usando o codec HEVC. A contrapartida é a compatibilidade: nem todos os navegadores, sistemas operacionais e apps conseguem ler HEIC, por isso a conversão para JPG costuma ser necessária."
+        },
+        {
+          "heading": "Escolha de qualidade e formato",
+          "body": "JPG é a saída mais segura para compartilhar — universalmente suportado. PNG é sem perdas e suporta transparência, mas gera arquivos maiores para fotos. WebP oferece os menores arquivos para a web e é suportado por todos os navegadores modernos. Para a maioria das fotos de iPhone, JPG a 90% de qualidade é visualmente indistinguível do HEIC original."
+        }
+      ],
+      "faq": [
+        {
+          "q": "O HEIC é melhor que o JPG?",
+          "a": "Arquivos HEIC têm cerca de metade do tamanho do JPG com qualidade semelhante, então são mais eficientes. Mas o HEIC é menos suportado — muitos apps, navegadores e sites não conseguem lê-lo. Converter para JPG torna a foto universalmente visualizável."
+        },
+        {
+          "q": "Converter HEIC para JPG perde qualidade?",
+          "a": "HEIC e JPG são formatos com perdas. Converter HEIC para JPG em uma configuração de alta qualidade (90% ou acima) produz um resultado visualmente indistinguível do original para a maioria das fotos. Em configurações de qualidade mais baixa, os artefatos de compressão do JPG ficam visíveis."
+        },
+        {
+          "q": "Esta ferramenta converte HEIC para PNG ou WebP?",
+          "a": "Sim. Selecione PNG para uma conversão sem perdas (arquivo maior) ou WebP para o menor arquivo pronto para a web. JPG é o padrão porque é o mais amplamente compatível."
+        },
+        {
+          "q": "Minhas fotos são enviadas?",
+          "a": "Não. A conversão de HEIC é executada inteiramente no seu navegador usando WebAssembly. Suas fotos nunca são enviadas a um servidor."
+        }
+      ]
     }
   },
   "Legal": {
