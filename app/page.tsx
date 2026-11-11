@@ -20,16 +20,16 @@ export default async function HomePage() {
       <section className="relative overflow-hidden bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-700 text-white">
         <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-white/10 blur-3xl" />
         <div className="pointer-events-none absolute -right-20 top-10 h-64 w-64 rounded-full bg-fuchsia-400/20 blur-3xl" />
-        <div className="relative mx-auto max-w-6xl px-4 py-20 text-center sm:py-28">
+        <div className="relative mx-auto max-w-6xl px-4 py-10 text-center sm:py-14">
           <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-medium backdrop-blur">
             <ShieldIcon className="h-3.5 w-3.5" />
             {t("badge")}
           </span>
-          <h1 className="mx-auto mt-6 max-w-3xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl">
+          <h1 className="mx-auto mt-4 max-w-3xl text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl">
             {t("title")}
           </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-base text-white/85 sm:text-lg">{t("subtitle")}</p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <p className="mx-auto mt-3 max-w-2xl text-base text-white/85 sm:text-lg">{t("subtitle")}</p>
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/tools"
               className="rounded-xl bg-white px-6 py-3 text-sm font-semibold text-violet-700 shadow-sm transition-transform hover:scale-[1.02]"
@@ -43,7 +43,7 @@ export default async function HomePage() {
               {t("tryCompressor")}
             </Link>
           </div>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-white/80">
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-white/80">
             <span>{t("noSignup")}</span>
             <span aria-hidden>·</span>
             <span>{t("noUpload")}</span>
