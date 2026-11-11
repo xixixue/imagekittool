@@ -20,6 +20,7 @@ export const metadata: Metadata = {
  */
 export default async function WorkflowsPage() {
   const t = await getTranslations("Tool.workflows");
+  const tW = await getTranslations("Workflows");
   const trail: Crumb[] = [
     { name: "Home", href: "/" },
     { name: t("name"), href: "/workflows" },
@@ -41,9 +42,9 @@ export default async function WorkflowsPage() {
                 href={href}
                 className="block rounded-xl border border-border bg-card p-5 shadow-sm transition-shadow hover:shadow-md"
               >
-                <h2 className="text-lg font-semibold">{w.name}</h2>
-                <p className="text-sm font-medium text-primary">{w.tagline}</p>
-                <p className="mt-2 text-sm text-muted-foreground">{w.description}</p>
+                <h2 className="text-lg font-semibold">{tW(`${w.id}.name`)}</h2>
+                <p className="text-sm font-medium text-primary">{tW(`${w.id}.tagline`)}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{tW(`${w.id}.description`)}</p>
               </a>
             </li>
           );

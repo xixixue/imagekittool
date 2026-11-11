@@ -1584,5 +1584,27 @@
     "pt": "Português",
     "ru": "Русский",
     "ja": "日本語"
+  },
+  "Workflows": {
+    "optimize-website": {
+      "name": "网站图片优化",
+      "tagline": "更小的 WebP，更快的页面",
+      "description": "一次性转换为 WebP 并压缩，得到更小、适合网页的图片。显示原始大小、结果大小和节省比例。"
+    },
+    "prepare-instagram": {
+      "name": "为 Instagram 准备",
+      "tagline": "帖子、故事、Reel 封面尺寸",
+      "description": "用 Cover 或 Contain 模式调整 Instagram 帖子、故事、Reel 封面或头像尺寸。委托给社交媒体尺寸调整（Instagram 预设）。"
+    },
+    "prepare-printing": {
+      "name": "为打印准备",
+      "tagline": "尺寸 + DPI + 打印预览",
+      "description": "设置 DPI 并预览打印尺寸。委托给 DPI 修改器，该工具会提示更改 DPI 元数据不会增加像素。"
+    },
+    "reduce-to-target-size": {
+      "name": "缩减到目标大小",
+      "tagline": "命中 KB 目标",
+      "description": "通过尺寸、格式和质量搜索，迭代缩减图片到目标文件大小（50KB–1MB）。委托给压缩图片到指定 KB。"
+    }
   }
 }

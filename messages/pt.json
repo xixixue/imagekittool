@@ -1584,5 +1584,27 @@
     "pt": "Português",
     "ru": "Русский",
     "ja": "日本語"
+  },
+  "Workflows": {
+    "optimize-website": {
+      "name": "Otimizar para web",
+      "tagline": "WebP menor para páginas mais rápidas",
+      "description": "Converte para WebP e comprime em uma só passagem para imagens menores e prontas para a web. Mostra o tamanho original, o resultado e a economia."
+    },
+    "prepare-instagram": {
+      "name": "Preparar para Instagram",
+      "tagline": "Tamanhos de post, story, reel",
+      "description": "Redimensiona para post, story, capa de Reel ou perfil do Instagram com ajuste Cover ou Contain. Delega ao Redimensionador para redes sociais (presets do Instagram)."
+    },
+    "prepare-printing": {
+      "name": "Preparar para impressão",
+      "tagline": "Tamanho + DPI + pré-visualização",
+      "description": "Define o DPI e pré-visualiza o tamanho de impressão. Delega ao Alterador de DPI, que avisa que alterar os metadados de DPI não adiciona pixels."
+    },
+    "reduce-to-target-size": {
+      "name": "Reduzir a tamanho alvo",
+      "tagline": "Atinja um alvo em KB",
+      "description": "Reduz iterativamente uma imagem a um tamanho de arquivo alvo (50KB–1MB) via busca de tamanho, formato e qualidade. Delega para Comprimir Imagem para KB."
+    }
   }
 }

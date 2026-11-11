@@ -1584,5 +1584,27 @@
     "pt": "Português",
     "ru": "Русский",
     "ja": "日本語"
+  },
+  "Workflows": {
+    "optimize-website": {
+      "name": "Web 用に最適化",
+      "tagline": "より軽い WebP で高速ページ",
+      "description": "WebP 変換と圧縮を一度に行い、より小さい Web 向き画像を作成。元のサイズ、結果サイズ、削減率を表示します。"
+    },
+    "prepare-instagram": {
+      "name": "Instagram 向けに準備",
+      "tagline": "投稿・ストーリー・リールサイズ",
+      "description": "Cover または Contain フィットで Instagram の投稿、ストーリー、リールカバー、プロフィール用にリサイズ。SNS 画像リサイズ（Instagram プリセット）に委譲します。"
+    },
+    "prepare-printing": {
+      "name": "印刷向けに準備",
+      "tagline": "サイズ + DPI + 印刷プレビュー",
+      "description": "DPI を設定し印刷サイズをプレビュー。DPI 変更に委譲します（DPI メタデータ変更は画素を増やさない旨の警告あり）。"
+    },
+    "reduce-to-target-size": {
+      "name": "ターゲットサイズに縮小",
+      "tagline": "KB 目標を達成",
+      "description": "サイズ・形式・品質の探索で、画像をターゲットファイルサイズ（50KB–1MB）へ反復縮小。KB 指定で圧縮に委譲します。"
+    }
   }
 }
