@@ -114,6 +114,7 @@
   "Nav": {
     "guides": "Guides",
     "tools": "Tools",
+    "workflows": "Workflows",
     "about": "About",
     "contact": "Contact",
     "signIn": "Sign in",
@@ -332,6 +333,12 @@
       "description": "Convert an image to WebP and compress it in one pass for smaller, web-ready files. See the original size, result size, and savings. Runs locally; nothing is uploaded.",
       "headerDescription": "Convert an image to WebP and compress it in one pass for smaller, web-ready files. See the original size, result size, and savings. Runs locally in your browser; nothing is uploaded.",
       "action": "Optimize"
+    },
+    "workflows": {
+      "name": "Quick Workflows",
+      "tagline": "Task-oriented image workflows",
+      "description": "Curated multi-step image workflows — optimize for the web, prepare for Instagram or printing, or reduce to a target size. Each runs locally in your browser.",
+      "headerDescription": "Curated multi-step image workflows. Optimize for the web, prepare for Instagram or printing, or reduce to a target size — each runs locally in your browser; nothing is uploaded."
     }
   },
   "Controls": {

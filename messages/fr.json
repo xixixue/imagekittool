@@ -114,6 +114,7 @@
   "Nav": {
     "guides": "Guides",
     "tools": "Outils",
+    "workflows": "Flux",
     "about": "À propos",
     "contact": "Contact",
     "signIn": "Se connecter",
@@ -332,6 +333,12 @@
       "description": "Convertit une image en WebP et la compresse en un seul passage pour des fichiers web plus petits. Affiche la taille d'origine, le résultat et l'économie. Local ; rien n'est téléchargé.",
       "headerDescription": "Convertit une image en WebP et la compresse en un seul passage pour des fichiers web plus petits. Affiche la taille d'origine, le résultat et l'économie. Local ; rien n'est téléchargé.",
       "action": "Optimiser"
+    },
+    "workflows": {
+      "name": "Flux rapides",
+      "tagline": "Flux d'image orientés tâche",
+      "description": "Flux d'image multipas curatés — optimisez pour le web, préparez pour Instagram ou l'impression, ou réduisez à une taille cible. Chacun s'exécute localement dans votre navigateur.",
+      "headerDescription": "Flux d'image multipas curatés. Optimisez pour le web, préparez pour Instagram ou l'impression, ou réduisez à une taille cible — chacun s'exécute localement ; rien n'est téléchargé."
     }
   },
   "Controls": {

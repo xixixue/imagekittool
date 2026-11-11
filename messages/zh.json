@@ -114,6 +114,7 @@
   "Nav": {
     "guides": "指南",
     "tools": "工具",
+    "workflows": "工作流",
     "about": "关于",
     "contact": "联系",
     "signIn": "登录",
@@ -332,6 +333,12 @@
       "description": "一步将图片转为 WebP 并压缩，生成更小的网页用图。显示原始大小、结果大小和节省比例。本地运行，不上传。",
       "headerDescription": "在浏览器中一步将图片转为 WebP 并压缩，生成更小的网页用图。显示原始大小、结果大小和节省比例。本地运行，不上传。",
       "action": "优化"
+    },
+    "workflows": {
+      "name": "快捷工作流",
+      "tagline": "面向任务的图片工作流",
+      "description": "精选多步骤图片工作流——网站优化、Instagram/打印准备、或压缩到目标大小。均在浏览器本地运行。",
+      "headerDescription": "精选多步骤图片工作流。网站优化、Instagram/打印准备、或压缩到目标大小——均在浏览器本地运行，不上传。"
     }
   },
   "Controls": {

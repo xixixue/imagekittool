@@ -114,6 +114,7 @@
   "Nav": {
     "guides": "Guías",
     "tools": "Herramientas",
+    "workflows": "Flujos",
     "about": "Acerca de",
     "contact": "Contacto",
     "signIn": "Iniciar sesión",
@@ -332,6 +333,12 @@
       "description": "Convierte una imagen a WebP y comprímela en un solo paso para archivos web más pequeños. Muestra el tamaño original, resultado y ahorro. Local; no se sube.",
       "headerDescription": "Convierte una imagen a WebP y comprímela en un solo paso para archivos web más pequeños. Muestra el tamaño original, resultado y ahorro. Local; no se sube.",
       "action": "Optimizar"
+    },
+    "workflows": {
+      "name": "Flujos rápidos",
+      "tagline": "Flujos de imagen orientados a tareas",
+      "description": "Flujos de imagen multipaso curados — optimiza para web, prepara para Instagram o impresión, o reduce a un tamaño objetivo. Cada uno se ejecuta localmente en tu navegador.",
+      "headerDescription": "Flujos de imagen multipaso curados. Optimiza para web, prepara para Instagram o impresión, o reduce a un tamaño objetivo — cada uno se ejecuta localmente; no se sube."
     }
   },
   "Controls": {
