@@ -940,6 +940,71 @@ export const guides: Guide[] = [
       },
     ],
   },
+  {
+    slug: "remove-exif-metadata",
+    title: "How to Remove EXIF Metadata from Photos",
+    description:
+      "Strip hidden EXIF, GPS, and camera metadata from your photos before sharing — in your browser, with nothing uploaded. What gets removed, what doesn't, and how to verify it.",
+    category: "Privacy",
+    coverDiagram: "exif-rotation",
+    readingTimeMin: 4,
+    relatedToolSlugs: ["exif-remover", "exif-viewer"],
+    publishedAt: "2025-01-15",
+    body: [
+      {
+        type: "heading",
+        text: "Why your photos carry metadata",
+      },
+      {
+        type: "paragraph",
+        text: "Every photo from a phone or camera can carry EXIF metadata: the camera make and model, the date and time the shot was taken, exposure settings, and — most privacy-sensitive — the GPS coordinates of where the photo was taken. When you share the original file by email, messaging, or a direct upload, that metadata travels with the image.",
+      },
+      {
+        type: "callout",
+        text: "The fastest fix: drop the photo into the EXIF Remover and click Remove. It re-encodes the image in your browser without copying the metadata over, and nothing is uploaded.",
+      },
+      {
+        type: "heading",
+        text: "How to remove EXIF metadata",
+      },
+      {
+        type: "list",
+        items: [
+          "Open the EXIF Remover and drop in a JPG, PNG, or WebP photo (or click to pick one).",
+          "Click Remove. The tool decodes the image pixels and re-encodes them into a fresh file, leaving the metadata behind.",
+          "Download the result. The visual content is unchanged; the hidden metadata is gone.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "What gets removed — and what doesn't",
+      },
+      {
+        type: "paragraph",
+        text: "Re-encoding a JPEG creates a new file from the pixel data alone, so the EXIF, IPTC, and XMP blocks attached to the original are not copied over. The GPS location, camera model, and capture timestamp are stripped. The trade-off: the new JPEG may be re-compressed, so the file size or quality can shift slightly. PNG files can carry tEXt and iTXt chunks that a naive re-encode may preserve; if the metadata matters, verify the result with the EXIF Viewer.",
+      },
+      {
+        type: "heading",
+        text: "Doesn't social media strip metadata already?",
+      },
+      {
+        type: "paragraph",
+        text: "Most major platforms — Instagram, Facebook, and X (Twitter) — strip EXIF from photos when you post them. But that is not guaranteed everywhere: messaging apps, email attachments, and some forums pass the original file through. If you are sharing an original file directly, strip the metadata yourself first rather than relying on the destination.",
+      },
+      {
+        type: "heading",
+        text: "Verify it worked",
+      },
+      {
+        type: "paragraph",
+        text: "Open the result in the EXIF Viewer to confirm the metadata is gone. You should see no GPS, no camera, and no capture date — only the basic properties of the re-encoded file.",
+      },
+      {
+        type: "callout",
+        text: "Privacy note: the EXIF Remover runs entirely in your browser. Your photo is never uploaded to a server, so the metadata is stripped on your device and never leaves it.",
+      },
+    ],
+  },
 ];
 
 /**
