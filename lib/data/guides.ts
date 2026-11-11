@@ -1071,6 +1071,246 @@ export const guides: Guide[] = [
       },
     ],
   },
+  {
+    slug: "reduce-image-to-100kb",
+    title: "How to Reduce an Image to 100KB",
+    description:
+      "Hit a target file size — 100KB or any KB target — by iteratively adjusting quality, format, and dimensions. Runs in your browser; nothing uploaded.",
+    category: "Compression",
+    coverDiagram: "quality-size-curve",
+    readingTimeMin: 4,
+    relatedToolSlugs: ["compress-image-to-kb", "image-compressor"],
+    publishedAt: "2025-01-15",
+    body: [
+      {
+        type: "heading",
+        text: "Why a target size matters",
+      },
+      {
+        type: "paragraph",
+        text: "Email attachments, web forms, and app uploads often cap image size at 100KB or a similar limit. A photo straight from a phone can be 3–5MB, far over the cap. Reducing to a target size means shrinking the file until it fits, while keeping it usable.",
+      },
+      {
+        type: "callout",
+        text: "The fastest way: open Compress to KB, set the target (e.g. 100KB), and the tool searches quality, format, and dimensions until the result fits — in your browser, nothing uploaded.",
+      },
+      {
+        type: "heading",
+        text: "How to reduce an image to 100KB",
+      },
+      {
+        type: "list",
+        items: [
+          "Open Compress to KB and drop in the image.",
+          "Set the target size (100KB, or whatever your limit is).",
+          "Click Compress. The tool tries a range of quality and format settings to land under the target.",
+          "Download the result. If it's still over, reduce the target or resize the image first.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "How it works",
+      },
+      {
+        type: "paragraph",
+        text: "File size depends on three things: pixel dimensions, format, and quality. The tool searches across quality levels (and between JPG and WebP) to find the combination that lands under your target with the best remaining quality. WebP usually wins for photographs; JPG is the safe fallback for compatibility.",
+      },
+      {
+        type: "heading",
+        text: "When a target is hard to hit",
+      },
+      {
+        type: "paragraph",
+        text: "A very large source image may need to be resized down before compression — 100KB won't hold a 6000-pixel-wide photo at usable quality. Conversely, a tiny image already under the target has nothing to shrink. If the tool can't land under an aggressive target, reduce the pixel dimensions first, then compress.",
+      },
+      {
+        type: "callout",
+        text: "Compress to KB runs entirely in your browser. Your image is processed locally and never uploaded.",
+      },
+    ],
+  },
+  {
+    slug: "convert-images-to-pdf",
+    title: "How to Convert Images to PDF",
+    description:
+      "Combine JPG, PNG, or WebP images into a single multi-page PDF — for scanned pages, receipts, or photo sets. Choose page size, reorder pages, and export. Runs in your browser.",
+    category: "Formats",
+    coverDiagram: "format-support-table",
+    readingTimeMin: 4,
+    relatedToolSlugs: ["image-to-pdf"],
+    publishedAt: "2025-01-15",
+    body: [
+      {
+        type: "heading",
+        text: "Why combine images into a PDF",
+      },
+      {
+        type: "paragraph",
+        text: "A PDF keeps a set of images in a fixed order, on pages that print and display consistently everywhere — handy for scanned documents, receipts, or a photo set you want to share as one file. Converting images to PDF also avoids the re-striping you'd get re-saving a single image.",
+      },
+      {
+        type: "callout",
+        text: "The fastest way: open Image to PDF, drop in your images (reorder them if needed), pick a page size, and export one multi-page PDF — in your browser, nothing uploaded.",
+      },
+      {
+        type: "heading",
+        text: "How to convert images to PDF",
+      },
+      {
+        type: "list",
+        items: [
+          "Open Image to PDF and drop in your JPG, PNG, or WebP images.",
+          "Reorder the pages by dragging if the order matters.",
+          "Choose a page size — fit-to-image, or a fixed size like A4.",
+          "Click Convert and download the single PDF.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Page size and image fit",
+      },
+      {
+        type: "paragraph",
+        text: "Fit-to-image makes each page exactly the image's dimensions — best when each image is a full page (scans, slides). A fixed page size like A4 places each image on a standard page, useful for documents you intend to print. The tool embeds the image pixels into the PDF without destructively re-compressing them.",
+      },
+      {
+        type: "heading",
+        text: "Limits to know",
+      },
+      {
+        type: "paragraph",
+        text: "A PDF of many high-resolution images can be large, because the full image data is embedded. If size matters, compress the source images first. PDF is a delivery format, not an editing format — to change a page later, regenerate the PDF from the source images.",
+      },
+      {
+        type: "callout",
+        text: "Image to PDF runs entirely in your browser. Your images are combined locally and never uploaded.",
+      },
+    ],
+  },
+  {
+    slug: "best-youtube-thumbnail-size",
+    title: "Best YouTube Thumbnail Size",
+    description:
+      "The recommended YouTube thumbnail size is 1280×720 (16:9), under 2MB. How to make one, design tips, and how to apply it. Reviewed and dated — a recommendation, not an enforced rule.",
+    category: "Resolution",
+    coverDiagram: "aspect-ratio-boxes",
+    readingTimeMin: 3,
+    relatedToolSlugs: ["social-media-resizer"],
+    publishedAt: "2025-01-15",
+    body: [
+      {
+        type: "heading",
+        text: "The recommended size",
+      },
+      {
+        type: "paragraph",
+        text: "YouTube recommends a thumbnail of 1280×720 pixels — a 16:9 aspect ratio, the same ratio as the video player. The file should be under 2MB, in JPG, PNG, or GIF. These are recommended values, reviewed and dated; treat them as a starting point rather than an enforced rule.",
+      },
+      {
+        type: "callout",
+        text: "The fastest way: open the Social Media Resizer, pick YouTube → Thumbnail (1280×720), choose Cover or Contain fit, and export. Runs locally; nothing uploaded.",
+      },
+      {
+        type: "heading",
+        text: "How to make a YouTube thumbnail",
+      },
+      {
+        type: "list",
+        items: [
+          "Open the Social Media Resizer and load your image.",
+          "Select the YouTube Thumbnail preset (1280×720).",
+          "Choose Cover to fill the frame (crops overflow) or Contain to fit the whole image (letterboxed).",
+          "Export as JPG or PNG and download.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Design tips",
+      },
+      {
+        type: "paragraph",
+        text: "A thumbnail is tiny in search results and huge on a TV — design for both. Use a high-contrast, simple composition; keep text large and short (three or four words); and avoid fine detail that vanishes at small sizes. Faces and bold colors draw clicks; clutter hides them.",
+      },
+      {
+        type: "heading",
+        text: "Apply it to your video",
+      },
+      {
+        type: "paragraph",
+        text: "In YouTube Studio, upload the thumbnail on the video's details page. YouTube accepts the 1280×720 image as-is; if your image is a different ratio, YouTube will crop it, which is why starting at 16:9 avoids surprises.",
+      },
+      {
+        type: "callout",
+        text: "The Social Media Resizer runs entirely in your browser. Your image is never uploaded.",
+      },
+    ],
+  },
+  {
+    slug: "optimize-images-for-websites",
+    title: "How to Optimize Images for Websites",
+    description:
+      "Make images smaller for the web — convert to WebP, compress, and resize to the display size. Covers format choice, quality vs size, and measuring the result. Runs in your browser.",
+    category: "Compression",
+    coverDiagram: "quality-size-curve",
+    readingTimeMin: 5,
+    relatedToolSlugs: ["optimize-website", "image-compressor"],
+    publishedAt: "2025-01-15",
+    body: [
+      {
+        type: "heading",
+        text: "Why image optimization matters",
+      },
+      {
+        type: "paragraph",
+        text: "Images are usually the heaviest part of a web page. Oversized images slow the load, hurt Core Web Vitals, and waste bandwidth on mobile. Optimizing means shrinking the file without visibly degrading the image — the right format, the right quality, and the right pixel dimensions.",
+      },
+      {
+        type: "callout",
+        text: "The fastest way: open Optimize for Website, drop in an image, and it converts to WebP and compresses in one pass — showing the original size, result size, and percentage saved. Runs locally; nothing uploaded.",
+      },
+      {
+        type: "heading",
+        text: "How to optimize an image for a website",
+      },
+      {
+        type: "list",
+        items: [
+          "Open Optimize for Website and load your JPG, PNG, or WebP image.",
+          "Optionally set a resize width to match how the image is displayed on the page.",
+          "Adjust the WebP quality (70–80% is a good range for most photos).",
+          "Click Optimize and download the WebP. Check the savings percentage.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Choose the right format",
+      },
+      {
+        type: "paragraph",
+        text: "WebP delivers much smaller files than JPG and PNG at similar visual quality, and is now supported by all major browsers — it's the default for web photos. PNG is still right for sharp graphics, logos, and anything needing transparency. AVIF compresses even further but isn't universally supported yet.",
+      },
+      {
+        type: "heading",
+        text: "Quality, size, and display dimensions",
+      },
+      {
+        type: "paragraph",
+        text: "Three levers control file size. Lower quality shrinks the file but adds artifacts — 70–80% is the sweet spot for most photos, higher for images with text or fine detail. Format matters: WebP beats JPG at equal quality. And pixel dimensions: serving a 4000-pixel image to a 400-pixel slot wastes bytes — resize to the largest size you'll actually display (times 2 for hi-DPI).",
+      },
+      {
+        type: "heading",
+        text: "Measure the result",
+      },
+      {
+        type: "paragraph",
+        text: "After optimizing, check the page with a speed tool (PageSpeed Insights, Lighthouse) to confirm the images are no longer the bottleneck. If a single image still dominates, lower its quality or resize it further.",
+      },
+      {
+        type: "callout",
+        text: "Optimize for Website runs entirely in your browser. Your image is processed locally and never uploaded.",
+      },
+    ],
+  },
 ];
 
 /**
