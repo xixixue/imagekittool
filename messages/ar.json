@@ -325,9 +325,23 @@
       "description": "غيّر حجم الصور لـ Instagram وFacebook وYouTube وPinterest وLinkedIn في متصفحك — اختر preset أو حجم مخصص، وضع Cover أو Contain، وصدّر PNG/JPG/WebP. محلياً؛ بدون رفع.",
       "headerDescription": "غيّر حجم الصور لـ Instagram وFacebook وYouTube وPinterest وLinkedIn في متصفحك. اختر preset أو حجم مخصص، وضع Cover أو Contain، وصدّر PNG/JPG/WebP. محلياً؛ بدون رفع.",
       "action": "تغيير الحجم"
+    },
+    "optimize-website": {
+      "name": "تحسين للويب",
+      "tagline": "WebP أصغر بخطوة واحدة",
+      "description": "حوّل الصورة إلى WebP واضغطها في خطوة واحدة لملفات ويب أصغر. يعرض الحجم الأصلي والنتيجة ونسبة التوفير. محلياً؛ بدون رفع.",
+      "headerDescription": "حوّل الصورة إلى WebP واضغطها في خطوة واحدة لملفات ويب أصغر. يعرض الحجم الأصلي والنتيجة ونسبة التوفير. محلياً؛ بدون رفع.",
+      "action": "تحسين"
     }
   },
   "Controls": {
+    "owQuality": "الجودة",
+    "owResize": "العرض (اختياري)",
+    "owOptimize": "تحسين",
+    "owOptimizing": "جارٍ التحسين…",
+    "owOriginal": "الأصلي",
+    "owResult": "النتيجة",
+    "owSavings": "أصغر بنسبة {percent}%",
     "socialPlatform": "المنصة",
     "socialPreset": "الإعداد المسبق",
     "socialFit": "الملاءمة",

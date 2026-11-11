@@ -325,9 +325,23 @@
       "description": "Resize images for Instagram, Facebook, YouTube, Pinterest, and LinkedIn in your browser — pick a preset or custom size, choose Cover or Contain fit, and export PNG, JPG, or WebP. Runs locally; nothing is uploaded.",
       "headerDescription": "Resize images for Instagram, Facebook, YouTube, Pinterest, and LinkedIn in your browser. Pick a preset or custom size, choose Cover or Contain fit, and export PNG, JPG, or WebP. Runs locally; nothing is uploaded.",
       "action": "Resize"
+    },
+    "optimize-website": {
+      "name": "Optimize for Website",
+      "tagline": "Smaller WebP in one pass",
+      "description": "Convert an image to WebP and compress it in one pass for smaller, web-ready files. See the original size, result size, and savings. Runs locally; nothing is uploaded.",
+      "headerDescription": "Convert an image to WebP and compress it in one pass for smaller, web-ready files. See the original size, result size, and savings. Runs locally in your browser; nothing is uploaded.",
+      "action": "Optimize"
     }
   },
   "Controls": {
+    "owQuality": "Quality",
+    "owResize": "Resize width (optional)",
+    "owOptimize": "Optimize",
+    "owOptimizing": "Optimizing…",
+    "owOriginal": "Original",
+    "owResult": "Result",
+    "owSavings": "{percent}% smaller",
     "socialPlatform": "Platform",
     "socialPreset": "Preset",
     "socialFit": "Fit",
@@ -1286,6 +1300,45 @@
         {
           "q": "Is my image uploaded?",
           "a": "No. The resize runs entirely in your browser. The image never leaves your device."
+        }
+      ]
+    },
+    "optimize-website": {
+      "steps": [
+        "Load a JPG, PNG, or WebP image.",
+        "Optionally set a resize width and adjust the WebP quality.",
+        "Click Optimize — the image is converted to WebP and compressed locally, nothing is uploaded.",
+        "See the original size, result size, and percentage saved.",
+        "Download the optimized WebP."
+      ],
+      "useCases": [
+        "Preparing hero images for a fast-loading website.",
+        "Converting photos to WebP for blog posts.",
+        "Shrinking large exports before uploading to a CMS.",
+        "Reducing bandwidth on image-heavy landing pages."
+      ],
+      "knowledge": [
+        {
+          "heading": "Why WebP for the web",
+          "body": "WebP delivers meaningfully smaller files than JPG and PNG at similar visual quality, and is now supported by all major browsers. Serving WebP can measurably improve page load time and Core Web Vitals."
+        },
+        {
+          "heading": "Quality vs size",
+          "body": "Lower quality reduces file size but introduces compression artifacts. 70–80% is a good range for most photographic web images; increase it for images with fine detail or text, decrease it for large galleries where bandwidth matters most."
+        }
+      ],
+      "faq": [
+        {
+          "q": "Does this resize my image?",
+          "a": "Only if you enter a resize width. Otherwise the dimensions are preserved — the workflow only converts to WebP and compresses."
+        },
+        {
+          "q": "Is my image uploaded?",
+          "a": "No. The optimization runs entirely in your browser. The image never leaves your device."
+        },
+        {
+          "q": "Why is my result larger than the original?",
+          "a": "If the original was already a tiny, well-compressed WebP, re-encoding may not shrink it further. This is rare; try a lower quality or a resize width."
         }
       ]
     }

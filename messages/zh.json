@@ -325,9 +325,23 @@
       "description": "在浏览器中为 Instagram、Facebook、YouTube、Pinterest、LinkedIn 调整图片尺寸——选择预设或自定义尺寸，Cover 或 Contain 适配，导出 PNG/JPG/WebP。本地运行，不上传。",
       "headerDescription": "在浏览器中为 Instagram、Facebook、YouTube、Pinterest、LinkedIn 调整图片尺寸。选择预设或自定义尺寸，Cover 或 Contain 适配，导出 PNG/JPG/WebP。本地运行，不上传。",
       "action": "调整"
+    },
+    "optimize-website": {
+      "name": "网站图片优化",
+      "tagline": "一步生成更小的 WebP",
+      "description": "一步将图片转为 WebP 并压缩，生成更小的网页用图。显示原始大小、结果大小和节省比例。本地运行，不上传。",
+      "headerDescription": "在浏览器中一步将图片转为 WebP 并压缩，生成更小的网页用图。显示原始大小、结果大小和节省比例。本地运行，不上传。",
+      "action": "优化"
     }
   },
   "Controls": {
+    "owQuality": "质量",
+    "owResize": "调整宽度（可选）",
+    "owOptimize": "优化",
+    "owOptimizing": "优化中…",
+    "owOriginal": "原始",
+    "owResult": "结果",
+    "owSavings": "减小 {percent}%",
     "socialPlatform": "平台",
     "socialPreset": "预设",
     "socialFit": "适配方式",

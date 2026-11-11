@@ -325,9 +325,23 @@
       "description": "ブラウザで Instagram、Facebook、YouTube、Pinterest、LinkedIn 向けに画像をリサイズ——プリセットまたはカスタムサイズ、Cover/Contain 選択、PNG/JPG/WebP 書き出し。ローカル実行、アップロードなし。",
       "headerDescription": "ブラウザで Instagram、Facebook、YouTube、Pinterest、LinkedIn 向けに画像をリサイズします。プリセットまたはカスタムサイズ、Cover/Contain 選択、PNG/JPG/WebP 書き出し。ローカル実行、アップロードなし。",
       "action": "リサイズ"
+    },
+    "optimize-website": {
+      "name": "Web 最適化",
+      "tagline": "1 パスで軽量 WebP に",
+      "description": "画像を WebP に変換して 1 パスで圧縮し、より軽い Web 用画像を生成。元のサイズ、結果サイズ、削減率を表示。ローカル実行、アップロードなし。",
+      "headerDescription": "ブラウザで画像を WebP に変換して 1 パスで圧縮し、より軽い Web 用画像を生成します。元のサイズ、結果サイズ、削減率を表示。ローカル実行、アップロードなし。",
+      "action": "最適化"
     }
   },
   "Controls": {
+    "owQuality": "品質",
+    "owResize": "リサイズ幅（任意）",
+    "owOptimize": "最適化",
+    "owOptimizing": "最適化中…",
+    "owOriginal": "元",
+    "owResult": "結果",
+    "owSavings": "{percent}% 削減",
     "socialPlatform": "プラットフォーム",
     "socialPreset": "プリセット",
     "socialFit": "フィット",

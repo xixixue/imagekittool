@@ -254,6 +254,18 @@ export const tools: Tool[] = [
     icon: "resize",
     accent: "rose",
   },
+  {
+    slug: "optimize-website",
+    href: "/optimize-website",
+    name: "Optimize for Website",
+    tagline: "Smaller WebP in one pass",
+    description:
+      "Convert an image to WebP and compress it in one pass for smaller, web-ready files. See the original size, result size, and savings. Runs locally; nothing is uploaded.",
+    formats: "JPG · PNG · WebP → WebP",
+    status: "active",
+    icon: "compress",
+    accent: "emerald",
+  },
 ];
 
 export function getToolBySlug(slug: string): Tool | undefined {

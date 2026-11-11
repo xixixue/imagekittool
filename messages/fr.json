@@ -325,9 +325,23 @@
       "description": "Redimensionnez des images pour Instagram, Facebook, YouTube, Pinterest et LinkedIn dans votre navigateur — choisissez un preset ou une taille personnalisée, ajustement Cover ou Contain, et exportez PNG, JPG ou WebP. Local ; rien n'est téléchargé.",
       "headerDescription": "Redimensionnez des images pour Instagram, Facebook, YouTube, Pinterest et LinkedIn dans votre navigateur. Choisissez un preset ou une taille personnalisée, ajustement Cover ou Contain, et exportez PNG, JPG ou WebP. Local ; rien n'est téléchargé.",
       "action": "Redimensionner"
+    },
+    "optimize-website": {
+      "name": "Optimiser pour le web",
+      "tagline": "WebP plus petit en une passe",
+      "description": "Convertit une image en WebP et la compresse en un seul passage pour des fichiers web plus petits. Affiche la taille d'origine, le résultat et l'économie. Local ; rien n'est téléchargé.",
+      "headerDescription": "Convertit une image en WebP et la compresse en un seul passage pour des fichiers web plus petits. Affiche la taille d'origine, le résultat et l'économie. Local ; rien n'est téléchargé.",
+      "action": "Optimiser"
     }
   },
   "Controls": {
+    "owQuality": "Qualité",
+    "owResize": "Largeur (optionnel)",
+    "owOptimize": "Optimiser",
+    "owOptimizing": "Optimisation…",
+    "owOriginal": "Original",
+    "owResult": "Résultat",
+    "owSavings": "{percent}% plus petit",
     "socialPlatform": "Plateforme",
     "socialPreset": "Preset",
     "socialFit": "Ajustement",
