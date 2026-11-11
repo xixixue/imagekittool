@@ -12,7 +12,6 @@ export const metadata: Metadata = {
 };
 
 // Statically prerendered for fast TTFB + crawlable SEO (see image-compressor).
-export const dynamic = "force-static";
 
 export default function BatchWorkspacePage() {
   return (

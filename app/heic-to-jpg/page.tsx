@@ -11,7 +11,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/heic-to-jpg" },
 };
 
-export const dynamic = "force-static";
 
 export default function HeicToJpgPage() {
   return (

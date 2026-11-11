@@ -16,7 +16,6 @@ export const metadata: Metadata = {
 // the NextIntlClientProvider, so client-side tool controls localize per locale;
 // the server-rendered header/SEO content is prerendered in the default locale
 // (en), consistent with the guides pages.
-export const dynamic = "force-static";
 
 export default function ImageCompressorPage() {
   return (

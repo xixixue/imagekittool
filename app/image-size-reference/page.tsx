@@ -13,7 +13,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/image-size-reference" },
 };
 
-export const dynamic = "force-static";
 
 export default async function ImageSizeReferencePage() {
   const t = await getTranslations("Tool.image-size-reference");

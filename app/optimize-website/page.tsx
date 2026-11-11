@@ -11,7 +11,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/optimize-website" },
 };
 
-export const dynamic = "force-static";
 
 export default function OptimizeWebsitePage() {
   return (

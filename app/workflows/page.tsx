@@ -12,7 +12,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/workflows" },
 };
 
-export const dynamic = "force-static";
 
 /**
  * Quick Workflows index (SPEC V2 §6, Phase 4). The task entry point that

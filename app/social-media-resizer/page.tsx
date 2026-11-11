@@ -11,7 +11,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/social-media-resizer" },
 };
 
-export const dynamic = "force-static";
 
 export default function SocialMediaResizerPage() {
   return (
