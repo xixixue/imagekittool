@@ -40,6 +40,20 @@ export function GuideBody({ blocks }: { blocks: Block[] }) {
                 <p className="text-sm font-medium leading-relaxed text-foreground">{block.text}</p>
               </div>
             );
+          case "resource":
+            return (
+              <p key={i} className="text-sm leading-relaxed text-muted-foreground">
+                Further reading: {" "}
+                <a
+                  href={block.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-primary underline underline-offset-4 hover:opacity-80"
+                >
+                  {block.label}
+                </a>
+              </p>
+            );
           case "diagram":
             return <GuideDiagram key={i} name={block.name} caption={block.caption} />;
           case "image":

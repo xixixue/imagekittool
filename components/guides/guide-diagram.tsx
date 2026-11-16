@@ -24,8 +24,8 @@ function FormatSupportTable() {
     { feature: "Compression", jpg: "Lossy", png: "Lossless", webp: "Lossy + lossless" },
     { feature: "Transparency", jpg: "no", png: "yes", webp: "yes" },
     { feature: "Animation", jpg: "no", png: "no (APNG)", webp: "yes" },
-    { feature: "Color depth", jpg: "24-bit", png: "8/24/48-bit", webp: "24-bit" },
-    { feature: "Browser support", jpg: "Universal", png: "Universal", webp: "Modern (2020+)" },
+    { feature: "Color depth", jpg: "8-bit/channel", png: "8/16-bit/channel", webp: "8-bit/channel" },
+    { feature: "Browser support", jpg: "Very broad", png: "Very broad", webp: "Broad today" },
   ];
   const cell = (v: string) =>
     v === "yes" ? (
@@ -228,13 +228,13 @@ function PpiVsDpi() {
   );
 }
 
-/* File-size-vs-quality curve with the 80–85 sweet spot shaded. */
+/* File-size-vs-quality curve with a typical starting range highlighted. */
 function QualitySizeCurve() {
   const label = "fill-current text-[13px]";
   const sub = "fill-muted-foreground text-[11px]";
   const x0 = 70, x1 = 540, yTop = 30, yBot = 220;
   return (
-    <svg viewBox="0 0 600 270" className="mx-auto h-auto w-full max-w-2xl text-muted-foreground" role="img" aria-label="File size versus JPEG quality sweet spot at 80 to 85">
+    <svg viewBox="0 0 600 270" className="mx-auto h-auto w-full max-w-2xl text-muted-foreground" role="img" aria-label="File size versus JPEG quality with a typical starting range highlighted">
       <rect x={x0 + (x1 - x0) * 0.8} y={yTop} width={(x1 - x0) * 0.05} height={yBot - yTop} className="fill-primary/15" />
       <path d={`M${x0} ${yTop} L${x0} ${yBot} L${x1} ${yBot}`} className="stroke-current stroke-[1.5]" fill="none" />
       <path d={`M${x0} ${yTop + 8} C 150 ${yTop + 20}, 230 120, 320 175 C 390 200, 470 214, ${x1} ${yBot - 4}`} className="stroke-primary stroke-[2.5]" fill="none" />
@@ -242,7 +242,7 @@ function QualitySizeCurve() {
       <text x={x0} y={yBot + 18} textAnchor="middle" className={sub}>0</text>
       <text x={x1} y={yBot + 18} textAnchor="middle" className={sub}>100</text>
       <text x={(x0 + x1) / 2} y={yBot + 36} textAnchor="middle" className={label}>JPEG quality</text>
-      <text x={x0 + (x1 - x0) * 0.825} y={yTop - 6} textAnchor="middle" className="fill-primary text-[11px] font-medium">sweet spot 80–85</text>
+      <text x={x0 + (x1 - x0) * 0.825} y={yTop - 6} textAnchor="middle" className="fill-primary text-[11px] font-medium">test range 75–85</text>
     </svg>
   );
 }

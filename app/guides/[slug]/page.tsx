@@ -59,6 +59,7 @@ export default async function GuideArticlePage({
     headline: guide.title,
     description: guide.description,
     datePublished: guide.publishedAt,
+    dateModified: guide.updatedAt,
     image: guide.coverImage ? `${siteUrl}${guide.coverImage}` : undefined,
     url: canonical,
   });
@@ -94,6 +95,12 @@ export default async function GuideArticlePage({
         </span>
         <span>·</span>
         <span>{t("minRead", { min: guide.readingTimeMin })}</span>
+        {guide.updatedAt ? (
+          <>
+            <span>·</span>
+            <time dateTime={guide.updatedAt}>Updated {new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric" }).format(new Date(`${guide.updatedAt}T00:00:00Z`))}</time>
+          </>
+        ) : null}
       </div>
 
       <h1 className="mt-3 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">

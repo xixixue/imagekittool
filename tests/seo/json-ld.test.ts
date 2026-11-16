@@ -66,6 +66,12 @@ describe("buildArticle", () => {
     expect((ld.publisher as Record<string, unknown>).name).toBe("ImageKitTools");
   });
 
+  it("includes dateModified when an editorial update date is provided", () => {
+    const ld = buildArticle({ ...base, dateModified: "2026-11-16" });
+    expect(ld.datePublished).toBe("2025-01-12");
+    expect(ld.dateModified).toBe("2026-11-16");
+  });
+
   it("includes image only when one is provided", () => {
     const withImg = buildArticle({ ...base, image: "https://example.com/cover.webp" });
     const withoutImg = buildArticle(base);

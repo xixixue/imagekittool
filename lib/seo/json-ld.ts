@@ -55,6 +55,8 @@ export interface ArticleInput {
   description: string;
   /** ISO date string (YYYY-MM-DD). */
   datePublished: string;
+  /** Optional ISO date for the latest substantive editorial update. */
+  dateModified?: string;
   /** Optional absolute cover image URL. */
   image?: string;
   /** Canonical absolute URL of the article. */
@@ -82,6 +84,7 @@ export function buildArticle(input: ArticleInput): Record<string, unknown> {
     headline: input.headline,
     description: input.description,
     datePublished: input.datePublished,
+    ...(input.dateModified ? { dateModified: input.dateModified } : {}),
     url: input.url,
     mainEntityOfPage: { "@type": "WebPage", "@id": input.url },
     ...(input.image ? { image: input.image } : {}),
