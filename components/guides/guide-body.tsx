@@ -66,6 +66,7 @@ export function GuideBody({ blocks }: { blocks: Block[] }) {
                     width={block.width}
                     height={block.height}
                     loading="lazy"
+                    unoptimized={block.src.endsWith(".svg")}
                     className="h-auto w-full"
                   />
                 </div>

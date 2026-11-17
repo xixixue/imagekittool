@@ -33,7 +33,7 @@ describe("guidesForTool", () => {
 
 describe("howToFromGuide", () => {
   it("derives numbered steps from the list under a 'How to' heading", () => {
-    const guide = guides.find((g) => g.slug === "remove-exif-metadata")!;
+    const guide = guides.find((g) => g.slug === "exif-orientation-explained")!;
     const howTo = howToFromGuide(guide);
     expect(howTo).not.toBeNull();
     expect(howTo!.name).toBe(guide.title);

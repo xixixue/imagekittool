@@ -70,12 +70,11 @@ export interface Guide {
   title: string;
   description: string;
   category: GuideCategory;
-  /** SVG diagram shown as the card cover + article hero (fallback when no coverImage). */
+  /** Guide-specific editorial cover shown on cards and article hero. */
   coverDiagram: DiagramName;
   /**
-   * Raster cover image generated via wan2.7-image-pro at
-   * `/guides/<slug>-cover.webp`. Rendered as the card cover + article hero when
-   * present; falls back to `coverDiagram`. See `scripts/generate-guide-covers.py`.
+   * Custom topic-specific WebP at `/guides/unique-2026-11/<slug>-cover.webp`.
+   * Rendered on guide cards and the article hero; falls back to `coverDiagram`.
    */
   coverImage?: string;
   readingTimeMin: number;
@@ -93,1677 +92,591 @@ export const guides: Guide[] = [
     slug: "jpg-vs-png-vs-webp",
     title: "JPG vs PNG vs WebP: Which Image Format Should You Use?",
     description:
-      "A practical comparison of the three most common web image formats — compression, transparency, animation, and browser support — with a real side-by-side example.",
+      "Compare JPEG, PNG, WebP, and AVIF by image type, transparency, compression, and compatibility. Includes a practical export and visual-check workflow.",
     category: "Formats",
     coverDiagram: "format-support-table",
-    coverImage: "/guides/jpg-vs-png-vs-webp-cover.webp",
-    readingTimeMin: 7,
+    coverImage: "/guides/unique-2026-11/jpg-vs-png-vs-webp-cover.webp",
+    readingTimeMin: 3,
     relatedToolSlugs: ["image-converter", "image-compressor"],
     publishedAt: "2025-01-12",
     updatedAt: "2026-11-16",
     body: [
-      {
-        type: "paragraph",
-        text: "Most images on the web are saved as one of four common formats: JPG, PNG, WebP, and increasingly AVIF. They are not interchangeable. Each was designed for a different kind of image, and picking the wrong one either bloats your file or throws away detail you wanted to keep. This guide compares them on the dimensions that actually matter — compression, transparency, animation, and browser support — so you can choose with confidence.",
-      },
-      {
-        type: "heading",
-        text: "The three formats at a glance",
-      },
-      {
-        type: "image",
-        src: "/guides/jpg-vs-png-vs-webp-inline.webp",
-        alt: "Decision guide for choosing JPG, PNG, or WebP by image content type",
-        width: 1200,
-        height: 1200,
-        caption:
-          "Match the format to the content: photographs to JPG, transparent logos to PNG, modern web images to WebP.",
-      },
-      {
-        type: "heading",
-        text: "JPG: the photo workhorse",
-      },
-      {
-        type: "paragraph",
-        text: "JPG (Joint Photographic Experts Group) is a lossy format built for photographs. It stores 24-bit color (over 16 million colors) and compresses aggressively by discarding high-frequency detail the human eye tolerates losing. The trade-off is absolute: JPG has no alpha channel, so it cannot hold transparency, and every re-save compounds quality loss. Use JPG for photographs and complex gradients where a flat background is acceptable.",
-      },
-      {
-        type: "heading",
-        text: "PNG: lossless with transparency",
-      },
-      {
-        type: "paragraph",
-        text: "PNG (Portable Network Graphics) is lossless and supports a full 8-bit alpha channel, so pixels can be fully or partially transparent. It is the right choice for logos, icons, screenshots, and any image with sharp edges or text, where JPG artifacts would smear the boundaries. The cost is file size: lossless compression preserves every pixel, so PNGs of photographs are often several times larger than an equivalent JPG.",
-      },
-      {
-        type: "image",
-        src: "/guides/transparency-formats.png",
-        alt: "The same image with a transparent region saved as PNG, JPG, and WebP, showing PNG and WebP keeping transparency while JPG fills it with a solid background.",
-        width: 1200,
-        height: 400,
-        caption:
-          "The same source image saved three ways. PNG and WebP keep the transparent region; JPG has no alpha channel and fills it with a solid color (white by default).",
-      },
-      {
-        type: "heading",
-        text: "WebP: the modern all-rounder",
-      },
-      {
-        type: "paragraph",
-        text: "WebP is a versatile web format rather than a universal replacement for every image. It supports lossy and lossless compression, transparency, and animation, and often produces smaller files than JPEG or PNG for comparable visual results. Current major browsers support WebP, but check the actual browsers, apps, CMS, and downstream workflows your audience uses before removing fallbacks.",
-      },
-      {
-        type: "heading",
-        text: "AVIF: the next step",
-      },
-      {
-        type: "paragraph",
-        text: "AVIF (AV1 Image File Format) is a modern format for still and animated images. It can deliver strong compression, supports transparency and higher bit depths, and is supported by current major browsers. Encoding can be slower and compatibility in older apps, editors, and content systems can still vary. For production sites, test your full publishing pipeline and provide a JPEG or WebP fallback where needed.",
-      },
-      {
-        type: "callout",
-        text: "Rule of thumb: photographs → JPG, WebP, or AVIF; graphics with transparency or text → PNG or WebP; animated images → WebP. When in doubt, pick WebP — it is the best all-round choice for the web today; add AVIF when you can serve a fallback.",
-      },
-      {
-        type: "heading",
-        text: "Choosing by use case",
-      },
-      {
-        type: "list",
-        items: [
-          "A product photo on a white background: JPG or WebP (lossy). Small and crisp.",
-          "A logo with transparent corners: PNG or WebP (lossless with alpha). Never JPG.",
-          "A screenshot with text: PNG or WebP (lossless). JPG would ring around the letters.",
-          "An animated banner: WebP (animated). GIF is the legacy fallback but is larger and limited to 256 colors.",
-          "An image destined for an old system you cannot update: JPG or PNG, whichever fits the content.",
-        ],
-      },
-      {
-        type: "heading",
-        text: 'Export comparison checklist',
-      },
-      {
-        type: "list",
-        items: [
-          'Keep the same pixel dimensions when comparing formats, otherwise you are not comparing compression alone.',
-          'Inspect small text, diagonal edges, gradients, and transparent edges at 100% zoom.',
-          'Keep an original master; export a separate delivery copy for the target website or app.',
-          'If a CMS or customer workflow cannot accept WebP/AVIF, use a tested JPEG or PNG fallback.',
-
-        ],
-      },
-      {
-        type: "resource",
-        label: 'MDN: Image file type and format guide',
-        url: 'https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Image_types',
-      },
+      { type: "paragraph", text: "Choosing an image format is a delivery decision, not a contest with one universal winner. The best file is the one that preserves the details your audience needs, meets the destination’s upload rules, and downloads quickly. Start with the image itself: photographs, sharp graphics, transparency, and animation behave differently under compression." },
+      { type: "image", src: "/guides/unique-2026-11/jpg-vs-png-vs-webp-inline.webp", alt: "Visual explanation of JPG vs PNG vs WebP: Which Image Format Should You Use?", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
+      { type: "heading", text: "A practical format decision" },
+      { type: "paragraph", text: "Use JPEG for photographic images when broad compatibility matters and transparency is unnecessary. Use PNG for screenshots, interface captures, logos, and graphics with crisp edges or transparency when exact pixels matter. Use WebP when you want a flexible web delivery format: it supports lossy and lossless encoding, alpha transparency, and animation. AVIF can be even smaller for some images, but encoding time and support in older editing or publishing systems should be tested." },
+      { type: "list", items: ["Photographs: compare JPEG, WebP lossy, and AVIF at the same pixel dimensions.", "Logos and transparent graphics: compare PNG with lossless WebP; inspect edge halos against both light and dark backgrounds.", "Screenshots and text: prefer lossless output unless a lossy version remains clearly readable at actual display size.", "Animation: test animated WebP or AVIF against the formats accepted by your publishing platform."] },
+      { type: "heading", text: "Run a fair comparison" },
+      { type: "paragraph", text: "Do not compare files that have different dimensions or different crops. Export each candidate from the same master, at the same pixel width and height. Record the file size, then inspect the same crop at 100% zoom and at the size visitors will actually see. Look closely at small text, hair, foliage, gradients, and semi-transparent edges; these reveal different compression weaknesses." },
+      { type: "list", items: ["Keep the original master untouched.", "Use the same color profile and resize settings for every candidate.", "Compare both visual quality and destination compatibility, not file size alone."] },
+      { type: "heading", text: "Common mistakes" },
+      { type: "paragraph", text: "A smaller file is not automatically a better export. Repeatedly opening and saving a lossy JPEG can accumulate artifacts. Converting a transparent PNG to JPEG requires choosing a background because JPEG has no alpha channel. A CMS may also re-encode uploads, so verify the file that is actually delivered rather than assuming the uploaded bytes are served unchanged." },
+      { type: "heading", text: "A worked example: exporting a product image" },
+      { type: "paragraph", text: "Suppose a store page displays a product photo at 900 pixels wide. Export a JPEG and a WebP from the same original at 900 pixels, compare the fabric texture and product edges, and confirm the content system accepts WebP. For a transparent product cut-out, compare PNG with lossless WebP instead; a JPEG would require a background. Keep the master and record the chosen format so future product images use a consistent workflow." },
+      { type: "list", items: ["Do not compare a 900-pixel WebP with a 2000-pixel JPEG.", "Check the real deployed image URL after the CMS has processed it."] },
+      { type: "callout", text: "Quick rule: photo → JPEG/WebP/AVIF; transparent logo or crisp screenshot → PNG or lossless WebP; animation → a format explicitly supported by the target platform." },
+      { type: "resource", label: "MDN image file type and format guide", url: "https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Image_types" }
     ],
   },
   {
     slug: "how-image-compression-works",
     title: "How Image Compression Works: Lossy vs Lossless",
     description:
-      "What actually happens when you compress an image — how lossy and lossless algorithms trade detail for file size, with a visible quality comparison.",
+      "Understand lossy and lossless compression, common image artifacts, and how to compare exports without relying on a universal quality setting.",
     category: "Compression",
     coverDiagram: "compression-flow",
-    coverImage: "/guides/how-image-compression-works-cover.webp",
-    readingTimeMin: 8,
+    coverImage: "/guides/unique-2026-11/how-image-compression-works-cover.webp",
+    readingTimeMin: 3,
     relatedToolSlugs: ["image-compressor", "compress-image-to-kb"],
     publishedAt: "2025-01-15",
     updatedAt: "2026-11-16",
     body: [
-      {
-        type: "paragraph",
-        text: "Compression is the reason a 12-megapixel photo can be a 3 MB file instead of a 36 MB one. Every image format you use — JPG, PNG, WebP, GIF — applies some form of compression. Understanding the two families, lossy and lossless, tells you why re-saving a JPG degrades it, why PNGs of photos are huge, and where the visible artifacts in a heavily compressed image come from.",
-      },
-      {
-        type: "heading",
-        text: "Why images compress so well",
-      },
-      {
-        type: "paragraph",
-        text: "Raw image data is highly redundant. A blue sky is millions of nearly-identical blue pixels in a row; a gradient is a predictable ramp. Compression replaces that redundancy with a compact description — a run of identical pixels becomes \"300 blue pixels,\" a ramp becomes a slope. The more predictable the image, the more it compresses. A noisy photograph compresses far less than a flat-color logo.",
-      },
-      {
-        type: "image",
-        src: "/guides/compression-artifacts.webp",
-        alt: "A three-panel illustration showing a clean source image, block artifacts, and ringing halos caused by lossy compression.",
-        width: 1200,
-        height: 675,
-        caption:
-          "Blocking creates visible square boundaries; ringing creates halos near sharp edges. The severity depends on the image and compression settings.",
-      },
-      {
-        type: "heading",
-        text: "Lossless compression",
-      },
-      {
-        type: "paragraph",
-        text: "Lossless compression is reversible: decoding reconstructs the same pixel values, with no image detail discarded by the compression step. PNG uses filtering followed by DEFLATE compression; WebP lossless uses its own prediction, color transform, and entropy-coding stages. Savings vary greatly with the image — flat graphics often compress well, while noisy photographs may not. Use lossless when exact pixel values matter, and preserve the original file separately when provenance or evidentiary integrity matters.",
-      },
-      {
-        type: "heading",
-        text: "Lossy compression",
-      },
-      {
-        type: "paragraph",
-        text: "Lossy compression trades fidelity for size. JPG and WebP-lossy transform the image into frequency components (a block-based discrete cosine transform for JPG), then quantize those components — rounding high-frequency detail to zero, because the eye is less sensitive to it. The discarded detail cannot be recovered. The reward can be dramatic, but there is no fixed size ratio: the result depends on image dimensions, texture, encoder, chroma settings, and the source format. A quality value of 80 is only an encoder-specific starting point, not a promise of a particular file size or visual result.",
-      },
-      {
-        type: "image",
-        src: "/guides/quality-comparison.png",
-        alt: "The same illustrated landscape shown at high, medium, and low compression quality, with progressively more visible artifacts.",
-        width: 1200,
-        height: 400,
-        caption:
-          "The same scene at three illustrative quality levels. Lower settings retain less detail and can introduce visible blocking; actual results vary by encoder and image content.",
-      },
-      {
-        type: "heading",
-        text: "Reading the artifacts",
-      },
-      {
-        type: "paragraph",
-        text: "Common artifacts in an over-compressed JPG include blocking (visible square boundaries), ringing (halos along sharp edges, sometimes called mosquito noise), and color bleeding or loss of chroma detail. Which appears first depends on the image and encoder settings. Once detail has been discarded, re-saving at a higher quality cannot restore it.",
-      },
-      {
-        type: "callout",
-        text: "Start around 75–85 for a typical JPEG or WebP photograph, then compare the exported result at the size people will actually view it. Treat the slider as an encoder-specific setting, not a universal quality percentage. Fine hair, foliage, text, gradients, and faces may need a higher setting; a small background image may tolerate less.",
-      },
-      {
-        type: "heading",
-        text: "When to use each",
-      },
-      {
-        type: "list",
-        items: [
-          "Photographs for the web: start with lossy JPEG or WebP, then choose quality by visually inspecting the export and its actual file size.",
-          "Logos, icons, screenshots, text: lossless (PNG or WebP-lossless).",
-          "When a platform enforces a hard size cap: lossy, dialing quality down until you fit (the Compress to KB tool automates this search).",
-          "When you will edit the image again later: keep a lossless master and export lossy copies from it — never re-compress a JPG.",
-        ],
-      },
-      {
-        type: "heading",
-        text: 'A reliable compression test',
-      },
-      {
-        type: "list",
-        items: [
-          'Duplicate the source before experimenting; lossy exports cannot restore discarded detail.',
-          'Export at two or three quality levels and record both file size and visible defects.',
-          'Compare at native size and at the size the image will appear in the page.',
-          'Do not compare a lossy photo export with a lossless file without checking whether dimensions and metadata are equal.',
-
-        ],
-      },
-      {
-        type: "resource",
-        label: 'MDN: Image file type and format guide',
-        url: 'https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Image_types',
-      },
+      { type: "paragraph", text: "Image compression reduces the bytes needed to store or transmit an image. It does not always reduce pixel dimensions, and it does not always preserve every pixel. Understanding that distinction explains why a flat logo can compress differently from a noisy photograph and why an aggressively compressed image may show blocks, halos, or smeared texture." },
+      { type: "image", src: "/guides/unique-2026-11/how-image-compression-works-inline.webp", alt: "Visual explanation of How Image Compression Works: Lossy vs Lossless", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
+      { type: "heading", text: "Why some images compress more easily" },
+      { type: "paragraph", text: "Images contain patterns and redundancy. Large areas of similar color, repeated shapes, and smooth gradients are often easier to encode than sensor noise, fine foliage, hair, or film grain. A photograph with lots of texture may remain relatively large even when the encoder is working correctly. File size is therefore a property of the image, format, encoder, dimensions, and settings together." },
+      { type: "list", items: ["Flat illustration: often responds well to palette, prediction, and lossless techniques.", "Photograph: often benefits from perceptual lossy compression.", "Screenshot with text: sharp edges make visible artifacts easier to notice."] },
+      { type: "heading", text: "Lossless versus lossy" },
+      { type: "paragraph", text: "Lossless compression reconstructs the same pixel values after decoding. PNG is a familiar lossless format; WebP also has a lossless mode. Lossy compression discards information to save more space. JPEG and lossy WebP are common examples. Lossy does not mean unusable: a carefully encoded delivery copy can look very close to the master, but the discarded information cannot be recovered by increasing quality later." },
+      { type: "list", items: ["Choose lossless for diagrams, UI screenshots, line art, and files that will be edited again.", "Choose lossy for many web photographs when a visual inspection confirms acceptable quality.", "Keep a high-quality master and create delivery copies for each destination."] },
+      { type: "heading", text: "Recognize compression artifacts" },
+      { type: "paragraph", text: "Block boundaries can appear in smooth areas; ringing creates light or dark halos near high-contrast edges; banding turns a smooth gradient into visible steps; texture loss makes hair, grass, and fabric look waxy. These artifacts become more obvious after repeated re-encoding or when a small image is enlarged." },
+      { type: "list", items: ["Inspect text, diagonals, skin, foliage, and gradients at 100%.", "Compare at normal viewing size as well; pixel peeping alone can overstate practical differences.", "If artifacts remain visible, raise quality, change format, or reduce dimensions less aggressively."] },
+      { type: "heading", text: "A repeatable compression workflow" },
+      { type: "paragraph", text: "First resize to the largest dimensions actually needed. Then choose a format suited to the content. Export two or three quality candidates rather than assuming a single quality number will work for every image. Compare their visual appearance and byte size, then verify the output in the target browser or application." },
+      { type: "heading", text: "A simple experiment you can repeat" },
+      { type: "paragraph", text: "Choose one photograph and one screenshot. Export each as PNG, JPEG, and WebP where supported. Record pixel dimensions and byte size, then compare the same crop. You will usually see that the photograph tolerates lossy compression better than the screenshot’s small text and sharp UI edges. The experiment is more useful than memorizing a “best” quality number because it reveals how your own content behaves with your encoder." },
+      { type: "list", items: ["Keep the source file unchanged between exports.", "Use the same dimensions and color profile for each comparison.", "Record both file size and visible defects."] },
+      { type: "callout", text: "Compression quality values are encoder-specific. A setting of 80 in one tool is not guaranteed to match 80 in another, and it does not imply a fixed file-size reduction." },
+      { type: "resource", label: "MDN image formats", url: "https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Image_types" }
     ],
   },
   {
     slug: "exif-orientation-explained",
     title: "Why Your Phone Photos Are Sideways: EXIF Orientation Explained",
     description:
-      "Phone cameras embed an orientation tag in EXIF metadata. Here is why some apps honor it and some do not — and how to fix sideways photos for good.",
+      "Learn how EXIF orientation tags work, why photos appear sideways in some apps, and how to normalize pixels safely in an image pipeline.",
     category: "Metadata",
     coverDiagram: "exif-rotation",
-    coverImage: "/guides/exif-orientation-explained-cover.webp",
-    readingTimeMin: 6,
+    coverImage: "/guides/unique-2026-11/exif-orientation-explained-cover.webp",
+    readingTimeMin: 3,
     relatedToolSlugs: ["rotate-image"],
     publishedAt: "2025-01-18",
     updatedAt: "2026-11-16",
     body: [
-      {
-        type: "paragraph",
-        text: "You take a photo with your phone, email it to a colleague, and on their desktop it opens sideways. The photo is not broken — it carries an instruction the sender honored and the receiver ignored. That instruction is the EXIF orientation tag, and understanding it is the difference between images that display consistently everywhere and images that mysteriously rotate.",
-      },
-      {
-        type: "heading",
-        text: "What EXIF orientation is",
-      },
-      {
-        type: "paragraph",
-        text: "EXIF (Exchangeable Image File Format) is a block of metadata embedded in JPEG and TIFF files by the camera. One of its fields, Orientation (tag 0x0112), is an integer from 1 to 8 that tells the viewer how to rotate or mirror the image so it displays the way the photographer saw it. A value of 1 means \"no rotation needed\"; values 3, 6, and 8 mean rotate 180°, 90° clockwise, and 90° counter-clockwise respectively; the others add mirroring.",
-      },
-      {
-        type: "image",
-        src: "/guides/exif-orientation-explained-inline.webp",
-        alt: "A phone photo displayed sideways in one viewer and upright in another",
-        width: 1200,
-        height: 1200,
-        caption:
-          "The same photo shown sideways (viewer ignoring EXIF) and upright (viewer honoring the orientation tag).",
-      },
-      {
-        type: "heading",
-        text: "Why phones write orientation tags",
-      },
-      {
-        type: "paragraph",
-        text: "A phone's camera sensor is mounted in a fixed orientation relative to the device. When you hold the phone in landscape, the sensor is rotated 90° relative to how you are viewing the scene. Rotating the actual pixels at capture time is expensive (a full re-encode per frame), so most phones instead capture the raw sensor data and write an Orientation tag telling the viewer to rotate it on display. The bytes are stored sideways; the tag corrects them.",
-      },
-      {
-        type: "image",
-        src: "/guides/exif-orientation-demo.png",
-        alt: "The same photo shown two ways: left as the raw stored pixels carrying EXIF orientation value 6 (rotated 90 degrees), right as it appears when a viewer honors the tag (upright).",
-        width: 800,
-        height: 400,
-        caption:
-          "The same JPEG file. Left: the raw stored pixels (rotated). Right: how it appears when the viewer honors the EXIF orientation tag of 6.",
-      },
-      {
-        type: "heading",
-        text: "Why some apps show it sideways",
-      },
-      {
-        type: "paragraph",
-        text: "Displaying an EXIF-rotated image correctly requires the viewer to read the tag and apply the transform before rendering. Most modern operating systems, browsers, and photo apps do this. But some older image viewers, many email clients, and a lot of server-side image processing pipelines do not — they render the raw stored pixels and assume Orientation is 1. That is the sideways photo. The image is not corrupt; the consumer is non-compliant.",
-      },
-      {
-        type: "callout",
-        text: "Re-saving a rotated photo bakes the orientation into the actual pixels and resets the tag to 1. The image then displays correctly everywhere — even in viewers that ignore EXIF. This is the most reliable fix before sharing.",
-      },
-      {
-        type: "heading",
-        text: "How to fix it",
-      },
-      {
-        type: "list",
-        items: [
-          "If the photo looks correct on your phone but sideways elsewhere: re-save it after rotating in an editor that honors EXIF, which writes the corrected pixels and a tag of 1.",
-          "If the photo looks sideways everywhere: rotate it by the needed 90° step and re-save. The Rotate Image tool does this losslessly for 90° increments on supported formats.",
-          "If you are processing images on a server: read the EXIF orientation and apply the transform before resizing or re-encoding, or every derivative will be sideways.",
-          "If you want to strip metadata for privacy: do it after baking the orientation, or you will lose the rotation instruction along with the other tags.",
-        ],
-      },
-      {
-        type: "heading",
-        text: 'Before uploading a rotated photo',
-      },
-      {
-        type: "list",
-        items: [
-          'Open the file in at least one viewer that reads EXIF orientation correctly.',
-          'If an image-processing pipeline ignores orientation, rotate the pixel data and normalize the orientation tag before creating thumbnails.',
-          'After export, reopen the result in a second viewer to check that it is upright.',
-          'Keep a copy of the original if downstream systems need the original camera metadata.',
-
-        ],
-      },
+      { type: "paragraph", text: "A phone photo can look upright in the gallery but sideways in a third-party app because the pixel matrix and the orientation instruction are separate pieces of information. Many cameras store the pixels in one orientation and add an EXIF Orientation tag telling compatible software how to display them." },
+      { type: "image", src: "/guides/unique-2026-11/exif-orientation-explained-inline.webp", alt: "Visual explanation of Why Your Phone Photos Are Sideways: EXIF Orientation Explained", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
+      { type: "heading", text: "What the orientation tag does" },
+      { type: "paragraph", text: "EXIF Orientation can describe rotations and mirrored transforms. Values 1–8 cover the normal orientation, horizontal or vertical mirroring, 180-degree rotation, and 90-degree rotations combined with mirroring. A viewer that reads the tag displays the intended result; a pipeline that ignores it may show the raw pixel arrangement instead." },
+      { type: "list", items: ["1: normal orientation.", "3: rotate 180 degrees.", "6: rotate 90 degrees clockwise.", "8: rotate 90 degrees counter-clockwise.", "2, 4, 5, and 7 include mirrored transforms; do not treat them as simple rotations."] },
+      { type: "heading", text: "Why apps disagree" },
+      { type: "paragraph", text: "Different image libraries, upload services, browsers, and document tools may normalize orientation at different stages. One system may honor the tag while another strips metadata without physically rotating the pixels. The result can be a correct preview but a sideways downloaded file, or a thumbnail that disagrees with the full image." },
+      { type: "list", items: ["Test the original file in more than one viewer.", "Check whether the processing pipeline auto-orients before resizing or generating thumbnails.", "After normalization, remove or reset the old orientation tag so it is not applied a second time."] },
+      { type: "heading", text: "How to fix an incorrectly displayed photo" },
+      { type: "paragraph", text: "The reliable fix is to apply the orientation transform to the pixels, then save a normalized image with orientation set to normal or with the tag removed. Merely deleting the EXIF tag is not enough if the pixels were never rotated. Keep a copy of the original before modifying it." },
+      { type: "list", items: ["Open the original in a tool that reads EXIF orientation.", "Export or normalize the image so the pixel data itself is upright.", "Reopen the exported file in a second viewer and inspect both portrait and landscape dimensions."] },
+      { type: "heading", text: "A developer checklist for upload pipelines" },
+      { type: "paragraph", text: "Normalize orientation before generating thumbnails, previews, or resized variants. If a pipeline strips metadata first, it may remove the only instruction that tells a viewer how to rotate the pixels. Store a normalized output with an upright pixel matrix, then ensure the orientation metadata is absent or set to normal. Test all eight EXIF orientations, not only the common portrait-phone case." },
+      { type: "list", items: ["Include mirrored orientations 2, 4, 5, and 7 in automated fixtures.", "Compare the thumbnail and full-size output after processing.", "Avoid applying the transform twice when an upstream service already normalized the image."] },
+      { type: "callout", text: "Do not confuse “remove metadata” with “fix orientation”. Correct orientation requires transforming pixels before removing or resetting the orientation instruction." },
+      { type: "resource", label: "ExifTool: EXIF tag reference", url: "https://exiftool.org/TagNames/EXIF.html" }
     ],
   },
   {
     slug: "social-media-aspect-ratios",
     title: "Aspect Ratios for Social Media: Instagram, Facebook, X, and LinkedIn",
     description:
-      "Common image dimensions and aspect-ratio starting points for major social platforms — and how to crop without distortion.",
+      "Choose image ratios for feeds, stories, banners, and video covers. Learn safe areas, crop behavior, and how to maintain placement-specific presets.",
     category: "Editing",
     coverDiagram: "aspect-ratio-boxes",
-    coverImage: "/guides/social-media-aspect-ratios-cover.webp",
-    readingTimeMin: 6,
+    coverImage: "/guides/unique-2026-11/social-media-aspect-ratios-cover.webp",
+    readingTimeMin: 3,
     relatedToolSlugs: ["image-cropper", "image-resizer"],
     publishedAt: "2025-01-20",
     updatedAt: "2026-11-16",
     body: [
-      {
-        type: "paragraph",
-        text: "Every social platform displays images inside frames that vary by placement: feed posts, stories, reels, profile photos, and banners do not share one universal size. Uploading a mismatched ratio can trigger cropping or padding, sometimes cutting off a face or headline. The examples below are practical starting points, not guaranteed current platform limits. The app's preset registry is marked as last reviewed in January 2025, so treat its pixel values as legacy recommendations until they are re-verified. Check the platform's latest creator guidance and preview the crop before publishing, because supported ratios and interface safe areas change.",
-      },
-      {
-        type: "heading",
-        text: "Why aspect ratios matter",
-      },
-      {
-        type: "paragraph",
-        text: "Aspect ratio is the relationship between width and height, independent of pixel count. A 1080×1080 image and a 600×600 image are both 1:1. Platforms care about the ratio because their layouts are built around it — a feed card, a cover photo, a story — and they will crop, letterbox, or stretch any image that does not match. Cropping to the target ratio before uploading lets you control which part is kept.",
-      },
-      {
-        type: "image",
-        src: "/guides/social-media-aspect-ratios-inline.webp",
-        alt: "One photograph cropped into square, vertical, and wide social media frames",
-        width: 1200,
-        height: 1200,
-        caption:
-          "One source image cropped to a square, a tall story, and a wide banner — each a different aspect ratio.",
-      },
-      {
-        type: "heading",
-        text: "Instagram",
-      },
-      {
-        type: "list",
-        items: [
-          "Feed square: 1:1 (1080×1080). The classic, fills the feed card edge to edge.",
-          "Feed portrait: 4:5 (1080×1350). The tallest ratio Instagram shows in-feed without cropping — best for product shots and posters.",
-          "Feed landscape: 1.91:1 (1080×566). Matches the link-preview ratio; useful for cross-posting.",
-          "Story / Reel cover: 9:16 (1080×1920). Full-screen vertical.",
-          "Profile photo: 1:1, displayed small — keep the subject centered.",
-        ],
-      },
-      {
-        type: "heading",
-        text: "Facebook",
-      },
-      {
-        type: "list",
-        items: [
-          "Feed image: 1.91:1 (1200×630) for shared links; 1:1 (1080×1080) for standalone photo posts.",
-          "Cover photo: 16:9 (820×462 on mobile, 820×312 safe zone). Keep critical content in the center horizontal band.",
-          "Story: 9:16 (1080×1920).",
-          "Event cover: 1.91:1 (1920×1005).",
-        ],
-      },
-      {
-        type: "heading",
-        text: "X (Twitter)",
-      },
-      {
-        type: "list",
-        items: [
-          "In-feed image: 16:9 (1600×900) for a single large image; 1:1 for a grid of up to four.",
-          "Link card: 1.91:1 (1200×628). The preview image for shared URLs.",
-          "Header: 3:1 (1500×500). Very wide — design for the center to survive cropping on mobile.",
-        ],
-      },
-      {
-        type: "heading",
-        text: "LinkedIn",
-      },
-      {
-        type: "list",
-        items: [
-          "Shared image post: 1.91:1 (1200×627). Same ratio as the link card.",
-          "Link preview: 1.91:1 (1200×627).",
-          "Cover photo: 4:1 (1584×396). Extremely wide; keep text in the central third.",
-          "Profile photo: 1:1, displayed as a circle — keep the subject centered.",
-        ],
-      },
-      {
-        type: "callout",
-        text: "Always crop to the target ratio before uploading. Platforms that auto-crop optimize for the center of the image, which is rarely where you want it. A fixed-ratio crop tool lets you position the subject before the platform gets to it.",
-      },
-      {
-        type: "resource",
-        label: "X Help: Photo aspect ratios and posting guidance",
-        url: "https://help.x.com/en/using-x/posting-gifs-and-pictures",
-      },
-      {
-        type: "resource",
-        label: "LinkedIn Help: Photo requirements for posts",
-        url: "https://www.linkedin.com/help/linkedin/answer/a527229",
-      },
-      {
-        type: "heading",
-        text: "Cropping without distortion",
-      },
-      {
-        type: "paragraph",
-        text: "Cropping changes the ratio by removing pixels from the edges; it does not stretch the content. Resizing to new dimensions without changing the ratio is the other safe operation. What you must never do is resize an image to a different ratio — that stretches it and makes circles into ovals. The correct flow is: crop to the target ratio first, then resize the cropped image to the platform's pixel dimensions.",
-      },
-      {
-        type: "heading",
-        text: 'A platform-safe export workflow',
-      },
-      {
-        type: "list",
-        items: [
-          'Start from the platform preset that matches the post type, not just the platform name; Stories, Reels, feed posts, and profile banners differ.',
-          'Keep faces, logos, and essential text away from edges and interface overlays.',
-          'Preview the crop on a phone-sized canvas before publishing.',
-          'Recheck the platform help page before a campaign because recommended dimensions and UI safe areas change.',
-
-        ],
-      },
+      { type: "paragraph", text: "Social platforms crop and display images differently across feeds, profiles, stories, ads, and devices. A pixel size that works for one placement may be cropped in another. The safest workflow is to choose the exact placement first, then design for its aspect ratio and preview the crop before publishing." },
+      { type: "image", src: "/guides/unique-2026-11/social-media-aspect-ratios-inline.webp", alt: "Visual explanation of Aspect Ratios for Social Media: Instagram, Facebook, X, and LinkedIn", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
+      { type: "heading", text: "Ratio is not the same as pixel size" },
+      { type: "paragraph", text: "Aspect ratio describes the relationship between width and height: 1:1 is square, 4:5 is portrait, and 16:9 is landscape. Pixel dimensions describe the actual resolution, such as 1080 × 1350. Two images can share a ratio but have different sharpness because their pixel dimensions differ." },
+      { type: "list", items: ["Square: useful for profile tiles and some feed placements.", "Portrait: uses more vertical feed space on many mobile layouts.", "Landscape: common for video covers, link previews, and wide banners."] },
+      { type: "heading", text: "Design for the placement" },
+      { type: "paragraph", text: "Before exporting, identify whether the asset is for a feed post, story, reel cover, profile header, or advertisement. Keep important text, faces, logos, and calls to action away from edges because interfaces may overlay controls or crop the preview. Do not assume that the preview shown in a design tool matches every device." },
+      { type: "list", items: ["Create a separate artboard for each placement rather than stretching one image into every ratio.", "Keep essential content inside a generous central safe area.", "Preview on a phone-sized viewport and check the actual platform upload preview."] },
+      { type: "heading", text: "Avoid the usual export problems" },
+      { type: "paragraph", text: "Stretching an image to a new ratio distorts faces and logos. Using “fill” may crop content; using “fit” may add empty bars. Decide which trade-off is acceptable, then reposition the crop manually. Platform specifications change, so treat preset dimensions as a starting point and recheck official guidance when a campaign launches." },
+      { type: "heading", text: "Build a reusable publishing template" },
+      { type: "paragraph", text: "Create a small preset library around actual placements rather than platform names alone. A platform may have several placements with different crops, and paid placements may have different requirements from organic posts. Store the ratio, pixel dimensions, file constraints, safe area, and the date you last checked the official specification. When a platform changes its interface, update the preset and re-export the asset instead of stretching an old image." },
+      { type: "list", items: ["Name each preset by placement, such as feed, story, profile header, or video cover.", "Keep source artwork in layers so text and subjects can be repositioned.", "Preview both the platform upload screen and the final mobile presentation."] },
+      { type: "callout", text: "Use the exact destination placement as the source of truth. A generic “social media size” is not a reliable specification." },
+      { type: "resource", label: "Meta Business Help Center", url: "https://www.facebook.com/business/help" }
     ],
   },
   {
     slug: "image-resolution-ppi-dpi",
     title: "Image Resolution, PPI, and DPI Explained",
     description:
-      "What resolution really means, the difference between PPI (image pixel density) and printer DPI, and why a 300-PPI label does not automatically mean more image detail.",
+      "Understand pixel dimensions, PPI, and printer DPI, then calculate print size without confusing metadata changes with added image detail.",
     category: "Resolution",
     coverDiagram: "ppi-vs-dpi",
-    coverImage: "/guides/image-resolution-ppi-dpi-cover.webp",
-    readingTimeMin: 7,
+    coverImage: "/guides/unique-2026-11/image-resolution-ppi-dpi-cover.webp",
+    readingTimeMin: 3,
     relatedToolSlugs: ["image-resizer"],
     publishedAt: "2025-01-22",
     updatedAt: "2026-11-16",
     body: [
-      {
-        type: "paragraph",
-        text: "Resolution is one of the most misunderstood image properties. People talk about a photo being 'high resolution' or 'low resolution' without saying what they actually mean — pixel dimensions, pixels per inch, or print size. The three are related but not the same, and confusing them leads to files that print blurry or web pages that load slowly for no reason.",
-      },
-      { type: "heading", text: "Pixel dimensions are the real resolution" },
-      {
-        type: "paragraph",
-        text: "An image file stores a grid of pixels. A 4000×3000 photo has twelve million pixels regardless of any other setting. That grid — the count of pixels wide by tall — is the only thing that determines how much detail the file actually holds. Everything else is about how you choose to display or print that grid.",
-      },
-      { type: "heading", text: "PPI is pixel density" },
-      {
-        type: "paragraph",
-        text: "Pixels per inch (PPI) describes how many image pixels are assigned to each inch when a print or layout is sized. A 4000×3000 image at 300 PPI corresponds to about 13.3×10 inches; at 72 PPI it corresponds to about 55.6×41.7 inches. The pixel grid has not changed — only the physical size implied by the density metadata has changed. On screens, CSS dimensions and device pixel ratio usually matter more than a file's PPI tag.",
-      },
-      {
-        type: "image",
-        src: "/guides/image-resolution-ppi-dpi-inline.webp",
-        alt: "The same image at high resolution (sharp) and low resolution (blurry) at the same display size",
-        width: 1200,
-        height: 1200,
-        caption:
-          "High resolution stays sharp at large display sizes; low resolution blurs. Pixel count is the real resolution.",
-      },
-      { type: "heading", text: "DPI is output density" },
-      {
-        type: "paragraph",
-        text: "Dots per inch (DPI) describes printer output: how densely a printer places physical ink or toner dots. It is not the same as image PPI; a printer may use multiple ink dots to reproduce one image pixel. Printer drivers and print shops translate image pixels into device dots, so ask the print provider for its recommended image PPI rather than treating DPI and PPI as interchangeable.",
-      },
-      { type: "heading", text: "Common targets" },
-      {
-        type: "list",
-        items: [
-          "Web and app screens: do not target a fixed PPI value. Serve enough pixel dimensions for the CSS display size and the device pixel ratio.",
-          "Retina and high-DPI screens: export at 2× (or 3×) the display dimensions so the image stays sharp when the screen packs more pixels per inch.",
-          "Print: 300 PPI is a common target for close-viewed photo prints, but the right value depends on print size, viewing distance, printer, and paper. Large posters are often acceptable at lower PPI.",
-        ],
-      },
-      { type: "heading", text: "Resizing changes pixels, not PPI" },
-      {
-        type: "paragraph",
-        text: "When you resize an image you change its pixel dimensions — you add or remove pixels from the grid. The PPI metadata tag may or may not update, but what matters is the new pixel count. A 4000×3000 image downsized to 800×600 has genuinely lost detail; it cannot be sharpened back into existence.",
-      },
-      {
-        type: "callout",
-        text: "Think in pixel dimensions for the web and in PPI only for print. A '300 PPI' badge on a 400-pixel-wide image is meaningless — it would print at just over an inch wide.",
-      },
-      {
-        type: "heading",
-        text: 'Calculate print size from pixels',
-      },
-      {
-        type: "list",
-        items: [
-          'Divide pixel width and height by the target PPI to estimate the physical print size in inches.',
-          'For example, 3000×2400 pixels at 300 PPI is 10×8 inches before any crop.',
-          'If the print provider requests a specific PPI, follow that specification; do not add pixels just to change a metadata label.',
-          'For web images, plan around rendered CSS size and responsive variants instead of setting 72 or 96 PPI.',
-
-        ],
-      },
+      { type: "paragraph", text: "Image resolution discussions often mix three different ideas: pixel dimensions, pixels per inch (PPI), and printer dots per inch (DPI). Separating them makes it easier to predict print size, prepare artwork, and understand why changing a resolution field does not magically add detail." },
+      { type: "image", src: "/guides/unique-2026-11/image-resolution-ppi-dpi-inline.webp", alt: "Visual explanation of Image Resolution, PPI, and DPI Explained", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
+      { type: "heading", text: "Pixels determine the available image detail" },
+      { type: "paragraph", text: "A 3000 × 2400 image contains 7.2 million pixels. Those dimensions describe the image itself. If you display it at a different physical size, the number of pixels does not change unless you resample the image. More pixels can preserve more detail, but only if the source actually contains that detail." },
+      { type: "list", items: ["Check pixel width and height before calculating print size.", "Do not use file size in megabytes as a substitute for resolution.", "Upscaling creates additional samples; it cannot reliably restore detail that was never captured."] },
+      { type: "heading", text: "PPI describes pixels per printed inch" },
+      { type: "paragraph", text: "PPI links pixel dimensions to a physical print size. A 3000-pixel-wide image printed at 300 PPI is 10 inches wide. Printed at 150 PPI, the same file is 20 inches wide. The lower PPI may still look acceptable when viewed from farther away; required density depends on viewing distance, printer, paper, and subject matter." },
+      { type: "list", items: ["Print width in inches = pixel width ÷ target PPI.", "Print height in inches = pixel height ÷ target PPI.", "300 PPI is a common high-quality print target, not a universal requirement."] },
+      { type: "heading", text: "DPI belongs to the printer" },
+      { type: "paragraph", text: "DPI describes printer output dots, not the image pixel grid. A printer may use multiple ink dots to reproduce one image pixel and may advertise a much higher DPI number than the PPI of the source artwork. They are related in a print workflow but are not interchangeable units." },
+      { type: "list", items: ["Ask the print provider for its preferred pixel dimensions or PPI.", "Changing only the metadata density field changes the nominal print size, not the pixel detail.", "Resampling changes pixel dimensions and may soften or invent detail."] },
+      { type: "heading", text: "Calculate a print size before exporting" },
+      { type: "paragraph", text: "If an image is 3600 pixels wide and the print shop requests 300 PPI, the nominal print width is 12 inches. If the shop instead recommends 150 PPI for a poster viewed from farther away, the same pixel width corresponds to 24 inches. Ask the print provider about bleed, trim, color profile, and acceptable resolution before preparing production artwork; PPI alone does not describe the entire print specification." },
+      { type: "list", items: ["Use pixel width divided by target PPI to estimate physical width.", "Include bleed dimensions when the printer requests them.", "Do not upscale just to make a metadata field show 300 PPI."] },
+      { type: "callout", text: "Example: 2400 pixels ÷ 300 PPI = 8 inches. Changing the PPI tag alone does not turn a 2400-pixel image into a sharper one." },
+      { type: "resource", label: "Adobe: image resolution and print size", url: "https://helpx.adobe.com/photoshop/using/image-size-resolution.html" }
     ],
   },
   {
     slug: "compress-images-without-losing-quality",
     title: "How to Compress Images Without Losing Quality",
     description:
-      "A practical workflow for shrinking image files while keeping them looking sharp — format choice, the quality sweet spot, resizing, and metadata.",
+      "Reduce image bytes while protecting visible detail with better dimensions, format selection, side-by-side quality checks, and a clean master workflow.",
     category: "Compression",
     coverDiagram: "quality-size-curve",
-    coverImage: "/guides/compress-images-without-losing-quality-cover.webp",
-    readingTimeMin: 7,
+    coverImage: "/guides/unique-2026-11/compress-images-without-losing-quality-cover.webp",
+    readingTimeMin: 3,
     relatedToolSlugs: ["image-compressor", "compress-image-to-kb"],
     publishedAt: "2025-01-24",
     updatedAt: "2026-11-16",
     body: [
-      {
-        type: "paragraph",
-        text: "Many web images are larger than they need to be. A phone photo can often be resized and compressed into a much smaller delivery file while remaining visually similar at its intended display size. The exact savings depend on image content, format, dimensions, and encoder settings; the goal is not to chase a fixed kilobyte number but to find the smallest file that still looks right.",
-      },
-      { type: "heading", text: "Start from the right format" },
-      {
-        type: "paragraph",
-        text: "Format choice sets the ceiling on how small a file can get. Photographs compress best as JPEG or WebP because they are designed for smooth, continuous-tone content. Graphics with flat color, sharp edges, or transparency — logos, screenshots, diagrams — compress best as PNG or WebP because lossless encoding preserves hard edges that JPEG would blur. Picking the wrong format means you either blur your logo or waste megabytes on a photo.",
-      },
-      {
-        type: "image",
-        src: "/guides/compress-images-without-losing-quality-inline.webp",
-        alt: "The image optimization workflow: format, quality, resize, strip metadata",
-        width: 1200,
-        height: 1200,
-        caption:
-          "The optimization pipeline: pick the format, dial in quality, resize to display dimensions, strip metadata.",
-      },
-      { type: "heading", text: "Find the quality sweet spot" },
-      {
-        type: "paragraph",
-        text: "For lossy formats, the quality setting controls how aggressively detail is discarded. The relationship is not linear, and the same number can produce different results in different encoders. Export two or three candidates, compare them at 100% and at their intended display size, and inspect fine edges, text, skin, foliage, and smooth gradients before choosing the smallest acceptable file.",
-      },
-      {
-        type: "image",
-        src: "/guides/quality-comparison.png",
-        alt: "The same illustrated landscape shown at high, medium, and low compression quality, with progressively more visible artifacts.",
-        width: 1200,
-        height: 400,
-        caption:
-          "Higher quality settings generally retain more detail and produce larger files. The best compromise depends on the image, encoder, and display size — inspect the exported result rather than relying on one preset.",
-      },
-      { type: "heading", text: "Resize before compressing" },
-      {
-        type: "paragraph",
-        text: "An image displayed at 800 CSS pixels wide usually does not need to be 4000 pixels wide in every delivery context. Generate an appropriately sized source (often up to 2× the CSS width for high-density screens), then let responsive image markup select the best candidate. Serving oversized pixels and letting the browser scale them down wastes bandwidth.",
-      },
-      { type: "heading", text: "Strip what you do not need" },
-      {
-        type: "list",
-        items: [
-          "Remove EXIF metadata (camera model, GPS, timestamps) unless you have a reason to keep it — it can add tens of kilobytes and leak private information.",
-          "Drop embedded color profiles if your image will only ever appear on the web in sRGB.",
-          "Strip thumbnails that duplicate the main image.",
-        ],
-      },
-      {
-        type: "callout",
-        text: "Always compress from a lossless master (PNG or the original). Repeatedly opening and re-saving a JPEG compounds artifacts — each generation loses a little more quality that you can never recover.",
-      },
-      {
-        type: "heading",
-        text: 'Quality-control checklist',
-      },
-      {
-        type: "list",
-        items: [
-          'Resize to the actual maximum display dimensions before adjusting compression quality.',
-          'Use lossless output for screenshots, diagrams, and small text when lossy artifacts are noticeable.',
-          'Compare the original and export side by side at 100% and at normal viewing size.',
-          'Keep the source master and never overwrite it with a compressed delivery file.',
-
-        ],
-      },
+      { type: "paragraph", text: "The phrase “compress without losing quality” usually means reducing file size without a visible difference at the intended viewing size. True lossless compression preserves every pixel but may save little on a photograph. Lossy compression can save much more, but it always discards information. The practical goal is to control the trade-off rather than promise zero loss." },
+      { type: "image", src: "/guides/unique-2026-11/compress-images-without-losing-quality-inline.webp", alt: "Visual explanation of How to Compress Images Without Losing Quality", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
+      { type: "heading", text: "Start with the right dimensions" },
+      { type: "paragraph", text: "Do not send a 5000-pixel image to a page that displays it at 700 pixels wide unless users need zoom or high-density variants. Resize a copy to the largest real display requirement, preserve the original, and keep the aspect ratio unless the design explicitly calls for a crop." },
+      { type: "list", items: ["Check the rendered width on desktop and mobile.", "Create separate sizes for thumbnails and full-size viewing when useful.", "Avoid repeatedly enlarging and shrinking the same export."] },
+      { type: "heading", text: "Choose a format for the content" },
+      { type: "paragraph", text: "Photographs usually tolerate carefully tuned lossy JPEG, WebP, or AVIF. Screenshots, diagrams, and text-heavy graphics often need lossless PNG or WebP to keep edges crisp. Transparent artwork needs a format with alpha. The best choice depends on the destination platform and its accepted formats." },
+      { type: "list", items: ["Photograph: test JPEG and WebP/AVIF candidates.", "Screenshot or logo: test PNG and lossless WebP.", "Transparency: verify the exported background remains transparent."] },
+      { type: "heading", text: "Compare quality instead of guessing" },
+      { type: "paragraph", text: "Export a few candidates with different encoder settings. Compare file sizes and inspect the same regions: small text, hair, edges, gradients, and texture. A quality slider is not standardized across tools, so do not assume a specific number guarantees a visual result. Use the lowest size that still passes your own visual check." },
+      { type: "list", items: ["Keep the original master.", "Compare at 100% and at the real display size.", "Reopen the exported file to verify dimensions, format, and transparency."] },
+      { type: "heading", text: "When the file is still too large" },
+      { type: "paragraph", text: "Reduce dimensions only if the destination does not need the extra pixels. Try a more efficient format if the destination accepts it. If the image contains noise or grain, expect it to resist compression. Avoid repeatedly re-encoding an already lossy file; return to the original whenever possible." },
+      { type: "heading", text: "A practical quality-control pass" },
+      { type: "paragraph", text: "Review a compressed image at two scales. At 100% zoom, look for ringing, block boundaries, banding, and smeared texture. At the intended display size, judge whether the subject still looks natural and text remains legible. If the image will be viewed on high-density screens, test a realistic device pixel ratio rather than assuming the CSS width is the full pixel requirement. Keep a separate original so you can make a new export instead of recompressing the previous one." },
+      { type: "list", items: ["Reject an export if a face, logo, or small label becomes misleading.", "Check transparency and orientation after conversion.", "Keep a note of the format and encoder settings used."] },
+      { type: "callout", text: "No lossy encoder can guarantee zero quality loss. A more honest target is “visually acceptable at the intended display size”." },
+      { type: "resource", label: "Google web.dev: optimize images", url: "https://web.dev/learn/performance/image-performance" }
     ],
   },
   {
     slug: "color-depth-explained",
     title: "Understanding Color Depth: 8-bit, 16-bit, and 24-bit",
     description:
-      "What bit depth means, the difference between 8-bit and 24-bit color, and why smooth gradients sometimes show visible bands.",
+      "Understand bits per channel versus bits per pixel, why higher bit depth helps editing, and how to recognize gradient banding.",
     category: "Color",
     coverDiagram: "bit-depth-gradient",
-    coverImage: "/guides/color-depth-explained-cover.webp",
-    readingTimeMin: 8,
+    coverImage: "/guides/unique-2026-11/color-depth-explained-cover.webp",
+    readingTimeMin: 3,
     relatedToolSlugs: ["image-converter"],
     publishedAt: "2025-01-26",
     updatedAt: "2026-11-16",
     body: [
-      {
-        type: "paragraph",
-        text: "Color depth describes how many bits are used to represent image color. Specifications may state bits per channel (such as 8-bit or 16-bit RGB) or total bits per pixel (such as 24-bit RGB or 32-bit RGBA). It helps explain why some gradients look smooth while others show visible bands, but banding can also be introduced by editing, conversion, or display limitations.",
-      },
-      { type: "heading", text: "What bit depth measures" },
-      {
-        type: "paragraph",
-        text: "Each color channel — red, green, and blue — is stored as a number. Bit depth is how many bits that number has. More bits means more possible values per channel, which means more distinct shades the image can represent. An 8-bit channel has 256 levels; three 8-bit channels combine into about 16.7 million possible colors, which is what '24-bit color' means.",
-      },
-      {
-        type: "image",
-        src: "/guides/color-depth-explained-inline.webp",
-        alt: "A sky gradient shown smooth at high bit depth and banded at low bit depth",
-        width: 1200,
-        height: 1200,
-        caption:
-          "The same sky gradient: smooth at high bit depth (top) and visibly banded at low bit depth (bottom).",
-      },
-      { type: "heading", text: "1-bit, 8-bit, and 24-bit" },
-      {
-        type: "list",
-        items: [
-          "1-bit: one bit per pixel, so two colors — pure black and white. Used for line art and scanned text.",
-          "8-bit indexed (GIF, some PNG): a palette of up to 256 colors. Fine for flat graphics, limiting for photos.",
-          "8-bit per channel (24-bit RGB): ~16.7 million colors. The default for web photos and most displays.",
-          "Higher bit depths (16-bit per channel): trillions of colors, used in photography and editing to preserve headroom through heavy adjustments.",
-        ],
-      },
-      { type: "heading", text: "Banding and why it happens" },
-      {
-        type: "paragraph",
-        text: "When a smooth gradient — a blue sky, a soft shadow — is stored at low bit depth, the available shades run out before the transition is complete. Instead of a continuous ramp, the eye sees distinct steps between one shade and the next. This is banding. It is most visible in narrow-range gradients where only a few of the available levels are used across a large area.",
-      },
-      {
-        type: "image",
-        src: "/guides/gradient-banding.png",
-        alt: "A blue gradient shown with limited color depth (visible horizontal bands) and with full color depth (smooth).",
-        width: 1200,
-        height: 400,
-        caption:
-          "Limited depth turns a smooth gradient into visible bands. Higher bit depth — or careful dithering — restores the continuous ramp.",
-      },
-      { type: "heading", text: "When bit depth matters" },
-      {
-        type: "list",
-        items: [
-          "Photography with heavy editing: 16-bit preserves smooth gradients through aggressive curves and levels adjustments.",
-          "Web delivery: 8-bit per channel is common for compatibility and file size. Higher-bit-depth source files can still be valuable during editing and may be retained in supported formats and workflows.",
-          "Flat graphics and logos: 8-bit indexed is usually enough and keeps files small.",
-        ],
-      },
-      {
-        type: "callout",
-        text: "If you see banding in a gradient you exported, the fix is rarely 'more resolution' — it is a higher bit depth in the source, or exporting with dithering so the steps are broken up into noise the eye averages away.",
-      },
-      {
-        type: "heading",
-        text: 'Read bit-depth labels correctly',
-      },
-      {
-        type: "list",
-        items: [
-          '8-bit per channel RGB means 24 bits per pixel before any alpha channel is included.',
-          'An 8-bit alpha channel adds another 8 bits per pixel, often described as 32-bit RGBA.',
-          'A 16-bit image may mean 16 bits per channel, not 16 bits for the whole RGB pixel; check the file or editor specification.',
-          'For smooth gradients, use an appropriate high-bit-depth workflow and avoid repeated conversions to 8-bit.',
-
-        ],
-      },
+      { type: "paragraph", text: "Color depth describes how many numeric values are available to represent color. Confusion arises because specifications may describe bits per channel or total bits per pixel. An “8-bit image” can mean 8 bits for each RGB channel, not only 8 bits for the entire pixel." },
+      { type: "image", src: "/guides/unique-2026-11/color-depth-explained-inline.webp", alt: "Visual explanation of Understanding Color Depth: 8-bit, 16-bit, and 24-bit", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
+      { type: "heading", text: "Bits per channel versus bits per pixel" },
+      { type: "paragraph", text: "In a typical 8-bit RGB image, red, green, and blue each have 256 possible code values. That is 8 bits per channel and 24 bits per pixel in total, allowing about 16.7 million combinations. Add an 8-bit alpha channel and the pixel uses 32 bits. A 16-bit-per-channel RGB image uses 48 bits per pixel." },
+      { type: "list", items: ["8-bit grayscale: 256 possible gray values per pixel.", "8-bit-per-channel RGB: 24 bits per pixel.", "8-bit-per-channel RGBA: 32 bits per pixel.", "16-bit-per-channel RGB: 48 bits per pixel."] },
+      { type: "heading", text: "Why more bit depth matters" },
+      { type: "paragraph", text: "Higher bit depth gives more steps between dark and bright values. This is useful when editing exposure, gradients, and color extensively because it reduces rounding and banding during processing. It does not automatically make every final image look better: the display, color workflow, file format, and export settings also matter." },
+      { type: "list", items: ["Use higher bit depth during demanding editing when the source and software support it.", "Export to the bit depth required by the delivery format and audience.", "Do not confuse bit depth with resolution; one is tonal precision, the other is spatial sampling."] },
+      { type: "heading", text: "Recognize banding" },
+      { type: "paragraph", text: "Banding appears when a smooth gradient breaks into visible stripes. It can come from limited bit depth, aggressive compression, editing operations, or display limitations. Dithering adds carefully controlled variation to make transitions appear smoother, but it does not restore missing source detail." },
+      { type: "list", items: ["Inspect large skies, studio backdrops, and subtle shadows.", "Avoid repeated low-bit-depth edits and exports.", "Keep a higher-quality working master until the final delivery step."] },
+      { type: "heading", text: "When should you use a higher bit depth?" },
+      { type: "paragraph", text: "Higher bit depth is most useful before or during substantial tonal editing. A RAW workflow, heavy exposure recovery, compositing, or smooth studio gradient may benefit from a higher-precision working representation. For a final web JPEG, the exported file may still be 8-bit per channel. That does not mean the higher-bit-depth editing was wasted: it helped avoid rounding damage before the final conversion." },
+      { type: "list", items: ["Keep a high-precision working master when future edits are likely.", "Avoid unnecessary conversions between color spaces and bit depths.", "Check the exported file in the target browser and display environment."] },
+      { type: "callout", text: "When a camera or editor says “16-bit”, check whether it means 16 bits per channel. That is very different from a 16-bit total image." },
+      { type: "resource", label: "Adobe: bit depth and color", url: "https://helpx.adobe.com/photoshop/using/bit-depth.html" }
     ],
   },
   {
     slug: "alpha-channel-transparency",
     title: "Transparency in Images: The Alpha Channel Explained",
     description:
-      "How the alpha channel works, which image formats support transparency, and when partial transparency beats a hard edge.",
+      "Learn how alpha controls opacity, which image formats support transparency, and how to prevent halos when exporting transparent graphics.",
     category: "Color",
     coverDiagram: "alpha-channel",
-    coverImage: "/guides/alpha-channel-transparency-cover.webp",
-    readingTimeMin: 6,
+    coverImage: "/guides/unique-2026-11/alpha-channel-transparency-cover.webp",
+    readingTimeMin: 3,
     relatedToolSlugs: ["image-converter", "image-cropper"],
     publishedAt: "2025-01-28",
     updatedAt: "2026-11-16",
     body: [
-      {
-        type: "paragraph",
-        text: "Transparency is what lets a logo sit cleanly on any background, a UI element cast a soft shadow, or two photos blend into a composite. It is not magic — it is a fourth channel of data stored alongside red, green, and blue. That channel is called alpha, and understanding it explains why some formats support transparency and others do not.",
-      },
-      { type: "heading", text: "What the alpha channel is" },
-      {
-        type: "paragraph",
-        text: "Every pixel in an image has red, green, and blue values that define its color. A transparent image adds a fourth value — alpha — that defines how opaque the pixel is. An alpha of 1 means fully opaque; 0 means fully transparent; anything in between is partially see-through. The alpha channel is, in effect, a grayscale image that controls visibility.",
-      },
-      {
-        type: "image",
-        src: "/guides/alpha-channel-transparency-inline.webp",
-        alt: "A logo edge with jagged one-bit transparency versus smooth eight-bit alpha",
-        width: 1200,
-        height: 1200,
-        caption:
-          "One-bit alpha leaves jagged stair-step edges; eight-bit alpha anti-aliases the edge clean.",
-      },
-      { type: "heading", text: "How formats handle alpha" },
-      {
-        type: "paragraph",
-        text: "Not every image format can store an alpha channel. PNG and WebP support 8-bit alpha — 256 transparency levels, from fully clear to fully opaque. JPEG has no alpha channel: every pixel is opaque, so transparent areas must be flattened onto a solid background color during export. The result may look like a white box if white is the selected or default background.",
-      },
-      {
-        type: "image",
-        src: "/guides/transparency-formats.png",
-        alt: "The same image saved as PNG, JPEG, and WebP, showing which formats preserve transparency and which fill it with white.",
-        width: 1200,
-        height: 400,
-        caption:
-          "PNG and WebP keep the transparent checkerboard; JPEG fills it with solid white because it has no alpha channel.",
-      },
-      { type: "heading", text: "Partial transparency" },
-      {
-        type: "paragraph",
-        text: "Alpha is not just on or off. Partial transparency — values between 0 and 1 — is what makes anti-aliased edges look clean, soft drop shadows blend into the background, and glass effects read as translucent. A logo with a hard one-bit mask has jagged edges; the same logo with 8-bit alpha has smooth edges because the boundary pixels are partially transparent.",
-      },
-      { type: "heading", text: "When to use transparency" },
-      {
-        type: "list",
-        items: [
-          "Logos and icons that must sit on varying backgrounds.",
-          "UI elements with soft shadows, glows, or glass effects.",
-          "Composites where one image must blend into another along feathered edges.",
-        ],
-      },
-      {
-        type: "callout",
-        text: "If your image needs transparency, export as PNG or WebP — never JPEG. And if you are placing a PNG with partial transparency onto a photo, make sure the tool you use preserves alpha through the export rather than flattening it onto white.",
-      },
-      {
-        type: "heading",
-        text: 'Check transparency before delivery',
-      },
-      {
-        type: "list",
-        items: [
-          'View the image over both a light and a dark background to spot unwanted halos.',
-          'Confirm the destination format supports alpha; JPEG does not.',
-          'If exporting to JPEG, choose the intended matte/background color before flattening.',
-          'Check semi-transparent edges around hair, shadows, and antialiased text after conversion.',
-
-        ],
-      },
+      { type: "paragraph", text: "Transparency is not a color; it is an additional channel that tells a renderer how much of a pixel should show. This is why a logo can sit cleanly on different backgrounds and why saving a transparent image as JPEG often produces an unexpected solid rectangle." },
+      { type: "image", src: "/guides/unique-2026-11/alpha-channel-transparency-inline.webp", alt: "Visual explanation of Transparency in Images: The Alpha Channel Explained", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
+      { type: "heading", text: "How alpha works" },
+      { type: "paragraph", text: "An alpha value controls opacity. In a common 8-bit alpha channel, 0 means fully transparent, 255 means fully opaque, and values in between represent partial transparency. RGB stores the color components; alpha stores the coverage or opacity information used when compositing." },
+      { type: "list", items: ["Fully transparent: alpha 0.", "Fully opaque: alpha 255.", "Semi-transparent: intermediate alpha values."] },
+      { type: "heading", text: "Which formats support transparency" },
+      { type: "paragraph", text: "PNG supports alpha transparency and is widely used for logos, icons, and interface graphics. WebP and AVIF also support transparency. JPEG does not have an alpha channel. When converting a transparent source to JPEG, the transparent pixels must be composited against a chosen background color." },
+      { type: "list", items: ["Use PNG for dependable editing and broad support.", "Use lossless WebP or AVIF when the delivery pipeline supports them.", "Choose a background explicitly before exporting to JPEG."] },
+      { type: "heading", text: "Avoid halos and jagged edges" },
+      { type: "paragraph", text: "A logo may look correct on a white canvas but show a pale fringe on a dark background. This can happen when edge pixels were matted against a previous background or when alpha was interpreted incorrectly. Inspect semi-transparent edges on both light and dark backgrounds before publishing." },
+      { type: "list", items: ["Preview on at least two contrasting backgrounds.", "Avoid repeatedly converting between formats with different alpha handling.", "Keep the original transparent master and verify the exported file retains alpha."] },
+      { type: "heading", text: "Why transparent edges sometimes look wrong" },
+      { type: "paragraph", text: "A semi-transparent edge pixel can contain color blended against a previous matte, such as white. When the logo is later placed on a dark background, that old matte can appear as a pale fringe. This is not necessarily a missing alpha channel; it can be a matte or premultiplication issue in the export pipeline. Re-export from the original artwork with the intended transparency and inspect the edge pixels over contrasting backgrounds." },
+      { type: "list", items: ["Do not erase a white background by selecting white if the logo itself contains white details.", "Avoid flattening the artwork before transparency is correctly prepared.", "Check the exported asset in the actual website component."] },
+      { type: "callout", text: "A checkerboard in an editor is only a preview convention. It is not part of the image; confirm transparency by placing the export over a real background." },
+      { type: "resource", label: "MDN: image formats and transparency", url: "https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Formats/Image_types" }
     ],
   },
   {
     slug: "resizing-vs-cropping",
     title: "Resizing vs Cropping: When to Use Each",
     description:
-      "Resizing changes dimensions, cropping changes the frame. Using the wrong one stretches your image or cuts off the wrong part.",
+      "Understand resize, crop, fit, and fill; choose the right operation without stretching subjects or losing important content.",
     category: "Editing",
     coverDiagram: "resize-vs-crop",
-    coverImage: "/guides/resizing-vs-cropping-cover.webp",
-    readingTimeMin: 5,
+    coverImage: "/guides/unique-2026-11/resizing-vs-cropping-cover.webp",
+    readingTimeMin: 3,
     relatedToolSlugs: ["image-resizer", "image-cropper"],
     publishedAt: "2025-01-30",
     updatedAt: "2026-11-16",
     body: [
-      {
-        type: "paragraph",
-        text: "Resizing and cropping are the two ways to change an image's dimensions, and they are not interchangeable. Resizing stretches or shrinks the whole image; cropping cuts part of it away. Using the wrong one is how logos end up distorted and how the subject of a photo ends up missing its head after a platform crops it.",
-      },
-      { type: "heading", text: "Resizing changes dimensions" },
-      {
-        type: "paragraph",
-        text: "Resizing scales every pixel in the image up or down to hit new width and height values. The entire image is preserved — nothing is removed — but if the new dimensions have a different aspect ratio than the original, the content is stretched to fit. A circle becomes an ellipse; a square becomes a rectangle. That distortion is usually unwanted.",
-      },
-      {
-        type: "image",
-        src: "/guides/resizing-vs-cropping-inline.webp",
-        alt: "A group photo resized to a square (distorted) versus cropped to a square (edges lost)",
-        width: 1200,
-        height: 1200,
-        caption:
-          "Resized to a square, faces stretch; cropped to a square, faces stay correct but the edges are lost.",
-      },
-      { type: "heading", text: "Cropping changes the frame" },
-      {
-        type: "paragraph",
-        text: "Cropping removes pixels from the edges to produce a smaller image with a different aspect ratio. The content that remains is not stretched — its proportions are preserved. Cropping is how you turn a 4:3 photo into a 16:9 banner without distorting anyone's face, by choosing which part of the frame to keep and which to discard.",
-      },
-      {
-        type: "image",
-        src: "/guides/resize-crop-demo.png",
-        alt: "A square image with a circle: resized to 16:9 (circle distorted into an ellipse) versus cropped to 16:9 (circle stays a circle).",
-        width: 1200,
-        height: 400,
-        caption:
-          "The same source, two outcomes. Resizing to 16:9 squashes the circle; cropping to 16:9 keeps it round by discarding the top and bottom.",
-      },
-      { type: "heading", text: "When to use each" },
-      {
-        type: "list",
-        items: [
-          "Resize when you need a smaller or larger file of the same ratio — a thumbnail, a retina 2× version, a print at a different physical size.",
-          "Crop when you need a different aspect ratio — a 1:1 social avatar from a 3:2 photo, a 16:9 banner from a square.",
-          "Never resize to a different ratio. If the target ratio differs from the source, crop first, then resize.",
-        ],
-      },
-      {
-        type: "callout",
-        text: "The safe order is always: crop to the target ratio first, then resize the cropped image to the target pixel dimensions. Cropping first guarantees no distortion; resizing second guarantees the right file size.",
-      },
-      {
-        type: "heading",
-        text: 'Choose the operation in this order',
-      },
-      {
-        type: "list",
-        items: [
-          'If the full subject must remain visible, resize proportionally and accept empty space if the target ratio differs.',
-          'If the frame must fill a fixed ratio, crop first and inspect what will be cut off.',
-          'Never force width and height independently unless distortion is intentional.',
-          'For profile photos and thumbnails, preview the crop at the final display size before exporting.',
-
-        ],
-      },
+      { type: "paragraph", text: "Resizing changes the pixel dimensions of an image. Cropping removes part of the image. They solve different problems: resizing controls output size, while cropping controls framing and aspect ratio. Many bad exports happen because the two operations are treated as interchangeable." },
+      { type: "image", src: "/guides/unique-2026-11/resizing-vs-cropping-inline.webp", alt: "Visual explanation of Resizing vs Cropping: When to Use Each", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
+      { type: "heading", text: "Resize when the whole image must remain" },
+      { type: "paragraph", text: "Resizing changes width and height while preserving the composition. Keep the aspect ratio locked to avoid stretching faces, circles, and logos. Downscaling removes samples and is usually straightforward; upscaling invents or interpolates new samples and cannot guarantee recovered detail." },
+      { type: "list", items: ["Use resize for email attachments, web delivery, and platform limits.", "Lock the aspect ratio unless distortion is intentional.", "Choose a sensible output size rather than enlarging a small source unnecessarily."] },
+      { type: "heading", text: "Crop when framing matters" },
+      { type: "paragraph", text: "Cropping trims edges to emphasize a subject or fit a target ratio. It can make a portrait fit a square tile, but some of the original scene is discarded. Reposition the crop so faces, products, and text remain visible. Keep a copy of the uncropped original." },
+      { type: "list", items: ["Use crop for profile images, thumbnails, and fixed-ratio placements.", "Check the crop at the final display size.", "Leave safe margins around text and important subjects."] },
+      { type: "heading", text: "Fit versus fill" },
+      { type: "paragraph", text: "“Fit” keeps the entire image visible inside a target box and may leave empty space. “Fill” covers the box but crops excess content. Neither is universally better. Use fit when nothing may be cut off; use fill when the box must be fully covered and the crop is acceptable." },
+      { type: "list", items: ["Fit: documents, product diagrams, and uncroppable artwork.", "Fill: cards, avatars, and photo tiles with flexible framing.", "If both are unacceptable, redesign the composition for the target ratio."] },
+      { type: "heading", text: "A worked example: fitting a portrait into a square card" },
+      { type: "paragraph", text: "A portrait photo is 1200 × 1800 pixels, while the card is square. Resizing it directly to 600 × 600 would distort the person. “Fit” would preserve the full portrait but leave empty space on the sides; “fill” would crop the top and bottom or sides depending on the source ratio. The best result is usually to crop manually around the subject, then resize the cropped square to the card’s required pixel dimensions." },
+      { type: "list", items: ["Choose the crop before downscaling.", "Keep faces and important objects inside the crop boundary.", "Save the uncropped original for other placements."] },
+      { type: "callout", text: "Never stretch a 4:3 photo into a 1:1 square just to fill the box. Crop or fit it instead." },
+      { type: "resource", label: "MDN: responsive images", url: "https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images" }
     ],
   },
   {
     slug: "how-to-make-a-meme",
     title: "What Is a Meme and How to Make One",
     description:
-      "The anatomy of an image macro — top and bottom captions in Impact font — and how to make one that lands.",
+      "Create readable, well-composed memes with concise captions, mobile-first typography, responsible image sourcing, and a final publishing checklist.",
     category: "Editing",
     coverDiagram: "meme-layout",
-    coverImage: "/guides/how-to-make-a-meme-cover.webp",
-    readingTimeMin: 6,
+    coverImage: "/guides/unique-2026-11/how-to-make-a-meme-cover.webp",
+    readingTimeMin: 3,
     relatedToolSlugs: ["meme-generator"],
     publishedAt: "2025-02-01",
     updatedAt: "2026-11-16",
     body: [
-      {
-        type: "paragraph",
-        text: "An image macro — what most people call a meme — is one of the most recognizable formats on the internet: a single image with a short line of text above it and another below. The format is rigid on purpose. The constraints are what make it instantly readable and easy to remix.",
-      },
-      { type: "heading", text: "Anatomy of an image macro" },
-      {
-        type: "paragraph",
-        text: "The classic meme has three parts: a top caption that sets up the joke, an image in the middle that provides the context or reaction, and a bottom caption that delivers the punchline. The text is set in the Impact typeface, rendered in white with a heavy black outline so it stays legible over any background, centered horizontally, and in all caps.",
-      },
-      {
-        type: "image",
-        src: "/guides/how-to-make-a-meme-inline.webp",
-        alt: "Meme caption text in white Impact font with black outline over different backgrounds",
-        width: 1200,
-        height: 1200,
-        caption:
-          "White Impact text with a black outline stays legible over light, busy, and dark backgrounds alike.",
-      },
-      { type: "heading", text: "The caption style" },
-      {
-        type: "paragraph",
-        text: "Impact is the meme font not because it is beautiful but because it is unmistakable. The thick, condensed letters in white with a black outline read clearly over photographs, screenshots, and busy backgrounds alike. All caps is standard — lowercase captions break the visual shorthand and make the meme feel off. The outline is what does the legibility work; without it, white text vanishes against light areas of the image.",
-      },
-      {
-        type: "image",
-        src: "/guides/meme-sample.png",
-        alt: "A sample meme with white Impact-style top and bottom captions outlined in black over a simple scene.",
-        width: 800,
-        height: 400,
-        caption:
-          "Top sets up, bottom delivers. White Impact text with a black outline, centered, in all caps.",
-      },
-      { type: "heading", text: "Top and bottom text" },
-      {
-        type: "paragraph",
-        text: "The split is structural. The top line establishes the situation; the bottom line pays it off. 'WHEN THE IMAGE' on top and 'FINALLY LOADS' on the bottom works because the setup creates an expectation and the punchline subverts it. Memes that put the whole joke in one caption usually read as captions, not memes.",
-      },
-      { type: "heading", text: "Tips that land" },
-      {
-        type: "list",
-        items: [
-          "Keep it short. Each caption is a phrase, not a sentence — the image does half the work.",
-          "Set up on top, pay off on bottom. The structure is the joke.",
-          "Stay relatable. The best memes describe a situation the viewer has been in.",
-          "Use the font. Impact, white, outline, all caps. Departures read as wrong.",
-        ],
-      },
-      {
-        type: "callout",
-        text: "The format is older than most platforms that host it, and it survives because the constraints are tight enough that anyone can make one and recognize one instantly. The image matters, but the caption structure is what makes it a meme.",
-      },
-      {
-        type: "heading",
-        text: 'Make a meme that remains readable',
-      },
-      {
-        type: "list",
-        items: [
-          'Use an image you created, licensed, or have permission to reuse; a meme format does not automatically remove copyright restrictions.',
-          'Keep the caption short and high-contrast, with enough outline or background separation to survive busy photos.',
-          'Preview on a narrow phone screen; text that looks readable on desktop may become too small.',
-          'Add alt text that explains the joke or visual context when publishing it on an accessible page.',
-
-        ],
-      },
+      { type: "paragraph", text: "A good meme communicates one clear idea in a fraction of a second. The image, caption, and placement should work together: the visual establishes the situation, the text delivers the twist, and the layout stays readable on a phone. A template is a starting point, not a substitute for a clear joke." },
+      { type: "image", src: "/guides/unique-2026-11/how-to-make-a-meme-inline.webp", alt: "Visual explanation of What Is a Meme and How to Make One", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
+      { type: "heading", text: "Choose a template that supports the joke" },
+      { type: "paragraph", text: "Start with an image you created, own, or have permission to use. Do not assume that an image is free to reuse just because it is widely shared online. Choose a scene with enough negative space for text and a visual expression or contrast that supports the message." },
+      { type: "list", items: ["Use a clear, relevant visual rather than a busy background.", "Check the image license and any platform-specific reuse rules.", "Avoid exposing private information or targeting a private person."] },
+      { type: "heading", text: "Write for quick reading" },
+      { type: "paragraph", text: "Keep the caption short enough to scan. Use strong contrast between text and background, consistent alignment, and a font size that remains readable on a small screen. If the template uses two caption zones, keep the top and bottom lines balanced rather than filling every empty area." },
+      { type: "list", items: ["Use one main punchline; remove words that do not add meaning.", "Add a subtle outline or solid backing when text crosses a busy photo.", "Keep text away from the crop edges and interface overlays."] },
+      { type: "heading", text: "Export and check" },
+      { type: "paragraph", text: "Choose dimensions based on where the meme will be posted. Use JPEG or WebP for photographic templates and PNG when sharp text or transparency is important. Preview the exported image on a phone-sized screen; if the joke requires zooming, simplify the layout." },
+      { type: "heading", text: "A quick pre-publish checklist" },
+      { type: "paragraph", text: "Read the meme without explaining it to someone else. If the meaning is unclear, simplify the wording or choose a more direct visual. Check that text contrast meets your accessibility needs, that no important line is hidden by a mobile crop, and that the joke does not depend on disclosing private information. If the image is based on a copyrighted work, assess whether your intended use is permitted in your jurisdiction; a meme format does not automatically create a copyright exception." },
+      { type: "list", items: ["Proofread names, dates, and punctuation.", "Preview at the smallest likely feed size.", "Keep a clean source version in case the platform crops the upload."] },
+      { type: "callout", text: "Before sharing, check image rights, spelling, readability, and whether the meme reveals personal or confidential information." },
+      { type: "resource", label: "U.S. Copyright Office: Copyright basics", url: "https://www.copyright.gov/what-is-copyright/" }
     ],
   },
   {
     slug: "watermarking-your-images",
     title: "Watermarking Your Images: Visible vs Invisible",
     description:
-      "Compare visible and invisible watermarks, how to place them, and what they can and cannot do to discourage reuse or support provenance.",
+      "Compare visible and invisible watermarks, understand their limitations, and build a more reliable image-rights workflow.",
     category: "Privacy",
     coverDiagram: "watermark-types",
-    coverImage: "/guides/watermarking-your-images-cover.webp",
-    readingTimeMin: 7,
+    coverImage: "/guides/unique-2026-11/watermarking-your-images-cover.webp",
+    readingTimeMin: 3,
     relatedToolSlugs: ["watermark-image"],
     publishedAt: "2025-02-03",
     updatedAt: "2026-11-16",
     body: [
-      {
-        type: "paragraph",
-        text: "Watermarking is the practice of marking an image to signal ownership or deter unauthorized reuse. It ranges from a small logo in the corner to an invisible signature woven into the pixel data. Each approach makes a different trade-off between visibility, deterrence, and proof.",
-      },
-      { type: "heading", text: "Why watermark" },
-      {
-        type: "paragraph",
-        text: "A watermark does two jobs. The first is deterrence: a visible mark makes an image less attractive to copy and harder to pass off as someone else's. The second is provenance: if a dispute arises, a watermark — especially an invisible one — can help establish who created the image first. Most casual use is about the first; professional use is about the second.",
-      },
-      {
-        type: "image",
-        src: "/guides/watermark-strategy-options.webp",
-        alt: "A comparison of a single visible watermark and a tiled watermark, showing their different coverage and visual impact.",
-        width: 1200,
-        height: 675,
-        caption:
-          "A single mark is less intrusive but easier to crop; tiled marks cover more of the image but can interfere with viewing. Neither guarantees protection.",
-      },
-      { type: "heading", text: "Visible watermarks" },
-      {
-        type: "paragraph",
-        text: "A visible watermark is text or a logo overlaid on the image, usually semi-transparent so it identifies the owner without completely obscuring the content. The two common placements are a single mark — typically in a corner or the center — and a tiled pattern repeated across the whole image. A single mark is unobtrusive but easy to crop out; a tiled pattern is nearly impossible to remove cleanly but visibly degrades the image.",
-      },
-      {
-        type: "image",
-        src: "/guides/watermark-demo.png",
-        alt: "The same image with a single semi-transparent watermark and with a tiled diagonal watermark pattern.",
-        width: 1200,
-        height: 400,
-        caption:
-          "A single mark is unobtrusive but easier to crop; tiled marks cover more area but make the image harder to view. Neither guarantees protection.",
-      },
-      { type: "heading", text: "Placement and opacity" },
-      {
-        type: "list",
-        items: [
-          "Place the mark over the most important part of the image, not an empty corner — a corner mark is trivially cropped away.",
-          "Use enough opacity that the mark survives recompression and screenshots, but not so much that it ruins the image.",
-          "Tiled patterns cover more of the image but are visually intrusive; a single mark is cleaner but easier to crop. Neither prevents determined removal.",
-          "Include identifying info — a name, handle, or site — not just a generic logo.",
-        ],
-      },
-      { type: "heading", text: "Invisible watermarking" },
-      {
-        type: "paragraph",
-        text: "Invisible watermarking attempts to encode an identifier into image data so that specialized software can detect it later. Robustness varies widely: resizing, cropping, screenshots, filters, recompression, or deliberate attacks may damage or remove a watermark. It can be one piece of provenance evidence, but it is not guaranteed proof of authorship and should not replace retaining original files, creation records, or licensing documentation.",
-      },
-      {
-        type: "callout",
-        text: "Visible watermarks can discourage casual reuse but can be cropped or removed. Invisible watermarks may support provenance checks, but their reliability depends on the implementation and the edits applied. Neither type guarantees protection or proves ownership on its own.",
-      },
-      {
-        type: "heading",
-        text: 'Choose a watermark strategy',
-      },
-      {
-        type: "list",
-        items: [
-          'Keep an unwatermarked original in a separate archive.',
-          'Use a visible mark that identifies the creator or website; avoid placing it only in an easily cropped corner if deterrence matters.',
-          'Choose opacity and size by testing on both light and dark areas of the actual image.',
-          'Treat watermarks as friction and provenance clues, not as access control or guaranteed legal proof.',
-
-        ],
-      },
+      { type: "paragraph", text: "A watermark can identify a creator or discourage casual reuse, but it is not a reliable lock on an image. Visible marks can be cropped or covered; invisible marks can be damaged by resizing, compression, screenshots, or editing. Treat watermarking as one layer in a broader rights and publishing workflow." },
+      { type: "image", src: "/guides/unique-2026-11/watermarking-your-images-inline.webp", alt: "Visual explanation of Watermarking Your Images: Visible vs Invisible", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
+      { type: "heading", text: "Visible watermark options" },
+      { type: "paragraph", text: "A visible watermark is rendered into the pixels. A small logo near a corner is less intrusive but easier to crop out. A repeated diagonal pattern is harder to remove cleanly but can interfere with viewing. Choose the lightest treatment that still communicates ownership without hiding the subject." },
+      { type: "list", items: ["Place a small mark near a visually meaningful edge, not over critical details.", "For preview galleries, consider a repeated pattern with moderate opacity.", "Keep a clean, unwatermarked master for licensed delivery and future edits."] },
+      { type: "heading", text: "Invisible marks and metadata" },
+      { type: "paragraph", text: "Invisible watermarking embeds a signal into image data or metadata. Robustness varies by method and transformation. Metadata can be stripped, while pixel-based signals may be weakened by compression, cropping, resizing, color changes, or screenshots. Neither method should be described as tamper-proof proof of ownership." },
+      { type: "list", items: ["Preserve original files and creation records.", "Keep dated exports and licensing agreements.", "Test a watermark against the transformations your images are likely to undergo."] },
+      { type: "heading", text: "A practical protection workflow" },
+      { type: "paragraph", text: "Publish only the resolution needed for the intended preview. Keep original masters and records in controlled storage. Add visible marks when attribution or deterrence matters, and use licensing terms and takedown processes when rights are infringed. Do not rely on a watermark as the only protection." },
+      { type: "heading", text: "Choose placement based on the threat you are addressing" },
+      { type: "paragraph", text: "If your goal is attribution, a small visible logo near the subject may be enough. If your goal is to discourage reuse of preview images, a repeated watermark can raise the effort required to remove it, but it also reduces viewing quality. If your goal is to establish authorship, retain original captures, project files, dated exports, and licensing records. Different goals require different controls; no single watermark placement solves all of them." },
+      { type: "list", items: ["Do not place a watermark over a critical detail if customers need to inspect it.", "Keep a separate clean master for paying customers.", "Test the watermark after common social-platform resizing and compression."] },
+      { type: "callout", text: "Watermarks deter some casual reuse; they do not prevent copying, guarantee attribution, or prove ownership by themselves." },
+      { type: "resource", label: "W3C: metadata and image accessibility context", url: "https://www.w3.org/WAI/tutorials/images/" }
     ],
   },
   {
     slug: "blur-vs-pixelate",
     title: "Blur vs Pixelate: Protecting Privacy in Images",
     description:
-      "Compare blur, pixelation, and solid redaction — and learn which method to use when protecting genuinely sensitive information.",
+      "Compare blur, pixelation, and opaque redaction, with practical guidance for protecting sensitive information before sharing screenshots.",
     category: "Privacy",
     coverDiagram: "blur-vs-pixelate",
-    coverImage: "/guides/blur-vs-pixelate-cover.webp",
-    readingTimeMin: 6,
+    coverImage: "/guides/unique-2026-11/blur-vs-pixelate-cover.webp",
+    readingTimeMin: 3,
     relatedToolSlugs: ["blur-image", "photo-editor"],
     publishedAt: "2025-02-05",
     updatedAt: "2026-11-16",
     body: [
-      {
-        type: "paragraph",
-        text: "When you need to obscure a face, a license plate, or sensitive text in a photo, common visual effects include blur and pixelation. Both reduce visible detail, but they may leave clues that reveal more than intended. For high-risk information, a fully opaque cover is safer than relying on either effect.",
-      },
-      { type: "heading", text: "Two ways to redact" },
-      {
-        type: "paragraph",
-        text: "Both operations reduce the visible detail in a selected region. Blur averages neighboring pixels together, producing a soft, smooth smear. Pixelate replaces the region with a grid of larger blocks, each based on the pixels it covers. The visual result is different — one is soft, the other is blocky — and both can leave clues about the original content.",
-      },
-      {
-        type: "image",
-        src: "/guides/privacy-redaction-methods.webp",
-        alt: "A comparison of blur, pixelation, and an opaque solid cover, with the solid cover recommended for sensitive information.",
-        width: 1200,
-        height: 675,
-        caption:
-          "Blur and pixelation can leave clues. For passwords, IDs, and other sensitive details, use an opaque cover, flatten the export, and inspect it.",
-      },
-      { type: "heading", text: "Blur: smooth, but not a security guarantee" },
-      {
-        type: "paragraph",
-        text: "Gaussian blur replaces detail with averages of neighboring pixels. It may make text or a face harder to recognize, but it does not guarantee that the underlying information cannot be inferred, enhanced, or reconstructed. The risk depends on blur strength, source detail, context, and available tools. Do not use blur as the only protection for passwords, ID numbers, addresses, or other high-risk information.",
-      },
-      { type: "heading", text: "Pixelate: blocky, but still not secure redaction" },
-      {
-        type: "paragraph",
-        text: "Pixelation replaces groups of pixels with larger blocks, reducing visible detail. Once exported, the original pixels may not be present in the flattened image, but small blocks can still reveal shapes, character lengths, or contextual clues, and AI tools may guess missing content. Pixelation is therefore not a security guarantee; use an opaque fill for sensitive text or identifiers.",
-      },
-      {
-        type: "image",
-        src: "/guides/blur-pixelate-demo.png",
-        alt: "The same face region shown blurred (smooth) and pixelated (blocky), contrasting the two redaction methods.",
-        width: 1200,
-        height: 400,
-        caption:
-          "Blur softens detail and pixelation groups it into blocks. For sensitive information, neither is a reliable substitute for a solid opaque redaction.",
-      },
-      { type: "heading", text: "Which to choose" },
-      {
-        type: "list",
-        items: [
-          "Mild obscuring (background faces, mild privacy): blur is acceptable and less visually jarring.",
-          "Sensitive identifiers (IDs, passwords, addresses, account numbers): use a solid opaque fill rather than blur or pixelation.",
-          "Cover the whole sensitive region, including nearby labels, reflections, duplicate text, and QR codes.",
-          "Flatten the exported image and reopen it to check that no editable layer, hidden text, or unredacted copy remains.",
-        ],
-      },
-      {
-        type: "callout",
-        text: "For sensitive information, use an opaque solid cover or remove the region, then flatten and inspect the exported file. Blur and pixelation are visual effects, not security controls.",
-      },
-      {
-        type: "heading",
-        text: 'A safer redaction procedure',
-      },
-      {
-        type: "list",
-        items: [
-          'For passwords, ID numbers, addresses, QR codes, and account details, cover the entire region with an opaque solid shape.',
-          'Flatten or export a new raster file so hidden layers or editable masks are not included.',
-          'Reopen the exported file and zoom in; check edges, reflections, thumbnails, and duplicate copies for leaks.',
-          'Do not share the unredacted original alongside the redacted version.',
-
-        ],
-      },
+      { type: "paragraph", text: "Blur and pixelation make image details harder to recognize, but neither is a dependable way to hide sensitive information. A face, license plate, address, account number, or password may remain partly inferable, especially when the original region is large or the transformation is weak." },
+      { type: "image", src: "/guides/unique-2026-11/blur-vs-pixelate-inline.webp", alt: "Visual explanation of Blur vs Pixelate: Protecting Privacy in Images", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
+      { type: "heading", text: "Blur softens detail" },
+      { type: "paragraph", text: "Blur spreads neighboring pixel values across an area. It can reduce visual distraction or soften a background, but the result still contains information from the original region. Some blur patterns can be guessed or partially reconstructed, and a lightly blurred number may remain readable." },
+      { type: "list", items: ["Use blur for aesthetics, depth of field, or non-sensitive background details.", "Do not use blur as the only protection for credentials or identity data.", "Inspect the result at full resolution and at the size it will be shared."] },
+      { type: "heading", text: "Pixelation replaces detail with blocks" },
+      { type: "paragraph", text: "Pixelation downsamples a region and enlarges the reduced grid. It can obscure fine detail, but large blocks may preserve shapes, colors, and context. Small text can sometimes remain guessable, and weak pixelation is especially risky for short identifiers." },
+      { type: "list", items: ["Use pixelation only for low-risk visual masking.", "Increase block size only when the use case is non-sensitive.", "Do not assume a mosaic makes personal information anonymous."] },
+      { type: "heading", text: "Use opaque redaction for sensitive data" },
+      { type: "paragraph", text: "For passwords, account numbers, addresses, medical details, and other sensitive content, cover the region with a fully opaque solid shape or remove the region entirely. Export a flattened copy, reopen it, and verify that the hidden content is not recoverable through layers, transparency, or an unflattened source." },
+      { type: "list", items: ["Cover the complete sensitive region with an opaque fill.", "Flatten or export a new copy; do not share the editable source file.", "Reopen the exported file and inspect edges, layers, and metadata before sharing."] },
+      { type: "heading", text: "A safe redaction verification routine" },
+      { type: "paragraph", text: "After redacting a screenshot, export a flattened copy and close the editing project. Reopen the exported file in a separate viewer and zoom in around the masked area. Check that no digits, edges, reflections, or nearby context remain visible. If the document format supports layers or annotations, ensure the hidden original is not still embedded underneath the mask. When the stakes are high, create a fresh image from a cropped or redacted source rather than distributing an editable document." },
+      { type: "list", items: ["Cover the full field, including labels and nearby identifiers.", "Flatten or rasterize the final output when appropriate.", "Inspect the exact file you plan to send, not only the editor preview."] },
+      { type: "callout", text: "For sensitive information, use solid opaque redaction or remove the content. Blur and pixelation are visual effects, not security controls." },
+      { type: "resource", label: "NIST: protecting sensitive information", url: "https://csrc.nist.gov/publications" }
     ],
   },
   {
     slug: "remove-exif-metadata",
     title: "How to Remove EXIF Metadata from Photos",
     description:
-      "Strip hidden EXIF, GPS, and camera metadata from your photos before sharing — in your browser, with nothing uploaded. What gets removed, what doesn't, and how to verify it.",
+      "Find out what EXIF, GPS, IPTC, and XMP metadata can reveal, how removal affects exports, and how to verify a cleaned photo.",
     category: "Privacy",
     coverDiagram: "exif-rotation",
-    readingTimeMin: 4,
+    coverImage: "/guides/unique-2026-11/remove-exif-metadata-cover.webp",
+    readingTimeMin: 3,
     relatedToolSlugs: ["exif-remover", "exif-viewer"],
     publishedAt: "2025-01-15",
     updatedAt: "2026-11-16",
     body: [
-      {
-        type: "heading",
-        text: "Why your photos carry metadata",
-      },
-      {
-        type: "paragraph",
-        text: "Every photo from a phone or camera can carry EXIF metadata: the camera make and model, the date and time the shot was taken, exposure settings, and — most privacy-sensitive — the GPS coordinates of where the photo was taken. When you share the original file by email, messaging, or a direct upload, that metadata travels with the image.",
-      },
-      {
-        type: "callout",
-        text: "Drop the photo into the EXIF Remover. If metadata is detected, use Remove to create a fresh browser-side export; the tool parses the result again to check for remaining metadata. Nothing is uploaded.",
-      },
-      {
-        type: "heading",
-        text: "How to remove EXIF metadata",
-      },
-      {
-        type: "list",
-        items: [
-          "Open the EXIF Remover and drop in a JPG, PNG, or WebP photo (or click to pick one).",
-          "Click Remove. The tool decodes the image pixels and re-encodes them into a fresh file, leaving the metadata behind.",
-          "Download the result. The image should look similar, but JPEG and WebP are re-encoded, so compare the output if fine detail matters.",
-        ],
-      },
-      {
-        type: "heading",
-        text: "What gets removed — and what doesn't",
-      },
-      {
-        type: "paragraph",
-        text: "The tool decodes the image and re-encodes it through the browser canvas, creating a fresh output rather than copying the original metadata blocks. The GPS location, camera model, and capture timestamp should therefore not be carried into the exported copy. The trade-off: JPEG and WebP are re-encoded, so quality and file size can shift slightly. PNG can store ancillary text chunks too; if metadata privacy is important, inspect the exported file with the EXIF Viewer.",
-      },
-      {
-        type: "heading",
-        text: "Doesn't social media strip metadata already?",
-      },
-      {
-        type: "paragraph",
-        text: "Some social platforms remove or transform metadata during upload, but their behavior can vary by product, file type, and workflow and may change over time. Messaging apps, email attachments, cloud drives, and forums may preserve original files. If metadata privacy matters, inspect and clean the file before sharing rather than relying on the destination platform.",
-      },
-      {
-        type: "heading",
-        text: "Verify it worked",
-      },
-      {
-        type: "paragraph",
-        text: "Open the result in the EXIF Viewer to confirm the metadata is gone. You should see no GPS, no camera, and no capture date — only the basic properties of the re-encoded file.",
-      },
-      {
-        type: "callout",
-        text: "Privacy note: the EXIF Remover runs entirely in your browser. Your photo is never uploaded to a server, so the metadata is stripped on your device and never leaves it.",
-      },
-      {
-        type: "image",
-        src: "/guides/exif-metadata-flow.webp",
-        alt: 'A phone photo passes through a metadata-removal step; GPS pin, camera, and timestamp tags are separated from the clean image pixels.',
-        width: 1200,
-        height: 675,
-        caption: 'A practical visual summary of the workflow described in this guide.',
-      },
-      {
-        type: "heading",
-        text: 'Verify metadata removal',
-      },
-      {
-        type: "list",
-        items: [
-          'Keep the original private until you have checked the exported copy.',
-          'Inspect EXIF, GPS, IPTC, and XMP fields with a metadata viewer; different formats can store different metadata chunks.',
-          'Check the exported file itself, not only the preview shown by the editing tool.',
-          'If a workflow has legal or safety implications, use a trusted metadata inspection tool and do not assume every re-encoder removes every metadata family.',
-
-        ],
-      },
+      { type: "paragraph", text: "Photos can contain more than visible pixels. EXIF metadata may include camera and lens details, capture time, orientation, and GPS coordinates. Sharing the original file can therefore reveal context that is not obvious from the picture itself. Metadata removal is useful, but you should verify the exported file rather than assume every field has disappeared." },
+      { type: "image", src: "/guides/unique-2026-11/remove-exif-metadata-inline.webp", alt: "Visual explanation of How to Remove EXIF Metadata from Photos", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
+      { type: "heading", text: "What metadata may contain" },
+      { type: "paragraph", text: "EXIF commonly stores camera settings, timestamps, device information, and sometimes GPS coordinates. Other metadata systems such as IPTC and XMP may contain captions, creator information, rights statements, or editing history. The fields present depend on the camera, app, file format, and editing workflow." },
+      { type: "list", items: ["GPS latitude and longitude may disclose where a photo was taken.", "Capture timestamps can reveal routines or event timing.", "Creator and copyright fields may be useful and should not always be removed."] },
+      { type: "heading", text: "Remove metadata without damaging the image" },
+      { type: "paragraph", text: "A metadata-cleaning workflow should preserve the image pixels as much as possible while removing selected metadata. Some tools re-encode the image, which can change file size or quality. Others may remove only selected EXIF fields and leave IPTC or XMP data. Understand what the tool actually processes." },
+      { type: "list", items: ["Keep an untouched original if you may need the metadata later.", "Choose whether to remove all metadata or only location/device fields.", "Check whether the output format and color profile are preserved."] },
+      { type: "heading", text: "Verify the result" },
+      { type: "paragraph", text: "After export, inspect the new file with a metadata viewer or command-line metadata tool. Check GPS, timestamps, camera model, comments, and XMP/IPTC fields as appropriate. Also remember that removing metadata does not remove identifying objects visible in the image, such as a house number or reflection." },
+      { type: "heading", text: "Metadata removal is not the same as complete privacy" },
+      { type: "paragraph", text: "A cleaned photo can still identify a person through visible landmarks, badges, documents, reflections, or unique objects. A screenshot may also contain account names or browser tabs that metadata tools do not touch. If privacy matters, inspect the image content and the exported file properties. Decide whether you need to preserve copyright or creator fields before removing everything; metadata can be useful for legitimate attribution and asset management." },
+      { type: "list", items: ["Review GPS and timestamp fields in the exported copy.", "Inspect visible details and reflections in the image.", "Keep a private original when you may need provenance later."] },
+      { type: "callout", text: "Metadata removal does not anonymize the visible image. Review both the file properties and the picture itself before publishing." },
+      { type: "resource", label: "ExifTool documentation", url: "https://exiftool.org/" }
     ],
   },
   {
     slug: "make-a-favicon",
     title: "How to Make a Favicon for a Website",
     description:
-      "Create a favicon (and Apple touch icon) from a single image — the sizes you need, the formats that matter, and how to add it to your site. Runs in your browser.",
+      "Design a favicon that remains recognizable at tiny sizes, prepare common icon assets, and verify deployment and browser caching.",
     category: "Resolution",
     coverDiagram: "aspect-ratio-boxes",
-    readingTimeMin: 4,
+    coverImage: "/guides/unique-2026-11/make-a-favicon-cover.webp",
+    readingTimeMin: 3,
     relatedToolSlugs: ["favicon-generator"],
     publishedAt: "2025-01-15",
     updatedAt: "2026-11-16",
     body: [
-      {
-        type: "heading",
-        text: "What a favicon is",
-      },
-      {
-        type: "paragraph",
-        text: "A favicon is the small icon shown in the browser tab, the bookmark bar, and the shortcut on a phone home screen. It represents your site at a glance, and because it is displayed at many different sizes — from 16 pixels in a tab to 180 pixels on an iOS home screen — a single source image has to be produced at several dimensions.",
-      },
-      {
-        type: "callout",
-        text: "The fastest way: open the Favicon Generator, drop in a square image, and it creates PNG icons at 16, 32, 48, 96, 180, 192, and 512 pixels, a multi-size ICO (16/32/48), a web manifest, and an HTML snippet — all in your browser.",
-      },
-      {
-        type: "heading",
-        text: "How to make a favicon",
-      },
-      {
-        type: "list",
-        items: [
-          "Start with a square source image, ideally 512×512 or larger, with a simple design that stays legible at 16 pixels.",
-          "Open the Favicon Generator and drop in the image (PNG with a transparent background works best).",
-          "Click Generate. The tool renders each size from the source pixels.",
-          "Download the sizes and place them in your site root (or an assets folder).",
-        ],
-      },
-      {
-        type: "heading",
-        text: "Favicon sizes and formats",
-      },
-      {
-        type: "paragraph",
-        text: "The sizes that matter: 16×16 for the browser tab, 32×32 for the taskbar and shortcut on hi-DPI displays, 48×48 for the desktop shortcut, and 180×180 for the Apple touch icon used when a user adds your site to an iPhone home screen. For Android and progressive web apps, 192×192 and 512×512 are the conventions. An .ico file can bundle several sizes in one; modern browsers also accept PNG (and SVG for simple, scalable marks).",
-      },
-      {
-        type: "heading",
-        text: "Add it to your site",
-      },
-      {
-        type: "paragraph",
-        text: "Place the files in your site root and reference them in the document head. A minimal setup: a link to favicon.ico for legacy browsers, plus an apple-touch-icon link for iOS. Most platforms and frameworks (Next.js included) can also generate the full set of sizes for you from a single source icon.",
-      },
-      {
-        type: "heading",
-        text: "Source image tips",
-      },
-      {
-        type: "paragraph",
-        text: "Favicons fail when the source is too detailed: a logo that looks great at 512 pixels can become an unrecognizable smudge at 16. Use a simple, high-contrast mark, keep padding around it, and prefer a transparent PNG so the icon sits cleanly on any tab color. If your logo is wide rather than square, crop or redesign to a square mark first.",
-      },
-      {
-        type: "callout",
-        text: "The Favicon Generator runs locally in your browser. Your source image is never uploaded — every size is rendered on your device.",
-      },
-      {
-        type: "image",
-        src: "/guides/favicon-size-family.webp",
-        alt: 'A square master icon is exported into small browser tab icons and larger mobile home-screen icons.',
-        width: 1200,
-        height: 675,
-        caption: 'A practical visual summary of the workflow described in this guide.',
-      },
-      {
-        type: "heading",
-        text: 'Test the icon at real browser sizes',
-      },
-      {
-        type: "list",
-        items: [
-          'Check the 16×16 and 32×32 versions at 100% zoom; do not judge only from the 512×512 master.',
-          'Simplify fine lines and tiny lettering that disappear at tab size.',
-          'Provide the formats your target browsers and platforms require; a single PNG is not always the complete icon set.',
-          'Test the installed favicon after clearing cache because browsers may retain old icons.',
-
-        ],
-      },
+      { type: "paragraph", text: "A favicon is the small brand mark shown in browser tabs, bookmarks, and other browser surfaces. A design that looks excellent at 512 pixels can become an unreadable blob at 16 pixels. The key is to simplify the mark and test it at the actual sizes browsers use." },
+      { type: "image", src: "/guides/unique-2026-11/make-a-favicon-inline.webp", alt: "Visual explanation of How to Make a Favicon for a Website", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
+      { type: "heading", text: "Design for tiny sizes first" },
+      { type: "paragraph", text: "Use a simple silhouette, strong contrast, and minimal internal detail. Avoid long words, thin strokes, subtle gradients, and tiny gaps. If the full logo is complex, create a dedicated symbol or monogram for the favicon rather than shrinking the entire logo." },
+      { type: "list", items: ["Test at 16 × 16 and 32 × 32 pixels.", "Use a transparent background when the mark needs to sit on different browser themes.", "Check both light and dark browser surfaces."] },
+      { type: "heading", text: "Prepare the files" },
+      { type: "paragraph", text: "A common setup includes an ICO fallback and a PNG or SVG favicon. Apple touch icons and pinned app surfaces may use larger dedicated assets. The exact set depends on the browsers and devices you support; do not assume one 512-pixel file replaces every platform-specific requirement." },
+      { type: "list", items: ["Create a crisp 32 × 32 PNG and an ICO containing appropriate small sizes when needed.", "Use SVG where the target browser and publishing pipeline support it.", "Create an Apple touch icon at the size required by your current deployment guidance."] },
+      { type: "heading", text: "Add and verify the HTML references" },
+      { type: "paragraph", text: "Publish the icon files at stable paths and reference them with link elements in the document head. Then clear or bypass browser cache and test the deployed site. Favicons are cached aggressively, so an old icon may remain visible after the file has changed." },
+      { type: "list", items: ["Check that every referenced URL returns the correct content type.", "Test in more than one browser and on a mobile device.", "Use a versioned filename when you need to invalidate a cached icon."] },
+      { type: "heading", text: "A reliable deployment checklist" },
+      { type: "paragraph", text: "A favicon may continue to appear unchanged because browsers cache it separately from normal page assets. After deployment, request the exact icon URL directly, confirm that the response is an image, and test a fresh browser profile or a cache-busted path. Check the page source to confirm the intended icon links are present in the document head. If the website is behind a CDN, confirm that the CDN is serving the new asset rather than an old cached copy." },
+      { type: "list", items: ["Verify all icon paths return HTTP 200.", "Check the browser tab, bookmark, and mobile home-screen behavior separately.", "Keep filenames versioned when changing the artwork."] },
+      { type: "callout", text: "A favicon is a tiny identity mark, not a miniature full logo. Simplify the artwork before exporting." },
+      { type: "resource", label: "MDN: rel=icon", url: "https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel#icon" }
     ],
   },
   {
     slug: "reduce-image-to-100kb",
     title: "How to Reduce an Image to 100KB",
     description:
-      "Hit a target file size — 100 KB or another byte target — by searching compression quality and, when allowed, changing format. Learn when you need to resize the image first. Runs in your browser; nothing uploaded.",
+      "Get an image under a strict 100 KB target by checking dimensions, choosing an accepted format, tuning compression, and verifying exact bytes.",
     category: "Compression",
     coverDiagram: "quality-size-curve",
-    readingTimeMin: 4,
+    coverImage: "/guides/unique-2026-11/reduce-image-to-100kb-cover.webp",
+    readingTimeMin: 3,
     relatedToolSlugs: ["compress-image-to-kb", "image-compressor"],
     publishedAt: "2025-01-15",
     updatedAt: "2026-11-16",
     body: [
-      {
-        type: "heading",
-        text: "Why a target size matters",
-      },
-      {
-        type: "paragraph",
-        text: "Email attachments, web forms, and app uploads often cap image size at 100 KB or a similar limit. A photo straight from a phone can be several megabytes, far over the cap. This tool expresses its preset in 1024-byte units (100 KB = 102,400 bytes); some services use decimal kilobytes (100,000 bytes), so check the receiving service's exact limit.",
-      },
-      {
-        type: "callout",
-        text: "The fastest way: open Compress to KB, set the target (for example, 100 KB), and let the tool search compression quality. PNG input can be converted to WebP if format changes are allowed; the tool does not resize the image automatically, so reduce its dimensions first if needed.",
-      },
-      {
-        type: "heading",
-        text: "How to reduce an image to 100KB",
-      },
-      {
-        type: "list",
-        items: [
-          "Open Compress to KB and drop in the image.",
-          "Set the target size (100KB, or whatever your limit is).",
-          "Click Compress. The tool tries a range of quality and format settings to land under the target.",
-          "Download the result. If it is still over the limit, resize the image to fewer pixels and run the compression step again.",
-        ],
-      },
-      {
-        type: "heading",
-        text: "How it works",
-      },
-      {
-        type: "paragraph",
-        text: "File size depends on pixel dimensions, format, and quality. For JPEG and WebP input, the tool performs a bounded quality search in the source format. For PNG, it can re-encode as lossy WebP when format changes are allowed; that may affect transparency. It does not search image dimensions, so resize a very large image first if quality adjustment alone cannot meet the target. The tool returns the closest result when the target cannot be reached.",
-      },
-      {
-        type: "heading",
-        text: "When a target is hard to hit",
-      },
-      {
-        type: "paragraph",
-        text: "A very large source image may need to be resized down before compression — a 100 KB target may not hold a 6000-pixel-wide photo at acceptable quality. Conversely, a tiny image already under the target has nothing to shrink. If quality search cannot reach the target, reduce the pixel dimensions first, then compress again.",
-      },
-      {
-        type: "callout",
-        text: "Compress to KB runs entirely in your browser. Your image is processed locally and never uploaded.",
-      },
-      {
-        type: "image",
-        src: "/guides/target-100kb-workflow.webp",
-        alt: 'An oversized photo moves through resizing and compression controls to a file-size target under 100 kilobytes.',
-        width: 1200,
-        height: 675,
-        caption: 'A practical visual summary of the workflow described in this guide.',
-      },
-      {
-        type: "heading",
-        text: 'If the file still exceeds 100KB',
-      },
-      {
-        type: "list",
-        items: [
-          'First reduce pixel dimensions to the smallest size that still satisfies the form or page requirement.',
-          'Then test a modern format such as WebP if the destination accepts it; otherwise use JPEG for broad compatibility.',
-          'Lower quality gradually and inspect text, faces, and edges after each export.',
-          'Confirm whether the limit is decimal KB or KiB and whether the site checks the uploaded file or the full multipart request.',
-
-        ],
-      },
+      { type: "paragraph", text: "A 100 KB upload limit is a hard byte budget, not a visual-quality setting. Reaching it depends on image dimensions, content complexity, format, and encoder settings. A flat graphic may fit easily; a detailed photograph at large dimensions may not. The sensible goal is to meet the limit while keeping the image usable." },
+      { type: "image", src: "/guides/unique-2026-11/reduce-image-to-100kb-inline.webp", alt: "Visual explanation of How to Reduce an Image to 100KB", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
+      { type: "heading", text: "Check what the limit means" },
+      { type: "paragraph", text: "Some services use KB to mean 1000 bytes, while others display KiB based on 1024 bytes. A site may also enforce a server-side limit that differs from the number shown in its form. If the upload is rejected, read the exact error and check the actual file size in bytes." },
+      { type: "list", items: ["Confirm whether the maximum is 100 KB, 100 KiB, or another value.", "Check whether the site limits dimensions, file type, or both.", "Do not rely only on a rounded size label in an image viewer."] },
+      { type: "heading", text: "Reduce dimensions before quality" },
+      { type: "paragraph", text: "If the destination displays the image at a small size, resize a copy to the required dimensions while preserving the aspect ratio. This often saves more bytes with less visible damage than forcing extreme compression on a huge image. Keep the original master." },
+      { type: "list", items: ["Find the maximum display dimensions or upload dimensions.", "Reduce width and height proportionally.", "Do not enlarge a small source to meet an arbitrary pixel target."] },
+      { type: "heading", text: "Choose a suitable format and compare" },
+      { type: "paragraph", text: "For a photograph, test JPEG or WebP if the destination accepts them. For a logo or screenshot with text, PNG or lossless WebP may preserve edges better but can be larger. Try a few encoder settings and inspect the result. This tool adjusts compression quality; it does not automatically resize the image." },
+      { type: "list", items: ["Use the format accepted by the destination.", "Lower quality gradually and inspect faces, text, edges, and gradients.", "Verify the final byte count after export."] },
+      { type: "heading", text: "If it still will not fit" },
+      { type: "paragraph", text: "Reduce pixel dimensions another step, choose a more efficient supported format, or simplify the content if appropriate. Do not keep recompressing a previously compressed file; return to the original source when possible. If the destination has a strict format requirement, do not trade compatibility for a smaller file." },
+      { type: "heading", text: "Worked example: a photo that will not reach the limit" },
+      { type: "paragraph", text: "Imagine a 4000-pixel photograph that must be uploaded to a form with a strict 100 KB cap. First confirm the required dimensions and accepted formats. If the form only displays a 500-pixel preview, create a 500-pixel-wide copy while preserving the ratio. Then export JPEG or an accepted modern format and inspect quality. If it is still too large, reduce dimensions in small steps or adjust compression gradually. A 100 KB target may be unrealistic for a large, detailed image without visible loss." },
+      { type: "list", items: ["Do not overwrite the original during each attempt.", "Measure the exact final bytes after export.", "If the service rejects the file, check its actual format and dimension rules."] },
+      { type: "callout", text: "This workflow targets the file-size limit by changing compression settings. It does not automatically change image dimensions." },
+      { type: "resource", label: "web.dev: image performance", url: "https://web.dev/learn/performance/image-performance" }
     ],
   },
   {
     slug: "convert-images-to-pdf",
     title: "How to Convert Images to PDF",
     description:
-      "Combine JPG and PNG images into a single multi-page PDF — for scanned pages, receipts, or photo sets. Reorder pages, choose A4 or Letter, set orientation and margins, then export in your browser.",
+      "Prepare JPG and PNG files for PDF with correct order, page size, orientation, margins, and print checks; understand when OCR is needed.",
     category: "Formats",
     coverDiagram: "format-support-table",
-    readingTimeMin: 4,
+    coverImage: "/guides/unique-2026-11/convert-images-to-pdf-cover.webp",
+    readingTimeMin: 3,
     relatedToolSlugs: ["image-to-pdf"],
     publishedAt: "2025-01-15",
     updatedAt: "2026-11-16",
     body: [
-      {
-        type: "heading",
-        text: "Why combine images into a PDF",
-      },
-      {
-        type: "paragraph",
-        text: "A PDF keeps a set of images in a fixed order, on pages that are convenient to print and share — useful for scanned documents, receipts, or a photo set. A PDF is not automatically searchable: unless OCR is added, text inside a scanned image remains image content rather than selectable document text.",
-      },
-      {
-        type: "callout",
-        text: "The fastest way: open Image to PDF, drop in your images (reorder them if needed), pick a page size, and export one multi-page PDF — in your browser, nothing uploaded.",
-      },
-      {
-        type: "heading",
-        text: "How to convert images to PDF",
-      },
-      {
-        type: "list",
-        items: [
-          "Open Image to PDF and add your JPG or PNG images. The current tool does not accept WebP directly.",
-          "Use the move-up and move-down controls to put the pages in the right order.",
-          "Choose A4 or Letter, select portrait, landscape, or automatic orientation, and set no, small, medium, or large margins.",
-          "Click Convert and download the single PDF.",
-        ],
-      },
-      {
-        type: "heading",
-        text: "Page size and image fit",
-      },
-      {
-        type: "paragraph",
-        text: "The tool creates one page per image on A4 or Letter paper. It uses contain-fit, preserving the image's aspect ratio and centering it inside the available page area; if the image and paper have different proportions, blank margins remain rather than stretching the image. JPEG and PNG are embedded directly. The tool does not run OCR, so text inside a scan is not automatically searchable.",
-      },
-      {
-        type: "heading",
-        text: "Limits to know",
-      },
-      {
-        type: "paragraph",
-        text: "A PDF of many high-resolution images can be large, because the full image data is embedded. If size matters, compress the source images first. PDF is a delivery format, not an editing format — to change a page later, regenerate the PDF from the source images.",
-      },
-      {
-        type: "callout",
-        text: "Image to PDF runs entirely in your browser. Your images are combined locally and never uploaded.",
-      },
-      {
-        type: "image",
-        src: "/guides/images-to-pdf-pages.webp",
-        alt: 'Several image thumbnails are ordered and placed onto separate pages in a single PDF document.',
-        width: 1200,
-        height: 675,
-        caption: 'A practical visual summary of the workflow described in this guide.',
-      },
-      {
-        type: "heading",
-        text: 'Prepare a clean multi-page PDF',
-      },
-      {
-        type: "list",
-        items: [
-          'Sort and rename files in the intended page order before importing them.',
-          'Choose page size (for example A4 or Letter), orientation, and margins before fitting images.',
-          'Use contain/fit when the whole image must remain visible; use fill only when cropping is acceptable.',
-          'Open the exported PDF and inspect every page, orientation, image sharpness, and final file size before sending.',
-
-        ],
-      },
+      { type: "paragraph", text: "Converting images to PDF places each supported image onto a document page. The result is convenient for printing, sharing, and archiving, but it is not automatically searchable text. Page size, orientation, margins, image order, and output resolution all affect the final document." },
+      { type: "image", src: "/guides/unique-2026-11/convert-images-to-pdf-inline.webp", alt: "Visual explanation of How to Convert Images to PDF", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
+      { type: "heading", text: "Prepare the source images" },
+      { type: "paragraph", text: "The converter accepts JPG and PNG images. Put the files in the intended page order before conversion. Rotate images correctly, remove accidental duplicates, and check that each image is readable at the size you plan to place it. If the source is extremely small, a PDF page will not restore missing detail." },
+      { type: "list", items: ["Use JPG for photographs and PNG for screenshots or transparent artwork.", "Sort pages before starting; filename order may differ from capture order.", "Check orientation and legibility on every source image."] },
+      { type: "heading", text: "Choose page layout" },
+      { type: "paragraph", text: "A4 and Letter are common page sizes, but the correct choice depends on the recipient and printer. Portrait and landscape orientation change the available page area. Margins keep content away from printer edges. “Fit” keeps the whole image visible; “fill” can crop it. Choose based on whether the complete image or full-page coverage matters more." },
+      { type: "list", items: ["Choose A4 or Letter to match the destination.", "Use portrait or landscape to suit the source image.", "Use fit when no content may be cropped; review fill carefully."] },
+      { type: "heading", text: "Understand the PDF result" },
+      { type: "paragraph", text: "A PDF made from images generally contains page images rather than selectable text. Search and copy may not work unless OCR is added separately. Large source images can create a large PDF, while aggressive downsampling can reduce print clarity. Review the exported file before sharing." },
+      { type: "list", items: ["Open the PDF and inspect every page.", "Check file size and page count.", "Use OCR separately if searchable text is required.", "Avoid uploading confidential documents to services that do not meet your privacy requirements."] },
+      { type: "heading", text: "Prepare a document that prints cleanly" },
+      { type: "paragraph", text: "A PDF that looks good on screen can still print poorly if the source images are low resolution or the margins are too small. For scanned pages, check that text remains readable at 100% zoom. For photographs, decide whether the page should contain the full image with whitespace or crop to the page. If pages are mixed portrait and landscape, review each one individually rather than assuming a single orientation is ideal." },
+      { type: "list", items: ["Confirm page order before conversion.", "Print or preview one representative page before creating a large batch.", "Use OCR separately if recipients need to search or copy text."] },
+      { type: "callout", text: "The converter creates image-based PDF pages. It does not perform OCR or turn text inside a picture into selectable text." },
+      { type: "resource", label: "Adobe: PDF basics", url: "https://www.adobe.com/acrobat/resources/document-files/pdf.html" }
     ],
   },
   {
     slug: "best-youtube-thumbnail-size",
     title: "Best YouTube Thumbnail Size",
     description:
-      "A practical guide to YouTube thumbnail dimensions, aspect ratios, file formats, upload limits, and design — including the latest official recommendation and a lightweight 1280×720 workflow option.",
+      "Create clear YouTube thumbnails with a 16:9 layout, readable focal point, mobile-safe text, and current upload-rule checks.",
     category: "Resolution",
     coverDiagram: "aspect-ratio-boxes",
+    coverImage: "/guides/unique-2026-11/best-youtube-thumbnail-size-cover.webp",
     readingTimeMin: 3,
     relatedToolSlugs: ["social-media-resizer"],
     publishedAt: "2025-01-15",
     updatedAt: "2026-11-16",
     body: [
-      {
-        type: "heading",
-        text: "The recommended size",
-      },
-      {
-        type: "paragraph",
-        text: "YouTube's current Help guidance recommends 3840×2160 pixels for standard-video thumbnails (16:9), with a minimum width of 640 pixels. For Shorts, it recommends 2160×3840 (9:16), with a minimum height of 640 pixels. JPG and PNG are supported recommendations. Upload size limits depend on device: the current Help page lists 2 MB on mobile and 50 MB on desktop for video thumbnails. Limits and recommendations can change, so check YouTube Help before publishing. A 1280×720 canvas remains a practical lightweight design size for many standard-video workflows, but it is not the current maximum recommendation.",
-      },
-      {
-        type: "callout",
-        text: "The fastest way: open the Social Media Resizer, pick YouTube → Thumbnail (1280×720), choose Cover or Contain fit, and export. Runs locally; nothing uploaded.",
-      },
-      {
-        type: "heading",
-        text: "How to make a YouTube thumbnail",
-      },
-      {
-        type: "list",
-        items: [
-          "Open the Social Media Resizer and load your image.",
-          "Select the YouTube Thumbnail preset (1280×720).",
-          "Choose Cover to fill the frame (crops overflow) or Contain to fit the whole image (letterboxed).",
-          "Export as JPG or PNG and download.",
-        ],
-      },
-      {
-        type: "heading",
-        text: "Design tips",
-      },
-      {
-        type: "paragraph",
-        text: "A thumbnail is tiny in search results and huge on a TV — design for both. Use a high-contrast, simple composition; keep text large and short (three or four words); and avoid fine detail that vanishes at small sizes. Faces and bold colors draw clicks; clutter hides them.",
-      },
-      {
-        type: "heading",
-        text: "Apply it to your video",
-      },
-      {
-        type: "paragraph",
-        text: "In YouTube Studio, open the video's details and upload the thumbnail. For standard videos, prepare a 16:9 image and preview it at small sizes as well as in the player. Shorts use a vertical 9:16 recommendation; YouTube notes that thumbnail presentation can differ across surfaces, so check the preview after upload.",
-      },
-      {
-        type: "callout",
-        text: "The Social Media Resizer runs entirely in your browser. Your image is never uploaded.",
-      },
-      {
-        type: "image",
-        src: "/guides/youtube-thumbnail-safe-area.webp",
-        alt: 'A vivid 16 by 9 thumbnail canvas with a central safe area for the subject and text.',
-        width: 1200,
-        height: 675,
-        caption: 'A practical visual summary of the workflow described in this guide.',
-      },
-      {
-        type: "heading",
-        text: 'Thumbnail quality checklist',
-      },
-      {
-        type: "list",
-        items: [
-          'Design standard-video thumbnails on a 16:9 canvas and Shorts thumbnails on a 9:16 canvas.',
-          'Keep the main subject and a few words large enough to read in a small recommendation card.',
-          'Use JPG or PNG and export within the upload limit for the device you use.',
-          'Preview the thumbnail on mobile and desktop, then verify the current upload guidance in YouTube Help.',
-
-        ],
-      },
-      {
-        type: "resource",
-        label: 'YouTube Help: Add custom thumbnails',
-        url: 'https://support.google.com/youtube/answer/72431?hl=en',
-      },
+      { type: "paragraph", text: "A YouTube thumbnail is a small poster for a video. It must communicate the topic quickly, remain legible on mobile, and survive different display crops. The platform’s current upload guidance should be checked before publishing because recommendations and file limits can change." },
+      { type: "image", src: "/guides/unique-2026-11/best-youtube-thumbnail-size-inline.webp", alt: "Visual explanation of Best YouTube Thumbnail Size", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
+      { type: "heading", text: "Choose a working canvas" },
+      { type: "paragraph", text: "YouTube currently recommends a high-resolution custom thumbnail, with 16:9 as the standard video shape. A 1280 × 720 canvas remains a practical lightweight production size for many workflows, while larger source artwork can preserve detail for future use. Shorts and other surfaces may use different presentation crops, so do not assume one thumbnail composition fits every placement." },
+      { type: "list", items: ["Standard video: design around a 16:9 composition.", "Keep important subjects and text away from the extreme edges.", "Use a larger master when your workflow benefits from it, then export within current upload requirements."] },
+      { type: "heading", text: "Make the message readable" },
+      { type: "paragraph", text: "A thumbnail is viewed at many sizes. Use one main subject, a short headline, and strong separation between foreground and background. Avoid small paragraphs, thin type, and details that disappear on a phone. The thumbnail should accurately represent the video rather than promise content the video does not deliver." },
+      { type: "list", items: ["Use one focal point and a clear visual hierarchy.", "Check headline readability at a small preview size.", "Keep text concise and consistent with the actual video."] },
+      { type: "heading", text: "Export and verify" },
+      { type: "paragraph", text: "Use an image format accepted by YouTube, such as JPG or PNG, and check the current file-size and dimension rules in YouTube Studio help. After upload, preview the thumbnail on desktop and mobile. A good design can still be obscured by timestamps or interface overlays in certain placements." },
+      { type: "heading", text: "A thumbnail design test before upload" },
+      { type: "paragraph", text: "Export a small preview of the thumbnail and view it at the approximate size it will occupy on a phone. If the face, product, or headline cannot be understood immediately, remove secondary elements. Check that the thumbnail accurately matches the video and does not rely on text that becomes unreadable when cropped. Then upload and inspect YouTube Studio’s preview, because the platform may show the artwork in different contexts." },
+      { type: "list", items: ["Use a clear focal subject and one short message.", "Keep logos and headline text away from the outer edge.", "Check the current upload rules in YouTube Help rather than relying on an old blog post."] },
+      { type: "callout", text: "Do not treat 1280 × 720 or a fixed 2 MB limit as an unchanging platform rule. Check YouTube’s current custom-thumbnail requirements before each publishing workflow." },
+      { type: "resource", label: "YouTube Help: Add custom thumbnails", url: "https://support.google.com/youtube/answer/72431" }
     ],
   },
   {
     slug: "optimize-images-for-websites",
     title: "How to Optimize Images for Websites",
     description:
-      "Make images smaller for the web — convert to WebP, compress, and resize to the display size. Covers format choice, quality vs size, and measuring the result. Runs in your browser.",
+      "Build a faster image pipeline with responsive sizes, modern formats, layout stability, loading priority, and useful alt text.",
     category: "Compression",
     coverDiagram: "quality-size-curve",
-    readingTimeMin: 5,
+    coverImage: "/guides/unique-2026-11/optimize-images-for-websites-cover.webp",
+    readingTimeMin: 3,
     relatedToolSlugs: ["optimize-website", "image-compressor"],
     publishedAt: "2025-01-15",
     updatedAt: "2026-11-16",
     body: [
-      {
-        type: "heading",
-        text: "Why image optimization matters",
-      },
-      {
-        type: "paragraph",
-        text: "Images are usually the heaviest part of a web page. Oversized images slow the load, hurt Core Web Vitals, and waste bandwidth on mobile. Optimizing means shrinking the file without visibly degrading the image — the right format, the right quality, and the right pixel dimensions.",
-      },
-      {
-        type: "callout",
-        text: "The fastest way: open Optimize for Website, drop in an image, and it converts to WebP and compresses in one pass — showing the original size, result size, and percentage saved. Runs locally; nothing uploaded.",
-      },
-      {
-        type: "heading",
-        text: "How to optimize an image for a website",
-      },
-      {
-        type: "list",
-        items: [
-          "Open Optimize for Website and load your JPG, PNG, or WebP image.",
-          "Optionally set a resize width to match how the image is displayed on the page.",
-          "Adjust the WebP quality (70–80% is a good range for most photos).",
-          "Click Optimize and download the WebP. Check the savings percentage.",
-        ],
-      },
-      {
-        type: "heading",
-        text: "Choose the right format",
-      },
-      {
-        type: "paragraph",
-        text: "WebP and AVIF can often reduce file size for web imagery, but the best format depends on image content, browser support, and the publishing pipeline. PNG remains useful for lossless graphics and transparency; JPEG remains a practical fallback for broad compatibility. Use a tested fallback strategy rather than assuming one format fits every visitor.",
-      },
-      {
-        type: "heading",
-        text: "Quality, size, and display dimensions",
-      },
-      {
-        type: "paragraph",
-        text: "Three levers control file size: pixel dimensions, format, and encoder quality. Lower quality can add artifacts, so compare exported candidates rather than relying on a universal percentage. WebP and AVIF can often reduce file size, but the best result depends on image content and compatibility requirements. Avoid serving a 4000-pixel image into a 400-pixel slot; generate responsive variants for the actual layout, including a larger source for high-density screens where useful.",
-      },
-      {
-        type: "heading",
-        text: "Measure the result",
-      },
-      {
-        type: "paragraph",
-        text: "After optimizing, check the page with a speed tool (PageSpeed Insights, Lighthouse) to confirm the images are no longer the bottleneck. If a single image still dominates, lower its quality or resize it further.",
-      },
-      {
-        type: "callout",
-        text: "Optimize for Website runs entirely in your browser. Your image is processed locally and never uploaded.",
-      },
-      {
-        type: "image",
-        src: "/guides/responsive-web-images.webp",
-        alt: 'A source image is exported into multiple responsive sizes and served with modern formats and loading priorities.',
-        width: 1200,
-        height: 675,
-        caption: 'A practical visual summary of the workflow described in this guide.',
-      },
-      {
-        type: "heading",
-        text: 'Ship images without slowing the page',
-      },
-      {
-        type: "list",
-        items: [
-          'Generate a small set of responsive widths and use srcset/sizes so browsers can choose an appropriate file.',
-          'Set width and height attributes to reserve layout space and reduce layout shifts.',
-          'Lazy-load below-the-fold images, but do not blindly lazy-load the main hero or likely Largest Contentful Paint image.',
-          'Use descriptive filenames and meaningful alt text; place each image near relevant explanatory text.',
-          'Measure with Lighthouse or PageSpeed Insights after deployment, not just by looking at the compressed file size.',
-
-        ],
-      },
-      {
-        type: "resource",
-        label: 'Google Search Central: Image SEO best practices',
-        url: 'https://developers.google.com/search/docs/appearance/google-images',
-      },
+      { type: "paragraph", text: "Website image optimization is a delivery pipeline, not a one-time compression step. The goal is to send an appropriately sized, modern format to each viewport without delaying the content users need first. A fast site still needs sharp images, stable layouts, and meaningful alternative text." },
+      { type: "image", src: "/guides/unique-2026-11/optimize-images-for-websites-inline.webp", alt: "Visual explanation of How to Optimize Images for Websites", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
+      { type: "heading", text: "Serve the right dimensions" },
+      { type: "paragraph", text: "Do not deliver a 3000-pixel image to every small card. Generate a small set of responsive widths and let the browser choose using srcset and sizes. Include width and height attributes so the browser can reserve layout space and reduce unexpected shifts." },
+      { type: "list", items: ["Create sizes that match actual component widths and device pixel ratios.", "Preserve aspect ratio and avoid unnecessary upscaling.", "Set intrinsic width and height to reserve layout space."] },
+      { type: "heading", text: "Choose modern formats with fallbacks" },
+      { type: "paragraph", text: "WebP and AVIF can reduce bytes for many images, but the best result varies by content and encoder. Use a format negotiation strategy or tested fallbacks for older clients and publishing systems. Compare output quality rather than selecting a format by name alone." },
+      { type: "list", items: ["Photographs: compare AVIF, WebP, and JPEG.", "Transparent graphics: check alpha support and edge quality.", "Text-heavy screenshots: use lossless encoding when lossy artifacts harm readability."] },
+      { type: "heading", text: "Load images according to priority" },
+      { type: "paragraph", text: "Lazy-load images that are below the fold, but do not blindly lazy-load the main hero image or the likely Largest Contentful Paint image. Critical above-the-fold images may need eager loading or preload hints when measurements show a benefit. Measure the real page rather than adding hints everywhere." },
+      { type: "list", items: ["Use loading=\"lazy\" for non-critical offscreen images.", "Avoid lazy-loading the main hero/LCP image.", "Use fetchpriority or preload selectively and verify with performance measurements."] },
+      { type: "heading", text: "Make images accessible and discoverable" },
+      { type: "paragraph", text: "Write alt text that communicates the image’s purpose in context. Decorative images should have empty alt text; informative images need a concise description, not a keyword list. Use descriptive filenames and place images near relevant explanatory text. Confirm that the image URL is crawlable and that the page provides useful surrounding content." },
+      { type: "heading", text: "Measure the impact instead of guessing" },
+      { type: "paragraph", text: "Compare page performance before and after changing the image pipeline. Check the transferred image bytes, image dimensions selected by the browser, Largest Contentful Paint, and layout shifts. A smaller file may not improve the page if it is loaded late or if the browser downloads an oversized source. Likewise, a preload can hurt if it competes with more important resources. Use a real page test and change one variable at a time." },
+      { type: "list", items: ["Inspect the network panel for the actual image URL and transferred bytes.", "Confirm srcset and sizes select the intended candidate.", "Measure on mobile network conditions as well as desktop."] },
+      { type: "callout", text: "Lazy-loading every image can delay the most important image. Prioritize the hero/LCP image and lazy-load content that is genuinely offscreen." },
+      { type: "resource", label: "Google Search Central: image SEO best practices", url: "https://developers.google.com/search/docs/appearance/google-images" }
     ],
   },
   {
     slug: "convert-heic-to-jpg",
     title: "How to Convert HEIC to JPG",
     description:
-      "Convert iPhone HEIC photos to JPG, PNG, or WebP in your browser — what HEIC is, why conversion is sometimes needed, and how to do it without uploading anything.",
+      "Understand HEIC and HEIF, convert photos to broadly compatible JPEG, and check quality, orientation, metadata, and unsupported variants.",
     category: "Formats",
     coverDiagram: "format-support-table",
-    readingTimeMin: 4,
+    coverImage: "/guides/unique-2026-11/convert-heic-to-jpg-cover.webp",
+    readingTimeMin: 3,
     relatedToolSlugs: ["heic-to-jpg"],
     publishedAt: "2025-01-15",
     updatedAt: "2026-11-16",
     body: [
-      {
-        type: "heading",
-        text: "What HEIC is",
-      },
-      {
-        type: "paragraph",
-        text: "HEIC is a filename extension commonly used for still images stored in the HEIF family of formats. On Apple devices, HEIF photos commonly use HEVC-based compression and can be smaller than comparable JPEG files, although the exact savings and quality depend on the image and encoder. Compatibility varies by operating system, browser, editor, and upload service, so conversion to JPEG can still be useful when a recipient or form does not accept HEIC.",
-      },
-      {
-        type: "callout",
-        text: "The fastest way: open HEIC to JPG, drop in a .heic photo, pick a format (JPG, PNG, or WebP), and click Convert — the file is decoded in your browser and nothing is uploaded.",
-      },
-      {
-        type: "heading",
-        text: "How to convert HEIC to JPG",
-      },
-      {
-        type: "list",
-        items: [
-          "Open HEIC to JPG and drop in your .heic or .heif photo.",
-          "Choose an output format — JPG for compatibility, PNG for lossless, WebP for the smallest web file.",
-          "If you chose JPG or WebP, adjust the quality slider (90% is a good default).",
-          "Click Convert. The HEIC is decoded in your browser and re-encoded to your chosen format.",
-          "Click Download to save the converted file.",
-        ],
-      },
-      {
-        type: "heading",
-        text: "Choosing an output format",
-      },
-      {
-        type: "paragraph",
-        text: "JPEG is a practical choice when broad compatibility is the priority. PNG preserves pixels and supports transparency but is often larger for photographs. WebP is a strong web-delivery option where the recipient supports it. For general sharing, start with JPEG at a high quality setting, then inspect the exported image and keep the HEIC original if maximum fidelity matters.",
-      },
-      {
-        type: "heading",
-        text: "Does converting HEIC to JPG lose quality?",
-      },
-      {
-        type: "paragraph",
-        text: "HEIC and JPG are both lossy formats, so a conversion does re-encode the image. A high quality setting usually reduces visible differences, but no percentage guarantees a visually identical result. Conversion decodes and re-encodes the image, and the output depends on the source, encoder, and selected quality. Compare fine detail and gradients, and keep the original for archival use.",
-      },
-      {
-        type: "heading",
-        text: "Why iPhones use HEIC",
-      },
-      {
-        type: "paragraph",
-        text: "Apple's High Efficiency setting uses HEIF for photos and HEVC for video; Most Compatible switches new captures to JPEG for photos and H.264 for video on supported devices. HEIF/HEVC can reduce storage use compared with JPEG/H.264, but the exact difference varies by content. If a workflow only accepts JPEG, choose Most Compatible or convert the files before uploading.",
-      },
-      {
-        type: "callout",
-        text: "HEIC to JPG runs entirely in your browser via WebAssembly. Your photos are decoded on your device and never uploaded to a server.",
-      },
-      {
-        type: "image",
-        src: "/guides/heic-to-jpg-flow.webp",
-        alt: 'An iPhone HEIC photo is decoded and exported to a broadly compatible JPEG image.',
-        width: 1200,
-        height: 675,
-        caption: 'A practical visual summary of the workflow described in this guide.',
-      },
-      {
-        type: "heading",
-        text: 'Check the converted file before sharing',
-      },
-      {
-        type: "list",
-        items: [
-          'Compare dimensions and orientation with the original; HEIC files can contain orientation and auxiliary image data.',
-          'Choose JPEG for broad compatibility, PNG only when you need lossless output, and WebP when the receiving system supports it.',
-          'A conversion re-encodes image data, so keep the original if maximum fidelity or later editing matters.',
-          'If a file fails to convert, test another HEIC/HEIF sample and check whether it contains unsupported features such as multiple images or unusual encoding profiles.',
-
-        ],
-      },
-      {
-        type: "resource",
-        label: 'Apple Support: Use HEIF or HEVC media on Apple devices',
-        url: 'https://support.apple.com/zh-cn/116944',
-      },
+      { type: "paragraph", text: "HEIC is a common filename extension for photos saved using the HEIF image container and HEVC-based image coding. It can store efficient high-quality images and additional image information, but some older apps, websites, and workflows accept JPEG more reliably. Converting to JPG improves compatibility at the cost of re-encoding the image." },
+      { type: "image", src: "/guides/unique-2026-11/convert-heic-to-jpg-inline.webp", alt: "Visual explanation of How to Convert HEIC to JPG", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
+      { type: "heading", text: "HEIF, HEIC, and HEVC are related but not identical" },
+      { type: "paragraph", text: "HEIF is a container format; HEIC commonly refers to HEIF images encoded using HEVC. A file may contain more than a simple still image, depending on how it was created. Features such as depth information, auxiliary images, bursts, or Live Photo relationships may not survive a basic conversion to JPEG." },
+      { type: "list", items: ["Do not assume every .heic file contains only one ordinary image.", "Check whether the source includes depth or motion-related components.", "Keep the original if those additional components matter."] },
+      { type: "heading", text: "What changes during JPG conversion" },
+      { type: "paragraph", text: "JPEG is widely supported, but it uses lossy compression and does not support transparency or all of the additional information a HEIF container may hold. A converter decodes the source and creates a new JPEG. The resulting file may differ in size, color handling, metadata, and image quality depending on the settings." },
+      { type: "list", items: ["Choose a quality setting appropriate for the destination.", "Check orientation, color, and fine detail after conversion.", "Do not repeatedly convert the same JPEG; return to the HEIC original when possible."] },
+      { type: "heading", text: "Troubleshoot files that will not open" },
+      { type: "paragraph", text: "Not all HEIC files are identical. High-bit-depth images, unusual profiles, corrupted files, or container features unsupported by a particular decoder may fail. If conversion fails, try a current operating system or image application that supports the source variant. Avoid renaming the extension as a substitute for conversion." },
+      { type: "list", items: ["Confirm the file is complete and has a genuine HEIC/HEIF container.", "Try a current decoder or export from the original device.", "Verify the output is a real JPEG by opening it in another application."] },
+      { type: "heading", text: "Preserve the original when image fidelity matters" },
+      { type: "paragraph", text: "Keep the HEIC source if you may need to edit the photo later or preserve auxiliary information. Use the JPEG copy for the website, form, or app that requires broad compatibility. Compare the converted image with the source at 100% zoom, especially in shadows, skies, fine hair, and skin tones. Check orientation and color appearance in a second viewer before deleting or archiving the source." },
+      { type: "list", items: ["Use the original HEIC for future high-quality exports.", "Check the output extension and actual file encoding.", "Avoid converting a JPEG copy again if the HEIC original is available."] },
+      { type: "callout", text: "Changing “.heic” to “.jpg” in the filename does not convert the image. A real conversion decodes the source and writes a new JPEG file." },
+      { type: "resource", label: "Apple Support: HEIF and HEVC media", url: "https://support.apple.com/en-us/116944" }
     ],
   },
 ];

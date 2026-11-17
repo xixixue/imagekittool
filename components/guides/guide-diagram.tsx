@@ -440,10 +440,9 @@ export function GuideDiagram({ name, caption }: { name: DiagramName; caption?: s
 }
 
 /**
- * Render a guide cover / article hero. Prefers a raster `coverImage` (generated
- * by `scripts/generate-guide-covers.py` via wan2.7-image-pro) cropped to a
- * banner with `object-cover`; falls back to the named SVG diagram when no cover
- * image is present.
+ * Render a guide cover / article hero. Prefers the guide-specific editorial SVG
+ * cover cropped to a banner with `object-cover`; falls back to the named diagram
+ * when no cover image is present.
  */
 export function GuideCover({
   coverImage,
@@ -463,6 +462,7 @@ export function GuideCover({
           src={coverImage}
           alt={alt}
           fill
+          unoptimized={coverImage.endsWith(".svg")}
           className="object-cover"
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />

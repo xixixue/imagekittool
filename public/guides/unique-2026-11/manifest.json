@@ -1,0 +1,222 @@
+{
+  "guides": [
+    "jpg-vs-png-vs-webp",
+    "how-image-compression-works",
+    "exif-orientation-explained",
+    "social-media-aspect-ratios",
+    "image-resolution-ppi-dpi",
+    "compress-images-without-losing-quality",
+    "color-depth-explained",
+    "alpha-channel-transparency",
+    "resizing-vs-cropping",
+    "how-to-make-a-meme",
+    "watermarking-your-images",
+    "blur-vs-pixelate",
+    "remove-exif-metadata",
+    "make-a-favicon",
+    "reduce-image-to-100kb",
+    "convert-images-to-pdf",
+    "best-youtube-thumbnail-size",
+    "optimize-images-for-websites",
+    "convert-heic-to-jpg"
+  ],
+  "assets": [
+    {
+      "file": "alpha-channel-transparency-cover.webp",
+      "bytes": 71126,
+      "md5": "d166d41ce15cd2c2d4f71d9bb3650ad2"
+    },
+    {
+      "file": "alpha-channel-transparency-inline.webp",
+      "bytes": 74882,
+      "md5": "58f5d161dcba9680b8ee4cacb15a43f1"
+    },
+    {
+      "file": "best-youtube-thumbnail-size-cover.webp",
+      "bytes": 66858,
+      "md5": "fa88ec0c499b15e33b2f88e15f25a413"
+    },
+    {
+      "file": "best-youtube-thumbnail-size-inline.webp",
+      "bytes": 61260,
+      "md5": "45eaaef2849fb8dcac2c96fa92b522cd"
+    },
+    {
+      "file": "blur-vs-pixelate-cover.webp",
+      "bytes": 43356,
+      "md5": "1c819f305323125a9c545b76254e5ade"
+    },
+    {
+      "file": "blur-vs-pixelate-inline.webp",
+      "bytes": 44040,
+      "md5": "2fdf46f4b6f0fee7262d3afeed4dade9"
+    },
+    {
+      "file": "color-depth-explained-cover.webp",
+      "bytes": 55340,
+      "md5": "45cd366c2622d9a0c402eaadcb70f63a"
+    },
+    {
+      "file": "color-depth-explained-inline.webp",
+      "bytes": 56246,
+      "md5": "dde933c79d4d9a905a23cf4fa2aebc1d"
+    },
+    {
+      "file": "compress-images-without-losing-quality-cover.webp",
+      "bytes": 72014,
+      "md5": "2fa6917a21564d27959f9eaffcc2abda"
+    },
+    {
+      "file": "compress-images-without-losing-quality-inline.webp",
+      "bytes": 83870,
+      "md5": "2f2527dc9aa034b32541954c106b7d93"
+    },
+    {
+      "file": "convert-heic-to-jpg-cover.webp",
+      "bytes": 31906,
+      "md5": "6bf80874aa556fd0925fdab0acc2cb81"
+    },
+    {
+      "file": "convert-heic-to-jpg-inline.webp",
+      "bytes": 32812,
+      "md5": "25528a9f228abd29ee2211bb90dd58d5"
+    },
+    {
+      "file": "convert-images-to-pdf-cover.webp",
+      "bytes": 51574,
+      "md5": "b5f66c62d167d26e0857802bac58929e"
+    },
+    {
+      "file": "convert-images-to-pdf-inline.webp",
+      "bytes": 52942,
+      "md5": "c33f7c1cfae460f16428824746c46808"
+    },
+    {
+      "file": "exif-orientation-explained-cover.webp",
+      "bytes": 63196,
+      "md5": "29af20cf70e90225844fc26cd4b418db"
+    },
+    {
+      "file": "exif-orientation-explained-inline.webp",
+      "bytes": 65382,
+      "md5": "444a7c42c8882097cae57e63e98ef286"
+    },
+    {
+      "file": "how-image-compression-works-cover.webp",
+      "bytes": 72516,
+      "md5": "f31ed1f12e90ff2ae2b3541148477aab"
+    },
+    {
+      "file": "how-image-compression-works-inline.webp",
+      "bytes": 74122,
+      "md5": "5fda552ed906db48db3b07f940907c70"
+    },
+    {
+      "file": "how-to-make-a-meme-cover.webp",
+      "bytes": 59692,
+      "md5": "4f51b681d35bfb2c17781ccd82679211"
+    },
+    {
+      "file": "how-to-make-a-meme-inline.webp",
+      "bytes": 61034,
+      "md5": "3b1fbdf992f691c13e125808849cb722"
+    },
+    {
+      "file": "image-resolution-ppi-dpi-cover.webp",
+      "bytes": 73724,
+      "md5": "3e7e8ab2d5b544f3690de65eb8d7f2a4"
+    },
+    {
+      "file": "image-resolution-ppi-dpi-inline.webp",
+      "bytes": 107538,
+      "md5": "82c8e094e3f73482ed35c69c9eb00401"
+    },
+    {
+      "file": "jpg-vs-png-vs-webp-cover.webp",
+      "bytes": 32316,
+      "md5": "388146a12a4a317e65c0d46f84954693"
+    },
+    {
+      "file": "jpg-vs-png-vs-webp-inline.webp",
+      "bytes": 33114,
+      "md5": "5a7ffa611695b33e048da52a5f5cef13"
+    },
+    {
+      "file": "make-a-favicon-cover.webp",
+      "bytes": 21038,
+      "md5": "b9cfe746a91650a0f5e3bf7bee3ab88b"
+    },
+    {
+      "file": "make-a-favicon-inline.webp",
+      "bytes": 22018,
+      "md5": "4ceed5dc7997463b4295038a26dc8a05"
+    },
+    {
+      "file": "optimize-images-for-websites-cover.webp",
+      "bytes": 53002,
+      "md5": "b4187d8cc9d8004f8013e918129af8fe"
+    },
+    {
+      "file": "optimize-images-for-websites-inline.webp",
+      "bytes": 55366,
+      "md5": "04dffe462812b821504ad56900276560"
+    },
+    {
+      "file": "reduce-image-to-100kb-cover.webp",
+      "bytes": 71330,
+      "md5": "69cb6300c47251278b8741589874bfab"
+    },
+    {
+      "file": "reduce-image-to-100kb-inline.webp",
+      "bytes": 75614,
+      "md5": "fa2df29a4e01fc74ce76ce015b679c56"
+    },
+    {
+      "file": "remove-exif-metadata-cover.webp",
+      "bytes": 74556,
+      "md5": "b979705f3b9f85f0b64f9c1876d52b19"
+    },
+    {
+      "file": "remove-exif-metadata-inline.webp",
+      "bytes": 76632,
+      "md5": "5ac0213a0cdce77d06e522c40978c00f"
+    },
+    {
+      "file": "resizing-vs-cropping-cover.webp",
+      "bytes": 83232,
+      "md5": "5121fef7c61c28e956c80c685a82122d"
+    },
+    {
+      "file": "resizing-vs-cropping-inline.webp",
+      "bytes": 84850,
+      "md5": "4875f9521bc209e3f6b41e7673bed596"
+    },
+    {
+      "file": "social-media-aspect-ratios-cover.webp",
+      "bytes": 58814,
+      "md5": "b289a2b9f8a947f93260b6edf848dbc8"
+    },
+    {
+      "file": "social-media-aspect-ratios-inline.webp",
+      "bytes": 52416,
+      "md5": "78ada21ac73c3a1535b20599c29ace32"
+    },
+    {
+      "file": "watermarking-your-images-cover.webp",
+      "bytes": 117454,
+      "md5": "530e3f9c4befec5769fb5671956d5dbc"
+    },
+    {
+      "file": "watermarking-your-images-inline.webp",
+      "bytes": 119518,
+      "md5": "4c7ecb96be4e0248c9ef25ca97744d1a"
+    }
+  ],
+  "validation": {
+    "guide_count": 19,
+    "image_reference_count": 38,
+    "asset_count": 38,
+    "unique_hash_count": 38,
+    "missing_references": []
+  }
+}
