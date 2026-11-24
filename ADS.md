@@ -95,3 +95,76 @@ AdSense script is loaded — so the site ships no ad code before approval.
 - `connect-src 'self' https:` already covers ad beacons.
 
 `Permissions-Policy` keeps `browsing-topics=()` (Topics API disabled).
+
+---
+
+## ads.txt (automated)
+
+`app/ads.txt/route.ts` serves `/ads.txt` from the configured publisher ID. It
+strips the `ca-` prefix from `NEXT_PUBLIC_ADSENSE_CLIENT` and returns:
+
+```
+google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+```
+
+When the env var is unset, the route returns **404** — the site never ships a
+fabricated or placeholder publisher ID. After you set the real ID and redeploy,
+verify in an incognito window that `https://imagekittool.com/ads.txt` (and the
+`www.` host) both return the record with status **200**.
+
+Ref: https://support.google.com/adsense/answer/12171612
+
+## AdSense site verification (automated)
+
+`app/layout.tsx` emits `<meta name="google-adsense-account" content="ca-pub-…">`
+in `<head>` only when `NEXT_PUBLIC_ADSENSE_CLIENT` is set. This is the AdSense
+site-ownership verification code the reviewer expects in `<head>` — no script
+loader is placed in the workspace or near tool controls.
+
+## GDPR / EEA consent (CMP)
+
+If you serve ads to EEA, UK, or Switzerland users, configure a Google-certified
+CMP that integrates IAB TCF in AdSense → **Privacy & messaging** (the Google
+CMP / Funding Choices is the default option). The TCF version is **not** pinned
+here — use whatever AdSense currently certifies (the reviewer's "v2.2" is a
+reference, not a hard requirement; follow the AdSense backend's current message
+spec).
+
+`next.config.ts` already allow-lists the Google CMP script/iframe origins
+(`fundingchoices.google.com`, `www.google.com`) in CSP **only when**
+`NEXT_PUBLIC_ADSENSE_CLIENT` is set, so the consent banner can load. Test the
+consent / reject / manage-preferences / revoke paths; personalized ads must not
+load before an appropriate consent signal.
+
+## Auto Ads URL exclusions (operator action in AdSense backend)
+
+Auto Ads can inject units on any indexed page. Exclude low-content / functional
+pages so no ad ever appears on them (the page templates already render no
+`<AdSlot/>`, but Auto Ads bypasses manual slots). In AdSense → **Auto Ads →
+URL exclusions**, add:
+
+- `/login`
+- `/register`
+- `/forgot-password`
+- `/reset-password`
+- `/verify-email`
+- `/account`
+- `/account/*`
+- `/api/*`
+- 404 / error pages
+
+Manual ad slots (`<AdSlot/>`) are only ever placed in the tool SEO content zone
+and between homepage sections — never inside `ImageToolWorkspace`, so no ad sits
+near the upload / process / download buttons. Keep manual slots on a **small,
+non-intrusive** set of content pages for the first review; do not enable
+aggressive full-site Auto Ads until after approval.
+
+## Update the Privacy & Cookie policies
+
+`messages/<locale>.json` (8 locales) already include an **Advertising** section
+in the Privacy Policy and an **Advertising cookies** section in the Cookie
+Policy, plus the Google ads-personalization link
+(`https://policies.google.com/technologies/ads`). The earlier contradictory
+wording ("no advertising network is integrated" / "we do not set advertising
+cookies") has been revised. If you change the ad configuration, re-check that
+the policy text still matches the actual data flow.

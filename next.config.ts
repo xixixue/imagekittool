@@ -31,11 +31,14 @@ async function securityHeaders() {
   if (process.env.NEXT_PUBLIC_ADSENSE_CLIENT) {
     // AdSense loader + creatives (iframes + impression pixels).
     scriptSrcElemExtra.push("https://pagead2.googlesyndication.com");
+    // Google CMP (Funding Choices / Privacy & messaging) for EEA/UK/CH consent.
+    scriptSrcElemExtra.push("https://fundingchoices.google.com", "https://www.google.com");
     frameSrcExtra.push(
       "https://googleads.g.doubleclick.net",
       "https://*.googleads.g.doubleclick.net",
       "https://pagead2.googlesyndication.com",
       "https://tpc.googlesyndication.com",
+      "https://fundingchoices.google.com",
     );
   }
 

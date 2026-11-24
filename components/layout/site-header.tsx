@@ -3,9 +3,12 @@ import { getTranslations } from "next-intl/server";
 import { ImageIcon } from "@/components/tools/tool-icon";
 import { HeaderAuth } from "./header-auth";
 import { LanguageSwitcher } from "./language-switcher";
+import { ToolsMenu } from "./tools-menu";
 
+// Secondary nav entries (the Tools entry is rendered as a categorized
+// mega-menu via <ToolsMenu />). These collapse on mobile so login/register and
+// language stay visible; the ToolsMenu remains visible at all breakpoints.
 const navLinks = [
-  { href: "/tools", key: "tools" },
   { href: "/workflows", key: "workflows" },
   { href: "/guides", key: "guides" },
   { href: "/about", key: "about" },
@@ -26,7 +29,8 @@ export async function SiteHeader() {
           </span>
         </Link>
         <nav className="flex items-center gap-2 text-sm text-muted-foreground sm:gap-4">
-          {/* Primary nav links collapse on mobile so login/register/language stay visible. */}
+          <ToolsMenu />
+          {/* Secondary links collapse on mobile; ToolsMenu stays visible. */}
           <div className="hidden items-center gap-4 sm:flex">
             {navLinks.map((link) => (
               <Link

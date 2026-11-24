@@ -13,6 +13,10 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("Meta");
   const title = t("title");
   const description = t("description");
+  // AdSense site-verification meta (reviewer requirement: AdSense verification
+  // code in <head>). Only emitted when a real publisher client ID is configured —
+  // never a fabricated value. Renders as <meta name="google-adsense-account" …>.
+  const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
   return {
     metadataBase: new URL(siteUrl),
     title: {
@@ -45,6 +49,9 @@ export async function generateMetadata(): Promise<Metadata> {
       index: true,
       follow: true,
     },
+    ...(adsenseClient
+      ? { other: { "google-adsense-account": adsenseClient } }
+      : {}),
   };
 }
 
