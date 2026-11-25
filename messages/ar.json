@@ -296,7 +296,9 @@
     "readArticle": "اقرأ المقال",
     "minRead": "{min} دقيقة قراءة",
     "relatedTools": "أدوات ذات صلة",
-    "backToGuides": "العودة إلى جميع الأدلة"
+    "backToGuides": "العودة إلى جميع الأدلة",
+    "published": "نُشر",
+    "updated": "تحديث"
   },
   "Tool": {
     "image-compressor": {

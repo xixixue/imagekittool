@@ -296,7 +296,9 @@
     "readArticle": "阅读全文",
     "minRead": "{min} 分钟阅读",
     "relatedTools": "相关工具",
-    "backToGuides": "返回全部指南"
+    "backToGuides": "返回全部指南",
+    "published": "发布于",
+    "updated": "更新于"
   },
   "Tool": {
     "image-compressor": {

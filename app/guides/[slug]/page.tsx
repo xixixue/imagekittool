@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { guides, howToFromGuide } from "@/lib/data/guides";
 import { getToolBySlug } from "@/lib/data/tools";
 import { GuideBody } from "@/components/guides/guide-body";
@@ -42,6 +42,12 @@ export default async function GuideArticlePage({
   const t = await getTranslations("Guides");
   const tNav = await getTranslations("Nav");
   const toolName = await getTranslations("Tool");
+  const locale = await getLocale();
+  const dateFmt = new Intl.DateTimeFormat(locale, {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
   const related = guide.relatedToolSlugs
     .map((s) => getToolBySlug(s))
     .filter((entry): entry is NonNullable<ReturnType<typeof getToolBySlug>> => Boolean(entry));
@@ -95,10 +101,16 @@ export default async function GuideArticlePage({
         </span>
         <span>·</span>
         <span>{t("minRead", { min: guide.readingTimeMin })}</span>
+        <span>·</span>
+        <time dateTime={guide.publishedAt}>
+          {t("published")} {dateFmt.format(new Date(`${guide.publishedAt}T00:00:00Z`))}
+        </time>
         {guide.updatedAt ? (
           <>
             <span>·</span>
-            <time dateTime={guide.updatedAt}>Updated {new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric" }).format(new Date(`${guide.updatedAt}T00:00:00Z`))}</time>
+            <time dateTime={guide.updatedAt}>
+              {t("updated")} {dateFmt.format(new Date(`${guide.updatedAt}T00:00:00Z`))}
+            </time>
           </>
         ) : null}
       </div>

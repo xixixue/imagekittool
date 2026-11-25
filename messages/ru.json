@@ -296,7 +296,9 @@
     "readArticle": "Читать статью",
     "minRead": "{min} мин чтения",
     "relatedTools": "Связанные инструменты",
-    "backToGuides": "Назад ко всем руководствам"
+    "backToGuides": "Назад ко всем руководствам",
+    "published": "Опубликовано",
+    "updated": "Обновлено"
   },
   "Tool": {
     "image-compressor": {

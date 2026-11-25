@@ -296,7 +296,9 @@
     "readArticle": "Read article",
     "minRead": "{min} min read",
     "relatedTools": "Related tools",
-    "backToGuides": "Back to all guides"
+    "backToGuides": "Back to all guides",
+    "published": "Published",
+    "updated": "Updated"
   },
   "Tool": {
     "image-compressor": {

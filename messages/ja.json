@@ -296,7 +296,9 @@
     "readArticle": "記事を読む",
     "minRead": "{min} 分で読める",
     "relatedTools": "関連ツール",
-    "backToGuides": "すべてのガイドに戻る"
+    "backToGuides": "すべてのガイドに戻る",
+    "published": "公開",
+    "updated": "更新"
   },
   "Tool": {
     "image-compressor": {
