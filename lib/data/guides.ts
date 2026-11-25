@@ -98,8 +98,7 @@ export const guides: Guide[] = [
     coverImage: "/guides/unique-2026-11/jpg-vs-png-vs-webp-cover.webp",
     readingTimeMin: 3,
     relatedToolSlugs: ["image-converter", "image-compressor"],
-    publishedAt: "2025-01-12",
-    updatedAt: "2026-11-16",
+    publishedAt: "2026-11-07",
     body: [
       { type: "paragraph", text: "Choosing an image format is a delivery decision, not a contest with one universal winner. The best file is the one that preserves the details your audience needs, meets the destination’s upload rules, and downloads quickly. Start with the image itself: photographs, sharp graphics, transparency, and animation behave differently under compression." },
       { type: "image", src: "/guides/unique-2026-11/jpg-vs-png-vs-webp-inline.webp", alt: "Visual explanation of JPG vs PNG vs WebP: Which Image Format Should You Use?", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
@@ -128,8 +127,7 @@ export const guides: Guide[] = [
     coverImage: "/guides/unique-2026-11/how-image-compression-works-cover.webp",
     readingTimeMin: 3,
     relatedToolSlugs: ["image-compressor", "compress-image-to-kb"],
-    publishedAt: "2025-01-15",
-    updatedAt: "2026-11-16",
+    publishedAt: "2026-10-26",
     body: [
       { type: "paragraph", text: "Image compression reduces the bytes needed to store or transmit an image. It does not always reduce pixel dimensions, and it does not always preserve every pixel. Understanding that distinction explains why a flat logo can compress differently from a noisy photograph and why an aggressively compressed image may show blocks, halos, or smeared texture." },
       { type: "image", src: "/guides/unique-2026-11/how-image-compression-works-inline.webp", alt: "Visual explanation of How Image Compression Works: Lossy vs Lossless", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
@@ -161,8 +159,7 @@ export const guides: Guide[] = [
     coverImage: "/guides/unique-2026-11/exif-orientation-explained-cover.webp",
     readingTimeMin: 3,
     relatedToolSlugs: ["rotate-image"],
-    publishedAt: "2025-01-18",
-    updatedAt: "2026-11-16",
+    publishedAt: "2026-10-19",
     body: [
       { type: "paragraph", text: "A phone photo can look upright in the gallery but sideways in a third-party app because the pixel matrix and the orientation instruction are separate pieces of information. Many cameras store the pixels in one orientation and add an EXIF Orientation tag telling compatible software how to display them." },
       { type: "image", src: "/guides/unique-2026-11/exif-orientation-explained-inline.webp", alt: "Visual explanation of Why Your Phone Photos Are Sideways: EXIF Orientation Explained", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
@@ -192,8 +189,7 @@ export const guides: Guide[] = [
     coverImage: "/guides/unique-2026-11/social-media-aspect-ratios-cover.webp",
     readingTimeMin: 3,
     relatedToolSlugs: ["image-cropper", "image-resizer"],
-    publishedAt: "2025-01-20",
-    updatedAt: "2026-11-16",
+    publishedAt: "2026-10-15",
     body: [
       { type: "paragraph", text: "Social platforms crop and display images differently across feeds, profiles, stories, ads, and devices. A pixel size that works for one placement may be cropped in another. The safest workflow is to choose the exact placement first, then design for its aspect ratio and preview the crop before publishing." },
       { type: "image", src: "/guides/unique-2026-11/social-media-aspect-ratios-inline.webp", alt: "Visual explanation of Aspect Ratios for Social Media: Instagram, Facebook, X, and LinkedIn", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
@@ -222,8 +218,7 @@ export const guides: Guide[] = [
     coverImage: "/guides/unique-2026-11/image-resolution-ppi-dpi-cover.webp",
     readingTimeMin: 3,
     relatedToolSlugs: ["image-resizer"],
-    publishedAt: "2025-01-22",
-    updatedAt: "2026-11-16",
+    publishedAt: "2026-09-08",
     body: [
       { type: "paragraph", text: "Image resolution discussions often mix three different ideas: pixel dimensions, pixels per inch (PPI), and printer dots per inch (DPI). Separating them makes it easier to predict print size, prepare artwork, and understand why changing a resolution field does not magically add detail." },
       { type: "image", src: "/guides/unique-2026-11/image-resolution-ppi-dpi-inline.webp", alt: "Visual explanation of Image Resolution, PPI, and DPI Explained", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
@@ -253,8 +248,7 @@ export const guides: Guide[] = [
     coverImage: "/guides/unique-2026-11/compress-images-without-losing-quality-cover.webp",
     readingTimeMin: 3,
     relatedToolSlugs: ["image-compressor", "compress-image-to-kb"],
-    publishedAt: "2025-01-24",
-    updatedAt: "2026-11-16",
+    publishedAt: "2026-08-27",
     body: [
       { type: "paragraph", text: "The phrase “compress without losing quality” usually means reducing file size without a visible difference at the intended viewing size. True lossless compression preserves every pixel but may save little on a photograph. Lossy compression can save much more, but it always discards information. The practical goal is to control the trade-off rather than promise zero loss." },
       { type: "image", src: "/guides/unique-2026-11/compress-images-without-losing-quality-inline.webp", alt: "Visual explanation of How to Compress Images Without Losing Quality", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
@@ -286,8 +280,7 @@ export const guides: Guide[] = [
     coverImage: "/guides/unique-2026-11/color-depth-explained-cover.webp",
     readingTimeMin: 3,
     relatedToolSlugs: ["image-converter"],
-    publishedAt: "2025-01-26",
-    updatedAt: "2026-11-16",
+    publishedAt: "2026-08-20",
     body: [
       { type: "paragraph", text: "Color depth describes how many numeric values are available to represent color. Confusion arises because specifications may describe bits per channel or total bits per pixel. An “8-bit image” can mean 8 bits for each RGB channel, not only 8 bits for the entire pixel." },
       { type: "image", src: "/guides/unique-2026-11/color-depth-explained-inline.webp", alt: "Visual explanation of Understanding Color Depth: 8-bit, 16-bit, and 24-bit", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
@@ -317,8 +310,7 @@ export const guides: Guide[] = [
     coverImage: "/guides/unique-2026-11/alpha-channel-transparency-cover.webp",
     readingTimeMin: 3,
     relatedToolSlugs: ["image-converter", "image-cropper"],
-    publishedAt: "2025-01-28",
-    updatedAt: "2026-11-16",
+    publishedAt: "2026-08-13",
     body: [
       { type: "paragraph", text: "Transparency is not a color; it is an additional channel that tells a renderer how much of a pixel should show. This is why a logo can sit cleanly on different backgrounds and why saving a transparent image as JPEG often produces an unexpected solid rectangle." },
       { type: "image", src: "/guides/unique-2026-11/alpha-channel-transparency-inline.webp", alt: "Visual explanation of Transparency in Images: The Alpha Channel Explained", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
@@ -348,8 +340,7 @@ export const guides: Guide[] = [
     coverImage: "/guides/unique-2026-11/resizing-vs-cropping-cover.webp",
     readingTimeMin: 3,
     relatedToolSlugs: ["image-resizer", "image-cropper"],
-    publishedAt: "2025-01-30",
-    updatedAt: "2026-11-16",
+    publishedAt: "2026-08-06",
     body: [
       { type: "paragraph", text: "Resizing changes the pixel dimensions of an image. Cropping removes part of the image. They solve different problems: resizing controls output size, while cropping controls framing and aspect ratio. Many bad exports happen because the two operations are treated as interchangeable." },
       { type: "image", src: "/guides/unique-2026-11/resizing-vs-cropping-inline.webp", alt: "Visual explanation of Resizing vs Cropping: When to Use Each", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
@@ -379,8 +370,7 @@ export const guides: Guide[] = [
     coverImage: "/guides/unique-2026-11/how-to-make-a-meme-cover.webp",
     readingTimeMin: 3,
     relatedToolSlugs: ["meme-generator"],
-    publishedAt: "2025-02-01",
-    updatedAt: "2026-11-16",
+    publishedAt: "2026-05-07",
     body: [
       { type: "paragraph", text: "A good meme communicates one clear idea in a fraction of a second. The image, caption, and placement should work together: the visual establishes the situation, the text delivers the twist, and the layout stays readable on a phone. A template is a starting point, not a substitute for a clear joke." },
       { type: "image", src: "/guides/unique-2026-11/how-to-make-a-meme-inline.webp", alt: "Visual explanation of What Is a Meme and How to Make One", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
@@ -409,8 +399,7 @@ export const guides: Guide[] = [
     coverImage: "/guides/unique-2026-11/watermarking-your-images-cover.webp",
     readingTimeMin: 3,
     relatedToolSlugs: ["watermark-image"],
-    publishedAt: "2025-02-03",
-    updatedAt: "2026-11-16",
+    publishedAt: "2026-03-30",
     body: [
       { type: "paragraph", text: "A watermark can identify a creator or discourage casual reuse, but it is not a reliable lock on an image. Visible marks can be cropped or covered; invisible marks can be damaged by resizing, compression, screenshots, or editing. Treat watermarking as one layer in a broader rights and publishing workflow." },
       { type: "image", src: "/guides/unique-2026-11/watermarking-your-images-inline.webp", alt: "Visual explanation of Watermarking Your Images: Visible vs Invisible", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
@@ -439,8 +428,7 @@ export const guides: Guide[] = [
     coverImage: "/guides/unique-2026-11/blur-vs-pixelate-cover.webp",
     readingTimeMin: 3,
     relatedToolSlugs: ["blur-image", "photo-editor"],
-    publishedAt: "2025-02-05",
-    updatedAt: "2026-11-16",
+    publishedAt: "2026-03-25",
     body: [
       { type: "paragraph", text: "Blur and pixelation make image details harder to recognize, but neither is a dependable way to hide sensitive information. A face, license plate, address, account number, or password may remain partly inferable, especially when the original region is large or the transformation is weak." },
       { type: "image", src: "/guides/unique-2026-11/blur-vs-pixelate-inline.webp", alt: "Visual explanation of Blur vs Pixelate: Protecting Privacy in Images", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
@@ -470,8 +458,7 @@ export const guides: Guide[] = [
     coverImage: "/guides/unique-2026-11/remove-exif-metadata-cover.webp",
     readingTimeMin: 3,
     relatedToolSlugs: ["exif-remover", "exif-viewer"],
-    publishedAt: "2025-01-15",
-    updatedAt: "2026-11-16",
+    publishedAt: "2026-03-14",
     body: [
       { type: "paragraph", text: "Photos can contain more than visible pixels. EXIF metadata may include camera and lens details, capture time, orientation, and GPS coordinates. Sharing the original file can therefore reveal context that is not obvious from the picture itself. Metadata removal is useful, but you should verify the exported file rather than assume every field has disappeared." },
       { type: "image", src: "/guides/unique-2026-11/remove-exif-metadata-inline.webp", alt: "Visual explanation of How to Remove EXIF Metadata from Photos", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
@@ -500,8 +487,7 @@ export const guides: Guide[] = [
     coverImage: "/guides/unique-2026-11/make-a-favicon-cover.webp",
     readingTimeMin: 3,
     relatedToolSlugs: ["favicon-generator"],
-    publishedAt: "2025-01-15",
-    updatedAt: "2026-11-16",
+    publishedAt: "2026-03-12",
     body: [
       { type: "paragraph", text: "A favicon is the small brand mark shown in browser tabs, bookmarks, and other browser surfaces. A design that looks excellent at 512 pixels can become an unreadable blob at 16 pixels. The key is to simplify the mark and test it at the actual sizes browsers use." },
       { type: "image", src: "/guides/unique-2026-11/make-a-favicon-inline.webp", alt: "Visual explanation of How to Make a Favicon for a Website", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
@@ -531,8 +517,7 @@ export const guides: Guide[] = [
     coverImage: "/guides/unique-2026-11/reduce-image-to-100kb-cover.webp",
     readingTimeMin: 3,
     relatedToolSlugs: ["compress-image-to-kb", "image-compressor"],
-    publishedAt: "2025-01-15",
-    updatedAt: "2026-11-16",
+    publishedAt: "2026-02-08",
     body: [
       { type: "paragraph", text: "A 100 KB upload limit is a hard byte budget, not a visual-quality setting. Reaching it depends on image dimensions, content complexity, format, and encoder settings. A flat graphic may fit easily; a detailed photograph at large dimensions may not. The sensible goal is to meet the limit while keeping the image usable." },
       { type: "image", src: "/guides/unique-2026-11/reduce-image-to-100kb-inline.webp", alt: "Visual explanation of How to Reduce an Image to 100KB", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
@@ -564,8 +549,7 @@ export const guides: Guide[] = [
     coverImage: "/guides/unique-2026-11/convert-images-to-pdf-cover.webp",
     readingTimeMin: 3,
     relatedToolSlugs: ["image-to-pdf"],
-    publishedAt: "2025-01-15",
-    updatedAt: "2026-11-16",
+    publishedAt: "2026-01-30",
     body: [
       { type: "paragraph", text: "Converting images to PDF places each supported image onto a document page. The result is convenient for printing, sharing, and archiving, but it is not automatically searchable text. Page size, orientation, margins, image order, and output resolution all affect the final document." },
       { type: "image", src: "/guides/unique-2026-11/convert-images-to-pdf-inline.webp", alt: "Visual explanation of How to Convert Images to PDF", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
@@ -595,8 +579,7 @@ export const guides: Guide[] = [
     coverImage: "/guides/unique-2026-11/best-youtube-thumbnail-size-cover.webp",
     readingTimeMin: 3,
     relatedToolSlugs: ["social-media-resizer"],
-    publishedAt: "2025-01-15",
-    updatedAt: "2026-11-16",
+    publishedAt: "2026-01-23",
     body: [
       { type: "paragraph", text: "A YouTube thumbnail is a small poster for a video. It must communicate the topic quickly, remain legible on mobile, and survive different display crops. The platform’s current upload guidance should be checked before publishing because recommendations and file limits can change." },
       { type: "image", src: "/guides/unique-2026-11/best-youtube-thumbnail-size-inline.webp", alt: "Visual explanation of Best YouTube Thumbnail Size", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
@@ -625,8 +608,7 @@ export const guides: Guide[] = [
     coverImage: "/guides/unique-2026-11/optimize-images-for-websites-cover.webp",
     readingTimeMin: 3,
     relatedToolSlugs: ["optimize-website", "image-compressor"],
-    publishedAt: "2025-01-15",
-    updatedAt: "2026-11-16",
+    publishedAt: "2026-01-02",
     body: [
       { type: "paragraph", text: "Website image optimization is a delivery pipeline, not a one-time compression step. The goal is to send an appropriately sized, modern format to each viewport without delaying the content users need first. A fast site still needs sharp images, stable layouts, and meaningful alternative text." },
       { type: "image", src: "/guides/unique-2026-11/optimize-images-for-websites-inline.webp", alt: "Visual explanation of How to Optimize Images for Websites", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
@@ -658,8 +640,7 @@ export const guides: Guide[] = [
     coverImage: "/guides/unique-2026-11/convert-heic-to-jpg-cover.webp",
     readingTimeMin: 3,
     relatedToolSlugs: ["heic-to-jpg"],
-    publishedAt: "2025-01-15",
-    updatedAt: "2026-11-16",
+    publishedAt: "2026-01-01",
     body: [
       { type: "paragraph", text: "HEIC is a common filename extension for photos saved using the HEIF image container and HEVC-based image coding. It can store efficient high-quality images and additional image information, but some older apps, websites, and workflows accept JPEG more reliably. Converting to JPG improves compatibility at the cost of re-encoding the image." },
       { type: "image", src: "/guides/unique-2026-11/convert-heic-to-jpg-inline.webp", alt: "Visual explanation of How to Convert HEIC to JPG", width: 1200, height: 720, caption: "Topic-specific visual summary of the concepts and checks in this guide." },
