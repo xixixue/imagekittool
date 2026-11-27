@@ -56,7 +56,7 @@ export function HeaderAuth() {
         </Link>
         <Link
           href="/register"
-          className="rounded-md bg-primary px-2.5 py-1.5 text-sm text-primary-foreground transition-colors hover:bg-primary/90 sm:px-3"
+          className="hidden rounded-md bg-primary px-2.5 py-1.5 text-sm text-primary-foreground transition-colors hover:bg-primary/90 sm:inline-flex sm:px-3"
         >
           {t("register")}
         </Link>
@@ -70,17 +70,17 @@ export function HeaderAuth() {
       <Link
         href="/account"
         title={user.email}
-        className="flex items-center gap-1.5 rounded-full border border-border bg-muted/50 py-1 pl-1 pr-3 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+        className="flex items-center gap-1.5 rounded-full border border-border bg-muted/50 py-1 pl-1 pr-1.5 text-sm font-medium text-foreground transition-colors hover:bg-muted sm:pr-3"
       >
         <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
           {initial}
         </span>
-        <span className="max-w-[90px] truncate sm:max-w-[140px]">{displayName}</span>
+        <span className="hidden truncate sm:inline sm:max-w-[140px]">{displayName}</span>
       </Link>
       <button
         type="button"
         onClick={signOut}
-        className="rounded-md border border-border px-2.5 py-1.5 text-sm transition-colors hover:bg-muted sm:px-3"
+        className="hidden rounded-md border border-border px-2.5 py-1.5 text-sm transition-colors hover:bg-muted sm:inline-flex sm:px-3"
       >
         {t("signOut")}
       </button>

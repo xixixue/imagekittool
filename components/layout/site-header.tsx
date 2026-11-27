@@ -5,12 +5,14 @@ import { HeaderAuth } from "./header-auth";
 import { LanguageSwitcher } from "./language-switcher";
 import { ToolsMenu } from "./tools-menu";
 
-// Secondary nav entries (the Tools entry is rendered as a categorized
-// mega-menu via <ToolsMenu />). These collapse on mobile so login/register and
-// language stay visible; the ToolsMenu remains visible at all breakpoints.
+// Primary nav: Tools (mega-menu on desktop, plain link on mobile), Workflows
+// and Guides are visible at every breakpoint; About/Contact stay desktop-only
+// to keep the mobile header within the viewport width.
 const navLinks = [
   { href: "/workflows", key: "workflows" },
   { href: "/guides", key: "guides" },
+] as const;
+const desktopOnlyLinks = [
   { href: "/about", key: "about" },
   { href: "/contact", key: "contact" },
 ] as const;
@@ -32,11 +34,20 @@ export async function SiteHeader() {
             <span className="text-primary">ImageKit</span>Tools
           </span>
         </Link>
-        <nav className="flex items-center gap-2 text-sm text-muted-foreground sm:gap-4">
+        <nav className="flex items-center gap-1.5 text-sm text-muted-foreground sm:gap-4">
           <ToolsMenu />
-          {/* Secondary links collapse on mobile; ToolsMenu stays visible. */}
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="transition-colors hover:text-foreground"
+            >
+              {t(link.key)}
+            </Link>
+          ))}
+          {/* About/Contact collapse on mobile to preserve width. */}
           <div className="hidden items-center gap-4 sm:flex">
-            {navLinks.map((link) => (
+            {desktopOnlyLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
