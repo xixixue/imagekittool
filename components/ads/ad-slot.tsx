@@ -3,13 +3,13 @@
 import { useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
+import { ADSENSE_CLIENT } from "@/lib/config/site";
 
 /**
- * AdSense publisher client ID (ca-pub-…). When unset, every <AdSlot/> renders
- * nothing, so the site ships no ad code before AdSense approval and in dev.
- * Set NEXT_PUBLIC_ADSENSE_CLIENT in production to enable ads.
+ * AdSense publisher client ID (ca-pub-…). Sourced from lib/config/site
+ * (owner-provided production default, env-overridable). When empty (e.g. in
+ * development), every <AdSlot/> renders nothing, so the site ships no ad code.
  */
-const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
 
 interface AdSlotProps {
   /** Ad unit slot ID (data-ad-slot) from your AdSense account. */

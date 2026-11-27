@@ -1,45 +1,54 @@
 "use client";
 
 import Script from "next/script";
+import {
+  ADSENSE_CLIENT,
+  GA_MEASUREMENT_ID,
+  GTM_ID,
+  SENTRY_DSN,
+} from "@/lib/config/site";
 
 /**
- * Conditionally loads third-party analytics and monitoring scripts.
+ * Conditionally loads third-party analytics, tag manager, and monitoring
+ * scripts.
  *
- * Nothing is loaded unless the operator has provided the corresponding
- * NEXT_PUBLIC_* value. In development and before launch these are empty, so no
- * third-party script, cookie, or network request is introduced. This keeps the
- * privacy promise accurate: the site runs no analytics until explicitly
- * configured (see Privacy Policy and Cookie Policy).
+ * Identifiers come from lib/config/site (owner-provided production defaults,
+ * env-overridable). In development they are empty, so no third-party script,
+ * cookie, or network request is introduced — keeping the privacy promise
+ * accurate (see Privacy Policy and Cookie Policy).
  *
- * - GA4: Google Analytics 4, loaded via the gtag snippet.
- * - Sentry: browser error monitoring, loaded from the Sentry CDN.
- * - AdSense: the adsbygoogle loader, loaded only when a publisher client ID is
- *   configured. <AdSlot/> units push to window.adsbygoogle; no ad code runs
- *   before NEXT_PUBLIC_ADSENSE_CLIENT is set (i.e. before AdSense approval).
+ * - GTM: Google Tag Manager container (gtm.js). Used for imagekittool.com.
+ * - GA4: Google Analytics 4 via gtag (env-only; loaded only if configured).
+ * - Sentry: browser error monitoring from the Sentry CDN.
+ * - AdSense: the adsbygoogle loader. <AdSlot/> units push to
+ *   window.adsbygoogle. In production the publisher ID is set by default.
  *
  * Server-side error capture via @sentry/nextjs is a production follow-up and
  * would use the (non-public) SENTRY_DSN; it is intentionally not added here to
  * avoid pulling a build-time dependency without owner configuration.
  */
-const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
-const SENTRY_DSN = process.env.NEXT_PUBLIC_SENTRY_DSN;
-const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
 const SENTRY_VERSION = "8.49.0";
 
 export function Analytics() {
   return (
     <>
-      {GA_ID ? (
+      {GTM_ID ? (
+        <Script id="gtm-base" strategy="beforeInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`}
+        </Script>
+      ) : null}
+
+      {GA_MEASUREMENT_ID ? (
         <>
           <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
             strategy="afterInteractive"
           />
           <Script id="ga4-init" strategy="afterInteractive">
             {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${GA_ID}');`}
+gtag('config', '${GA_MEASUREMENT_ID}');`}
           </Script>
         </>
       ) : null}
@@ -60,7 +69,7 @@ gtag('config', '${GA_ID}');`}
         <Script
           id="adsbygoogle-js"
           async
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
           crossOrigin="anonymous"
           src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
         />

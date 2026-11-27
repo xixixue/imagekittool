@@ -5,6 +5,7 @@ import { Analytics } from "@/components/analytics/analytics";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { localeLabels, type Locale } from "@/i18n/routing";
+import { ADSENSE_CLIENT, GSC_VERIFICATION, GTM_ID } from "@/lib/config/site";
 import "./globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
@@ -14,9 +15,10 @@ export async function generateMetadata(): Promise<Metadata> {
   const title = t("title");
   const description = t("description");
   // AdSense site-verification meta (reviewer requirement: AdSense verification
-  // code in <head>). Only emitted when a real publisher client ID is configured —
-  // never a fabricated value. Renders as <meta name="google-adsense-account" …>.
-  const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
+  // code in <head>). Emitted when a publisher client ID is configured (the
+  // production default is set in lib/config/site). Renders as
+  // <meta name="google-adsense-account" …>.
+  // GSC verification renders as <meta name="google-site-verification" …>.
   return {
     metadataBase: new URL(siteUrl),
     title: {
@@ -49,8 +51,11 @@ export async function generateMetadata(): Promise<Metadata> {
       index: true,
       follow: true,
     },
-    ...(adsenseClient
-      ? { other: { "google-adsense-account": adsenseClient } }
+    verification: {
+      google: GSC_VERIFICATION,
+    },
+    ...(ADSENSE_CLIENT
+      ? { other: { "google-adsense-account": ADSENSE_CLIENT } }
       : {}),
   };
 }
@@ -66,6 +71,17 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={dir}>
       <body className="flex min-h-screen flex-col bg-background text-foreground antialiased">
+        {/* GTM noscript fallback — first in <body> per Google Tag Manager docs. */}
+        {GTM_ID ? (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
+        ) : null}
         <NextIntlClientProvider locale={locale} messages={messages}>
           <SiteHeader />
           <main className="flex-1">{children}</main>

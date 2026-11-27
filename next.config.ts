@@ -22,13 +22,22 @@ async function securityHeaders() {
   const scriptSrcElemExtra: string[] = [];
   const frameSrcExtra: string[] = [];
 
-  if (process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID) {
+  // lib/config/site activates AdSense/GTM with production-default IDs when
+  // NODE_ENV === "production" (env vars still override). The CSP must allow
+  // the corresponding origins whenever those scripts can load, so the
+  // conditions match that logic (env set OR production).
+  const isProd = process.env.NODE_ENV === "production";
+  const gaActive = !!process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || isProd;
+  const gtmActive = !!process.env.NEXT_PUBLIC_GTM_ID || isProd;
+  const adsenseActive = !!process.env.NEXT_PUBLIC_ADSENSE_CLIENT || isProd;
+
+  if (gaActive || gtmActive) {
     scriptSrcElemExtra.push("https://www.googletagmanager.com", "https://www.google-analytics.com");
   }
   if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
     scriptSrcElemExtra.push("https://browser.sentry-cdn.com");
   }
-  if (process.env.NEXT_PUBLIC_ADSENSE_CLIENT) {
+  if (adsenseActive) {
     // AdSense loader + creatives (iframes + impression pixels).
     scriptSrcElemExtra.push("https://pagead2.googlesyndication.com");
     // Google CMP (Funding Choices / Privacy & messaging) for EEA/UK/CH consent.
@@ -39,6 +48,8 @@ async function securityHeaders() {
       "https://pagead2.googlesyndication.com",
       "https://tpc.googlesyndication.com",
       "https://fundingchoices.google.com",
+      // GTM noscript iframe / tag delivery.
+      "https://www.googletagmanager.com",
     );
   }
 
