@@ -40,6 +40,8 @@ async function securityHeaders() {
   if (adsenseActive) {
     // AdSense loader + creatives (iframes + impression pixels).
     scriptSrcElemExtra.push("https://pagead2.googlesyndication.com");
+    // AdSense traffic-quality (SODAR) sub-resource.
+    scriptSrcElemExtra.push("https://ep2.adtrafficquality.google", "https://*.adtrafficquality.google");
     // Google CMP (Funding Choices / Privacy & messaging) for EEA/UK/CH consent.
     scriptSrcElemExtra.push("https://fundingchoices.google.com", "https://www.google.com");
     frameSrcExtra.push(
