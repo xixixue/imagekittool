@@ -89,7 +89,7 @@ export function ToolsMenu() {
         <svg
           aria-hidden="true"
           viewBox="0 0 24 24"
-          className={`h-3.5 w-3.5 transition-transform ${open ? "rotate-180" : ""}`}
+          className={`hidden h-3.5 w-3.5 transition-transform sm:block ${open ? "rotate-180" : ""}`}
           fill="none"
           stroke="currentColor"
           strokeWidth="2.5"
@@ -103,7 +103,7 @@ export function ToolsMenu() {
       {open && (
         <div
           role="menu"
-          className="absolute left-0 top-full z-50 mt-1 w-[34rem] max-w-[92vw] rounded-xl border border-border bg-popover p-4 shadow-lg"
+          className="absolute left-0 top-full z-50 mt-1 hidden w-[34rem] max-w-[calc(100vw-1.5rem)] rounded-xl border border-border bg-popover p-4 shadow-lg sm:block"
         >
           <div className="mb-3 flex items-center justify-between">
             <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">

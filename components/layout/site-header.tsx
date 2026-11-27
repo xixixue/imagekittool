@@ -20,11 +20,15 @@ export async function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/80 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-2 px-3 sm:px-4">
-        <Link href="/" className="flex shrink-0 items-center gap-2 font-semibold tracking-tight">
+        <Link
+          href="/"
+          aria-label="ImageKitTools"
+          className="flex shrink-0 items-center gap-2 font-semibold tracking-tight"
+        >
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-violet-500 to-purple-600 text-white shadow-sm">
             <ImageIcon className="h-5 w-5" />
           </span>
-          <span>
+          <span className="hidden sm:inline">
             <span className="text-primary">ImageKit</span>Tools
           </span>
         </Link>
