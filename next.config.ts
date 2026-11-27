@@ -50,6 +50,10 @@ async function securityHeaders() {
       "https://pagead2.googlesyndication.com",
       "https://tpc.googlesyndication.com",
       "https://fundingchoices.google.com",
+      // AdSense traffic-quality + measurement iframes.
+      "https://ep2.adtrafficquality.google",
+      "https://*.adtrafficquality.google",
+      "https://www.google.com",
       // GTM noscript iframe / tag delivery.
       "https://www.googletagmanager.com",
     );
