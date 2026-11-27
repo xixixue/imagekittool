@@ -71,16 +71,16 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={dir}>
       <body className="flex min-h-screen flex-col bg-background text-foreground antialiased">
-        {/* GTM noscript fallback — first in <body> per Google Tag Manager docs. */}
+        {/* GTM noscript fallback — first in <body> per Google Tag Manager docs.
+            Rendered via dangerouslySetInnerHTML because React hydrates <noscript>
+            element children as text (JS enabled), which mismatches the SSR
+            element markup and throws a hydration error. */}
         {GTM_ID ? (
-          <noscript>
-            <iframe
-              src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-              height="0"
-              width="0"
-              style={{ display: "none", visibility: "hidden" }}
-            />
-          </noscript>
+          <noscript
+            dangerouslySetInnerHTML={{
+              __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
+            }}
+          />
         ) : null}
         <NextIntlClientProvider locale={locale} messages={messages}>
           <SiteHeader />

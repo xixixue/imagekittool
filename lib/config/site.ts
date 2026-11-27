@@ -13,23 +13,28 @@
  * loader, GTM container, and GSC verification without manual env setup. In
  * development the fallbacks are empty so no ad/tracking code runs locally.
  *
+ * IMPORTANT: access `process.env.X` DIRECTLY (never via an intermediate
+ * `const env = process.env` variable). Next.js's DefinePlugin only replaces
+ * literal `process.env.X` tokens in the client bundle; an intermediate variable
+ * leaves a bare `process` reference, which is undefined in the browser and
+ * throws "process is not defined".
+ *
  * AGENTS.md note: these values were provided by the owner (not fabricated).
  */
-const env = process.env;
-const isProd = env.NODE_ENV === "production";
+const isProd = process.env.NODE_ENV === "production";
 
 /** Google AdSense publisher client ID (ca-pub-…). Empty → no AdSense code. */
 export const ADSENSE_CLIENT =
-  env.NEXT_PUBLIC_ADSENSE_CLIENT ?? (isProd ? "ca-pub-1792545344328768" : "");
+  process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? (isProd ? "ca-pub-1792545344328768" : "");
 
 /** Google Tag Manager container ID (GTM-…). Empty → no GTM. */
-export const GTM_ID = env.NEXT_PUBLIC_GTM_ID ?? (isProd ? "GTM-WBNRCNPZ" : "");
+export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? (isProd ? "GTM-WBNRCNPZ" : "");
 
 /** Google Analytics 4 measurement ID (G-…). Env-only; no production default. */
-export const GA_MEASUREMENT_ID = env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "";
+export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "";
 
 /** Sentry browser DSN. Env-only. */
-export const SENTRY_DSN = env.NEXT_PUBLIC_SENTRY_DSN ?? "";
+export const SENTRY_DSN = process.env.NEXT_PUBLIC_SENTRY_DSN ?? "";
 
 /**
  * Google Search Console site-verification token (the content value of the
